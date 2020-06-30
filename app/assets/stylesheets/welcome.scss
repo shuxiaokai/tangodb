@@ -40,18 +40,21 @@ background:#2465D9;
   color:#FFFFFF;
 }
 
+
 .fixed{
   top:0;
   position:fixed;
   width:auto;
-  display:none;
+  display:inline-block;
   border:none;
 }
 
-.scrollMore{
-  margin-top:600px;
-}
 
 .up{
   cursor:pointer;
+}
+
+.filter_table {
+ float:left;
+  width:20%;
 }
