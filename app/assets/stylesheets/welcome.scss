@@ -1,6 +1,6 @@
 body{
   font:.8em normal Arial,sans-serif;
-  color:#black;
+  color:black;
 }
 
 h1{
@@ -19,12 +19,17 @@ h1{
 table{
   border-collapse:collapse;
   width:80%;
+  display:block;
+  overflow:auto;
+  height:400px;
+  width:100%;
 }
 
 thead{
   color:black;
-  border: 1px solid #e6e6e6;
+  border: .5px solid #e6e6e6;
 }
+
 
 th,td{
   text-align:center;
@@ -41,11 +46,13 @@ background:#2465D9;
 }
 
 
+
+/*
 .fixed{
   top:0;
   position:fixed;
   width:auto;
-  display:inline-block;
+  display:block;
   border:none;
 }
 
@@ -53,8 +60,10 @@ background:#2465D9;
 .up{
   cursor:pointer;
 }
-
+*/
 .filter_table {
- float:left;
-  width:20%;
+  width:auto;
+  display:inline-block;
+  overflow:auto;
+  height:200px;
 }
