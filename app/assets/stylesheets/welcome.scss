@@ -1,8 +1,83 @@
+.iframe-container {
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+}
+
+.iframe-container iframe {
+   border: 0;
+   height: 100%;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 100%;
+}
+
+/* 4x3 Aspect Ratio */
+.iframe-container-4x3 {
+  padding-top: 75%;
+}
+
+/* Grid Layout */
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 0px;
+  grid-auto-rows: minmax(50px, auto);
+
+}
+.one {
+  grid-column: 2 / 7;
+  grid-row: 1;
+}
+.two {
+  grid-column: 2 / 7;
+  grid-row: 2 / 8;
+}
+.three {
+  grid-column: 2 / 7;
+  grid-row: 12 / 22;
+}
+.four {
+  grid-column: 2 / 3;
+  grid-row: 8 / 12;
+}
+.five {
+  grid-column: 3 / 4;
+  grid-row: 8 / 12;
+}
+.six {
+  grid-column: 4 / 5;
+  grid-row: 8 / 12;
+}
+.seven {
+  grid-column: 5 / 6;
+  grid-row: 8 / 12;
+}
+.eight {
+  grid-column: 6 / 7;
+  grid-row: 8 / 12;
+}
+
+/* grid layout background colors */
+/*
+.wrapper > div{
+  background:#eee;
+  padding:1em
+}
+.wrapper > div:nth-child(odd){
+  background:#ddd;
+}
+*/
+
+
+/* Body */
 body{
   font:.8em normal Arial,sans-serif;
   color:black;
 }
 
+/* Heading */
 h1{
   text-align:center;
   text-transform:uppercase;
@@ -11,50 +86,46 @@ h1{
   margin:20px 0;
 }
 
-.container{
-  width:90%;
-  margin:auto;
-}
-
-table{
+/* main_table */
+.main_table{
   border-collapse:collapse;
-  width:80%;
-  display:block;
-  overflow:auto;
-  height:400px;
   width:100%;
+  overflow:auto;
+  height:100px;
+  width:100%;
+  margin: 0 auto;
 }
-
-thead{
+/* main_table header */
+.main_table thead{
   color:black;
   border: 1px solid #e6e6e6;
 }
 
-th{
-text-align:center;
+/* main_table header */
+.main_table th{
+  text-align:center;
   padding:5px 0;
   position:sticky;
-  top:0px;
+  top:0;
   background:white;
   border: 1px solid #e6e6e6;
 }
 
-td{
-  text-align:center;
+/* Column Item */
+.main_table td{
+  text-align:left;
   padding:5px 0;
-
 }
 
-tbody tr:nth-child(even){
+/* Alternating Background */
+.main_table tbody tr:nth-child(odd){
   background:#f2f2f2;
 }
-
-tbody tr:hover{
+/* Hover Over */
+.main_table tbody tr:hover{
 background:#2465D9;
   color:#FFFFFF;
 }
-
-
 
 /*
 .fixed{
@@ -64,15 +135,28 @@ background:#2465D9;
   display:block;
   border:none;
 }
+*/
 
-
+/* Keep Pointer on hover */
 .up{
   cursor:pointer;
 }
-*/
+
 .filter_table {
-  width:auto;
-  display:inline-block;
+  width:100%;
+  display:block;
   overflow:auto;
   height:200px;
+  border: 1px solid #f2f2f2;
+}
+
+/* Column Item */
+.filter_table td{
+  text-align:left;
+}
+
+/* Hover Over */
+.filter_table tbody tr:hover{
+background:#2465D9;
+  color:#FFFFFF;
 }
