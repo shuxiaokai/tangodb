@@ -87,13 +87,32 @@ h1{
   margin:20px 0;
 }
 
-/* main_table */
-.main_table{
-  width: 100%;
-  border-collapse:collapse;
+.main_table body{
+  margin: 0;
+  padding: 2rem;
+  height: 100px;
 }
 
-/* main_table header */
+/* main_table */
+.main_table table{
+  text-align: left;
+  position: relative;
+  border-collapse: collapse;
+}
+
+th {
+  background: white;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+/*
+.main_table th, td {
+  padding: 0.25rem;
+}
+
+/* main_table header
 .main_table thead{
   display: table;
 	overflow: auto;
@@ -112,7 +131,7 @@ h1{
 .main_table tbody tr{
 
 }
-
+*/
 /* Column Item */
 .main_table tbody td{
   text-align:left;
