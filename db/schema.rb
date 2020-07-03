@@ -10,21 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_093156) do
+ActiveRecord::Schema.define(version: 2020_07_02_183140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "videos", force: :cascade do |t|
-    t.string "link"
-    t.string "title"
-    t.datetime "published_at"
-    t.integer "likes"
-    t.integer "dislikes"
-    t.string "uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["uid"], name: "index_videos_on_uid"
   end
 
 end

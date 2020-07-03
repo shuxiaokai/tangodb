@@ -12,8 +12,6 @@ gem 'turbolinks',         '5.2.1'
 gem 'jbuilder',           '2.10.0'
 gem 'bootsnap',           '1.4.6', require: false
 gem 'yt',                 '~> 0.32.0'
-gem 'rails-observers'
-gem 'omniauth-google-oauth2'
 
 group :development, :test do
 
