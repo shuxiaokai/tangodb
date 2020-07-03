@@ -5,6 +5,8 @@ class Video < ApplicationRecord
   validates :leader, presence: true
   validates :follower, presence: true
   validates :song, presence: true
+  validates :youtube_id, presence: true
+  validates :title, presence: true
 
   class << self
     # To fetch video, run this from the console:
@@ -12,14 +14,14 @@ class Video < ApplicationRecord
     def for_channel(id)
       channel = Yt::Channel.new id: id
       channel.videos.each do |youtube_video|
-        video = Video.new(youtube_id: youtube_video.id)
-        video.parse_title(youtube_video.title)
+        video = Video.new(youtube_id: youtube_video.id, title: youtube_video.title)
+        video.parse_title
         video.save
       end
     end
   end
 
-  def parse_title(title)
+  def parse_title
     # TODO: ensure that the title has the right format
     # follower and leader - song
     return unless title.match(/.+#{DANCER_SEPARATOR}.+#{SONG_SEPARATOR}.+/)
