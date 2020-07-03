@@ -5,14 +5,19 @@
   <% break if index > 3 %>
   <%  index += 0 %>
   <div>
-    <b>Title: </b>
-    <%= video.title %>
+    <b>Leader: </b>
+    <%= video.leader %>
     <br><br>
   </div>
   <div>
-    <b>Description: </b>
-    <%= video.description %>
+    <b>Follower: </b>
+    <%= video.follower %>
     <br><br>
   </div>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div>
+    <b>Song: </b>
+    <%= video.song %>
+    <br><br>
+  </div>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.youtube_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <% end %>

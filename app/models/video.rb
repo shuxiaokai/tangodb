@@ -5,4 +5,5 @@ class Video < ApplicationRecord
       channel.videos
     end
   end
+
 end
