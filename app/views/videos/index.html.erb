@@ -2,25 +2,20 @@
 
 <h3><%= @channel.title %></h3>
 
+<% index = 0 %>
 <% @channel.videos.each do |video| %>
-  <div class = "channel">
-    <%= link_to "https://youtube.com/watch?v=#{video.id}" do %>
-      <%= image_tag "https://i.ytimg.com/vi/#{video.id}/mqdefault.jpg" %>
-    <% end %>
+  <% break if index > 3 %>
+  <%  index += 0 %>
+  <div>
+    <b>Title: </b>
+    <%= video.title %>
     <br><br>
-    <div>
-      <b>Title: </b>
-      <%= video.title %>
-      <br><br>
-    </div>
-    <div>
-      <b>Description: </b>
-      <%= video.description %>
-      <br><br>
-    </div>
-    <div>
-      <b>Upload Date: </b>
-      <%= video.published_at %>
-    </div>
   </div>
+  <div>
+    <b>Description: </b>
+    <%= video.description %>
+    <br><br>
+  </div>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <% end %>
+  
