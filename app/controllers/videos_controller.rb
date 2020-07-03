@@ -1,8 +1,7 @@
 class VideosController < ApplicationController
 
   def index
-    # @videos = Video.for_channel('UCtdgMR0bmogczrZNpPaO66Q')
-    @videos = Video.all
+    @videos = Video.all.limit(10)
   end
 
 end
