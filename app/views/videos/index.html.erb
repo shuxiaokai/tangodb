@@ -1,6 +1,8 @@
-<h1>videos</h1>
+<h1>Tango Library</h1>
 
+<h3>Yt::Video</h3>
 <div class = "video">
+<div>
 <%= link_to "https://youtube.com/watch?v=#{@video.id}" do %>
  <%= image_tag "https://i.ytimg.com/vi/#{@video.id}/mqdefault.jpg" %>
 <% end %>
@@ -13,6 +15,55 @@
 </div>
 <div>
 <b>Channel: </b><%= @video.channel_title %><br><br>
+</div>
+<div>
+<div>
+<b>Upload Date: </b><%= @video.published_at %>
+ </div>
+</div>
+
+<br><br><br><br>
 
 
- 
+<h3>Yt::Channel</h3>
+<div class = "channel">
+<%= link_to "https://youtube.com/watch?v=#{@channel.videos.first.id}" do %>
+ <%= image_tag "https://i.ytimg.com/vi/#{@channel.videos.first.id}/mqdefault.jpg" %>
+<% end %>
+<br><br>
+<div>
+<b>Title: </b> <%= @channel.videos.first.title %><br><br>
+</div>
+<div>
+<b>Description: </b><%= @channel.videos.first.description %><br><br>
+</div>
+<div>
+<b>Channel: </b><%= @channel.videos.first.channel_title %><br><br>
+</div>
+<div>
+<div>
+<b>Upload Date: </b><%= @channel.videos.first.published_at %>
+ </div>
+
+
+      <h3>Yt::Channel List</h3>
+      <% @channel.videos.each do |video| %>
+            <div class = "channel">
+            <%= link_to "https://youtube.com/watch?v=#{video.id}" do %>
+ <%= image_tag "https://i.ytimg.com/vi/#{video.id}/mqdefault.jpg" %>
+<% end %>
+            <br><br>
+            <div>
+                  <b>Title: </b> <%= video.title %><br><br>
+            </div>
+            <div>
+                  <b>Description: </b><%= video.description %><br><br>
+            </div>
+            <div>
+                  <b>Channel: </b><%= video.channel_title %><br><br>
+            </div>
+            <div>
+                  <b>Upload Date: </b><%= video.published_at %>
+            </div>               
+      <% end %>
+
