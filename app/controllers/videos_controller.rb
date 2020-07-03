@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
 
   def index
-    @channel = Yt::Channel.new id: 'UCtdgMR0bmogczrZNpPaO66Q'
+    @videos = Video.for_channel('UCtdgMR0bmogczrZNpPaO66Q')
   end
 
 end

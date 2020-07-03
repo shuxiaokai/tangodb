@@ -1,9 +1,7 @@
 <h1>Tango Library</h1>
 
-<h3><%= @channel.title %></h3>
-
 <% index = 0 %>
-<% @channel.videos.each do |video| %>
+<% @videos.each do |video| %>
   <% break if index > 3 %>
   <%  index += 0 %>
   <div>
@@ -18,4 +16,3 @@
   </div>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= video.id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <% end %>
-  
