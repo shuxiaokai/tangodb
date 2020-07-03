@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-root to: "videos#index"
+  root to: "videos#index"
+
   resources :videos
-get "/welcome/index"
+
+  get "/welcome/index"
 end
