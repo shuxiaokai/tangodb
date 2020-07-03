@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_07_03_195144) do
     t.string "leader"
     t.string "follower"
     t.string "song"
+    t.string "youtube_id"
   end
 
 end
