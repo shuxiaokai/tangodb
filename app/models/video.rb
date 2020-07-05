@@ -25,7 +25,7 @@ class Video < ApplicationRecord
     parsed_title = title.split(SONG_SEPARATOR)
 
     # Grep Leader from Title
-    self.leader = title.grep(leader_dataset.xml)
+    self.leader = title.grep(Leader.pluck(:name))
     self.follower = title.grep(follower_dataset.xml)
 
     # song from Title
