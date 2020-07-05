@@ -28,7 +28,9 @@ class Video < ApplicationRecord
 
     # Grep Leader from Title
     self.leader = Leader.all.find { |leader| title.match(leader.name) }
+
     self.follower = "Whatever"
+    # self.follower = Follower.all.find { |leader| title.match(leader.name) }
 
     # song from Title
      self.song = parsed_title.last
