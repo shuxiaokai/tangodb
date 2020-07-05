@@ -8,6 +8,8 @@ class Video < ApplicationRecord
   validates :youtube_id, presence: true
   validates :title, presence: true
 
+  belongs_to :leader
+
   class << self
     # To fetch video, run this from the console:
     # Video.for_channel('UCtdgMR0bmogczrZNpPaO66Q')
@@ -25,8 +27,8 @@ class Video < ApplicationRecord
     parsed_title = title.split(SONG_SEPARATOR)
 
     # Grep Leader from Title
-    self.leader = title.grep(Leader.pluck(:name))
-    self.follower = title.grep(follower_dataset.xml)
+    self.leader = Leader.all.find { |leader| title.match(leader.name) }
+    self.follower = "Whatever"
 
     # song from Title
      self.song = parsed_title.last
