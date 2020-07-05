@@ -13,6 +13,8 @@ gem 'webpacker',          '4.2.2'
 gem 'jbuilder',           '2.10.0'
 gem 'bootsnap',           '1.4.6', require: false
 gem 'yt',                 '~> 0.32.0'
+gem 'spring',                '2.1.0'
+gem 'spring-watcher-listen', '2.0.1'
 
 group :development, :test do
   gem 'byebug'
@@ -21,12 +23,9 @@ end
 group :development do
   gem 'web-console',           '4.0.2'
   gem 'listen',                '3.2.1'
- 
 end
 
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver',       '3.142.7'
 end
- gem 'spring',                '2.1.0'
-  gem 'spring-watcher-listen', '2.0.1'
