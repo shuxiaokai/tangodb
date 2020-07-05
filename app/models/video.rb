@@ -15,7 +15,7 @@ class Video < ApplicationRecord
       channel = Yt::Channel.new id: id
       channel.videos.each do |youtube_video|
         video = Video.new(youtube_id: youtube_video.id, title: youtube_video.title)
-        video.parse_title
+        video.grep_title
         video.save
       end
     end
@@ -33,5 +33,20 @@ class Video < ApplicationRecord
     parsed_dancers = dancers.split(DANCER_SEPARATOR)
     self.follower = parsed_dancers.first
     self.leader = parsed_dancers.last
+  end
+
+  def grep_title
+    # TODO: ensure that the title has the right format
+    # follower and leader - song
+    return unless title.match(/.+#{DANCER_SEPARATOR}.+#{SONG_SEPARATOR}.+/)
+    parsed_title = title.split(SONG_SEPARATOR)
+
+
+    # Grep Leader from Title
+    self.leader = title.grep(leader_dataset.xml)
+    self.follower = title.grep(follower_dataset.xml)
+
+    # song from Title
+     self.song = parsed_title.last
   end
 end
