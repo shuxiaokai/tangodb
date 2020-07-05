@@ -1,6 +1,6 @@
 namespace :db do
   task seed_leaders: :environment do
-    'Adrian Costa', 'Adrian Ferreyra', 'Alejandro Hermida', 'Alonso Alvarez', 'Alper Ergökmen ', 'Andres Molina', 'Andres Sautel', 'Brenno Marques'
+    ['Adrian Costa', 'Adrian Ferreyra', 'Alejandro Hermida', 'Alonso Alvarez', 'Alper Ergökmen ', 'Andres Molina', 'Andres Sautel', 'Brenno Marques'
 , 'Bruno Tombari', 'Bulent Karabagli', 'Carlitos Espinoza ', 'Carlos Santos David', 'Chicho Frumboli', 'Christian Marquez', 'Daniel Arroyo', 'Daniel Nacucchio', '
 Danilo Maddalena', 'Diego Riemer', 'Dmitriy Kuznetsov', 'Dmitry Vasin', 'Dominic Bridge', 'Emiliano Alcaraz', 'Eric Lindgren', 'Fabian Peralta', 'Facundo de la Cr
 uz', 'Facundo Pinero', 'Fausto Carpino', 'Federico Naveira', 'Felix Naschke', 'Fernando Sanchez', 'Gaspar Godoy', 'Gaston Camejo', 'Germán Ballejo', 'Gianpiero Ga
