@@ -9,6 +9,7 @@ class Video < ApplicationRecord
   validates :title, presence: true
 
   belongs_to :leader
+  belongs_to :follower
 
   class << self
     # To fetch video, run this from the console:
@@ -28,9 +29,7 @@ class Video < ApplicationRecord
 
     # Grep Leader from Title
     self.leader = Leader.all.find { |leader| title.match(leader.name) }
-
-    self.follower = "Whatever"
-    # self.follower = Follower.all.find { |leader| title.match(leader.name) }
+    self.follower = Follower.all.find { |follower| title.match(follower.name) }
 
     # song from Title
      self.song = parsed_title.last

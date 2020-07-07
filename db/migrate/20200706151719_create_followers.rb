@@ -1,10 +1,10 @@
-class CreateLeaders < ActiveRecord::Migration[6.0]
+class CreateFollowers < ActiveRecord::Migration[6.0]
   def change
-    create_table :leaders do |t|
+    create_table :followers do |t|
       t.string :name, null: false, unique: true
 
       t.timestamps null: false
     end
-    
+
   end
 end
