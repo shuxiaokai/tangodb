@@ -1,6 +1,7 @@
 class Video < ApplicationRecord
   DANCER_SEPARATOR = " and "
   SONG_SEPARATOR = %r( [–-] )
+  HASHTAG_CLEANER = / #\w+\s*/
 
   validates :leader, presence: true
   validates :follower, presence: true
@@ -32,6 +33,6 @@ class Video < ApplicationRecord
     self.follower = Follower.all.find { |follower| title.match(follower.name) }
 
     # song from Title
-     self.song = parsed_title.last
+     self.song = (parsed_title.last).gsub(/ #\w+\s*|,[\s\S\d\D]*$/, "")
   end
 end

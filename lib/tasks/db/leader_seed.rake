@@ -235,7 +235,6 @@ namespace :db do
         "Vasco Martins",
         "Vincenzo Bisogno",
         "Vito Raffanelli",
-        "Walter “Chino” Laborde",
         "Yalçın Badem",
         "Yannick Vanhove",
         "Yury Shtykin",

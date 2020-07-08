@@ -1,0 +1,33 @@
+<div><h1>Tango Library</h1>
+
+<% index = 0 %>
+<% @videos.each do |video| %>
+  <% break if index > 3 %>
+  <%  index += 0 %>
+
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/<%= video.youtube_id %>"
+    frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+  <div>
+    <b>Leader: </b>
+    <%= video.leader.name %>
+    <br><br>
+  </div>
+  <div>
+    <b>Follower: </b>
+    <%= video.follower.name %>
+    <br><br>
+  </div>
+  <div>
+    <b>Song: </b>
+    <%= video.song %>
+    <br><br>
+  </div>
+
+<% end %>
