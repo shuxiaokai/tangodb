@@ -186,13 +186,8 @@
             <th>ID</th>
             <th>Title<th>
             <th>Leader</th>
-            <th>Leader ID</th>
             <th>Follower</th>
-            <th>Follower ID</th>
             <th>Song</th>
-            <th>Created at</th>
-            <th>Updated at</th>
-            <th>Youtube ID</th>
           </tr>
         </thead>
         <tbody class="scrollContent">
@@ -201,13 +196,8 @@
             <td><%= video.id %></td>
             <td><a href = "https://www.youtube.com/watch?v=<%= video.youtube_id %>"><%= video.title %></td>
             <td><%= video.leader.name %></td>
-            <td><%= video.leader_id %></td>
             <td><%= video.follower.name %></td>
-            <td><%= video.follower_id %></td>
             <td><%= video.song %></td>
-            <td><%= video.created_at %></td>
-            <td><%= video.updated_at %></td>
-            <td><%= video.youtube_id %></td>
           </tr>
         <% end %>
         </tbody>
