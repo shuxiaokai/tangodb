@@ -25,39 +25,194 @@
     </div>
   </div>
 
-  <div class="three">
-    <table class="main_table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Title<th>
-          <th>Leader</th>
-          <th>Leader ID</th>
-          <th>Follower</th>
-          <th>Follower ID</th>
-          <th>Song</th>
-          <th>Created at</th>
-          <th>Updated at</th>
-          <th>Youtube ID</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @videos.each do |video| %>
-        <tr>    
-          <td><%= video.id %></td>
-          <td><%= video.title %><td>
-          <td><%= video.leader %></td>
-          <td><%= video.leader_id %></td>
-          <td><%= video.follower %></td>
-          <td><%= video.follower_id %></td>
-          <td><%= video.song %></td>
-          <td><%= video.created_at %></td>
-          <td><%= video.updated_at %></td>
-          <td><%= video.youtube_id %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+      <div id="tableContainer" class="four">
+          <table border="0" cellpadding="0" 
+                            cellspacing="0" 
+                            width="100%" 
+                            class="scrollTable">
+            <thead class="fixedHeader">
+              <tr>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody class="scrollContentFilter">
+              <tr>
+                  <td>Performance</td>
+                </tr>
+                <tr>
+                  <td>Class</td>
+                </tr>
+                <tr>
+                  <td>Short</td>
+                </tr>
+                <tr>
+                  <td>Interview</td>
+                </tr>
+                <tr>
+                  <td>Documentary</td>
+                </tr>
+                <tr>
+                  <td>Vlog</td>
+                </tr>
+            </tbody>
+          </table>
+      </div>
+      <div id="tableContainerFilter" class="five">
+          <table border="0" cellpadding="0" 
+                            cellspacing="0" 
+                            width="100%" 
+                            class="scrollTableFilter">
+            <thead class="fixedHeaderFilter">
+              <tr>
+                <th>Genre</th>
+              </tr>
+            </thead>
+            <tbody class="scrollContentFilter">
+              <tr>
+                <td>Tango</td>
+                </tr>
+                <tr>
+                <td>Milonga</td>
+                </tr>
+                <tr>
+                <td>Vals</td>
+                </tr>
+                <tr>
+                <td>Alternative</td>
+                </tr>
+            </tbody>
+          </table>
+      </div>
+      <div id="tableContainer" class="six">
+        <table border="0" cellpadding="0" 
+                          cellspacing="0" 
+                          width="100%"
+                          class="scrollTableFilter">
+          <thead class="fixedHeader">
+            <tr>
+              <th>Leader</th>
+            </tr>
+          </thead>
+          <tbody class="scrollContentFilter">
+            <% @videos.each do |video| %>
+                <tr>  
+                <td><%= video.leader.name %></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+      </div>
+      <div id="tableContainerFilter" class="seven">
+          <table border="0"   cellpadding="0" 
+                              cellspacing="0" 
+                              width="100%" 
+                              class="scrollTableFilter">
+            <thead class="fixedHeaderFilter">
+              <tr>
+                <th>Follower</th>
+              </tr>
+            </thead>
+            <tbody class="scrollContentFilter">
+            <% @videos.each do |video| %>
+                <tr>  
+                <td><%= video.follower.name %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+      </div>
+       <div id="TableContainerFilter" class="eight">
+         
+          <table border="0" cellpadding="0"
+                            cellspacing="0" 
+                            width="100%" 
+                            class="scrollTableFilter">
+            <thead class="fixedHeaderFilter">
+              <tr>
+                <th>Event</th>
+              </tr>
+            </thead>
+            <tbody class="scrollContentFilter">
+              <tr>
+                <td>Bucharest Tango Groove</td>
+                </tr>
+                <tr>
+                <td>Milongero Nights</td>
+                </tr>
+                <tr>
+                <td>Embrace Berlic</td>
+                </tr>
+                <tr>
+                <td>Mediterranean Summer Tango Festival</td>
+                </tr>
+                <td>TangoLovers Festival</td>
+                <tr>
+                <td>La Viruta Tango Club: Berlin</td>
+                </tr>
+                <tr>
+                <td>Tango Tage Halle</td>
+                </tr>
+                <tr>
+                <td>Mala Junta, Berlin</td>
+                </tr>
+                <tr>
+                <td>NOU Berlin</td>
+                </tr>
+                <tr>
+                <td>Tango Jam Hamburg</td>
+                </tr>
+                <tr>
+                <td>Łódź Tango Salon Festival</td>
+                </tr>
+                <tr>
+                <td>Brussels Tango Festival</td>
+                </tr><tr>
+                <td>Lyon Tango Festival</td>
+                </tr>
+                <tr>
+                <td>La Viruta Tango Club Berlin</td>
+                </tr>
+           </tbody>
+          </table>
+      </div>
+  <div id="tableContainer" class="three">
+    <div class="TableContainer">
+      <table border="0" cellpadding="0" 
+                              cellspacing="0" 
+                              width="100%" 
+                              class="scrollTable">
+        <thead class="fixedHeader">
+          <tr>
+            <th>ID</th>
+            <th>Title<th>
+            <th>Leader</th>
+            <th>Leader ID</th>
+            <th>Follower</th>
+            <th>Follower ID</th>
+            <th>Song</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+            <th>Youtube ID</th>
+          </tr>
+        </thead>
+        <tbody class="scrollContent">
+        <% @videos.each do |video| %>
+          <tr class="<%= cycle("normalRow", "alternateRow") %>">  
+            <td><%= video.id %></td>
+            <td><%= video.title %><td>
+            <td><%= video.leader.name %></td>
+            <td><%= video.leader_id %></td>
+            <td><%= video.follower.name %></td>
+            <td><%= video.follower_id %></td>
+            <td><%= video.song %></td>
+            <td><%= video.created_at %></td>
+            <td><%= video.updated_at %></td>
+            <td><%= video.youtube_id %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 </body>
