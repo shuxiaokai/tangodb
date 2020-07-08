@@ -94,9 +94,9 @@
             </tr>
           </thead>
           <tbody class="scrollContentFilter">
-            <% @videos.each do |video| %>
+            <% @videos.map(&:leader).uniq.each do |leader| %>
                 <tr>  
-                <td><%= video.leader.name %></td>
+                <td><%= leader.name %></td>
                 </tr>
             <% end %>
             </tbody>
@@ -113,9 +113,9 @@
               </tr>
             </thead>
             <tbody class="scrollContentFilter">
-            <% @videos.each do |video| %>
+            <% @videos.map(&:follower).uniq.each do |follower| %>
                 <tr>  
-                <td><%= video.follower.name %></td>
+                <td><%= follower.name %></td>
                 </tr>
             <% end %>
             </tbody>
@@ -199,7 +199,7 @@
         <% @videos.each do |video| %>
           <tr class="<%= cycle("normalRow", "alternateRow") %>">  
             <td><%= video.id %></td>
-            <td><%= video.title %><td>
+            <td><a href = "https://www.youtube.com/watch?v=<%= video.youtube_id %>"><%= video.title %></td>
             <td><%= video.leader.name %></td>
             <td><%= video.leader_id %></td>
             <td><%= video.follower.name %></td>
