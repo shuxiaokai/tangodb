@@ -7,11 +7,11 @@
 
 .iframe-container iframe {
    border: 0;
-   height: 300px;
+   height: 100%;
    left: 0;
    top: 0;
    position: absolute;
-   width: 600px;
+   width: 100%;
 }
 
 /* 4x3 Aspect Ratio */
@@ -19,52 +19,51 @@
   padding-top: 75%;
 }
 
-/* Grid Layout */
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(8, 110px);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  max-width: 1500px;
-}
-.one {
-  grid-row: 1 / 2 ;
-  grid-column: 2 / 8 ;
-}
-.two {
-  grid-row: 2 / 5 ;
-  grid-column: 2 / 8 ;
-}
-.three {
-  
-  grid-row: 7 / 8 ;
-  grid-column: 2 / 8 ;
-}
-.four {
-  grid-row: 5 / 7 ;
-  grid-column: 2 / 3 ;
-}
-.five {
-  grid-row: 5 / 7 ;
-  grid-column: 3 / 4 ;
-}
-.six {
-  grid-row: 5 / 7 ;
-  grid-column: 4 / 5 ;
-}
-.seven {
-  grid-row: 5 / 7 ;
-  grid-column: 5 / 6 ;
-}
-.eight {
-  grid-row: 5 / 7 ;
-  grid-column: 6 / 7 ;
-}
-.nine {
-  grid-row: 5 / 7 ;
-  grid-column: 7 / 8 ;
-}
+// /* Grid Layout */
+// .wrapper {
+//   display: grid;
+//   grid-template-columns: repeat(8, 1fr);
+//   grid-template-rows: repeat(8, 110px);
+//   grid-column-gap: 0px;
+//   grid-row-gap: 0px;
+//   max-width: 1500px;
+// }
+// #one {
+//   grid-row: 1 / 2 ;
+//   grid-column: 2 / 8 ;
+// }
+// #two {
+//   grid-row: 2 / 5 ;
+//   grid-column: 2 / 8 ;
+// }
+// #three {
+//   grid-row: 7 / 8 ;
+//   grid-column: 2 / 8 ;
+// }
+// #four {
+//   grid-row: 5 / 7 ;
+//   grid-column: 2 / 3 ;
+// }
+// #five {
+//   grid-row: 5 / 7 ;
+//   grid-column: 3 / 4 ;
+// }
+// #six {
+//   grid-row: 5 / 7 ;
+//   grid-column: 4 / 5 ;
+// }
+// #seven {
+//   grid-row: 5 / 7 ;
+//   grid-column: 5 / 6 ;
+// }
+// #eight {
+//   grid-row: 5 / 7 ;
+//   grid-column: 6 / 7 ;
+// }
+// #nine {
+//   grid-row: 5 / 7 ;
+//   grid-column: 7 / 8 ;
+// }
 
 /* start basic styling */
 
@@ -74,8 +73,6 @@ body {
 	font: normal normal 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
 	margin: 10px;
 }
-
-
 
 table, td, a {
 	color: #000;
@@ -102,8 +99,8 @@ h3 {
 /* define height and width of scrollable area. Add 16px to width for scrollbar          */
 div.tableContainer {
 	clear: both;
-	border: 1px solid #963;
-	height: 285px;
+	border: 0px solid #963;
+	height: 626px;
 	overflow: auto;
 	width: 900px
 }
@@ -151,7 +148,7 @@ thead.fixedHeader th {
 
 html>body tbody.scrollContent {
   display: block;
-	height: 400px;
+	height: 600px;
 	overflow: auto;
 	table-layout:fixed;
 	width: 100%
@@ -188,18 +185,42 @@ tbody.scrollContent tr.alternateRow td {
 
 // ----------------------------------------------- 
 
-/* define height and width of scrollable area. Add 16px to width for scrollbar          */
+//* define height and width of scrollable area. Add 16px to width for scrollbar          */
 div.tableContainerFilter {
 	clear: both;
-	border: 1px solid #963;
-	height: 240px;
+	border: 0px solid #963;
+	height: 215px;
 	overflow: auto;
-	width: 900px
+	width: 250px
 }
 
-thead.fixedHeaderfilter tr {
+/* Reset overflow value to hidden for all non-IE browsers. */
+html>body div.tableContainerFilter {
+	overflow: hidden;
+	width: 250px
+}
+
+/* define width of table. IE browsers only                 */
+div.tableContainerFilter table {
+	float: left;
+	/* width: 740px */
+}
+
+/* define width of table. Add 16px to width for scrollbar.           */
+/* All other non-IE browsers.                                        */
+html>body div.tableContainerFilter table {
+	/* width: 756px */
+}
+
+/* set table header to a fixed position. WinIE 6.x only                                       */
+/* In WinIE 6.x, any element with a position property set to relative and is a child of       */
+/* an element that has an overflow property set, the relative value translates into fixed.    */
+/* Ex: parent element DIV with a class of tableContainer has an overflow property set to auto */
+
+thead.fixedHeaderFilter tr {
 	position: relative;
 }
+
 /* set THEAD element to have block level attributes. All other non-IE browsers            */
 /* this enables overflow to work on TBODY element. All other non-IE, non-Mozilla browsers */
 
@@ -216,9 +237,10 @@ thead.fixedHeaderFilter th {
 
 html>body tbody.scrollContentFilter {
   display: block;
-	height: 195px;
+	height: 200px;
 	overflow: auto;
-  width: 100%
+	table-layout:fixed;
+	width: 100%
 }
 
 html>body thead.fixedHeaderFilter {
