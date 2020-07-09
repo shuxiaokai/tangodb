@@ -262,7 +262,7 @@ tbody.scrollContent tr.alternateRow td {
 /* Highlight Element */
 tbody.scrollContent tr:hover td{
     background:#2465D9;
-	color:#FFFFFF;
+	color:#FFFFFF;	
 		a {
 			color:#ffffff;
 		}		  
@@ -275,7 +275,7 @@ tbody.scrollContent td a {
 
 /* Arrow toggle for headings */
 .scrollTable th .current {
-	padding-right: 10px;
+	padding-right: 15px;
 	background-repeat: no-repeat;
 	background-position: right;
   }
@@ -283,12 +283,18 @@ tbody.scrollContent td a {
 .scrollTable th .asc {
 	background-image: url(/assets/up_arrow.png);
 	background-size: 10px 10px;
+	font-weight:bold;
   }
   
 .scrollTable th .desc {
 	background-image: url(/assets/down_arrow.png);
 	background-size: 10px 10px;
+	font-weight: bold;
   }
+
+.scrollTable a:link{
+	text-decoration: none;
+}
 
 
 
