@@ -1,253 +1,251 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>Tango Library</title>
-   </head>
-   <body>
       <div class="wrapper">
-         <div id="one">
-            <p align="center">
-               <center>
-                  <h1>Tango Library</h1>
-               </center>
-            </p>
-         </div>
-         <div id="two">
-            <div class="iframe-container">
-               <p align="center">
-                  <iframe scrolling="no" onload="resizeIframe(this)" 
-                          src="https://www.youtube.com/embed/s6iptZdCcG0" 
-                          allow="accelerometer;
-                                  autoplay; 
-                                  encrypted-media; 
-                                  gyroscope; 
-                                  picture-in-picture" allowfullscreen>
-                  </iframe>
-               </p>
+      <header class="main-head"><center><h1>Tango Library</h1></center></header>
+         <nav class="main-nav">
+            <ul>
+                <%# <li><a href="">Nav 1</a></li>
+                <li><a href="">Nav 2</a></li>
+                <li><a href="">Nav 3</a></li> %>
+            </ul>
+        </nav>
+         <article class="content">        
+            <div id="two">
+               <div class="iframe-container">
+                  <p align="center">
+                     <iframe scrolling="no" onload="resizeIframe(this)" 
+                           src="https://www.youtube.com/embed/s6iptZdCcG0" 
+                           allow="accelerometer;
+                                    autoplay; 
+                                    encrypted-media; 
+                                    gyroscope; 
+                                    picture-in-picture" allowfullscreen>
+                     </iframe>
+                  </p>
+               </div>
             </div>
-         </div>
-          <table>
-            <tr>
-               <td>
-                  <div id="four" class="tableContainerFilter">
+            <table>
+               <tr>
+                  <td>
+                     <div id="four" class="tableContainerFilter">
+                           <table border="0" cellpadding="0" 
+                                             cellspacing="0" 
+                                             width="100%" 
+                                             class="scrollTable">
+                              <thead class="fixedHeader">
+                                 <tr>
+                                    <th>Type</th>
+                                 </tr>
+                              </thead>
+                              <tbody class="scrollContentFilter">
+                                 <tr>
+                                    <td>Performance</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Class</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Short</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Interview</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Documentary</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Vlog</td>
+                                 </tr>
+                                 <tr>
+                                 <td>Slow-Motion</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                     </div>
+                  </td>
+                  <td>
+                     <div id="five" class="tableContainerFilter">
+                           <table border="0" cellpadding="0" 
+                                             cellspacing="0" 
+                                             width="100%" 
+                                             class="scrollTableFilter">
+                              <thead class="fixedHeaderFilter">
+                                 <tr>
+                                    <th>Genre</th>
+                                 </tr>
+                              </thead>
+                              <tbody class="scrollContentFilter">
+                                 <tr>
+                                    <td>Tango</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Milonga</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Vals</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Alternative</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                     </div>
+                  <td>
+                     <div id="six" class="tableContainerFilter">
                         <table border="0" cellpadding="0" 
-                                          cellspacing="0" 
-                                          width="100%" 
-                                          class="scrollTable">
+                                       cellspacing="0" 
+                                       width="100%"
+                                       class="scrollTableFilter">
                            <thead class="fixedHeader">
                               <tr>
-                                 <th>Type</th>
+                                 <th>Leader</th>
                               </tr>
                            </thead>
                            <tbody class="scrollContentFilter">
+                              <% @videos.map(&:leader).uniq.each do |leader| %>
                               <tr>
-                                 <td>Performance</td>
+                                 <td><%= leader.name %></td>
                               </tr>
-                              <tr>
-                                 <td>Class</td>
-                              </tr>
-                              <tr>
-                                 <td>Short</td>
-                              </tr>
-                              <tr>
-                                 <td>Interview</td>
-                              </tr>
-                              <tr>
-                                 <td>Documentary</td>
-                              </tr>
-                              <tr>
-                                 <td>Vlog</td>
-                              </tr>
-                              <tr>
-                              <td>Slow-Motion</td>
-                              </tr>
+                              <% end %>
                            </tbody>
                         </table>
-                  </div>
-               </td>
-               <td>
-                  <div id="five" class="tableContainerFilter">
-                        <table border="0" cellpadding="0" 
+                     </div>
+                  </td>
+                  <td>
+                     <div id="seven" class="tableContainerFilter">
+                        <table border="0"   cellpadding="0" 
                                           cellspacing="0" 
                                           width="100%" 
                                           class="scrollTableFilter">
                            <thead class="fixedHeaderFilter">
                               <tr>
-                                 <th>Genre</th>
+                                 <th>Follower</th>
+                              </tr>
+                           </thead>
+                           <tbody class="scrollContentFilter">
+                              <% @videos.map(&:follower).uniq.each do |follower| %>
+                              <tr>
+                                 <td><%= follower.name %></td>
+                              </tr>
+                              <% end %>
+                           </tbody>
+                        </table>
+                     </div>
+                  </td>
+                  <td>
+                     <div id="eight" class="tableContainerFilter">
+                        <table border="0" cellpadding="0"
+                                          cellspacing="0" 
+                                          width="100%" 
+                                          class="scrollTableFilter">
+                           <thead class="fixedHeaderFilter">
+                              <tr>
+                                 <th>Event</th>
                               </tr>
                            </thead>
                            <tbody class="scrollContentFilter">
                               <tr>
-                                 <td>Tango</td>
+                                 <td>Bucharest Tango Groove</td>
                               </tr>
                               <tr>
-                                 <td>Milonga</td>
+                                 <td>Milongero Nights</td>
                               </tr>
                               <tr>
-                                 <td>Vals</td>
+                                 <td>Embrace Berlic</td>
                               </tr>
                               <tr>
-                                 <td>Alternative</td>
+                                 <td>Mediterranean Summer Tango Festival</td>
+                              </tr>
+                              <td>TangoLovers Festival</td>
+                              <tr>
+                                 <td>La Viruta Tango Club: Berlin</td>
+                              </tr>
+                              <tr>
+                                 <td>Tango Tage Halle</td>
+                              </tr>
+                              <tr>
+                                 <td>Mala Junta, Berlin</td>
+                              </tr>
+                              <tr>
+                                 <td>NOU Berlin</td>
+                              </tr>
+                              <tr>
+                                 <td>Tango Jam Hamburg</td>
+                              </tr>
+                              <tr>
+                                 <td>Łódź Tango Salon Festival</td>
+                              </tr>
+                              <tr>
+                                 <td>Brussels Tango Festival</td>
+                              </tr>
+                              <tr>
+                                 <td>Lyon Tango Festival</td>
+                              </tr>
+                              <tr>
+                                 <td>La Viruta Tango Club Berlin</td>
                               </tr>
                            </tbody>
                         </table>
-                  </div>
-               <td>
-                  <div id="six" class="tableContainerFilter">
-                     <table border="0" cellpadding="0" 
-                                    cellspacing="0" 
-                                    width="100%"
-                                    class="scrollTableFilter">
-                        <thead class="fixedHeader">
-                           <tr>
-                              <th>Leader</th>
-                           </tr>
-                        </thead>
-                        <tbody class="scrollContentFilter">
-                           <% @videos.map(&:leader).uniq.each do |leader| %>
-                           <tr>
-                              <td><%= leader.name %></td>
-                           </tr>
-                           <% end %>
-                        </tbody>
-                     </table>
-                  </div>
-               </td>
-               <td>
-                  <div id="seven" class="tableContainerFilter">
-                     <table border="0"   cellpadding="0" 
-                                       cellspacing="0" 
-                                       width="100%" 
-                                       class="scrollTableFilter">
-                        <thead class="fixedHeaderFilter">
-                           <tr>
-                              <th>Follower</th>
-                           </tr>
-                        </thead>
-                        <tbody class="scrollContentFilter">
-                           <% @videos.map(&:follower).uniq.each do |follower| %>
-                           <tr>
-                              <td><%= follower.name %></td>
-                           </tr>
-                           <% end %>
-                        </tbody>
-                     </table>
-                  </div>
-               </td>
-               <td>
-                  <div id="eight" class="tableContainerFilter">
-                     <table border="0" cellpadding="0"
-                                       cellspacing="0" 
-                                       width="100%" 
-                                       class="scrollTableFilter">
-                        <thead class="fixedHeaderFilter">
-                           <tr>
-                              <th>Event</th>
-                           </tr>
-                        </thead>
-                        <tbody class="scrollContentFilter">
-                           <tr>
-                              <td>Bucharest Tango Groove</td>
-                           </tr>
-                           <tr>
-                              <td>Milongero Nights</td>
-                           </tr>
-                           <tr>
-                              <td>Embrace Berlic</td>
-                           </tr>
-                           <tr>
-                              <td>Mediterranean Summer Tango Festival</td>
-                           </tr>
-                           <td>TangoLovers Festival</td>
-                           <tr>
-                              <td>La Viruta Tango Club: Berlin</td>
-                           </tr>
-                           <tr>
-                              <td>Tango Tage Halle</td>
-                           </tr>
-                           <tr>
-                              <td>Mala Junta, Berlin</td>
-                           </tr>
-                           <tr>
-                              <td>NOU Berlin</td>
-                           </tr>
-                           <tr>
-                              <td>Tango Jam Hamburg</td>
-                           </tr>
-                           <tr>
-                              <td>Łódź Tango Salon Festival</td>
-                           </tr>
-                           <tr>
-                              <td>Brussels Tango Festival</td>
-                           </tr>
-                           <tr>
-                              <td>Lyon Tango Festival</td>
-                           </tr>
-                           <tr>
-                              <td>La Viruta Tango Club Berlin</td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </div>
-               </td>
-               <td>
-                  <div id="nine" class="tableContainerFilter">
-                     <table border="0" cellpadding="0"
-                                       cellspacing="0" 
-                                       width="100%" 
-                                       class="scrollTableFilter">
-                        <thead class="fixedHeaderFilter">
-                           <tr>
-                              <th>Channel</th>
-                           </tr>
-                        </thead>
-                        <tbody class="scrollContentFilter">
-                           <tr>
-                              <td>030tango</td>
-                           </tr>
-                           <tr>
-                              <td>TangoNuevo TV</td>
-                           </tr>
-                           <tr>
-                              <td>Tangostudent</td>
-                           </tr>
-                           <tr>
-                              <td>Tango Natural</td>
-                           </tr>
-                              <td>TC Tango</td>
-                           <tr>
-                              <td>Tango ELEMENT</td>
-                           </tr>
-                           <tr>
-                              <td>Prischepov TV</td>
-                           </tr>
-                           <tr>
-                              <td>Mediterranean Summer Tango Festival</td>
-                           </tr>
-                           <tr>
-                              <td>Tango Cazino</td>
-                           </tr>
-                           <tr>
-                              <td>lodstangosalonfestival</td>
-                           </tr>
-                           <tr>
-                              <td>Erdemsel1975</td>
-                           </tr>
-                           <tr>
-                              <td>studio tango montréal</td>
-                           </tr>
-                           <tr>
-                              <td>crazyfortango</td>
-                           </tr>
-                           <tr>
-                              <td>Pepa Palazon</td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </div>
+                     </div>
                   </td>
-           </tr>
-         </table>
+                  <td>
+                     <div id="nine" class="tableContainerFilter">
+                        <table border="0" cellpadding="0"
+                                          cellspacing="0" 
+                                          width="100%" 
+                                          class="scrollTableFilter">
+                           <thead class="fixedHeaderFilter">
+                              <tr>
+                                 <th>Channel</th>
+                              </tr>
+                           </thead>
+                           <tbody class="scrollContentFilter">
+                              <tr>
+                                 <td>030tango</td>
+                              </tr>
+                              <tr>
+                                 <td>TangoNuevo TV</td>
+                              </tr>
+                              <tr>
+                                 <td>Tangostudent</td>
+                              </tr>
+                              <tr>
+                                 <td>Tango Natural</td>
+                              </tr>
+                                 <td>TC Tango</td>
+                              <tr>
+                                 <td>Tango ELEMENT</td>
+                              </tr>
+                              <tr>
+                                 <td>Prischepov TV</td>
+                              </tr>
+                              <tr>
+                                 <td>Mediterranean Summer Tango Festival</td>
+                              </tr>
+                              <tr>
+                                 <td>Tango Cazino</td>
+                              </tr>
+                              <tr>
+                                 <td>lodstangosalonfestival</td>
+                              </tr>
+                              <tr>
+                                 <td>Erdemsel1975</td>
+                              </tr>
+                              <tr>
+                                 <td>studio tango montréal</td>
+                              </tr>
+                              <tr>
+                                 <td>crazyfortango</td>
+                              </tr>
+                              <tr>
+                                 <td>Pepa Palazon</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </td>
+            </tr>
+            </table>
          <div id="three" class="tableContainer">
             <table border="0" cellpadding="0" 
                               cellspacing="0" 
@@ -276,6 +274,8 @@
                </tbody>
             </table>
          </div>
+         </article>
+         <aside class="side">Sidebar</aside>
+         <footer class="main-footer">The footer</footer>
       </div>
-   </body>
 </html>
