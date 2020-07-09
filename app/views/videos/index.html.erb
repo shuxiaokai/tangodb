@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
       <div class="wrapper">
-      <header class="main-head"><center><h1>Tango Library</h1></center></header>
+      <header class="main-head">
+         <center><h1>Tango Library</h1></center>
+      </header>
          <nav class="main-nav">
             <ul>
                 <%# <li><a href="">Nav 1</a></li>
@@ -10,7 +12,7 @@
             </ul>
         </nav>
          <article class="content">        
-            <div id="two">
+            <div id="youtube_video">
                <div class="iframe-container">
                   <p align="center">
                      <iframe scrolling="no" onload="resizeIframe(this)" 
@@ -255,17 +257,17 @@
                               class="scrollTable">
                <thead class="fixedHeader">
                   <tr>
-                     <th><%= sortable "ID" %></th>
-                     <th><%= sortable "Title" %></th>
+                     <th><%= sortable "id","ID" %></th>
+                     <th><%= sortable "title", "Title" %></th>
                      <th><%= sortable "leader_id","Leader" %></th>
                      <th><%= sortable "follower_id","Follower" %></th>
-                     <th><%= sortable "Song" %></th>
+                     <th><%= sortable "song","Song" %></th>
                   </tr>
                </thead>
                <tbody class="scrollContent">
                   <% @videos.each do |video| %>
                   <tr class="<%= cycle("normalRow", "alternateRow") %>">
-                     <td><%= video.id %></td>
+                     <td><a href = "https://www.youtube.com/watch?v=<%= video.youtube_id %>"><%= video.id %></td>
                      <td><a href = "https://www.youtube.com/watch?v=<%= video.youtube_id %>"><%= video.title %></td>
                      <td><a href = "https://www.youtube.com/watch?v=<%= video.youtube_id %>"><%= video.leader.name %></td>
                      <td><a href = "https://www.youtube.com/watch?v=<%= video.youtube_id %>"><%= video.follower.name %></td>
