@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   resources :videos, only: :index
   get '/welcome/index'
+
+  
 end

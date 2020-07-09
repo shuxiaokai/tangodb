@@ -273,6 +273,23 @@ tbody.scrollContent td a {
 	display:block;
 }
 
+/* Arrow toggle for headings */
+.scrollTable th .current {
+	padding-right: 10px;
+	background-repeat: no-repeat;
+	background-position: right;
+  }
+  
+.scrollTable th .asc {
+	background-image: url(/assets/up_arrow.png);
+	background-size: 10px 10px;
+  }
+  
+.scrollTable th .desc {
+	background-image: url(/assets/down_arrow.png);
+	background-size: 10px 10px;
+  }
+
 
 
 // ----------------------------------------------- 
@@ -351,17 +368,3 @@ tbody.scrollContentFilter tr:hover td{
     background:#2465D9;
  	color:#FFFFFF;
 }
-
-.pretty th .current {
-	padding-right: 12px;
-	background-repeat: no-repeat;
-	background-position: right center;
-  }
-  
-  .pretty th .asc {
-	background-image: url(/images/up_arrow.png);
-  }
-  
-  .pretty th .desc {
-	background-image: url(/images/down_arrow.png);
-  }
