@@ -209,7 +209,7 @@ thead.fixedHeader tr {
 
 /* make the TH elements pretty */
 thead.fixedHeader th {
-	background: #F2F2F2;
+	background: #FFFFFF;
 	border-left: 1px solid #F2F2F2;
 	border-right: 1px solid #F2F2F2;
 	border-top: 1px solid #F2F2F2;
@@ -236,7 +236,7 @@ html>body thead.fixedHeader {
 /* make TD elements pretty. Provide alternating classes for striping the table */
 /* http://www.alistapart.com/articles/zebratables/                             */
 tbody.scrollContent td, tbody.scrollContent tr.normalRow td {
-	background: #fff;
+	background: #f2f2f2;
 	border-bottom: none;
 	border-left: none;
 	border-right: 1px solid #CCC;
@@ -246,13 +246,23 @@ tbody.scrollContent td, tbody.scrollContent tr.normalRow td {
 
 
 tbody.scrollContent tr.alternateRow td {
-	background: #f2f2f2;
+	background: #ffffff;
 	border-bottom: none;
 	border-left: none;
 	border-right: 1px solid #CCC;
 	border-top: 1px solid #DDD;
 	padding: 2px 3px 3px 4px
 }
+
+/* Highlight Element */
+tbody.scrollContent tr:hover td{
+    background:#2465D9;
+	color:#FFFFFF;
+		a {
+			color:#ffffff;
+		}
+}
+
 
 
 // ----------------------------------------------- 
@@ -321,4 +331,9 @@ html>body thead.fixedHeaderFilter {
   table-layout: fixed;
 	overflow: auto;
 	width: 100%
+}
+/* Highlight Element */
+tbody.scrollContentFilter tr:hover td{
+    background:#2465D9;
+ 	color:#FFFFFF;
 }
