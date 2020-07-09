@@ -8,6 +8,9 @@ class VideosController < ApplicationController
     @followers = Follower.all
   end
 
+  def show
+    @video.id = Video.find(params[:id])
+  end
 
 private
 
@@ -18,4 +21,5 @@ private
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
+  
 end
