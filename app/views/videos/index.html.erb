@@ -254,8 +254,7 @@
                <thead class="fixedHeader">
                   <tr>
                      <th>ID</th>
-                     <th>Title
-                     <th>
+                     <th>Title</th>
                      <th>Leader</th>
                      <th>Follower</th>
                      <th>Song</th>
@@ -266,9 +265,9 @@
                   <tr class="<%= cycle("normalRow", "alternateRow") %>">
                      <td><%= video.id %></td>
                      <td><a href = "https://www.youtube.com/watch?v=<%= video.youtube_id %>"><%= video.title %></td>
-                     <td><%= video.leader.name %></td>
-                     <td><%= video.follower.name %></td>
-                     <td><%= video.song %></td>
+                     <td><a href = "https://www.youtube.com/watch?v=<%= video.youtube_id %>"><%= video.leader.name %></td>
+                     <td><a href = "https://www.youtube.com/watch?v=<%= video.youtube_id %>"><%= video.follower.name %></td>
+                     <td><a href = "https://www.youtube.com/watch?v=<%= video.youtube_id %>"><%= video.song %></td>
                   </tr>
                   <% end %>
                </tbody>

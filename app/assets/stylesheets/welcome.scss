@@ -142,7 +142,7 @@
 body {
 	background: #FFF;
 	color: #000;
-	font: normal normal 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font: normal normal 10px Verdana, Geneva, Arial, Helvetica, sans-serif;
 	margin: 10px;
 }
 
@@ -173,7 +173,7 @@ div.tableContainer {
 	clear: both;
 	border: 0px solid #963;
 	height: 626px;
-	overflow: auto;
+	overflow: hidden;
 	width: 100%
 }
 
@@ -213,6 +213,7 @@ thead.fixedHeader th {
 	border-left: 1px solid #F2F2F2;
 	border-right: 1px solid #F2F2F2;
 	border-top: 1px solid #F2F2F2;
+	border-bottom: 1px solid #F2F2F2;
 	font-weight: normal;
 	padding: 4px 3px;
 	text-align: left
@@ -232,6 +233,10 @@ html>body thead.fixedHeader {
 	overflow: auto;
 	width: 100%
 }
+/* Remove underline from links */
+html>body tbody.scrollContent a:link{
+	text-decoration: none;
+}
 
 /* make TD elements pretty. Provide alternating classes for striping the table */
 /* http://www.alistapart.com/articles/zebratables/                             */
@@ -239,8 +244,8 @@ tbody.scrollContent td, tbody.scrollContent tr.normalRow td {
 	background: #f2f2f2;
 	border-bottom: none;
 	border-left: none;
-	border-right: 1px solid #CCC;
-	border-top: 1px solid #DDD;
+	border-right: 0px solid #CCC;
+	border-top: 0px solid #DDD;
 	padding: 2px 3px 3px 4px
 }
 
@@ -249,8 +254,8 @@ tbody.scrollContent tr.alternateRow td {
 	background: #ffffff;
 	border-bottom: none;
 	border-left: none;
-	border-right: 1px solid #CCC;
-	border-top: 1px solid #DDD;
+	border-right: 0px solid #CCC;
+	border-top: 0px solid #DDD;
 	padding: 2px 3px 3px 4px
 }
 
@@ -260,7 +265,12 @@ tbody.scrollContent tr:hover td{
 	color:#FFFFFF;
 		a {
 			color:#ffffff;
-		}
+		}		  
+}
+
+/* Make entire row clickable */
+tbody.scrollContent td a {
+	display:block;
 }
 
 
@@ -279,7 +289,8 @@ div.tableContainerFilter {
 /* Reset overflow value to hidden for all non-IE browsers. */
 html>body div.tableContainerFilter {
 	overflow: hidden;
-	width: 100%
+	white-space:nowrap;
+	width: 138px
 }
 
 /* define width of table. IE browsers only                 */
@@ -313,7 +324,7 @@ thead.fixedHeaderFilter th {
 	border-right: 1px solid #F2F2F2;
 	border-top: 1px solid #F2F2F2;
 	border-bottom: 1px solid #F2F2F2;
-	font-weight: normal;
+	font-weight: 600;
 	padding: 4px 3px;
 	text-align: left
 }
