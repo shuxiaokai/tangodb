@@ -1,15 +1,11 @@
 class VideosController < ApplicationController
 
-  helper_method :sort_column, :sort_directions
+  helper_method :sort_column, :sort_direction
 
   def index
     @videos    = Video.includes(:leader, :follower).order(sort_column + " " + sort_direction)
     @leaders   = Leader.all
     @followers = Follower.all
-  end
-
-  def show
-    @video.id = Video.find(params[:id])
   end
 
 private
@@ -21,4 +17,5 @@ private
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
+
 end
