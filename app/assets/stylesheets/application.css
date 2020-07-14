@@ -14,58 +14,38 @@
  *= require_self
  */
 
- /* resposive iframe */
-.iframe-container {
-    overflow: hidden;
-    padding-top: 56.25%;
-    position: relative;
-  }
-  
-  .iframe-container iframe {
-     border: 0;
-     height: 100%;
-     left: 0;
-     top: 0;
-     position: absolute;
-     width: 100%;
-  }
-  
-  /* 4x3 Aspect Ratio */
-  .iframe-container-4x3 {
-    padding-top: 75%;
-  }
-  
+  /* Start of grid formatting */
+
   * {box-sizing: border-box;}
-  
-      .wrapper {
-          max-width: 1024px;
-          margin: 0 auto;
-          font: 1.2em Helvetica, arial, sans-serif;
-      }
-  
-      .wrapper > * {
-          border: 0px solid #f08c00;
-          padding: 0px;
-      }
-  
-      nav ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-      }
 
   .wrapper {
-    display: grid;
-    grid-template-columns: repeat(12, [col-start] 1fr);
-    grid-gap: 0px;
+      max-width: 1024px;
+      margin: 0 auto;
+      font: 1.2em Helvetica, arial, sans-serif;
   }
 
   .wrapper > * {
-    grid-column: col-start / span 12;
+      border: 0px solid #f08c00;
+      padding: 0px;
   }
 
+  nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+  }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(12, [col-start] 1fr);
+      grid-gap: 0px;
+    }
+
+    .wrapper > * {
+      grid-column: col-start / span 12;
+    }
+
   /* // @media (min-width: 500px) {
-  
   //   .side {
   //     grid-column: col-start / span 3;
   //     grid-row: 3;
@@ -79,103 +59,149 @@
   //   }
   // } */
   @media (min-width: 700px) {
-     .main-head {
+    .main-header {
       grid-column: col-start 3 / span 10;
       grid-row: 0 / 1;
       }
-    .main-nav {
-      grid-column: col-start 3 / span 10;
-      grid-row: 0 / 3;
-    }
     .content {
       grid-column: col-start 3 / span 10;
       grid-row: 3 / 5;
     }
     .side {
       grid-column: col-start 1 / span 2;
-      grid-row: 1 / 5;
+      grid-row: 2 / 5;
       background:#f2f2f2;
       padding: 20px;
       text-align: left;
+      align-content: center;
     }
     .main-footer {
-      grid-column: col-start / span 12;
+      grid-column: col-start 1 / span 10;
     }
     nav ul {
-      flex-direction: column;
+      float: right; 
+      padding-top: 12px;
+      padding-left: 5px;
+      padding-right: 5px;
+      flex-direction: row;
     }
   }
-  
+
   /* start basic styling */
-  
+
   body {
       background: #FFF;
       color: #000;
       font: normal normal 10px Verdana, Geneva, Arial, Helvetica, sans-serif;
       margin: 10px;
   }
-  
+
   table, td, a {
       color: #000;
       font: normal normal 12px Verdana, Geneva, Arial, Helvetica, sans-serif
   }
-  
+
   h1 {
       font: normal normal 40px Verdana, Geneva, Arial, Helvetica, sans-serif;
       margin: 0 0 5px 0
   }
-  
+
   h2 {
-      font: normal normal 16px Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font: normal normal 14px Verdana, Geneva, Arial, Helvetica, sans-serif;
       margin: 0 0 5px 0
   }
-  
+
   h3 {
-      font: normal normal 13px Verdana, Geneva, Arial, Helvetica, sans-serif;
-      color: #777777;
+      font: normal normal 10px Verdana, Geneva, Arial, Helvetica, sans-serif;
+      color: #000;
       margin: 0 0 15px 0
   }
-  /* end basic styling                                 */
-  
-  /* define height and width of scrollable area. Add 16px to width for scrollbar          */
+
+  /* end basic styling */
+
+  #logo {
+    float: left;
+    padding-left: 325px;
+    font-size: 1.7em;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    padding-top: 5px; 
+    padding-bottom: 5px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+ /* responsive iframe */
+
+ .iframe-container {
+    overflow: hidden;
+    padding-top: 56.25%;
+    position: relative;
+  }
+
+  .iframe-container iframe {
+     border: 0;
+     height: 100%;
+     left: 0;
+     top: 0;
+     position: absolute;
+     width: 100%;
+  }
+
+  /* 4x3 Aspect Ratio */
+  .iframe-container-4x3 {
+    padding-top: 75%;
+  }
+
+  .search-bar {
+    padding-top: 30px;
+  }
+
+  .side-menu {
+    padding-top: 50px;
+  }
+
+  /* define height and width of scrollable area. Add 16px to width for scrollbar */
+
   div.tableContainer {
       clear: both;
       border: 0px solid #963;
       height: 626px;
-      overflow: hidden;
-      width: 100%
+      overflow: auto;
+      width: 100%;
   }
-  
+
   /* Reset overflow value to hidden for all non-IE browsers. */
   html>body div.tableContainer {
-      overflow: hidden;
-      width: 100%
+      overflow: auto;
+      width: 100%;
   }
-  
+
   /* define width of table. IE browsers only                 */
   div.tableContainer table {
       float: left;
       /* width: 740px */
   }
-  
+
   /* define width of table. Add 16px to width for scrollbar.           */
   /* All other non-IE browsers.                                        */
   html>body div.tableContainer table {
       /* width: 756px */
   }
-  
+
   /* set table header to a fixed position. WinIE 6.x only                                       */
   /* In WinIE 6.x, any element with a position property set to relative and is a child of       */
   /* an element that has an overflow property set, the relative value translates into fixed.    */
   /* Ex: parent element DIV with a class of tableContainer has an overflow property set to auto */
-  
+
   thead.fixedHeader tr {
       position: relative;
   }
-  
+
   /* set THEAD element to have block level attributes. All other non-IE browsers            */
   /* this enables overflow to work on TBODY element. All other non-IE, non-Mozilla browsers */
-  
+
   /* make the TH elements pretty */
   thead.fixedHeader th {
       background: #FFFFFF;
@@ -187,15 +213,14 @@
       padding: 4px 3px;
       text-align: left
   }
-  
+
   html>body tbody.scrollContent {
     display: block;
       height: 600px;
       overflow: auto;
-      table-layout:fixed;
       width: 100%;
   }
-  
+
   html>body thead.fixedHeader {
     display: table;
     table-layout: fixed;
@@ -206,7 +231,7 @@
   html>body tbody.scrollContent{
       text-decoration: none;
   }
-  
+
   /* make TD elements pretty. Provide alternating classes for striping the table */
   /* http://www.alistapart.com/articles/zebratables/                             */
   tbody.scrollContent td, tbody.scrollContent tr.normalRow td {
@@ -217,7 +242,7 @@
       border-top: 0px solid #DDD;
       padding: 2px 3px 3px 4px;
   }
-  
+
   tbody.scrollContent tr.alternateRow td {
       background: #ffffff;
       border-bottom: none;
@@ -226,45 +251,45 @@
       border-top: 0px solid #DDD;
       padding: 2px 3px 3px 4px;
   }
-  
+
   /* Highlight Element */
   tbody.scrollContent tr:hover td{
       background:#2465D9;
-      color:#FFFFFF;	
+      color:#FFF;
   }
-  
+
   /* Make entire row clickable */
   tbody.scrollContent td a {
       display:block;
   }
-  
+
   /* Arrow toggle for headings */
   .scrollTable th .current {
       padding-right: 15px;
       background-repeat: no-repeat;
       background-position: right;
     }
-    
+
   .scrollTable th .asc {
       background-image: url(/assets/up_arrow.png);
       background-size: 10px 10px;
       font-weight:bold;
     }
-    
+
   .scrollTable th .desc {
       background-image: url(/assets/down_arrow.png);
       background-size: 10px 10px;
       font-weight: bold;
     }
-  
+
   /* remove underline */
   .scrollTable a:link{
       text-decoration: none;
   }
-  
+
   /* ------------------------------------------------ */
-  
-  //* define height and width of scrollable area. Add 16px to width for scrollbar          */
+
+  /* define height and width of scrollable area. Add 16px to width for scrollbar          */
   div.tableContainerFilter {
       clear: both;
       border: 0px solid #963;
@@ -272,37 +297,37 @@
       overflow: auto;
       width: 100%
   }
-  
+
   /* Reset overflow value to hidden for all non-IE browsers. */
   html>body div.tableContainerFilter {
       overflow: hidden;
-      width: 138px
+      width: 100%;
   }
-  
+
   /* define width of table. IE browsers only                 */
   div.tableContainerFilter table {
       float: left;
       /* width: 740px */
   }
-  
+
   /* define width of table. Add 16px to width for scrollbar.           */
   /* All other non-IE browsers.                                        */
   html>body div.tableContainerFilter table {
       /* width: 756px */
   }
-  
+
   /* set table header to a fixed position. WinIE 6.x only                                       */
   /* In WinIE 6.x, any element with a position property set to relative and is a child of       */
   /* an element that has an overflow property set, the relative value translates into fixed.    */
   /* Ex: parent element DIV with a class of tableContainer has an overflow property set to auto */
-  
+
   thead.fixedHeaderFilter tr {
       position: relative;
   }
-  
+
   /* set THEAD element to have block level attributes. All other non-IE browsers            */
   /* this enables overflow to work on TBODY element. All other non-IE, non-Mozilla browsers */
-  
+
   /* make the TH elements pretty */
   thead.fixedHeaderFilter th {
       background: #FFFFFF;
@@ -314,7 +339,7 @@
       padding: 4px 3px;
       text-align: left
   }
-  
+
   html>body tbody.scrollContentFilter {
     display: block;
       height: 190px;
@@ -326,15 +351,48 @@
   padding-top: 3px;
   padding-bottom: 3px;
   }
-  
+
   html>body thead.fixedHeaderFilter {
     display: table;
     table-layout: fixed;
       overflow: auto;
       width: 100%
   }
-  /* Highlight Element */
-  tbody.scrollContentFilter tr:hover td{
-      background:#2465D9;
-       color:#FFFFFF;
+  
+  /* remove underline */
+
+  .scrollTableFilter a:link{
+    text-decoration: none;
+}
+
+/* Highlight Element */
+
+tbody.scrollContentFilter tr:hover td{
+  background:#2465D9;
+}
+
+/* footer */
+
+footer {
+    margin-top: 0px;
+    padding-bottom: 0px;
+    border-top: 1px solid #eaeaea; color: #777;
   }
+  footer a {
+    color: #555;
+  }
+  footer a:hover {
+    color: #222;
+  }
+  footer small {
+    float: left;
+  }
+  footer ul {
+    float: right; 
+    list-style: none;
+  }
+  footer ul li { 
+    float: left; 
+    margin-left: 15px;
+  }
+  

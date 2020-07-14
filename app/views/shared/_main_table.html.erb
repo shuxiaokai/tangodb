@@ -1,0 +1,26 @@
+<div id="main" class="tableContainer">
+    <table border="0" cellpadding="0" 
+                      cellspacing="0" 
+                      width="100%" 
+                      class="scrollTable">
+    <thead class="fixedHeader">
+        <tr>
+            <th width= "50px"><%= sortable "id", "ID" %></th>
+            <th width= "125px"><%= sortable "leader_id", "Leader" %></th>
+            <th width= "125px"><%= sortable "follower_id", "Follower" %></th>
+            <th width= "200px"><%= sortable "song", "Song" %></th>
+            <th width= "200px"><%= sortable "artist", "Artist" %></th>
+        </tr>
+    </thead>
+    <tbody class="scrollContent">
+        <% @videos.each do |video| %>
+        <tr class="<%= cycle("normalRow", "alternateRow") %>">
+            <td width= "2%"><%= link_to "#{video.id}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td width= "5%"><%= link_to "#{video.leader.name}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td width= "5%"><%= link_to "#{video.follower.name }", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td width= "10%"><%= link_to "#{video.song}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td width= "10%"><%= link_to "#{video.artist}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

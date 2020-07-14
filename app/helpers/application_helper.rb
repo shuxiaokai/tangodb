@@ -7,4 +7,8 @@ module ApplicationHelper
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
 
+  def current_page_params
+    request.params.slice("youtube_id","sort","direction")
+  end
+
 end
