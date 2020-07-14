@@ -19,7 +19,7 @@
   * {box-sizing: border-box;}
 
   .wrapper {
-      max-width: 1024px;
+      max-width: 2048px;
       margin: 0 auto;
       font: 1.2em Helvetica, arial, sans-serif;
   }
@@ -156,6 +156,7 @@
 
   .search-bar {
     padding-top: 30px;
+    width:50%;
   }
 
   .side-menu {

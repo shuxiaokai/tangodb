@@ -6,15 +6,16 @@ ruby '2.7.1'
 gem 'rails'
 gem 'tzinfo-data', '>= 1.2016.7' # Don't rely on OSX/Linux timezone data
 
-gem 'pg',                 '1.2.3'
-gem 'puma',               '4.3.5'
-gem 'sass-rails',         '6.0.0'
-gem 'webpacker',          '4.2.2'
-gem 'jbuilder',           '2.10.0'
-gem 'bootsnap',           '1.4.6', require: false
-gem 'yt',                 '~> 0.32.0'
+gem 'pg',                    '1.2.3'
+gem 'puma',                  '4.3.5'
+gem 'sass-rails',            '6.0.0'
+gem 'webpacker',             '4.2.2'
+gem 'jbuilder',              '2.10.0'
+gem 'bootsnap',              '1.4.6', require: false
+gem 'yt',                    '~> 0.32.0'
 gem 'spring',                '2.1.0'
 gem 'spring-watcher-listen', '2.0.1'
+gem 'json'
 
 group :development, :test do
   gem 'byebug'

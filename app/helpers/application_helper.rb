@@ -11,4 +11,11 @@ module ApplicationHelper
     request.params.slice("youtube_id","sort","direction")
   end
 
+  def form_for_object_from_param(param)
+    form_for_params = params.fetch(param, {})
+
+    JSON.parse(form_for_params.to_json,
+                object_class: OpenStruct)
+  end
+
 end
