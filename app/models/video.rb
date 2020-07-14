@@ -1,4 +1,5 @@
 class Video < ApplicationRecord
+
   DANCER_SEPARATOR = " and "
   SONG_SEPARATOR = %r( [–-] )
   HASHTAG_CLEANER = / #\w+\s*/
@@ -6,8 +7,13 @@ class Video < ApplicationRecord
   validates :leader, presence: true
   validates :follower, presence: true
   validates :song, presence: true
+  validates :artist, presence: true
   validates :youtube_id, presence: true
   validates :title, presence: true
+
+  #scope   :leader_filter, -> (n) { where(leader_id: ?, n) }
+  #  scope :with_follower, -> (follower_filter) { where(follower_id: :id) }
+  #  scope :at_event, -> (event_filter) { where(event: :event) }
 
   belongs_to :leader
   belongs_to :follower
@@ -25,6 +31,33 @@ class Video < ApplicationRecord
     end
   end
 
+  class << self
+    # To fetch video, run this from the console:
+    # Video.parse_json('data/video_channel_data_json')
+    def parse_json(file_path)
+      json_file = Dir.glob("#{file_path}/*.json").map 
+        json_file.each do |youtube_video|
+          video = JSON.parse(File.read(youtube_video))
+           video = Video.new(
+                          youtube_id: video["id"], 
+                          title: video["title"],
+                          description: video["description"],
+                          song: video["track"], 
+                          artist: video["artist"],
+                          upload_date: video["upload_date"],
+                          channel: video["uploader"],
+                          duration: video["duration"],
+                          channel_id: video["uploader_id"],
+                          view_count: video["view_count"],
+                          avg_rating: video["average_rating"],
+                          tags: video["tags"]
+                        )
+           video.grep_title
+           video.save 
+       end 
+    end
+  end
+
   def grep_title
     parsed_title = title.split(SONG_SEPARATOR)
 
@@ -34,5 +67,9 @@ class Video < ApplicationRecord
 
     # song from Title
      self.song = (parsed_title.last).gsub(/ #\w+\s*|,[\s\S\d\D]*$/, "")
+
+    # # event from Description
+    #  self.event = Video.description.split[/at (.*?) in, 1]
   end
+
 end
