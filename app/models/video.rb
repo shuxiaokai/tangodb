@@ -19,6 +19,12 @@ class Video < ApplicationRecord
   belongs_to :leader
   belongs_to :follower
 
+  after_initialize :set_defaults, unless: :persisted?
+
+  def set_defaults
+    self.youtube_id  ||= 's6iptZdCcG0'
+  end
+
   class << self
     # To fetch video, run this from the console:
     # Video.for_channel('UCtdgMR0bmogczrZNpPaO66Q')
