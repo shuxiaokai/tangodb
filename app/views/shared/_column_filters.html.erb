@@ -176,9 +176,11 @@
                   </tr>
                </thead>
                <tbody class="scrollContentFilter">
-                  <% @videos.each do |video| %>
+                  <% @videos.map{|v| {channel: v.channel, channel_id: v.channel_id} }.uniq.each do |video| %>
+                  <%# <% @videos.each do |video| %>
                   <tr>
-                     <td><%= link_to "#{video.channel}", current_page_params.merge(:channel_id => "#{video.channel_id}" )%></td>
+                     <td>
+                        <%= link_to "#{video[:channel]}", current_page_params.merge(:channel_id => "#{video[:channel_id]}" )%></td>
                   </tr>
                   <% end %>
                </tbody>

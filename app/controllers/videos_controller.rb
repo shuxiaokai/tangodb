@@ -5,7 +5,7 @@ class VideosController < ApplicationController
     #@follower_id = params[:follower_id]
     #@leader_id = params[:leader_id]
     #@videos    = Video.includes(:leader, :follower).order(sort_column + " " + sort_direction).limit(1000)
-    @videos = Video.filter(params.slice(:leader_id, :follower_id)).order(sort_column + " " + sort_direction).limit(1000)
+    @videos = Video.filter(params.slice(:leader_id, :follower_id)).order(sort_column + " " + sort_direction).limit(3000)
     @leaders   = Leader.all
     @followers = Follower.all
   end
