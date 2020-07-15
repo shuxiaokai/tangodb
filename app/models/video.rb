@@ -1,29 +1,35 @@
 class Video < ApplicationRecord
 
+  include Filterable
+
   DANCER_SEPARATOR = " and "
   SONG_SEPARATOR = %r( [–-] )
   HASHTAG_CLEANER = / #\w+\s*/
 
-  # validates :leader, presence: true
-  # validates :follower, presence: true
-  # validates :song, presence: true
-  # validates :artist, presence: true
-  # validates :youtube_id, presence: true
-  # validates :title, presence: true
+   validates :leader, presence: true
+   validates :follower, presence: true
+   validates :song, presence: true
+   validates :artist, presence: true
+   validates :youtube_id, presence: true
+   validates :title, presence: true
 
-  #scope   :leader_filter, -> (n) { where(leader_id: ?, n) }
-  #  scope :with_follower, -> (follower_filter) { where(follower_id: :id) }
-  #  scope :at_event, -> (event_filter) { where(event: :event) }
+  scope   :filter_by_leader_id,   -> (leader_id)    { where("leader_id = ?", leader_id) }
+  scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
+
+
+  # scope :at_event, -> (event_filter) { where(event: :event) }
   # scope :by_leader, -> (leader_ids) { where(leader_id: leader_ids) }
 
   belongs_to :leader
   belongs_to :follower
 
-  after_initialize :set_defaults, unless: :persisted?
+  # Set default iframe youtube_values
+  
+  # after_initialize :set_defaults, unless: :persisted?
 
-  def set_defaults
-    self.youtube_id  ||= 's6iptZdCcG0'
-  end
+  # def set_defaults
+  #  self.youtube_id  ||= 's6iptZdCcG0'
+  # end
 
   class << self
     # To fetch video, run this from the console:

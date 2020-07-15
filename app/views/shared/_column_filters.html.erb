@@ -79,7 +79,7 @@
                   <%# <% @videos.map(&:leader).uniq.each do |leader| %>
                   <% @leaders.each do |leader| %> 
                      <tr>
-                        <td><%= link_to "#{leader.name}", :leader_id => "#{leader.id}" %></td>
+                        <td><%= link_to "#{leader.name}", current_page_params.merge( :leader_id => "#{leader.id}" ) %></td>
                      </tr>
                   <% end %>
                </tbody>
@@ -101,7 +101,7 @@
                   <%# <% @videos.map(&:follower).uniq.each do |follower| %>
                   <% @followers.each do |follower| %>
                   <tr>
-                     <td><%= link_to "#{follower.name}", :follower_id => "#{follower.id}" %></td>
+                     <td><%= link_to "#{follower.name}", current_page_params.merge(:follower_id => "#{follower.id}" ) %></td>
                   </tr>
                   <% end %>
                </tbody>
@@ -178,7 +178,7 @@
                <tbody class="scrollContentFilter">
                   <% @videos.each do |video| %>
                   <tr>
-                     <td><%= link_to "#{video.channel}", :channel_id => "#{video.channel_id}" %></td>
+                     <td><%= link_to "#{video.channel}", current_page_params.merge(:channel_id => "#{video.channel_id}" )%></td>
                   </tr>
                   <% end %>
                </tbody>

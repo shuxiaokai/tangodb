@@ -5,17 +5,13 @@
                       class="scrollTable">
     <thead class="fixedHeader">
         <tr>
-            <th width= "50px"><%= sortable "id", "ID" %></th>
+            <th width= "50px" ><%= sortable "id", "ID" %></th>
             <th width= "125px"><%= sortable "leader_id", "Leader" %></th>
             <th width= "125px"><%= sortable "follower_id", "Follower" %></th>
             <th width= "100px"><%= sortable "song", "Song" %></th>
             <th width= "200px"><%= sortable "artist", "Artist" %></th>
             <th width= "100px"><%= sortable "channel", "Channel" %></th>
             <th width= "200px"><%= sortable "view_count", "View Count" %></th>
-            <th width= "200px"><%= sortable "avg_rating", "Rating" %></th>
-            <th width= "200px"><%= sortable "tags", "Tags" %></th>
-            <th width= "200px"><%= sortable "title", "Title" %></th>
-            <th width= "200px"><%= sortable "description", "Description" %></th>
         </tr>
     </thead>
     <tbody class="scrollContent">
@@ -28,10 +24,6 @@
             <td width= "200px"><%= link_to "#{video.artist}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
             <td width= "100px"><%= link_to "#{video.channel}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
             <td width= "200px"><%= link_to "#{video.view_count}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-            <td width= "200px"><%= link_to "#{video.avg_rating}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-            <td width= "200px"><%= link_to "#{video.title}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-            <td width= "200px"><%= link_to "#{video.description}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-            <td width= "200px"><%= link_to "#{video.tags}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
         </tr>
         <% end %>
     </tbody>
