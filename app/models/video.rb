@@ -66,8 +66,6 @@ class Video < ApplicationRecord
     self.leader = Leader.all.find { |leader| title.match(leader.name) }
     self.follower = Follower.all.find { |follower| title.match(follower.name) }
 
-    self.artist = 
-
     # song from Title
      #self.song = (parsed_title.last).gsub(/ #\w+\s*|,[\s\S\d\D]*$/, "")
 
