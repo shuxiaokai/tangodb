@@ -24,7 +24,7 @@
             <td width= "15%"><%= link_to "#{video.song}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
             <td width= "15%"><%= link_to "#{video.artist}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
             <td width= "15%"><%= link_to "#{video.channel}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-            <td width= "15%"><%= link_to "#{video.view_count}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td width= "5%"><%= link_to "#{video.view_count}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
             <td width= "15%"><%= link_to "#{video.upload_date}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
         </tr>
         <% end %>
