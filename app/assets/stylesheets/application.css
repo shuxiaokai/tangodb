@@ -19,7 +19,7 @@
   * {box-sizing: border-box;}
 
   .wrapper {
-      max-width: 2048px;
+      max-width: 1024px;
       margin: 0 auto;
       font: 1.2em Helvetica, arial, sans-serif;
   }
