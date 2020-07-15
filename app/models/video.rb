@@ -16,20 +16,8 @@ class Video < ApplicationRecord
   scope   :filter_by_leader_id,   -> (leader_id)    { where("leader_id = ?", leader_id) }
   scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
 
-
-  # scope :at_event, -> (event_filter) { where(event: :event) }
-  # scope :by_leader, -> (leader_ids) { where(leader_id: leader_ids) }
-
   belongs_to :leader
   belongs_to :follower
-
-  # Set default iframe youtube_values
-  
-  # after_initialize :set_defaults, unless: :persisted?
-
-  # def set_defaults
-  #  self.youtube_id  ||= 's6iptZdCcG0'
-  # end
 
   class << self
     # To fetch video, run this from the console:
@@ -77,6 +65,8 @@ class Video < ApplicationRecord
     # Grep Leader from Title
     self.leader = Leader.all.find { |leader| title.match(leader.name) }
     self.follower = Follower.all.find { |follower| title.match(follower.name) }
+
+    self.artist = 
 
     # song from Title
      #self.song = (parsed_title.last).gsub(/ #\w+\s*|,[\s\S\d\D]*$/, "")
