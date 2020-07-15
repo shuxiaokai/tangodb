@@ -37,7 +37,7 @@ class Video < ApplicationRecord
     # Video.parse_json('data/video_channel_data_json')
     def parse_json(file_path)
       json_file = Dir.glob("#{file_path}/**/*.json").map 
-        json_file.each do |youtube_video|
+      json_file.each do |youtube_video|
           video = JSON.parse(File.read(youtube_video))
           video = Video.new(
                           youtube_id: video["id"], 
@@ -60,7 +60,7 @@ class Video < ApplicationRecord
   end
 
   def grep_title
-    parsed_title = title.split(SONG_SEPARATOR)
+    #parsed_title = title.split(SONG_SEPARATOR)
 
     # Grep Leader from Title
     self.leader = Leader.all.find { |leader| title.match(leader.name) }

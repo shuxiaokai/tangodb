@@ -30,12 +30,11 @@ ActiveRecord::Schema.define(version: 2020_07_14_163153) do
   create_table "videos", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "title", null: false
-    t.string "song", null: false
-    t.string "youtube_id", null: false
+    t.text "title"
+    t.string "song"
+    t.string "youtube_id"
     t.bigint "leader_id"
     t.bigint "follower_id"
-    t.string "part_number"
     t.string "description"
     t.string "artist"
     t.string "channel"
