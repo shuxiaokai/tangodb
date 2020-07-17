@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_075238) do
+ActiveRecord::Schema.define(version: 2020_07_17_095003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_07_17_075238) do
 
   create_table "songs", force: :cascade do |t|
     t.string "genre"
-    t.string "name"
+    t.string "title"
     t.string "artist"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2020_07_17_075238) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "title"
-    t.string "song"
     t.string "youtube_id"
     t.bigint "leader_id"
     t.bigint "follower_id"
@@ -52,8 +51,10 @@ ActiveRecord::Schema.define(version: 2020_07_17_075238) do
     t.integer "view_count"
     t.integer "avg_rating"
     t.string "tags"
+    t.bigint "song_id"
     t.index ["follower_id"], name: "index_videos_on_follower_id"
     t.index ["leader_id"], name: "index_videos_on_leader_id"
+    t.index ["song_id"], name: "index_videos_on_song_id"
   end
 
 end
