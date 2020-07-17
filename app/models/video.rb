@@ -8,10 +8,10 @@ class Video < ApplicationRecord
 
    validates :leader, presence: true
    validates :follower, presence: true
-   validates :song, presence: true
-   validates :artist, presence: true
-   validates :youtube_id, presence: true
-   validates :title, presence: true
+   #validates :song, presence: true
+   #validates :artist, presence: true
+   validates :youtube_id, presence: true, uniqueness: true
+   #validates :title, presence: true
 
   scope   :filter_by_leader_id,   -> (leader_id)    { where("leader_id = ?", leader_id) }
   scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
@@ -34,8 +34,11 @@ class Video < ApplicationRecord
 
   class << self
     # To fetch video, run this from the console:
-    # Video.parse_json('data/video_channel_data_json')
+    # Video.parse_json('data/030tango_channel_data_json')
+    # Video.parse_json('/Users/justin/data/channel_json')
     def parse_json(file_path)
+      i = 0
+      
       json_file = Dir.glob("#{file_path}/**/*.json").map 
       json_file.each do |youtube_video|
           video = JSON.parse(File.read(youtube_video))
@@ -54,6 +57,8 @@ class Video < ApplicationRecord
                           tags: video["tags"]
                         )
            video.grep_title
+           i +=
+           puts i
            video.save 
        end 
     end
@@ -67,10 +72,10 @@ class Video < ApplicationRecord
     self.follower = Follower.all.find { |follower| title.match(follower.name) }
 
     # song from Title
-     #self.song = (parsed_title.last).gsub(/ #\w+\s*|,[\s\S\d\D]*$/, "")
+    # self.song = (parsed_title.last).gsub(/ #\w+\s*|,[\s\S\d\D]*$/, "")
 
     # # event from Description
-    #  self.event = Video.description.split[/at (.*?) in, 1]
+    # self.event = Video.description.split[/at (.*?) in, 1]
   end
 
 end

@@ -8,13 +8,13 @@
          <%= render "shared/search" %>
          <%= render "shared/side_menu" %>
       </div>
-      <div class= "content">        
+      <div class= "content">    
          <%= render "shared/video" %>
+         <%= render "shared/details_video" %>
          <%= render "shared/column_filters" %>
-         <%= render "shared/main_table" %>
+         <%= render "shared/main_table", :video => @video %>
       </div>
       <div class= "footer">
          <%= render "shared/footer" %>
       </div>
    </div>
-</html>

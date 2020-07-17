@@ -18,4 +18,6 @@ module ApplicationHelper
                 object_class: OpenStruct)
   end
 
+  
+
 end
