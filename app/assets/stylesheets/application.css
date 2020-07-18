@@ -319,12 +319,15 @@
   .scrollTable a:link{
       text-decoration: none;
   }
+  .scrollTable a:hover {
+    color:white;
+  }
 
   /* -------------------------- filter table ---------------------- */
 
   /* define height and width of scrollable area. Add 16px to width for scrollbar          */
   div.tableContainerFilter {
-      border: 1px solid #963;
+      border: 0px solid #963;
       overflow: auto;
       width: 100%
   }
@@ -393,13 +396,17 @@
   
   /* remove underline */
 
-  .scrollTableFilter a:link{
+.scrollTableFilter a:link {
     text-decoration: none;
+}
+
+.scrollTableFilter a:hover {
+  color:white;
 }
 
 /* Highlight Element */
 
-tbody.scrollContentFilter tr:hover td{
+tbody.scrollContentFilter tr:hover {
   background:#2465D9;
   color:white;
 }
