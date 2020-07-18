@@ -168,7 +168,7 @@
   .video_details {
     display: block;
     width: 100%; 
-    height: 350px;
+    height: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
     margin: 0 auto;
