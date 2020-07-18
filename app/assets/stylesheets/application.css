@@ -121,18 +121,7 @@
 
   /* end basic styling */
 
-  #logo {
-    display: block;
-    font-size: 2.2em;
-    color: black;
-    letter-spacing: -1px;
-    padding-top: 5px; 
-    padding-bottom: 5px;
-    font-weight: bold;
-    text-decoration: none;
-  }
-
- /* responsive iframe */
+  /* responsive iframe */
 
  .iframe-container {
     overflow: hidden;
@@ -154,6 +143,22 @@
     padding-top: 75%;
   }
 
+
+
+  /* Side menu */
+
+  #logo {
+    display: block;
+    font-size: 2.2em;
+    color: black;
+    letter-spacing: -1px;
+    padding-top: 5px; 
+    padding-bottom: 5px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+
   .search-bar {
     padding-top: 25px;
     padding-bottom: 30px;
@@ -165,19 +170,20 @@
   }
 
   /* video details area */
+
   .video_details {
-    display: block;
     width: 100%; 
-    height: 100%;
+    height: 325px;
     padding-top: 20px;
-    padding-bottom: 20px;
     margin: 0 auto;
+    padding-bottom: 100px;
+    /*border: 1px solid black; */
   }
   .video_details_content table{
-    display: inline-block;
     float: left;
     width: 25%;
     padding-left: 5%;
+    /*border: 1px solid black;*/
   }
   .video_details_content tr {
     padding-top: 5px;
@@ -187,7 +193,6 @@
     padding-top: 5px;
     padding-bottom: 5px;
   }
-
 
   /* define height and width of scrollable area. Add 16px to width for scrollbar */
 
