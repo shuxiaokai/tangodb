@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_095003) do
+ActiveRecord::Schema.define(version: 2020_07_17_075238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,10 +51,9 @@ ActiveRecord::Schema.define(version: 2020_07_17_095003) do
     t.integer "view_count"
     t.integer "avg_rating"
     t.string "tags"
-    t.bigint "song_id"
+    t.string "song"
     t.index ["follower_id"], name: "index_videos_on_follower_id"
     t.index ["leader_id"], name: "index_videos_on_leader_id"
-    t.index ["song_id"], name: "index_videos_on_song_id"
   end
 
 end

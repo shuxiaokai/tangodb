@@ -14,7 +14,6 @@ class Video < ApplicationRecord
 
   belongs_to :leader
   belongs_to :follower
-  belongs_to :song
 
   class << self
     # To fetch video, run this from the console:
@@ -51,12 +50,12 @@ class Video < ApplicationRecord
     # Grep Follower from Title
     self.follower = Follower.all.find { |follower| title.match(follower.name) }
     # Grep song from Title
-      if self.song.nil?
+      # if self.song.nil?
       
-        self.song = Song.all.find { |song| title.match(song.title) }
-        self.artist = Song.all.find { |artist| title.match(song.artist) }
+      #   self.song = Song.all.find { |song| title.match(song.title) }
+      #   self.artist = Song.all.find { |artist| title.match(song.artist) }
       
-      end
+      # end
 
     #Grep Arist from Title
       #if self.artist.nil?
