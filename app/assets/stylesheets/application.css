@@ -199,8 +199,7 @@
 
   div.tableContainer {
       clear: both;
-      border: 0px solid #963;
-      height: 626px;
+      border: px solid #963;
       overflow: auto;
       width: 100%;
   }
@@ -325,8 +324,7 @@
 
   /* define height and width of scrollable area. Add 16px to width for scrollbar          */
   div.tableContainerFilter {
-      border: 0px solid #963;
-      height: 215px;
+      border: 1px solid #963;
       overflow: auto;
       width: 100%
   }
@@ -401,8 +399,9 @@
 
 /* Highlight Element */
 
-tbody.scrollContentFilter tr:hover{
+tbody.scrollContentFilter tr:hover td{
   background:#2465D9;
+  color:white;
 }
 
 /* footer */
