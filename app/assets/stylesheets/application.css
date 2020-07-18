@@ -326,14 +326,13 @@
       clear: both;
       border: 0px solid #963;
       height: 215px;
-      overflow-y: scroll;
+      overflow: auto;
       width: 100%
   }
 
   /* Reset overflow value to hidden for all non-IE browsers. */
   html>body div.tableContainerFilter {
       overflow-x: hidden;
-      overflow-y: scroll;
       width: 100%;
   }
 
@@ -376,7 +375,7 @@
   html>body tbody.scrollContentFilter {
     display: block;
       height: 190px;
-      overflow: auto;
+      overflow-y: scroll;
       table-layout:fixed;
       width: 100%
   }
