@@ -1,6 +1,5 @@
 <div id="youtube_video">
     <div class="iframe-container">
-        <p align="center">
             <iframe scrolling="no"
                     onload="resizeIframe(this)"
                     src="https://www.youtube.com/embed/<% if params[:youtube_id].nil? %><%= 's6iptZdCcG0' %><% else %><%= params[:youtube_id] %><% end %>"
@@ -10,6 +9,5 @@
                             gyroscope;
                             picture-in-picture" allowfullscreen>
             </iframe>
-        </p>
     </div>
 </div>
