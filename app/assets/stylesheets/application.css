@@ -79,10 +79,11 @@
       grid-column: col-start 1 / span 10;
     }
     nav ul {
-      float: right; 
-      padding-top: 12px;
+      float: left; 
+      padding-top: 0px;
       padding-left: 5px;
       padding-right: 5px;
+      padding-bottom: 15px;
       flex-direction: row;
     }
   }
@@ -121,8 +122,8 @@
   /* end basic styling */
 
   #logo {
-    float: left;
-    font-size: 1.7em;
+    display: block;
+    font-size: 2.2em;
     color: black;
     letter-spacing: -1px;
     padding-top: 5px; 
@@ -154,7 +155,7 @@
   }
 
   .search-bar {
-    padding-top: 50px;
+    padding-top: 25px;
     padding-bottom: 30px;
     width:50%;
   }
@@ -313,20 +314,21 @@
       text-decoration: none;
   }
 
-  /* ------------------------------------------------ */
+  /* -------------------------- filter table ---------------------- */
 
   /* define height and width of scrollable area. Add 16px to width for scrollbar          */
   div.tableContainerFilter {
       clear: both;
       border: 0px solid #963;
       height: 215px;
-      overflow: auto;
+      overflow-y: scroll;
       width: 100%
   }
 
   /* Reset overflow value to hidden for all non-IE browsers. */
   html>body div.tableContainerFilter {
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: scroll;
       width: 100%;
   }
 
