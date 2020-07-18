@@ -1,27 +1,31 @@
 <div style = "width:100%; height:300px;padding:20px">
-<div style = "float:left; width:33%">
-<h2>Title:</h2>
-<h2>Description:</h2>
-
-<h2>Performance Date:</h2>
-<h2>Event:</h2>
-<h2>Channel:</h2>
-<h2>Performance Number:</h2>
+<div style = "float:left; width:25%">
+<% video_details = Video.find_by(youtube_id: params[:youtube_id]) %>
+<h2>Title:</h2> <%= video_details.title %>
+<h2>Description:</h2> <%= video_details.description %>
 </div>  
-<div style = "float:left; width:33%">
-<h2>Leader</h2>
-<h2>Follower:</h2>
-<h2>Genre:</h2>
-<h2>Song:</h2>
-<h2>Artist:</h2>
+<div style = "float:left; width:25%; padding:20px">
+<h2>Performance Date:</h2> <%= video_details.upload_date %>
+<h2>Event:</h2>
+<h2>Channel:</h2> <%= video_details.channel %>
+<h2>Performance Number:</h2>
 </div>
-<div style = "float:left; width:33%">
-<h2>Rating:</h2>
-<h2>View Count:</h2>
+<div style = "float:left; width:25%; padding:20px">
+<h2>Leader</h2> <%= video_details.leader.name %>
+<h2>Follower:</h2> <%= video_details.follower.name %>
+<h2>Genre:</h2>
+<h2>Song:</h2> <%= video_details.song %>
+<h2>Artist:</h2> <%= video_details.artist %>
+</div>
+<div style = "float:left; width:25%; padding:20px">
+<h2>Rating:</h2> <%= video_details.avg_rating %> stars
+<h2>View Count:</h2> <%= video_details.view_count %>
+<h2>Length:</h2> <%= video_details.duration %> seconds
+<%#
 <h2>Comments:</h2>
-<h2>Playlists:</h2>
-<h2>Length:</h2>
-<h2>Share:</h2>
+<h2>Playlists</h2>
+<h2>Share</h2> 
+%>
 </div>
 
 <% if false %>

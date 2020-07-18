@@ -3,6 +3,7 @@ class VideosController < ApplicationController
 
   def index
     @videos = Video.filter(params.slice(:leader_id, :follower_id)).order(sort_column + " " + sort_direction).limit(1000)
+    video_details = Video.find_by(youtube_id: params[:youtube_id])
     @leaders   = Leader.all
     @followers = Follower.all
   end
