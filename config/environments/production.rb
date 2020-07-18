@@ -111,8 +111,8 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   #config/production.rb
-Tango-Library::Application.configure do
-  config.assets.compile = true
-end
+  tango-library::Application.configure do
+    config.assets.compile = true
+  end
 
 end
