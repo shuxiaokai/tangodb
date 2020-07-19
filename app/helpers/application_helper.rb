@@ -17,7 +17,5 @@ module ApplicationHelper
     JSON.parse(form_for_params.to_json,
                 object_class: OpenStruct)
   end
-
-  
-
+ 
 end

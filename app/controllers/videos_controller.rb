@@ -11,7 +11,7 @@ private
 
     # A list of the param names that can be used for filtering the Product list
   def filtering_params(params)
-    params.slice(:with_leader, :with_follower)
+    params.slice(:with_leader, :with_follower, :with_channel)
   end
 
   def sort_column

@@ -75,9 +75,10 @@
       text-align: left;
       align-content: center;
     }
-    .main-footer {
-      grid-column: col-start 1 / span 10;
-    }
+    .footer {
+      grid-column: col-start 1 / span 12;
+      grid-row: 5 / 6 ;
+        }
     nav ul {
       float: left; 
       padding-top: 0px;
