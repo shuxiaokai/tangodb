@@ -2,13 +2,13 @@ class VideosController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @videos = Video.filter(params.slice(:leader_id, :follower_id)).order(sort_column + " " + sort_direction).limit(1000)
+    @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel)).order(sort_column + " " + sort_direction).limit(1000)
     @leaders   = Leader.all
     @followers = Follower.all
   end
 
   def search
-    @videos = Video.search_title(params[:q])
+    @videos = Video.search(params[:q])
   end
 
 private

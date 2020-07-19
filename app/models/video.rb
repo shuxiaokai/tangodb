@@ -10,14 +10,18 @@ class Video < ApplicationRecord
   validates :youtube_id, presence: true, uniqueness: true
   validates :title, presence: true
 
-  scope   :filter_by_leader_id,   -> (leader_id)    { where("leader_id = ?",   leader_id) }
-  scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
+  #scope   :filter_by_leader_id,   -> (leader_id)    { where("leader_id = ?",   leader_id) }
+  #scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
 
   belongs_to :leader
   belongs_to :follower
 
-  pg_search_scope :search_title, 
-                    against: %i[title description song artist tags]
+  pg_search_scope :search, 
+                    against: %i[title description song artist tags leader_id follower_id]
+
+  pg_search_scope :filter_by_leader_id, against: [:leader_id]
+  pg_search_scope :filter_by_follower_id, against: [:follower_id]
+  pg_search_scope :filter_by_channel, against: [:channel]
 
   class << self
     # To fetch video, run this from the console:
