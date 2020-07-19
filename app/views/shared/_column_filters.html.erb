@@ -1,187 +1,172 @@
-<div>
-<table>
-   <tr>
-      <td>
-         <div id="Filter 1" class="tableContainerFilter">
-               <table class="scrollTable">
-                  <thead class="fixedHeaderFilter">
-                     <tr>
-                        <th>Type</th>
-                     </tr>
-                  </thead>
-                  <tbody class="scrollContentFilter">
-                     <tr>
-                        <td>Performance</td>
-                     </tr>
-                     <tr>
-                        <td>Class</td>
-                     </tr>
-                     <tr>
-                        <td>Short</td>
-                     </tr>
-                     <tr>
-                        <td>Interview</td>
-                     </tr>
-                     <tr>
-                        <td>Documentary</td>
-                     </tr>
-                     <tr>
-                        <td>Vlog</td>
-                     </tr>
-                     <tr>
-                     <td>Slow-Motion</td>
-                     </tr>
-                  </tbody>
-               </table>
-         </div>
-      </td>
-      <td>
-         <div id="Filter 2" class="tableContainerFilter">
-               <table class="scrollTableFilter">
-                  <thead class="fixedHeaderFilter">
-                     <tr>
-                        <th>Genre</th>
-                     </tr>
-                  </thead>
-                  <tbody class="scrollContentFilter">
-                     <tr>
-                        <td>Tango</td>
-                     </tr>
-                     <tr>
-                        <td>Milonga</td>
-                     </tr>
-                     <tr>
-                        <td>Vals</td>
-                     </tr>
-                     <tr>
-                        <td>Alternative</td>
-                     </tr>
-                  </tbody>
-               </table>
-         </div>
-      <td>
-         <div id="Filter 3" class="tableContainerFilter">
-            <table class="scrollTableFilter">
-               <thead class="fixedHeaderFilter">
-                  <tr>
-                     <th>Leader</th>
-                  </tr>
-               </thead>
-               <tbody class="scrollContentFilter">
-                  <tr>
-                     <td>
-                        <%= link_to "All (#{Leader.count} Leaders)", current_page_params.merge(:leader_id => " ") %>
-                     </td>
-                  </tr>
-                  <% @videos.pluck('leader_id').sort.uniq.each do |leader_id| %>
-                  <tr>
-                     <td>
-                        <%= link_to "#{Leader.find_by(id: leader_id).name}", current_page_params.merge(:leader_id => "#{leader_id}" ) %>
-                     </td>
-                  </tr>
-                  <% end %>
-               </tbody>
-            </table>
-         </div>
-      
-      <td>
-         <div id="Filter 4" class="tableContainerFilter">
-            <table class="scrollTableFilter">
-               <thead class="fixedHeaderFilter">
-                  <tr>
-                     <th>Follower</th>
-                  </tr>
-               </thead>
-               <tbody class="scrollContentFilter">
-                  <tr>
-                     <td>
-                        <%= link_to "All (#{Follower.count} Followers)", current_page_params.merge(:follower_id => " ") %>
-                     </td>
-                  </tr>
-                     <% @videos.pluck('follower_id').sort.uniq.each do |follower_id| %>
-                  <tr>
-                     <td>
-                        <%= link_to "#{Follower.find_by(id: follower_id).name}", current_page_params.merge(:follower_id => "#{follower_id}" ) %>
-                     </td>
-                  </tr>
-                  <% end %>
-               </tbody>
-            </table>
-         </div>
-      </td>
-      <td>
-         <div id="Filter 5" class="tableContainerFilter">
-            <table class="scrollTableFilter">
-               <thead class="fixedHeaderFilter">
-                  <tr>
-                     <th>Event</th>
-                  </tr>
-               </thead>
-               <tbody class="scrollContentFilter">
-                  <tr>
-                     <td>Bucharest Tango Groove</td>
-                  </tr>
-                  <tr>
-                     <td>Milongero Nights</td>
-                  </tr>
-                  <tr>
-                     <td>Embrace Berlic</td>
-                  </tr>
-                  <tr>
-                     <td>Mediterranean Summer Tango Festival</td>
-                  </tr>
-                  <td>TangoLovers Festival</td>
-                  <tr>
-                     <td>La Viruta Tango Club: Berlin</td>
-                  </tr>
-                  <tr>
-                     <td>Tango Tage Halle</td>
-                  </tr>
-                  <tr>
-                     <td>Mala Junta, Berlin</td>
-                  </tr>
-                  <tr>
-                     <td>NOU Berlin</td>
-                  </tr>
-                  <tr>
-                     <td>Tango Jam Hamburg</td>
-                  </tr>
-                  <tr>
-                     <td>Łódź Tango Salon Festival</td>
-                  </tr>
-                  <tr>
-                     <td>Brussels Tango Festival</td>
-                  </tr>
-                  <tr>
-                     <td>Lyon Tango Festival</td>
-                  </tr>
-                  <tr>
-                     <td>La Viruta Tango Club Berlin</td>
-                  </tr>
-               </tbody>
-            </table>
-         </div>
-      </td>
-      <td>
-         <div id="Filter 6" class="tableContainerFilter">
-            <table class="scrollTableFilter">
-               <thead class="fixedHeaderFilter">
-                  <tr>
-                     <th>Channel</th>
-                  </tr>
-               </thead>
-               <tbody class="scrollContentFilter">
-                  <% @videos.map{|v| {channel: v.channel, channel_id: v.channel_id} }.uniq.each do |video| %>
-                  <tr>
-                     <td>
-                        <%= link_to "#{video[:channel]}", current_page_params.merge(:channel_id => "#{video[:channel_id]}" )%>
-                     </td>
-                  </tr>
-                  <% end %>
-               </tbody>
-            </table>
-         </div>
-      </td>
-   </tr>
-</table>
+<div class="container">
+   <div id="Filter 1" class="tableContainerFilter">
+         <table class="scrollTableFilter">
+            <thead class="fixedHeaderFilter">
+               <tr>
+                  <th>Type</th>
+               </tr>
+            </thead>
+            <tbody class="scrollContentFilter">
+               <tr>
+                  <td>Performance</td>
+               </tr>
+               <tr>
+                  <td>Class</td>
+               </tr>
+               <tr>
+                  <td>Short</td>
+               </tr>
+               <tr>
+                  <td>Interview</td>
+               </tr>
+               <tr>
+                  <td>Documentary</td>
+               </tr>
+               <tr>
+                  <td>Vlog</td>
+               </tr>
+               <tr>
+               <td>Slow-Motion</td>
+               </tr>
+            </tbody>
+         </table>
+   </div>    
+   <div id="Filter 2" class="tableContainerFilter">
+         <table class="scrollTableFilter">
+            <thead class="fixedHeaderFilter">
+               <tr>
+                  <th>Genre</th>
+               </tr>
+            </thead>
+            <tbody class="scrollContentFilter">
+               <tr>
+                  <td>Tango</td>
+               </tr>
+               <tr>
+                  <td>Milonga</td>
+               </tr>
+               <tr>
+                  <td>Vals</td>
+               </tr>
+               <tr>
+                  <td>Alternative</td>
+               </tr>
+            </tbody>
+         </table>
+   </div> 
+   <div id="Filter 3" class="tableContainerFilter">
+      <table class="scrollTableFilter">
+         <thead class="fixedHeaderFilter">
+            <tr>
+               <th>Leader</th>
+            </tr>
+         </thead>
+         <tbody class="scrollContentFilter">
+            <tr>
+               <td>
+                  <%= link_to "All (#{Leader.count} Leaders)", current_page_params.merge(:leader_id => " ") %>
+               </td>
+            </tr>
+            <% @videos.pluck('leader_id').sort.uniq.each do |leader_id| %>
+            <tr>
+               <td>
+                  <%= link_to "#{Leader.find_by(id: leader_id).name}", current_page_params.merge(:leader_id => "#{leader_id}" ) %>
+               </td>
+            </tr>
+            <% end %>
+         </tbody>
+      </table>
+   </div>     
+   <div id="Filter 4" class="tableContainerFilter">
+      <table class="scrollTableFilter">
+         <thead class="fixedHeaderFilter">
+            <tr>
+               <th>Follower</th>
+            </tr>
+         </thead>
+         <tbody class="scrollContentFilter">
+            <tr>
+               <td>
+                  <%= link_to "All (#{Follower.count} Followers)", current_page_params.merge(:follower_id => " ") %>
+               </td>
+            </tr>
+               <% @videos.pluck('follower_id').sort.uniq.each do |follower_id| %>
+            <tr>
+               <td>
+                  <%= link_to "#{Follower.find_by(id: follower_id).name}", current_page_params.merge(:follower_id => "#{follower_id}" ) %>
+               </td>
+            </tr>
+            <% end %>
+         </tbody>
+      </table>
+   </div>
+   <div id="Filter 5" class="tableContainerFilter">
+      <table class="scrollTableFilter">
+         <thead class="fixedHeaderFilter">
+            <tr>
+               <th>Event</th>
+            </tr>
+         </thead>
+         <tbody class="scrollContentFilter">
+            <tr>
+               <td>Bucharest Tango Groove</td>
+            </tr>
+            <tr>
+               <td>Milongero Nights</td>
+            </tr>
+            <tr>
+               <td>Embrace Berlic</td>
+            </tr>
+            <tr>
+               <td>Mediterranean Summer Tango Festival</td>
+            </tr>
+            <td>TangoLovers Festival</td>
+            <tr>
+               <td>La Viruta Tango Club: Berlin</td>
+            </tr>
+            <tr>
+               <td>Tango Tage Halle</td>
+            </tr>
+            <tr>
+               <td>Mala Junta, Berlin</td>
+            </tr>
+            <tr>
+               <td>NOU Berlin</td>
+            </tr>
+            <tr>
+               <td>Tango Jam Hamburg</td>
+            </tr>
+            <tr>
+               <td>Łódź Tango Salon Festival</td>
+            </tr>
+            <tr>
+               <td>Brussels Tango Festival</td>
+            </tr>
+            <tr>
+               <td>Lyon Tango Festival</td>
+            </tr>
+            <tr>
+               <td>La Viruta Tango Club Berlin</td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+   <div id="Filter 6" class="tableContainerFilter">
+      <table class="scrollTableFilter">
+         <thead class="fixedHeaderFilter">
+            <tr>
+               <th>Channel</th>
+            </tr>
+         </thead>
+         <tbody class="scrollContentFilter">
+            <% @videos.map{|v| {channel: v.channel, channel_id: v.channel_id} }.uniq.each do |video| %>
+            <tr>
+               <td>
+                  <%= link_to "#{video[:channel]}", current_page_params.merge(:channel_id => "#{video[:channel_id]}" )%>
+               </td>
+            </tr>
+            <% end %>
+         </tbody>
+      </table>
+   </div>
 </div>

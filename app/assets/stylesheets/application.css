@@ -325,11 +325,25 @@
 
   /* -------------------------- filter table ---------------------- */
 
+  .container {
+    display:flex;
+    border-collapse: collapse;
+  }
+  .container > div {
+    flex: 1; /*grow*/
+    border-collapse: collapse;
+  }
+
+  .scrollTableFilter {
+    border-collapse: collapse;
+  }
+
   /* define height and width of scrollable area. Add 16px to width for scrollbar          */
   div.tableContainerFilter {
-      border: 0px solid #963;
-      overflow: auto;
-      width: 100%
+    border: 0px solid #963;
+    border-collapse: collapse;
+    overflow: auto;
+    width: 100%;
   }
 
   /* Reset overflow value to hidden for all non-IE browsers. */
@@ -365,24 +379,23 @@
   /* make the TH elements pretty */
   thead.fixedHeaderFilter th {
       background: #FFFFFF;
-      border-left: 1px solid #F2F2F2;
-      border-right: 1px solid #F2F2F2;
-      border-top: 1px solid #F2F2F2;
-      border-bottom: 1px solid #F2F2F2;
+      border: 1px solid #F2F2F2;
       font-weight: 600;
       padding: 4px 3px;
       text-align: left
   }
 
   html>body tbody.scrollContentFilter {
-    display: block;
+      display: block;
+      border: 0px solid #963;
+      border-collapse: collapse;
       height: 190px;
       overflow-y: scroll;
       overscroll-behavior: contain;
       table-layout:fixed;
       width: 100%
   }
-  tbody.scrollContentFilter td{
+  tbody.scrollContentFilter tr{
   padding-top: 3px;
   padding-bottom: 3px;
   }
