@@ -7,6 +7,10 @@ class VideosController < ApplicationController
     @followers = Follower.all
   end
 
+  def search
+    @videos = Video.search_title(params[:q])
+  end
+
 private
 
     # A list of the param names that can be used for filtering the Product list

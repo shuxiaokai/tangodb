@@ -1,6 +1,7 @@
 class Video < ApplicationRecord
 
   include Filterable
+  include PgSearch::Model
 
   validates :leader, presence: true
   validates :follower, presence: true
@@ -14,6 +15,9 @@ class Video < ApplicationRecord
 
   belongs_to :leader
   belongs_to :follower
+
+  pg_search_scope :search_title, 
+                    against: %i[title description song artist tags]
 
   class << self
     # To fetch video, run this from the console:

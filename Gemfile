@@ -16,6 +16,7 @@ gem 'yt',                    '~> 0.32.0'
 gem 'spring',                '2.1.0'
 gem 'spring-watcher-listen', '2.0.1'
 gem 'json'
+gem 'pg_search'
 
 group :development, :test do
   gem 'byebug'
