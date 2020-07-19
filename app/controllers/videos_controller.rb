@@ -9,10 +9,6 @@ class VideosController < ApplicationController
     end
   end
 
-  def search
-    @videos = Video.search_by_keyword(params[:search_keyword])
-  end
-
 private
 
     # A list of the param names that can be used for filtering the Product list

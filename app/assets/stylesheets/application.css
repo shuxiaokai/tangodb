@@ -75,7 +75,7 @@
       grid-column: col-start 1 / span 2;
       grid-row: 3 / 5;
       background:#f2f2f2;
-      padding: 20px;
+      padding: 30px;
       text-align: left;
       align-content: center;
     }
@@ -168,7 +168,6 @@
   .search-bar {
     padding-top: 10px;
     padding-bottom: 30px;
-    padding-left: 10px;
   }
 
   .side-menu {
@@ -180,7 +179,7 @@
 
   .video_details {
     width: 100%; 
-    height: 240px;
+    height: 260px;
     display: block;
     overflow-y: hidden;
     padding-top: 20px;
@@ -309,9 +308,9 @@
   }
 
   /* Make entire row clickable */
-  /* .scrollTable td a {
-      display:fixed;
-  }  */
+   .scrollTable tr a {
+      display:block;
+  }  
 
   /* remove underline */
    .scrollTable a:link{
@@ -481,25 +480,12 @@ tbody.scrollContentFilter tr:hover {
 /* footer */
 
 footer {
-    margin-top: 0px;
-    padding-bottom: 0px;
+    padding-top: 10px;
     border-top: 1px solid #eaeaea; color: #777;
   }
-  footer a {
-    color: #555;
-  }
-  footer a:hover {
-    color: #222;
-  }
+
   footer small {
-    float: left;
+    float: right;
   }
-  footer ul {
-    float: right; 
-    list-style: none;
-  }
-  footer ul li { 
-    float: left; 
-    margin-left: 15px;
-  }
+ 
   
