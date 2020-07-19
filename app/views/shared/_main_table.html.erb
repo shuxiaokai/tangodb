@@ -1,31 +1,29 @@
-<div id="main" class="tableContainer">
-    <table border="0" cellpadding="0" 
-                      cellspacing="0" 
-                      width="100%" 
-                      class="scrollTable">
-    <thead class="fixedHeader">
+    <table class="scrollTableHeader">
+    <thead>
         <tr>
-            <th width= "5%" ><%= sortable "id", "ID" %></th>
-            <th width= "15%"><%= sortable "leader_id", "Leader" %></th>
-            <th width= "15%"><%= sortable "follower_id", "Follower" %></th>
-            <th width= "15%"><%= sortable "song", "Song" %></th>
-            <th width= "15%"><%= sortable "artist", "Artist" %></th>
-            <th width= "15%"><%= sortable "channel", "Channel" %></th>
-            <th width= "5%"><%= sortable "view_count", "View Count" %></th>
-            <th width= "15%"><%= sortable "upload_date", "Upload Date" %></th>
+            <th class="row-1 row-id"><%= sortable "id", "ID" %></th>
+            <th class="row-1 row-leader"><%= sortable "leader_id", "Leader" %></th>
+            <th class="row-1 row-follower"><%= sortable "follower_id", "Follower" %></th>
+            <th class="row-1 row-song"><%= sortable "song", "Song" %></th>
+            <th class="row-1 row-artist"><%= sortable "artist", "Artist" %></th>
+            <th class="row-1 row-channel"><%= sortable "channel", "Channel" %></th>
+            <th class="row-1 row-view_count"><%= sortable "view_count", "View Count" %></th>
+            <th class="row-1 row-upload_date"><%= sortable "upload_date", "Upload Date" %></th>
         </tr>
     </thead>
-    <tbody class="scrollContent">
+    </table>
+    <table class="scrollTable">
+    <tbody>
         <% @videos.each do |video| %>
-        <tr class="<%= cycle("normalRow", "alternateRow") %>">
-            <td width= "5%"> <%= link_to "#{video.id}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-            <td width= "15%"><%= link_to "#{video.leader.name}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-            <td width= "15%"><%= link_to "#{video.follower.name }", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-            <td width= "15%"><%= link_to "#{video.song}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-            <td width= "15%"><%= link_to "#{video.artist}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-            <td width= "15%"><%= link_to "#{video.channel}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-            <td width= "5%"><%= link_to "#{video.view_count}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-            <td width= "15%"><%= link_to "#{video.upload_date}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+        <tr>
+            <td class="row-1 row-id"><%= link_to "#{video.id}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td class="row-1 row-leader"><%= link_to "#{video.leader.name}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td class="row-1 row-follower"><%= link_to "#{video.follower.name }", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td class="row-1 row-song"><%= link_to "#{video.song}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td class="row-1 row-artist"><%= link_to "#{video.artist}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td class="row-1 row-channel"><%= link_to "#{video.channel}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td class="row-1 row-view_count"><%= link_to "#{video.view_count}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td class="row-1 row-upload_date"><%= link_to "#{video.upload_date}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
         </tr>
         <% end %>
     </tbody>
