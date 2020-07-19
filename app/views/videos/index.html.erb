@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
    <div class= "wrapper">
-      <div class= "side">
+      <div class= "main-header">
          <%= render "shared/header" %>
-         <form class = "search-bar" action="/search">
-         <input type="text" name="q" placeholder="Search" size="20%">
-         </form>
+      </div>
+      <div class= "side">
+         <%= render "shared/search" %>
          <%= render "shared/side_menu" %>
       </div>
       <div class= "video">
