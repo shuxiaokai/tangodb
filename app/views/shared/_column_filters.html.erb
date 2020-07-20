@@ -1,5 +1,5 @@
 <div class="container">
-   <div id="Filter 1" class="tableContainerFilter">
+   <div id="Type Filter" class="tableContainerFilter">
          <table class="scrollTableFilter">
             <thead class="fixedHeaderFilter">
                <tr>
@@ -31,7 +31,7 @@
             </tbody>
          </table>
    </div>    
-   <div id="Filter 2" class="tableContainerFilter">
+   <div id="Genre Filter" class="tableContainerFilter">
          <table class="scrollTableFilter">
             <thead class="fixedHeaderFilter">
                <tr>
@@ -54,7 +54,7 @@
             </tbody>
          </table>
    </div> 
-   <div id="Filter 3" class="tableContainerFilter">
+   <div id="Leader Filter" class="tableContainerFilter">
       <table class="scrollTableFilter">
          <thead class="fixedHeaderFilter">
             <tr>
@@ -64,20 +64,20 @@
          <tbody class="scrollContentFilter">
             <tr>
                <td>
-                  <%= link_to "All (#{Leader.count} Leaders)", current_page_params.merge(:leader_id => " ") %>
+                  <%= link_to "All (#{Video.pluck('leader_id').uniq.count} Leaders)", current_page_params.merge(:leader_id => " ") %>
                </td>
             </tr>
-            <% @videos.pluck('leader_id').sort.uniq.each do |leader_id| %>
+               <% @videos.pluck('leader_id').sort.uniq.each do |leader_id| %>
             <tr>
                <td>
-                  <%= link_to "#{Leader.find_by(id: leader_id).name}", current_page_params.merge(:leader_id => "#{leader_id}" ) %>
+                   <%= link_to "#{Leader.find_by(id: leader_id).name}", current_page_params.merge(:leader_id => "#{leader_id}" ) %>
                </td>
             </tr>
-            <% end %>
+             <% end %>
          </tbody>
       </table>
    </div>     
-   <div id="Filter 4" class="tableContainerFilter">
+   <div id="Follower Filter" class="tableContainerFilter">
       <table class="scrollTableFilter">
          <thead class="fixedHeaderFilter">
             <tr>
@@ -87,11 +87,11 @@
          <tbody class="scrollContentFilter">
             <tr>
                <td>
-                  <%= link_to "All (#{Follower.count} Followers)", current_page_params.merge(:follower_id => " ") %>
+                   <%= link_to "All (#{Video.pluck('follower_id').uniq.count} Followers)", current_page_params.merge(:follower_id => " ") %>
                </td>
             </tr>
-               <% @videos.pluck('follower_id').sort.uniq.each do |follower_id| %>
-            <tr>
+                <% @videos.pluck('follower_id').sort.uniq.each do |follower_id| %>
+             <tr>
                <td>
                   <%= link_to "#{Follower.find_by(id: follower_id).name}", current_page_params.merge(:follower_id => "#{follower_id}" ) %>
                </td>
@@ -100,7 +100,7 @@
          </tbody>
       </table>
    </div>
-   <div id="Filter 5" class="tableContainerFilter">
+   <div id="Event Filter" class="tableContainerFilter">
       <table class="scrollTableFilter">
          <thead class="fixedHeaderFilter">
             <tr>
@@ -151,7 +151,7 @@
          </tbody>
       </table>
    </div>
-   <div id="Filter 6" class="tableContainerFilter">
+   <div id="Channel Filter" class="tableContainerFilter">
       <table class="scrollTableFilter">
          <thead class="fixedHeaderFilter">
             <tr>
@@ -161,18 +161,16 @@
          <tbody class="scrollContentFilter">
          <tr>
                <td>
-                  <%= link_to "All (#{Video.pluck(:channel).uniq.count} Channels)", current_page_params.merge(:channel => " ") %>
+                   <%= link_to "All (#{Video.pluck(:channel).uniq.count} Channels)", current_page_params.merge(:channel => " ") %>
                </td>
             </tr>
-             <% @videos.pluck('channel').sort.uniq.each do |channel| %>
-            <%#<% @videos.map{|v| {channel: v.channel, channel_id: v.channel_id} }.uniq.each do |video| %>
-            <tr>
-               <td>
-                <%= link_to "#{channel}", current_page_params.merge(:channel => "#{channel}" ) %>
-                  <%#<%= link_to "#{video[:channel]}", current_page_params.merge(:channel_id => "#{video[:channel_id]}" )%>
+                <% @videos.pluck('channel').sort.uniq.each do |channel| %>
+             <tr>
+                <td>
+                  <%= link_to "#{channel}", current_page_params.merge(:channel => "#{channel}" )%>
                </td>
             </tr>
-            <% end %>
+             <% end %>
          </tbody>
       </table>
    </div>
