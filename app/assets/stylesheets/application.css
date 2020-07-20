@@ -319,60 +319,6 @@
    .scrollTable a:hover {
     color:white;
   }
-
-  /* make the TH elements pretty 
-  thead.fixedHeader th {
-      background: #FFFFFF;
-      border: 1px solid #F2F2F2;
-      font-weight: normal;
-      padding: 4px 3px;
-      text-align: left;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-  }
-
-  html>body tbody.scrollContent {
-    display: block;
-      height: 580px;
-      overflow-x: hidden;
-      table-layout: fixed;
-      overscroll-behavior: auto contain;
-  }
-
-  html>body thead.fixedHeader {
-    display: table;
-    table-layout: fixed;
-    overflow-x: hidden;
-  }
-  /* Remove underline from links */
-  /* html>body tbody.scrollContent{
-      text-decoration: none;
-      text-overflow: ellipsis;
-      table-layout: fixed;
-  } */
-
-  
-  /*
-  tbody.scrollContent td, tbody.scrollContent tr.normalRow td {
-      background: #f2f2f2;
-      text-overflow: ellipsis;
-      table-layout: fixed;
-      white-space: nowrap;
-      overflow-x: hidden;
-      padding: 2px 3px 3px 10px;
-  }
-
-  tbody.scrollContent tr.alternateRow td {
-      background: #ffffff;
-      text-overflow: ellipsis;
-      table-layout: fixed;
-      white-space: nowrap;
-      overflow-x: hidden;
-      padding: 2px 3px 3px 10px;
-  }
-*/
-
  
   /* -------------------------- filter table ---------------------- */
 
