@@ -215,7 +215,7 @@
 
   .scrollTable {
       table-layout: fixed;
-      display: block;
+      display: table;
       width: 100%;
       height: 380px;
       overflow-y: scroll;
