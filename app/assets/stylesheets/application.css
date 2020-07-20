@@ -197,9 +197,9 @@
   /* .video_details_content table{
     float: left;
     width: 24%;
-    padding-left: 5%; */
-    /*border: 1px solid black;*/
-  }
+    padding-left: 5%; 
+    border: 1px solid black; 
+  }*/
   .video_details_content tr {
     padding-top: 5px;
     padding-bottom: 5px;
