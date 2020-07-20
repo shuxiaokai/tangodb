@@ -17,7 +17,7 @@ private
   end
 
   def sort_column
-    Video.column_names.include?(params[:sort]) ? params[:sort] : "leader_id"
+    Video.column_names.include?(params[:sort]) ? params[:sort] : "view_count"
   end
 
   def sort_direction
