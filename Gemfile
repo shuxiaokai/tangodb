@@ -15,8 +15,8 @@ gem 'bootsnap',              '1.4.6', require: false
 gem 'yt',                    '~> 0.32.0'
 gem 'spring',                '2.1.0'
 gem 'spring-watcher-listen', '2.0.1'
-gem 'json'
-gem 'pg_search'
+gem 'json',                   '~> 2.3', '>= 2.3.1'
+gem 'pg_search',              '~> 2.3', '>= 2.3.2'
 
 group :development, :test do
   gem 'byebug'
