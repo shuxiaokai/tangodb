@@ -3,9 +3,9 @@ class VideosController < ApplicationController
 
   def index
     if params[:search_keyword]
-      @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel)).includes(:leader, :follower).search_by_keyword(params[:search_keyword]).order(sort_column + " " + sort_direction).limit(1000)
+      @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel)).includes(:leader, :follower).search_by_keyword(params[:search_keyword]).order(sort_column + " " + sort_direction).limit(500)
     else
-      @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel)).includes(:leader, :follower).order(sort_column + " " + sort_direction).limit(1000)
+      @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel)).includes(:leader, :follower).order(sort_column + " " + sort_direction).limit(500)
     end
   end
 
