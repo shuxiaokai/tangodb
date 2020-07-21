@@ -51,34 +51,22 @@ class Video < ApplicationRecord
     end
   end
 
-  def grab_dancers
+  class << self
 
-      Videos.title.each do |title|
-        parsed_title = title.split(Regexp.union(" and ", " & ", " y ", " e ") )
-        first_dancer = parsed_dancers.first
-        second_dancer = parsed_dancers.last
-      end
+    def grep_title
 
-    parsed_dancers = dancers.split(" and ")
-    first_dancer = parsed_dancers.first
-    second_dancer = parsed_dancers.last
-
-
-  end
-
-  def grep_title
-
-    # Grep Leader from Title
-    self.leader = Leader.all.find { |leader| title.match(leader.name) }
-    # Grep Follower from Title
-    self.follower = Follower.all.find { |follower| title.match(follower.name) }
-    # Grep song from Title
-      # if self.song.nil?
-      
-      #   self.song = Song.all.find { |song| title.match(song.title) }
-      #   self.artist = Song.all.find { |artist| title.match(song.artist) }
-      
-      # end
+      # Grep Leader from Title
+      self.leader = Leader.all.find { |leader| title.match(leader.name) }
+      # Grep Follower from Title
+      self.follower = Follower.all.find { |follower| title.match(follower.name) }
+      # Grep song from Title
+        # if self.song.nil?
+        
+        #   self.song = Song.all.find { |song| title.match(song.title) }
+        #   self.artist = Song.all.find { |artist| title.match(song.artist) }
+        
+        # end
+    end
   end
 
 

@@ -176,7 +176,6 @@ CREATE TABLE public.videos (
     leader_id bigint,
     follower_id bigint,
     description character varying,
-    artist character varying,
     channel character varying,
     channel_id character varying,
     duration integer,
@@ -204,48 +203,6 @@ CREATE SEQUENCE public.videos_id_seq
 --
 
 ALTER SEQUENCE public.videos_id_seq OWNED BY public.videos.id;
-
-
---
--- Name: youtubes; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.youtubes (
-    id bigint NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL,
-    title character varying,
-    description character varying,
-    artist character varying,
-    track character varying,
-    channel character varying,
-    channel_id character varying,
-    youtube_id character varying,
-    duration integer,
-    upload_date date,
-    view_count integer,
-    avg_rating integer,
-    tags character varying
-);
-
-
---
--- Name: youtubes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.youtubes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: youtubes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.youtubes_id_seq OWNED BY public.youtubes.id;
 
 
 --
@@ -281,13 +238,6 @@ ALTER TABLE ONLY public.songs ALTER COLUMN id SET DEFAULT nextval('public.songs_
 --
 
 ALTER TABLE ONLY public.videos ALTER COLUMN id SET DEFAULT nextval('public.videos_id_seq'::regclass);
-
-
---
--- Name: youtubes id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.youtubes ALTER COLUMN id SET DEFAULT nextval('public.youtubes_id_seq'::regclass);
 
 
 --
@@ -347,14 +297,6 @@ ALTER TABLE ONLY public.videos
 
 
 --
--- Name: youtubes youtubes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.youtubes
-    ADD CONSTRAINT youtubes_pkey PRIMARY KEY (id);
-
-
---
 -- Name: index_videos_on_follower_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -384,8 +326,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200707071332'),
 ('20200714163153'),
 ('20200717075238'),
-('20200720160543'),
-('20200720160743'),
 ('20200721115637');
 
 

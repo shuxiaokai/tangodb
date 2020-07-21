@@ -2,7 +2,6 @@ class Addjsonvideodetails < ActiveRecord::Migration[6.0]
   def change
     
     add_column :videos, :description, :string
-    add_column :videos, :artist, :string
     add_column :videos, :channel, :string
     add_column :videos, :channel_id, :string
     add_column :videos, :duration, :integer

@@ -901,7 +901,7 @@ namespace :db do
 "Vanessa Fatauros",
 "Vanessa Gauch",
 "Vanessa Öğrenci",
-"Vanessa Öğrencileri)",
+"Vanessa Öğrencileri",
 "Vanina Perez",
 "Vanja Mitrović",
 "Vera Gogoleva",
