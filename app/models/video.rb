@@ -3,8 +3,8 @@ class Video < ApplicationRecord
   include Filterable
   include PgSearch::Model
 
-  validates :leader, presence: true
-  validates :follower, presence: true
+  #validates :leader, presence: true
+  #validates :follower, presence: true
   #validates :song, presence: true
   #validates :artist, presence: true
   validates :youtube_id, presence: true, uniqueness: true
@@ -13,8 +13,8 @@ class Video < ApplicationRecord
   #scope   :filter_by_leader_id,   -> (leader_id)    { where("leader_id = ?",   leader_id) }
   #scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
 
-  belongs_to :leader, counter_cache: true
-  belongs_to :follower, counter_cache: true
+  belongs_to :leader
+  belongs_to :follower
 
   pg_search_scope :search_by_keyword,
                     against: %i[title description song artist tags leader_id follower_id]
@@ -35,8 +35,8 @@ class Video < ApplicationRecord
                           youtube_id: video["id"], 
                           title: video["title"],
                           description: video["description"],
-                          song: video["track"],
-                          artist: video["artist"],
+                          #song: video["track"],
+                          #artist: video["artist"],
                           upload_date: video["upload_date"],
                           channel: video["uploader"],
                           duration: video["duration"],
@@ -45,10 +45,25 @@ class Video < ApplicationRecord
                           avg_rating: video["average_rating"],
                           tags: video["tags"]
                         )
-           video.grep_title
+           #video.grep_title
            video.save
        end 
     end
+  end
+
+  def grab_dancers
+
+      Videos.title.each do |title|
+        parsed_title = title.split(Regexp.union(" and ", " & ", " y ", " e ") )
+        first_dancer = parsed_dancers.first
+        second_dancer = parsed_dancers.last
+      end
+
+    parsed_dancers = dancers.split(" and ")
+    first_dancer = parsed_dancers.first
+    second_dancer = parsed_dancers.last
+
+
   end
 
   def grep_title
@@ -64,56 +79,6 @@ class Video < ApplicationRecord
       #   self.artist = Song.all.find { |artist| title.match(song.artist) }
       
       # end
-
-    #Grep Arist from Title
-      #if self.artist.nil?
-
-      #  self.artist = Song.all.find { |artist| title.match(song.artist)}
-
-     # end
-
-    # grep genre from song 
-    # self.genre = find_by(Song.name)  
-
-    #Grep type 
-    # if leader follower song artist full 
-    #   self.type = 'Performance'
-    # end
-
-    # if title = 'short'
-    #   self.type = 'short'
-    # end
-
-    # if title = 'interview'
-    #   self.type = 'interview'
-    # end
-
-    # if title = 'technique'
-    #   self.type = 'technique'
-    # end
-
-    # if title = 'vlog'
-    #   self.type = 'vlog'
-    # end
-
-    # if title = 'documentary'
-    #   self.type = 'documentary'
-    # end
-
-    # if title = 'workshop'
-    #   self.type = 'workshop'
-    # end
-
-    # if title = 'class'
-    #   self.type = 'class'
-    # end
-
-    # Grep performance number from title
-
-    # Grep performance date from title
-
-    # event from Description
-     #self.event = Video.description { |event| title.match(event.title)}
   end
 
 
