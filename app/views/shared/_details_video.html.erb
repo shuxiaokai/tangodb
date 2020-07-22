@@ -41,12 +41,12 @@
     <table>
         <tr>
             <td>
-                <h2>Leader</h2> <%= video_details.leader.name %>
+                <h2>Leader</h2> <%= video_details.leader.try(:name) %>
             </td>
         </tr>
         <tr>
             <td>
-                <h2>Follower:</h2> <%= video_details.follower.name %>
+                <h2>Follower:</h2> <%= video_details.follower.try(:name) %>
             </td>
         </tr>
             <tr>
@@ -56,7 +56,7 @@
             </tr>
         <tr>
             <td>
-                <h2>Song:</h2> <%= video_details.song %>
+                <h2>Song:</h2> <%= video_details.song.try(:name) %>
             </td>
         </tr>
             <tr>
