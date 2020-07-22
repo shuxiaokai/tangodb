@@ -17,6 +17,7 @@ gem 'spring',                '2.1.0'
 gem 'spring-watcher-listen', '2.0.1'
 gem 'json',                   '~> 2.3', '>= 2.3.1'
 gem 'pg_search',              '~> 2.3', '>= 2.3.2'
+gem 'will_paginate', '~> 3.3'
 
 group :development, :test do
   gem 'byebug'

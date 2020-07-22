@@ -17,6 +17,7 @@
       <div class= "content">    
          <%= render "shared/column_filters" %>
          <%= render "shared/main_table"%>
+         <%= will_paginate @videos %>
       </div>
       <div class= "footer">
          <%= render "shared/footer" %>
