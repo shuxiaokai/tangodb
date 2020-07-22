@@ -16,7 +16,7 @@
     <table class="scrollTable">
         <tbody>
         <%# byebug %>
-            <% @videos.each do |video| %>
+            <% @v_pagination.each do |video| %>
             <tr>
             <%# byebug %>
                 <td class="row-1 row-id"><%= link_to "#{video.id}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
