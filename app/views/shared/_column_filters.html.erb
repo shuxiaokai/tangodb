@@ -64,16 +64,17 @@
          <tbody class="scrollContentFilter">
             <tr>
                <td>
-                  <%= link_to "All (#{Video.pluck('leader_id').uniq.count} Leaders)", current_page_params.merge(:leader_id => " ") %>
+                  <%= link_to "All (#{@videos.pluck('leader_id').uniq.count} Leaders)", current_page_params.merge(:leader_id => " ") %>
                </td>
             </tr>
-               <% @videos.pluck('leader_id').sort.uniq.each do |leader_id| %>
-            <tr>
+            <%# byebug %>
+               <% @videos.map(&:leader).compact.uniq.sort.each do |leader| %>
+             <tr>
                <td>
-                   <%= link_to "#{Leader.find_by(id: leader_id).name}", current_page_params.merge(:leader_id => "#{leader_id}" ) %>
+                  <%= link_to leader.name, current_page_params.merge(leader_id: leader.id ) %>
                </td>
             </tr>
-             <% end %>
+            <% end %>
          </tbody>
       </table>
    </div>     
@@ -87,13 +88,13 @@
          <tbody class="scrollContentFilter">
             <tr>
                <td>
-                   <%= link_to "All (#{Video.pluck('follower_id').uniq.count} Followers)", current_page_params.merge(:follower_id => " ") %>
+                   <%= link_to "All (#{@videos.pluck('follower_id').uniq.count} Followers)", current_page_params.merge(:follower_id => " ") %>
                </td>
             </tr>
-                <% @videos.pluck('follower_id').sort.uniq.each do |follower_id| %>
+                <% @videos.map(&:follower).compact.uniq.sort.each do |follower| %>
              <tr>
                <td>
-                  <%= link_to "#{Follower.find_by(id: follower_id).name}", current_page_params.merge(:follower_id => "#{follower_id}" ) %>
+                  <%= link_to follower.name, current_page_params.merge(follower_id: follower.id ) %>
                </td>
             </tr>
             <% end %>

@@ -213,6 +213,12 @@
   
   /* define height and width of scrollable area. Add 16px to width for scrollbar */
 
+  .scrollTableContainer{
+    max-height:350px;
+    width:100%;
+    overflow-y: scroll;
+  }
+
   .scrollTable {
       table-layout: fixed;
       display: table;

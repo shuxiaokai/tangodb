@@ -2,6 +2,7 @@ class Video < ApplicationRecord
 
   include Filterable
   include PgSearch::Model
+  
 
   #validates :leader, presence: true
   #validates :follower, presence: true
@@ -15,9 +16,13 @@ class Video < ApplicationRecord
 
   belongs_to :leader
   belongs_to :follower
+  belongs_to :song
 
   pg_search_scope :search_by_keyword,
-                    against: %i[title description song artist tags leader_id follower_id]
+                    against: %i[title description tags],
+                    #using: :trigram
+                    ignoring: :accents
+                    
                
   pg_search_scope :filter_by_leader_id, against: [:leader_id]
   pg_search_scope :filter_by_follower_id, against: [:follower_id]
