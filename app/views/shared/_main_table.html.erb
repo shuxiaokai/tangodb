@@ -1,7 +1,6 @@
     <table class="scrollTableHeader">
         <thead>
             <tr>
-                <th class="row-1 row-id"><%= sortable "id", "ID" %></th>
                 <th class="row-1 row-leader"><%= sortable "leader_id", "Leader" %></th>
                 <th class="row-1 row-follower"><%= sortable "follower_id", "Follower" %></th>
                 <th class="row-1 row-song"><%= sortable "song", "Song" %></th>
@@ -19,7 +18,6 @@
             <% @v_pagination.each do |video| %>
             <tr>
             <%# byebug %>
-                <td class="row-1 row-id"><%= link_to "#{video.id}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
                 <td class="row-1 row-leader"><%= link_to "#{video.leader.try(:name)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
                 <td class="row-1 row-follower"><%= link_to "#{video.follower.try(:name)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
                 <td class="row-1 row-song"><%= link_to "#{video.song.try(:title)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>

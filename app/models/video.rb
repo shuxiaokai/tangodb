@@ -20,7 +20,11 @@ class Video < ApplicationRecord
 
   pg_search_scope :search_by_keyword,
                     against: %i[title description tags],
-                    #using: :trigram
+                    using: {
+                    trigram: {
+                      threshold: 0.1
+                    }
+                  },
                     ignoring: :accents
                     
                
