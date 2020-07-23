@@ -21,11 +21,10 @@ class Video < ApplicationRecord
   pg_search_scope :search_by_keyword,
                     against: %i[title description tags],
                     using: {
-                    trigram: {
-                      threshold: 0.1
-                    }
-                  },
-                    ignoring: :accents
+                      tsearch: {normalization: 32}
+                    },
+                    ignoring: :accents,
+                    ranked_by: ":trigram"
                     
                
   pg_search_scope :filter_by_leader_id, against: [:leader_id]
@@ -78,6 +77,29 @@ class Video < ApplicationRecord
     end
   end
 
+  class << self
+
+    def match_dancers
+
+          Leader.all.each do |leader|
+            Video.search_by_keyword(leader.name).each do |video|
+              if video.leader.nil?
+                self.leader = leader
+                video.save
+              end
+            end
+          end
+
+          Follower.all.each do |follower|
+            Video.search_by_keyword(follower.name).each do |video|
+              if video.follower.nil?
+                video.follower = follower
+                video.save
+            end
+          end
+        end
+    end
+  end
 
   class << self
     # To fetch video, run this from the console:

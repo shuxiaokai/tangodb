@@ -1,4 +1,4 @@
-class InstalSomeContribPackages < ActiveRecord::Migration[6.0]
+class InstallSomeContribPackages < ActiveRecord::Migration[6.0]
   def up
     execute "CREATE EXTENSION IF NOT EXISTS pg_trgm;"
     execute "CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;"
@@ -11,3 +11,4 @@ class InstalSomeContribPackages < ActiveRecord::Migration[6.0]
     execute "DROP EXTENSION IF EXISTS unaccent;"
   end
 end
+  

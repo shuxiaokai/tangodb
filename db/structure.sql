@@ -215,7 +215,6 @@ CREATE TABLE public.videos (
     title text,
     song character varying,
     youtube_id character varying,
-    leader_id bigint,
     follower_id bigint,
     description character varying,
     channel character varying,
@@ -224,7 +223,8 @@ CREATE TABLE public.videos (
     upload_date date,
     view_count integer,
     avg_rating integer,
-    tags character varying
+    tags character varying,
+    leader_id bigint
 );
 
 
@@ -343,13 +343,6 @@ ALTER TABLE ONLY public.videos
 --
 
 CREATE INDEX index_videos_on_follower_id ON public.videos USING btree (follower_id);
-
-
---
--- Name: index_videos_on_leader_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_videos_on_leader_id ON public.videos USING btree (leader_id);
 
 
 --
