@@ -64,6 +64,7 @@
          <tbody class="scrollContentFilter">
             <tr>
                <td>
+               <%# byebug %>
                   <%= link_to "All (#{@videos.pluck('leader_id').uniq.count} Leaders)", current_page_params.merge(:leader_id => " ") %>
                </td>
             </tr>

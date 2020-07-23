@@ -1,13 +1,14 @@
 class VideosController < ApplicationController
   helper_method :sort_column, :sort_direction
-
+  include Pagy::Backend
   def index
+    
     if params[:search_by_keyword]
-      @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel)).includes(:leader, :follower).search_by_keyword(params[:search_by_keyword]).order(sort_column + " " + sort_direction)
-      @v_pagination = Video.filter(params.slice(:leader_id, :follower_id, :channel)).includes(:leader, :follower).search_by_keyword(params[:search_by_keyword]).order(sort_column + " " + sort_direction).paginate(:page=> params[:page], :per_page => 100)
+             @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel)).includes(:leader, :follower).search_by_keyword(params[:search_by_keyword]).order(sort_column + " " + sort_direction)
+      @pagy, @v_pagination = pagy(Video.filter(params.slice(:leader_id, :follower_id, :channel)).includes(:leader, :follower).search_by_keyword(params[:search_by_keyword]).order(sort_column + " " + sort_direction), items: 100)
     else
-      @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel)).includes(:leader, :follower).order(sort_column + " " + sort_direction)
-      @v_pagination = Video.filter(params.slice(:leader_id, :follower_id, :channel)).includes(:leader, :follower).order(sort_column + " " + sort_direction).paginate(:page=> params[:page], :per_page => 100)
+             @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel)).includes(:leader, :follower).order(sort_column + " " + sort_direction)
+      @pagy, @v_pagination = pagy(Video.filter(params.slice(:leader_id, :follower_id, :channel)).includes(:leader, :follower).order(sort_column + " " + sort_direction), items: 100)
     end
       
   end

@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Pagy::Frontend
 
   def sortable(column, title = nil)
     title ||= column.titleize
