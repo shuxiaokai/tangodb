@@ -23,8 +23,7 @@ class Video < ApplicationRecord
                     using: {
                       tsearch: {normalization: 32}
                     },
-                    ignoring: :accents,
-                    ranked_by: ":trigram"
+                    ignoring: :accents
                     
                
   pg_search_scope :filter_by_leader_id, against: [:leader_id]
@@ -113,5 +112,10 @@ class Video < ApplicationRecord
       end
     end
   end
+
+  def self.unaccent(column,value)
+    a=self.where('unaccent(?) LIKE ?', column, "%value%")
+    a
+end
 
 end

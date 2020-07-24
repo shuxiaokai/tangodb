@@ -213,7 +213,6 @@ CREATE TABLE public.videos (
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     title text,
-    song character varying,
     youtube_id character varying,
     follower_id bigint,
     description character varying,
@@ -224,7 +223,8 @@ CREATE TABLE public.videos (
     view_count integer,
     avg_rating integer,
     tags character varying,
-    leader_id bigint
+    leader_id bigint,
+    song_id bigint
 );
 
 
@@ -346,6 +346,13 @@ CREATE INDEX index_videos_on_follower_id ON public.videos USING btree (follower_
 
 
 --
+-- Name: index_videos_on_song_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_song_id ON public.videos USING btree (song_id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -362,6 +369,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200714163153'),
 ('20200717075238'),
 ('20200721115637'),
-('20200721213201');
+('20200721213201'),
+('20200724111424');
 
 
