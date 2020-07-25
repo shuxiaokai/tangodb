@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def current_page_params
-    request.params.slice("youtube_id","sort","direction","leader_id","follower_id","channel_id","upload_date","view_count","song","arist")
+    request.params.slice("youtube_id","sort","direction","leader_id","follower_id","channel_id","upload_date","view_count","song_id","artist")
   end
 
   def form_for_object_from_param(param)
