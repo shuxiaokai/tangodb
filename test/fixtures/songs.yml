@@ -2,10 +2,10 @@
 
 one:
   genre: MyString
-  name: MyString
+  title: MyString
   artist: MyString
 
 two:
   genre: MyString
-  name: MyString
+  title: MyString
   artist: MyString
