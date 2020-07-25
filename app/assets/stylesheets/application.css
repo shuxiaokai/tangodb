@@ -178,7 +178,7 @@
 
   .side {
     align-content: center;
-    height: 1015px;
+    height: 985px;
   }
 
   .search-bar {
@@ -251,6 +251,7 @@
     max-height:350px;
     width:100%;
     overflow-y: scroll;
+    border:1px solid #c2c2c2;
   }
 
   .scrollTable {
@@ -380,7 +381,7 @@
   }
 
   .scrollTableFilter {
-    border-collapse: collapse;
+    border-collapse: seperate;
   }
 
   /* define height and width of scrollable area. Add 16px to width for scrollbar          */
