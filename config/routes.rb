@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       get :leader_id
       get :follower_id
+      get :song_id
     end  
   end
 end
