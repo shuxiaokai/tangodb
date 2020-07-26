@@ -24,6 +24,7 @@ class VideosController < ApplicationController
 
 private
 
+
   def sort_column
     Video.column_names.include?(params[:sort]) ? params[:sort] : "upload_date"
   end
