@@ -15,8 +15,8 @@ class Video < ApplicationRecord
   #scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
 
   belongs_to :leader
-  belongs_to :follower
-  belongs_to :song
+  #belongs_to :follower
+  #belongs_to :song
 
   pg_search_scope :search_by_keyword,
                     against: %i[title description tags],

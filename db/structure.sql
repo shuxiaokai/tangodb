@@ -224,7 +224,11 @@ CREATE TABLE public.videos (
     avg_rating integer,
     tags character varying,
     leader_id bigint,
-    song_id bigint
+    song_id bigint,
+    type character varying,
+    performance_date timestamp without time zone,
+    performance_number integer,
+    performance_total integer
 );
 
 
@@ -370,6 +374,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200717075238'),
 ('20200721115637'),
 ('20200721213201'),
-('20200724111424');
+('20200724111424'),
+('20200726121535');
 
 

@@ -51,3 +51,17 @@ Video.all.each do |video|
       video.save
     end
   end
+[
+  "Class",
+  "Workshop",
+  "Performance",
+  "Documentary",
+  "Vlog",
+  "Interview",
+  "Short",
+  "Technique",
+  "Maestro Ronda",
+  
+
+]
+  Video.all.joins(:follower).where( "lower(unaccent(description)) like lower(unaccent(?))", "%#{follower.name}%").each do |video|
