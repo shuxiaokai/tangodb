@@ -30,27 +30,40 @@ Video.all.each do |video|
 #Matches Song AND Artist with Video
 
   Song.all.each do |song|
-    Video.where( "lower(unaccent(description)) like lower(unaccent(?)) AND lower(unaccent(description)) like lower(unaccent(?)) ", "%#{song.title}%", "%#{song.artist}%").each do |video|
+    Video.where( "lower(unaccent(title)) like lower(unaccent(?)) AND lower(unaccent(title)) like lower(unaccent(?)) ", "%#{song.title}%", "%#{song.artist}%").each do |video|
+      if video.song.nil?
       video.song = song
       video.save
+      end
     end
   end
 
-  #SQL match for Leader
-  Leader.all.each do |leader|
-    Video.all.where( "levenshtein(lower(unaccent(description)), lower(unaccent(?)))", "%#{leader.name}%").each do |video|
-      video.leader = leader
+  Song.all.each do |song|
+    Video.where( "lower(unaccent(title)) like lower(unaccent(?))", "%#{song.title}%").each do |video|
+      if video.song.nil?
+      video.song = song
       video.save
+      end
     end
   end
+
+
 
   #SQL match for Follower
   Follower.all.each do |follower|
-    Video.all.where( "lower(unaccent(description)) like lower(unaccent(?))", "%#{follower.name}%").each do |video|
+    Video.all.where( "lower(unaccent(title)) like lower(unaccent(?))", "%#{follower.name}%").each do |video|
       video.follower = follower
       video.save
     end
   end
+
+    #SQL match for Leader
+    Leader.all.each do |leader|
+      Video.all.where( "lower(unaccent(title)) like lower(unaccent(?))", "%#{leader.name}%").each do |video|
+        video.leader = leader
+        video.save
+      end
+    end
 
   # Video Type Parsing
 

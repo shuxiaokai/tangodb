@@ -108,7 +108,8 @@ CREATE TABLE public.followers (
     id bigint NOT NULL,
     name character varying NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    reviewed boolean
 );
 
 
@@ -139,7 +140,8 @@ CREATE TABLE public.leaders (
     id bigint NOT NULL,
     name character varying NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    reviewed boolean
 );
 
 
@@ -384,6 +386,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200721115637'),
 ('20200721213201'),
 ('20200724111424'),
-('20200726121535');
+('20200726121535'),
+('20200727180548');
 
 
