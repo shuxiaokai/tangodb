@@ -30,7 +30,7 @@ Video.all.each do |video|
 #Matches Song AND Artist with Video
 
   Song.all.each do |song|
-    Video.all.where( "lower(unaccent(description)) like lower(unaccent(?)) AND lower(unaccent(description)) like lower(unaccent(?)) ", "%#{song.title}%", "%#{song.artist}%").each do |video|
+    Video.where( "lower(unaccent(description)) like lower(unaccent(?)) AND lower(unaccent(description)) like lower(unaccent(?)) ", "%#{song.title}%", "%#{song.artist}%").each do |video|
       video.song = song
       video.save
     end
@@ -38,7 +38,7 @@ Video.all.each do |video|
 
   #SQL match for Leader
   Leader.all.each do |leader|
-    Video.all.joins(:leader).where( "lower(unaccent(description)) like lower(unaccent(?))", "%#{leader.name}%").each do |video|
+    Video.all.where( "levenshtein(lower(unaccent(description)), lower(unaccent(?)))", "%#{leader.name}%").each do |video|
       video.leader = leader
       video.save
     end
@@ -46,22 +46,39 @@ Video.all.each do |video|
 
   #SQL match for Follower
   Follower.all.each do |follower|
-    Video.all.joins(:follower).where( "lower(unaccent(description)) like lower(unaccent(?))", "%#{follower.name}%").each do |video|
+    Video.all.where( "lower(unaccent(description)) like lower(unaccent(?))", "%#{follower.name}%").each do |video|
       video.follower = follower
       video.save
     end
   end
-[
-  "Class",
-  "Workshop",
-  "Performance",
-  "Documentary",
-  "Vlog",
-  "Interview",
-  "Short",
-  "Technique",
-  "Maestro Ronda",
-  
 
-]
-  Video.all.joins(:follower).where( "lower(unaccent(description)) like lower(unaccent(?))", "%#{follower.name}%").each do |video|
+  # Video Type Parsing
+
+video_types = 
+              [ "class",
+                "workshop",
+                "performance",
+                "documentary",
+                "vlog",
+                "interview",
+                "short",
+                "technique"
+              ]
+
+  video_types.each do |video_type|
+  Video.all.where( "lower(unaccent(title)) like lower(unaccent(?))", "% #{video_type} %").each do |video|
+    video.video_type = video_type 
+    video.save
+  end
+end
+
+/* Performance Number */
+regExp = /\([\d]{1}([\/]+[\d]{1})\)/
+split_value = "/(-)(/)/"
+Video.all.each do |video|
+  parsed_title = video.title.match(/\([\d]{1}([\/]+[\d]{1})\)/)
+  performance_number = parsed_title.split("/")
+  video.performance_number = performance_number.first 
+  video.performance_total  = performance_number.last
+video.save
+end

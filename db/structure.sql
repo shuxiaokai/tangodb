@@ -214,6 +214,7 @@ CREATE TABLE public.videos (
     updated_at timestamp(6) without time zone NOT NULL,
     title text,
     youtube_id character varying,
+    leader_id bigint,
     follower_id bigint,
     description character varying,
     channel character varying,
@@ -223,9 +224,10 @@ CREATE TABLE public.videos (
     view_count integer,
     avg_rating integer,
     tags character varying,
-    leader_id bigint,
     song_id bigint,
-    type character varying,
+    youtube_song character varying,
+    youtube_artist character varying,
+    video_type character varying,
     performance_date timestamp without time zone,
     performance_number integer,
     performance_total integer
@@ -347,6 +349,13 @@ ALTER TABLE ONLY public.videos
 --
 
 CREATE INDEX index_videos_on_follower_id ON public.videos USING btree (follower_id);
+
+
+--
+-- Name: index_videos_on_leader_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_leader_id ON public.videos USING btree (leader_id);
 
 
 --
