@@ -29,6 +29,10 @@ class Video < ApplicationRecord
   pg_search_scope :filter_by_leader_id, against: [:leader_id]
   pg_search_scope :filter_by_follower_id, against: [:follower_id]
   pg_search_scope :filter_by_channel, against: [:channel]
+  pg_search_scope :filter_by_genre, associated_against: { 
+                                    song: [:genre]
+                                  }
+  
 
   class << self
     # To fetch video, run this from the console:
@@ -116,6 +120,6 @@ class Video < ApplicationRecord
   def self.unaccent(column,value)
     a=self.where('unaccent(?) LIKE ?', column, "%value%")
     a
-end
+  end
 
 end
