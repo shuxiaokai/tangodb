@@ -7,25 +7,25 @@ class VideosController < ApplicationController
   def index
     
     if params[:search_by_keyword]
-             @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel, :song_id, :view_count, :upload_date, :genre))
+             @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel, :song_id, :view_count, :upload_date, :genre, :videotype_id, :event_id))
                             .order(sort_column + " " + sort_direction)
-                            .includes(:leader, :follower, :song)
+                            .includes(:leader, :follower, :song, :videotype, :event)
                             .search_by_keyword(params[:search_by_keyword])
                             .where.not(leader: nil, follower: nil, song: nil)
 
-      @pagy, @v_pagination = pagy(Video.filter(params.slice(:leader_id, :follower_id, :channel, :song_id, :view_count, :upload_date, :genre))
+      @pagy, @v_pagination = pagy(Video.filter(params.slice(:leader_id, :follower_id, :channel, :song_id, :view_count, :upload_date, :genre, :videotype_id, :event_id))
                                        .order(sort_column + " " + sort_direction)
-                                       .includes(:leader, :follower, :song)
+                                       .includes(:leader, :follower, :song, :videotype, :event)
                                        .search_by_keyword(params[:search_by_keyword])
                                        .where.not(leader: nil, follower: nil, song: nil), items: 100)
     else
-             @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel, :genre))
-                            .includes(:leader, :follower, :song)
+             @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel, :genre, :videotype_id, :event_id))
+                            .includes(:leader, :follower, :song, :videotype, :event)
                             .order(sort_column + " " + sort_direction)
                             .where.not(leader: nil, follower: nil, song: nil)
                             
-      @pagy, @v_pagination = pagy(Video.filter(params.slice(:leader_id, :follower_id, :channel, :genre))
-                                        .includes(:leader, :follower, :song)
+      @pagy, @v_pagination = pagy(Video.filter(params.slice(:leader_id, :follower_id, :channel, :genre, :videotype_id, :event_id))
+                                        .includes(:leader, :follower, :song, :videotype, :event)
                                         .order(sort_column + " " + sort_direction)
                                         .where.not(leader: nil, follower: nil, song: nil), items: 100)
     end

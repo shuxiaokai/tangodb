@@ -14,11 +14,11 @@ class Video < ApplicationRecord
   #scope   :filter_by_leader_id,   -> (leader_id)    { where("leader_id = ?",   leader_id) }
   #scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
 
-  #belongs_to :leader
-  #belongs_to :follower
-  #belongs_to :song
+  belongs_to :leader
+  belongs_to :follower
+  belongs_to :song
   belongs_to :videotype
-  #belongs_to :event
+  belongs_to :event
 
   pg_search_scope :search_by_keyword,
                     against: %i[title description tags],
@@ -30,6 +30,8 @@ class Video < ApplicationRecord
                
   pg_search_scope :filter_by_leader_id, against: [:leader_id]
   pg_search_scope :filter_by_follower_id, against: [:follower_id]
+  pg_search_scope :filter_by_event_id, against: [:event_id]
+  pg_search_scope :filter_by_videotype_id, against: [:videotype_id]
   pg_search_scope :filter_by_channel, against: [:channel]
   pg_search_scope :filter_by_genre, associated_against: { 
                                     song: [:genre]

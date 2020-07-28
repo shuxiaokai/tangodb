@@ -6,29 +6,22 @@
                   <th>Type</th>
                </tr>
             </thead>
-            <tbody class="scrollContentFilter" style="background:#666666">
-               <tr>
-                  <td>Performance</td>
-               </tr>
-               <tr>
-                  <td>Class</td>
-               </tr>
-               <tr>
-                  <td>Short</td>
-               </tr>
-               <tr>
-                  <td>Interview</td>
-               </tr>
-               <tr>
-                  <td>Documentary</td>
-               </tr>
-               <tr>
-                  <td>Vlog</td>
-               </tr>
-               <tr>
-               <td>Slow-Motion</td>
-               </tr>
-            </tbody>
+             <tbody class="scrollContentFilter">
+            <tr>
+               <td>
+               <%# byebug %>
+                  <%= link_to "All (#{Video.pluck('videotype_id').uniq.count} Type)", current_page_params.merge(:videotype_id => " ") %>
+               </td>
+            </tr>
+            <%# byebug %>
+               <% @videos.map(&:videotype).compact.uniq.sort.each do |videotype| %>
+             <tr>
+               <td>
+                  <%= link_to videotype.name, current_page_params.merge(videotype_id: videotype.id ) %>
+               </td>
+            </tr>
+            <% end %>
+         </tbody>
          </table>
    </div>    
    <div id="Genre Filter" class="tableContainerFilter" >
@@ -128,47 +121,19 @@
                <th>Event</th>
             </tr>
          </thead>
-         <tbody class="scrollContentFilter" style="background:#666666">
+         <tbody class="scrollContentFilter">
             <tr>
-               <td>Bucharest Tango Groove</td>
+               <td>
+                   <%= link_to "All (#{Video.pluck('event_id').uniq.count} Events)", current_page_params.merge(:event_id => " ") %>
+               </td>
             </tr>
-            <tr>
-               <td>Milongero Nights</td>
+                <% @videos.map(&:event).compact.uniq.sort.each do |event| %>
+             <tr>
+               <td>
+                  <%= link_to event.name, current_page_params.merge(event_id: event.id ) %>
+               </td>
             </tr>
-            <tr>
-               <td>Embrace Berlic</td>
-            </tr>
-            <tr>
-               <td>MSTF</td>
-            </tr>
-            <td>TangoLovers Festival</td>
-            <tr>
-               <td>La Viruta Tango Club</td>
-            </tr>
-            <tr>
-               <td>Tango Tage Halle</td>
-            </tr>
-            <tr>
-               <td>Mala Junta, Berlin</td>
-            </tr>
-            <tr>
-               <td>NOU Berlin</td>
-            </tr>
-            <tr>
-               <td>Tango Jam Hamburg</td>
-            </tr>
-            <tr>
-               <td>Łódź Tango Salon Festival</td>
-            </tr>
-            <tr>
-               <td>Brussels Tango Festival</td>
-            </tr>
-            <tr>
-               <td>Lyon Tango Festival</td>
-            </tr>
-            <tr>
-               <td>La Viruta Tango Club Berlin</td>
-            </tr>
+            <% end %>
          </tbody>
       </table>
    </div>
