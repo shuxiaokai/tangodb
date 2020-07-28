@@ -101,6 +101,40 @@ ALTER SEQUENCE public.dancers_id_seq OWNED BY public.dancers.id;
 
 
 --
+-- Name: events; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.events (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    city character varying,
+    country character varying,
+    date date,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.events_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
+
+
+--
 -- Name: followers; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -229,10 +263,11 @@ CREATE TABLE public.videos (
     song_id bigint,
     youtube_song character varying,
     youtube_artist character varying,
-    video_type character varying,
     performance_date timestamp without time zone,
     performance_number integer,
-    performance_total integer
+    performance_total integer,
+    videotype_id bigint,
+    event_id bigint
 );
 
 
@@ -256,10 +291,47 @@ ALTER SEQUENCE public.videos_id_seq OWNED BY public.videos.id;
 
 
 --
+-- Name: videotypes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.videotypes (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    related_keywords character varying
+);
+
+
+--
+-- Name: videotypes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.videotypes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: videotypes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.videotypes_id_seq OWNED BY public.videotypes.id;
+
+
+--
 -- Name: dancers id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.dancers ALTER COLUMN id SET DEFAULT nextval('public.dancers_id_seq'::regclass);
+
+
+--
+-- Name: events id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.events_id_seq'::regclass);
 
 
 --
@@ -291,6 +363,13 @@ ALTER TABLE ONLY public.videos ALTER COLUMN id SET DEFAULT nextval('public.video
 
 
 --
+-- Name: videotypes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.videotypes ALTER COLUMN id SET DEFAULT nextval('public.videotypes_id_seq'::regclass);
+
+
+--
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -304,6 +383,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.dancers
     ADD CONSTRAINT dancers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.events
+    ADD CONSTRAINT events_pkey PRIMARY KEY (id);
 
 
 --
@@ -347,6 +434,21 @@ ALTER TABLE ONLY public.videos
 
 
 --
+-- Name: videotypes videotypes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.videotypes
+    ADD CONSTRAINT videotypes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_videos_on_event_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_event_id ON public.videos USING btree (event_id);
+
+
+--
 -- Name: index_videos_on_follower_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -365,6 +467,13 @@ CREATE INDEX index_videos_on_leader_id ON public.videos USING btree (leader_id);
 --
 
 CREATE INDEX index_videos_on_song_id ON public.videos USING btree (song_id);
+
+
+--
+-- Name: index_videos_on_videotype_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_videotype_id ON public.videos USING btree (videotype_id);
 
 
 --
@@ -387,6 +496,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200721213201'),
 ('20200724111424'),
 ('20200726121535'),
-('20200727180548');
+('20200727180548'),
+('20200728084042'),
+('20200728084051'),
+('20200728085020'),
+('20200728085048');
 
 

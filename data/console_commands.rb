@@ -27,7 +27,7 @@ Video.all.each do |video|
   end
 
 
-#Matches Song AND Artist with Video
+#Matches Song AND Artist with Video description
 
   Song.all.each do |song|
     Video.where( "lower(unaccent(title)) like lower(unaccent(?)) AND lower(unaccent(title)) like lower(unaccent(?)) ", "%#{song.title}%", "%#{song.artist}%").each do |video|
@@ -38,6 +38,8 @@ Video.all.each do |video|
     end
   end
 
+  #Matches Song AND Artist with Video title
+
   Song.all.each do |song|
     Video.where( "lower(unaccent(title)) like lower(unaccent(?))", "%#{song.title}%").each do |video|
       if video.song.nil?
@@ -46,6 +48,41 @@ Video.all.each do |video|
       end
     end
   end
+
+  #Matches Event with Video description
+
+  Event.all.each do |event|
+    Video.where( "lower(unaccent(description)) like lower(unaccent(?))", "%#{event.name}%").each do |video|
+      video.event = event
+      video.save
+    end
+  end
+
+    #Matches Event with Video title
+
+    Event.all.each do |event|
+      Video.where( "lower(unaccent(title)) like lower(unaccent(?))", "%#{event.name}%").each do |video|
+        video.event = event
+        video.save
+      end
+    end
+
+    #Matches Videotype with Video title
+    Videotype.all.each do |videotype|
+      Video.where( "lower(unaccent(title)) like lower(unaccent(?))", "%#{videotype.name}%").each do |video|
+        video.videotype = videotype
+        video.save
+      end
+    end
+
+    #Matches Videotype with Video description
+
+    Videotype.all.each do |videotype|
+      Video.where( "lower(unaccent(description)) like lower(unaccent(?))", "%#{videotype.name}%").each do |video|
+        video.videotype = videotype
+        video.save
+      end
+    end
 
 
 

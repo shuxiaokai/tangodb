@@ -2,7 +2,6 @@ class AddVideoTypeEventPerformancedatePerformancenumber < ActiveRecord::Migratio
   def up
     add_column :videos, :youtube_song, :string
     add_column :videos, :youtube_artist, :string
-    add_column :videos, :video_type, :string
     add_column :videos, :performance_date, :datetime
     add_column :videos, :performance_number, :int
     add_column :videos, :performance_total, :int
@@ -12,7 +11,6 @@ class AddVideoTypeEventPerformancedatePerformancenumber < ActiveRecord::Migratio
   def down
     remove_column :videos, :youtube_song, :string
     remove_column :videos, :youtube_artist, :string
-    remove_column :videos, :video_type, :string
     remove_column :videos, :performance_date, :datetime
     remove_column :videos, :performance_number, :int
     remove_column :videos, :performance_total, :int
