@@ -11,8 +11,13 @@ class Video < ApplicationRecord
   validates :youtube_id, presence: true, uniqueness: true
   validates :title, presence: true
 
-  #scope   :filter_by_leader_id,   -> (leader_id)    { where("leader_id = ?",   leader_id) }
-  #scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
+  scope   :filter_by_leader_id,   -> (leader_id)    { where("leader_id = ?",   leader_id) }
+  scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
+  scope   :filter_by_event_id, -> (event_id)  { where("event_id = ?", event_id) }
+  scope   :filter_by_videotype_id, -> (videotype_id)  { where("videotype_id = ?", videotype_id) }
+  scope   :filter_by_channel, -> (channel)  { where("channel = ?", channel) }
+  scope   :filter_by_genre, -> (genre)  { where("genre = ?", genre) }
+
 
   belongs_to :leader
   belongs_to :follower
@@ -28,14 +33,14 @@ class Video < ApplicationRecord
                     ignoring: :accents
                     
                
-  pg_search_scope :filter_by_leader_id, against: [:leader_id]
-  pg_search_scope :filter_by_follower_id, against: [:follower_id]
-  pg_search_scope :filter_by_event_id, against: [:event_id]
-  pg_search_scope :filter_by_videotype_id, against: [:videotype_id]
-  pg_search_scope :filter_by_channel, against: [:channel]
-  pg_search_scope :filter_by_genre, associated_against: { 
-                                    song: [:genre]
-                                  }
+  #pg_search_scope :filter_by_leader_id, against: [:leader_id]
+  #pg_search_scope :filter_by_follower_id, against: [:follower_id]
+  #pg_search_scope :filter_by_event_id, against: [:event_id]
+  #pg_search_scope :filter_by_videotype_id, against: [:videotype_id]
+  #pg_search_scope :filter_by_channel, against: [:channel]
+  #pg_search_scope :filter_by_genre, associated_against: { 
+  #                                  song: [:genre]
+  #                                }
   
 
   class << self
