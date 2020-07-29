@@ -16,7 +16,7 @@ class Video < ApplicationRecord
   scope   :filter_by_event_id, -> (event_id)  { where("event_id = ?", event_id) }
   scope   :filter_by_videotype_id, -> (videotype_id)  { where("videotype_id = ?", videotype_id) }
   scope   :filter_by_channel, -> (channel)  { where("channel = ?", channel) }
-  scope   :filter_by_genre, -> (genre)  { where("genre = ?", genre) }
+  scope   :filter_by_genre, -> (genre)  { joins(:song).where("genre = ?", genre) }
 
 
   belongs_to :leader
