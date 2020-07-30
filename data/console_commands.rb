@@ -16,43 +16,43 @@ Follower.all.each do |follower|
   end
 end
 
-Video.all.each do |video|
-  video.leader = Leader.all.find { |leader| video.description.match(leader.name) }
-  video.save
+  Video.all.each do |video|
+    video.leader = Leader.all.find { |leader| video.description.match(leader.name) }
+    video.save
   end
 
-Video.all.each do |video|
-  video.follower = Follower.all.find { |follower| video.description.match(follower.name) }
-  video.save
+  Video.all.each do |video|
+    video.follower = Follower.all.find { |follower| video.description.match(follower.name) }
+    video.save
   end
 
 
 #Matches Song AND Artist with Video description
 
   Song.all.each do |song|
-    Video.where( "lower(unaccent(title)) like lower(unaccent(?)) AND lower(unaccent(title)) like lower(unaccent(?)) ", "%#{song.title}%", "%#{song.artist}%").each do |video|
+    Video.where( "unaccent(description) ILIKE unaccent(?) AND unaccent(description) ILIKE unaccent(?) ", "%#{song.title}%", "%#{song.artist.split.last}%").each do |video|
       if video.song.nil?
       video.song = song
-      video.save
+      video.saves
       end
     end
   end
 
-  #Matches Song AND Artist with Video title
+  #Matches Song title with video title
 
-  Song.all.each do |song|
-    Video.where( "lower(unaccent(title)) like lower(unaccent(?))", "%#{song.title}%").each do |video|
-      if video.song.nil?
-      video.song = song
-      video.save
-      end
-    end
-  end
+  # Song.all.each do |song|
+  #   Video.where( "unaccent(title) ILIKE unaccent(?)", "%#{song.title}%").each do |video|
+  #     if video.song.nil?
+  #     video.song = song
+  #     video.save
+  #     end
+  #   end
+  # end
 
   #Matches Event with Video description
 
   Event.all.each do |event|
-    Video.where( "lower(unaccent(description)) like lower(unaccent(?))", "%#{event.name}%").each do |video|
+    Video.where( "unaccent(description) ILIKE unaccent(?)", "%'#{event.name}%").each do |video|
       video.event = event
       video.save
     end
@@ -60,16 +60,16 @@ Video.all.each do |video|
 
     #Matches Event with Video title
 
-    Event.all.each do |event|
-      Video.where( "lower(unaccent(title)) like lower(unaccent(?))", "%#{event.name}%").each do |video|
-        video.event = event
-        video.save
-      end
+   Event.all.each do |event|
+    Video.where( "unaccent(description) ILIKE unaccent(?)", "%#{event.name}%").each do |video|
+      video.event = event
+      video.save
     end
+   end
 
     #Matches Videotype with Video title
     Videotype.all.each do |videotype|
-      Video.where( "lower(unaccent(title)) like lower(unaccent(?))", "%#{videotype.name}%").each do |video|
+      Video.where( "unaccent(title) ILIKE unaccent(?)", "%' '#{videotype.name}' '%").each do |video|
         video.videotype = videotype
         video.save
       end
@@ -78,7 +78,7 @@ Video.all.each do |video|
     #Matches Videotype with Video description
 
     Videotype.all.each do |videotype|
-      Video.where( "lower(unaccent(description)) like lower(unaccent(?))", "%#{videotype.name}%").each do |video|
+      Video.where( "unaccent(description) ILIKE unaccent(' '?' ')", "%#{videotype.name}%").each do |video|
         video.videotype = videotype
         video.save
       end
@@ -88,7 +88,7 @@ Video.all.each do |video|
 
   #SQL match for Follower
   Follower.all.each do |follower|
-    Video.all.where( "lower(unaccent(title)) like lower(unaccent(?))", "%#{follower.name}%").each do |video|
+    Video.all.where( "unaccent(title) ILIKE unaccent(?)", "%#{follower.name}%").each do |video|
       video.follower = follower
       video.save
     end
@@ -96,7 +96,7 @@ Video.all.each do |video|
 
     #SQL match for Leader
     Leader.all.each do |leader|
-      Video.all.where( "lower(unaccent(title)) like lower(unaccent(?))", "%#{leader.name}%").each do |video|
+      Video.all.where( "unaccent(title) ILIKE unaccent(?)", "%#{leader.name}%").each do |video|
         video.leader = leader
         video.save
       end
@@ -116,7 +116,7 @@ video_types =
               ]
 
   video_types.each do |video_type|
-  Video.all.where( "lower(unaccent(title)) like lower(unaccent(?))", "% #{video_type} %").each do |video|
+  Video.all.where( "unaccent(title) ILIKE unaccent(?)", "% #{video_type} %").each do |video|
     video.video_type = video_type 
     video.save
   end

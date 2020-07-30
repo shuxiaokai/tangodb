@@ -52,17 +52,17 @@
             </tr>
                 <tr>
                     <td>
-                        <h2>Genre:</h2>
+                        <h2>Genre:</h2> <%= video_details.song.try(:genre) %>
                     </td>
                 </tr>
             <tr>
                 <td>
-                    <h2>Song:</h2> <%= video_details.song.try(:name) %>
+                    <h2>Song:</h2> <%= video_details.song.try(:title) %>
                 </td>
             </tr>
                 <tr>
                     <td>
-                        <h2>Artist:</h2> 
+                        <h2>Artist:</h2> <%= video_details.song.try(:artist) %>
                     </td>
                 </tr>
             </table>
