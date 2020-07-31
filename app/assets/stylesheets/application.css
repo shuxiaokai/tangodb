@@ -218,7 +218,7 @@
 
   .scrollTabledDetailContainer{
     max-height:325px;
-    width: 590px; 
+    max-width: 590px; 
     padding-left: 20px;
     padding-right: 20px;
     overflow-y: scroll;
