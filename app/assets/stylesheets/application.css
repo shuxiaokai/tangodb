@@ -221,7 +221,7 @@
     max-width: 590px;
     padding-left: 20px;
     padding-right: 20px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     overscroll-behavior: auto contain;
     display:inline-block;
@@ -458,6 +458,7 @@
       overscroll-behavior: contain;
       table-layout:fixed;
       width: 184px;
+      padding: 2px 2px;
   }
   tbody.scrollContentFilter tr{
   padding-top: 3px;

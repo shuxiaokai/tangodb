@@ -24,7 +24,6 @@
             </td>
                 <td class="row-1 row-leader">
                 <%= link_to "#{video.song.try(:title)} - #{video.song.try(:artist)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
-                <br>
                 <%= link_to "#{video.leader.try(:name)} & #{video.follower.try(:name)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
                 </td>
                 <td class="row-1 row-follower"> </td>
