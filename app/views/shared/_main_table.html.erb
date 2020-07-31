@@ -18,10 +18,20 @@
             <% @v_pagination.each do |video| %>
             <tr>
             <%# byebug %>
-                <td class="row-1 row-leader"><%= link_to "#{video.leader.try(:name)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-                <td class="row-1 row-follower"><%= link_to "#{video.follower.try(:name)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-                <td class="row-1 row-song"><%= link_to "#{video.song.try(:title)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
-                <td class="row-1 row-artist"><%= link_to "#{video.song.try(:artist)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
+            <td>
+            <%= link_to image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg",width: 120), current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
+            </td>
+                <td class="row-1 row-leader">
+                <%= link_to "#{video.song.try(:title)} - #{video.song.try(:artist)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
+                <br>
+                <%= link_to "#{video.leader.try(:name)} & #{video.follower.try(:name)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
+                </td>
+                <td class="row-1 row-follower"> </td>
+                <td class="row-1 row-song">
+                <%= link_to "#{video.event.try(:title)}", current_page_params.merge(:youtube_id => "#{video.event.try(:title)}" ) %>
+                </td>
+                
+                <td class="row-1 row-artist"><%= link_to "#{video.song.genre}", current_page_params.merge(:youtube_id => "#{video.song.genre}" ) %></td>
                 <td class="row-1 row-channel"><%= link_to "#{video.channel}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
                 <td class="row-1 row-view_count"><%= link_to "#{video.view_count}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>
                 <td class="row-1 row-upload_date"><%= link_to "#{video.upload_date}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %></td>

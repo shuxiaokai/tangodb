@@ -20,11 +20,6 @@
         <table>
             <tr>
                 <td>
-                    <h2>Performance Date:</h2> <%= video_details.upload_date %>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <h2>Event:</h2>
                 </td>
             </tr>
@@ -33,54 +28,44 @@
                     <h2>Channel:</h2> <%= video_details.channel %>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <h2>Performance Number:</h2>
-                </td>
-            </tr>
         </table>
         <table>
             <tr>
                 <td>
                     <h2>Leader</h2> <%= video_details.leader.try(:name) %>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <h2>Follower:</h2> <%= video_details.follower.try(:name) %>
                 </td>
             </tr>
-                <tr>
-                    <td>
-                        <h2>Genre:</h2> <%= video_details.song.try(:genre) %>
-                    </td>
-                </tr>
             <tr>
+                <td>
+                    <h2>Genre:</h2> <%= video_details.song.try(:genre) %>
+                </td>
                 <td>
                     <h2>Song:</h2> <%= video_details.song.try(:title) %>
                 </td>
+                <td>
+                    <h2>Artist:</h2> <%= video_details.song.try(:artist) %>
+                </td>
             </tr>
-                <tr>
-                    <td>
-                        <h2>Artist:</h2> <%= video_details.song.try(:artist) %>
-                    </td>
-                </tr>
             </table>
             <table>
                 <tr>
                     <td>
                         <h2>Rating:</h2> <%= video_details.avg_rating %> stars
                     </td>
-                </tr>
-            <tr>
-                <td>
-                    <h2>View Count:</h2> <%= video_details.view_count %>
-                </td>
-            </tr>
-                <tr>
+                    <td>
+                        <h2>View Count:</h2> <%= video_details.view_count %>
+                    </td>
+                    <tr>
                     <td>
                         <h2>Length:</h2> <%= video_details.duration %> seconds
                     </td>
+                    <td>
+                        <h2>Upload Date:</h2> <%= video_details.upload_date %>
+                    </td>
+                    </tr>
                 </tr>
         </table>
         <%#

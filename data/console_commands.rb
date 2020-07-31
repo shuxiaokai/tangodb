@@ -78,7 +78,7 @@ end
     #Matches Videotype with Video description
 
     Videotype.all.each do |videotype|
-      Video.where( "unaccent(description) ILIKE unaccent(' '?' ')", "%#{videotype.name}%").each do |video|
+      Video.where( "unaccent(description) ILIKE unaccent(?)", "%\s#{videotype.name}\s%").each do |video|
         video.videotype = videotype
         video.save
       end
