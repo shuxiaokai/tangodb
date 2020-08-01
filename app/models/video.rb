@@ -1,4 +1,5 @@
 class Video < ApplicationRecord
+  
 
   include Filterable
   include PgSearch::Model
