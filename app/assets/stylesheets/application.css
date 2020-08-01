@@ -208,9 +208,8 @@
   .search-bar {
     padding-top: 30px;
     padding-bottom: 30px;
-    padding-left: 30px;
     align-content: center;
-    background:#f9f9f9;
+    width: 200px;
   }
 
 
@@ -270,6 +269,11 @@
     border:0px solid #c2c2c2;
   }
 
+  .dancers_color {
+    color: #c2c2c2;
+    padding: 5px;
+  }
+    
   .scrollTable {
     table-layout: fixed;
     display: table;
@@ -282,22 +286,24 @@
     overscroll-behavior: auto contain;
   }
 
+  
   /* Column widths are based on these cells */
-  .row-id {
-    width: 0%;
+  .row-thumbnail {
+    width: 15%;
   }
   .row-leader {
     width: 20%;
   }
-  .row-follower {
-    width: 0%;
+  .row-event {
+    width: 10%;
   }
-  .row-song {
+  .row-videotype {
     width: 15%;
   }
-  .row-artist {
+  .row-genre {
     width: 15%;
   }
+  
   .row-channel {
     width: 15%;
   }
