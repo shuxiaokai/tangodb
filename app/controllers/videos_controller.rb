@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-
+  before_action :authenticate_user!, except:[:index]
   helper_method :sort_column, :sort_direction
 
   include Pagy::Backend
