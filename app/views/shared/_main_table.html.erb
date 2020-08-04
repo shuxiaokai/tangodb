@@ -1,18 +1,24 @@
     <table class="scrollTableHeader">
         <thead>
             <tr>
-                <th style="width: 180px"></th>
-                <th class="row-1 row-leader">
+                <th class ="row-1 row-thumbnail"></th>
+                <th class="row-1 row-dancers">
+                    <%= sortable "song_id", "Song" %>
+                    /
+                    <%= sortable "artist", "Artist" %> 
+                    &nbsp; &nbsp; &nbsp; &nbsp;
                     <%= sortable "leader_id", "Leader" %>
-                </th>
-                <th class="row-1 row-follower">
+                    /
                     <%= sortable "follower_id", "Follower" %>
                 </th>
-                <th class="row-1 row-song">
-                    <%= sortable "song_id", "Song" %>
+                <th class="row-1 row-event">
+                    <%= sortable "song_event", "Event" %>
                 </th>
-                <th class="row-1 row-artist">
-                    <%= sortable "artist", "Artist" %>
+                <th class="row-1 row-videotype">
+                    <%= sortable "videotype_name", "Type" %>
+                </th>
+                <th class="row-1 row-genre">
+                    <%= sortable "song_genre", "Genre" %>
                 </th>
                 <th class="row-1 row-channel">
                     <%= sortable "channel", "Channel" %>
@@ -29,14 +35,12 @@
 <div class = "scrollTableContainer" >
     <table class="scrollTable">
         <tbody>
-        <%# byebug %>
             <% @v_pagination.each do |video| %>
             <tr>
-            <%# byebug %>
             <td class="row-1 row-thumbnail">
             <%= link_to image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg",width: 120), current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
             </td>
-                <td class="row-1 row-leader">
+                <td class="row-1 row-dancers">
                     <%= link_to "#{video.song.try(:title)} - #{video.song.try(:artist)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
                     <%= link_to "#{video.leader.try(:name)} & #{video.follower.try(:name)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}"), class:"dancers_color" %>
                 </td>  

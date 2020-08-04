@@ -290,24 +290,27 @@
   .row-thumbnail {
     width: 15%;
   }
-  .row-leader {
+  .row-dancers {
     width: 20%;
+  }
+  .row-song-artist {
+    width: 10%;
   }
   .row-event {
     width: 10%;
   }
   .row-videotype {
-    width: 15%;
+    width: 10%;
   }
   .row-genre {
-    width: 15%;
+    width: 10%;
   }
   
   .row-channel {
     width: 15%;
   }
   .row-view_count {
-    width: 9%;
+    width: 10%;
   }
   .row-upload_date {
     width: 10%;
