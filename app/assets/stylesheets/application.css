@@ -396,10 +396,12 @@
 
   .container {
     display:flex;
+    flex-wrap: wrap;
     border-collapse: collapse;
   }
   .container > div {
     flex: 1; /*grow*/
+    flex-wrap: wrap;
     border-collapse: collapse;
   }
 
@@ -410,35 +412,9 @@
   /* define height and width of scrollable area. Add 16px to width for scrollbar          */
   div.tableContainerFilter {
     border: 0px solid #963;
-    padding: 5px;
     border-collapse: collapse;
-  }
-
-  /* Reset overflow value to hidden for all non-IE browsers. */
-  html>body div.tableContainerFilter {
-      overflow-x: hidden;
-      width: 100%;
-  }
-
-  /* define width of table. IE browsers only                 */
-  div.tableContainerFilter table {
-      float: left;
-      /* width: 740px */
-  }
-
-  /* define width of table. Add 16px to width for scrollbar.           */
-  /* All other non-IE browsers.                                        */
-  html>body div.tableContainerFilter table {
-      /* width: 756px */
-  }
-
-  /* set table header to a fixed position. WinIE 6.x only                                       */
-  /* In WinIE 6.x, any element with a position property set to relative and is a child of       */
-  /* an element that has an overflow property set, the relative value translates into fixed.    */
-  /* Ex: parent element DIV with a class of tableContainer has an overflow property set to auto */
-
-  thead.fixedHeaderFilter tr {
-      position: relative;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 
   /* set THEAD element to have block level attributes. All other non-IE browsers            */
@@ -463,8 +439,9 @@
       overflow-x: hidden;
       overscroll-behavior: contain;
       table-layout:fixed;
-      width: 184px;
+      width: 170px;
       padding: 2px 2px;
+      width: 100%;
   }
   tbody.scrollContentFilter tr{
   padding-top: 3px;
@@ -528,6 +505,11 @@ tbody.scrollContentFilter tr:hover {
 
 footer {
   }
+
+a.active {
+  background-color: #6699ff;
+  /* other styling here, as desired */
+}
 
   footer small {
     float: right;
