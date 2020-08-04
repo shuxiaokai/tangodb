@@ -9,11 +9,9 @@
              <tbody class="scrollContentFilter">
             <tr>
                <td>
-               <%# byebug %>
                   <%= link_to "All (#{Video.pluck('videotype_id').uniq.count} Type)", current_page_params.merge(:videotype_id => " ") %>
                </td>
             </tr>
-            <%# byebug %>
                <% @videos.map(&:videotype).compact.uniq.sort.each do |videotype| %>
              <tr>
                <td>
@@ -34,13 +32,10 @@
             <tbody class="scrollContentFilter">
             <tr>
                <td>
-               <%# byebug %>
                   <%= link_to "All (#{Video.joins(:song).pluck(:genre).compact.uniq.count} Genre)", current_page_params.merge(:genre => " ") %>
                </td>
-            </tr>
-            <%# byebug %>  
-               <% @videos.joins(:song).pluck(:genre).compact.uniq.sort.each do |genre| %>
-               <%# byebug %>  
+            </tr>  
+               <% @videos.joins(:song).pluck(:genre).compact.uniq.sort.each do |genre| %>  
              <tr>
                <td>
                   <%= link_to genre, current_page_params.merge(genre: genre ) %>
@@ -48,22 +43,6 @@
             </tr>
             <% end %>
          </tbody>
-                                                                        <% if false %>
-                                                                        <tbody class="scrollContentFilter" style="background:#666666">
-                                                                           <tr>
-                                                                              <td>Tango</td>
-                                                                           </tr>
-                                                                           <tr>
-                                                                              <td>Milonga</td>
-                                                                           </tr>
-                                                                           <tr>
-                                                                              <td>Vals</td>
-                                                                           </tr>
-                                                                           <tr>
-                                                                              <td>Alternative</td>
-                                                                           </tr>
-                                                                        </tbody>
-                                                                        <% end %>
          </table>
    </div> 
    <div id="Leader Filter" class="tableContainerFilter">
@@ -76,11 +55,9 @@
          <tbody class="scrollContentFilter">
             <tr>
                <td>
-               <%# byebug %>
                   <%= link_to "All (#{Video.pluck('leader_id').uniq.count} Leaders)", current_page_params.merge(:leader_id => " ") %>
                </td>
             </tr>
-            <%# byebug %>
                <% @videos.map(&:leader).compact.uniq.sort.each do |leader| %>
              <tr>
                <td>

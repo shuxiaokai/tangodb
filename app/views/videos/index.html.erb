@@ -4,26 +4,34 @@
       <div class= "main-header">
          <%= render "shared/header" %>
       </div>
+
+      <% if false %>
       <div class= "side">
          <%#= render "shared/search" %>
-         <%= render "shared/side_menu" %>
+         <%#= render "shared/side_menu" %>
       </div>
-      <div class= "recommended_videos"> 
-         <%= render "shared/recommended_videos" %>
-      </div>
+      <% end %>
+
+    
+
+      <% if false %>
       <div class= "details">
-         <%= render "shared/details_video" %>
       </div>
+      <% end %>
+
       <div class= "video">
       <%= render "shared/video" %>
       </div>
       <div class= "content">    
-         <%= render "shared/column_filters" %>
-         <%= render "shared/main_table"%>
+            <%= render "shared/column_filters" %>
+            <%= render "shared/main_table"%>
          <div class="apple_pagination">
             <div class= "footer">
-            <%= render "shared/footer" %>
+               <%= render "shared/footer" %>
             </div>
          </div>
+      </div>
+      <div class= "recommended_videos"> 
+         <%= render "shared/recommended_videos" %>
       </div>
    </div>

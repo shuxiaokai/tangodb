@@ -199,6 +199,36 @@ ALTER SEQUENCE public.leaders_id_seq OWNED BY public.leaders.id;
 
 
 --
+-- Name: playlists; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.playlists (
+    id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: playlists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.playlists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: playlists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.playlists_id_seq OWNED BY public.playlists.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -384,6 +414,13 @@ ALTER TABLE ONLY public.leaders ALTER COLUMN id SET DEFAULT nextval('public.lead
 
 
 --
+-- Name: playlists id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.playlists ALTER COLUMN id SET DEFAULT nextval('public.playlists_id_seq'::regclass);
+
+
+--
 -- Name: songs id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -449,6 +486,14 @@ ALTER TABLE ONLY public.followers
 
 ALTER TABLE ONLY public.leaders
     ADD CONSTRAINT leaders_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: playlists playlists_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.playlists
+    ADD CONSTRAINT playlists_pkey PRIMARY KEY (id);
 
 
 --
@@ -565,6 +610,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200728084051'),
 ('20200728085020'),
 ('20200728085048'),
-('20200801002355');
+('20200801002355'),
+('20200804185548');
 
 
