@@ -1,4 +1,14 @@
 <div class="container">
+
+ <div class="small-col">
+    <h2>Filter Publishers:</h2>
+    <select name="publishers" multiple size="30"  data-action="select-filter#publisherChange">
+      <%= @publishers.each do |publisher| %>
+        <option value="<%= publisher %>"><%= publisher.humanize %></option>
+      <% end %>
+    </select>
+  </div>
+
    <div id="Type Filter" class="tableContainerFilter" >
          <table class="scrollTableFilter">
             <thead class="fixedHeaderFilter">

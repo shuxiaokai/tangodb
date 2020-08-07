@@ -29,7 +29,9 @@ class VideosController < ApplicationController
                                         .order(sort_column + " " + sort_direction)
                                         .where.not(leader: nil, follower: nil, song: nil), items: 100)
     end
-      
+
+    @leaders = Leader.all.order(:leader).pluck(:leader).uniq
+
   end
 
   def search
