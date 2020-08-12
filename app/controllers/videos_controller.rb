@@ -38,7 +38,7 @@ class VideosController < ApplicationController
     @songs = Video.all.joins(:song).pluck('songs.genre').uniq
     @events = Video.all.joins(:event).pluck('events.name').uniq
     @videotypes = Video.all.joins(:videotype).pluck('name').uniq
-    @videos = Video.all.limit(100)
+    @videos = Video.all.where.not(leader: nil, follower: nil, song: nil).limit(100)
   end
 
   def search
