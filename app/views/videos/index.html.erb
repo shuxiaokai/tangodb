@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-   <div data-controller="videos">
-      <h1 data-target="videos.output"></h1>
-   </div>
-
    <div class= "wrapper">
       <div class= "main-header">
          <%= render "shared/header" %>
@@ -29,7 +25,18 @@
       </div>
       <div class= "content">    
             <%= render "shared/column_filters" %>
-            <%= render "shared/main_table"%>
+            <div data-controller="select-filter" data-select-filter-url="<%= videos_filter_path %>">
+                     <h2>Filter channels:</h2>
+         <select name="channels" multiple size="13" data-action="select-filter#change">
+            <%= @channels.each do |channel| %>
+            <option value="<%= channel %>"><%= channel %></option>
+            <% end %>
+         </select>
+               <div data-target="select-filter.videos">
+                  <%= render partial: 'videos/video_list', locals: { videos: @videos} %>
+               </div>
+            </div>
+            <%= render "shared/main_table" %>
          <div class="apple_pagination">
             <div class= "footer">
                <%= render "shared/footer" %>

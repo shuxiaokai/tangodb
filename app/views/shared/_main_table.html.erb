@@ -35,7 +35,7 @@
 <div class = "scrollTableContainer" >
     <table class="scrollTable">
         <tbody>
-            <% @v_pagination.each do |video| %>
+            <% @videos.each do |video| %>
             <tr>
             <td class="row-1 row-thumbnail">
             <%= link_to image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg",width: 120), current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
@@ -51,7 +51,7 @@
                     <%= link_to "#{video.videotype.try(:name)}", current_page_params.merge(:youtube_id => "#{video.videotype.try(:name)}" ) %>
                 </td>
                 <td class="row-1 row-genre">
-                    <%= link_to "#{video.song.genre}", current_page_params.merge(:youtube_id => "#{video.song.genre}" ) %>
+                    <%= link_to "#{video.song.try(:genre)}", current_page_params.merge(:youtube_id => "#{video.song.try(:genre)}" ) %>
                 </td>
                 <td class="row-1 row-channel">
                     <%= link_to "#{video.channel}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>

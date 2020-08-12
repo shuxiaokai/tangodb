@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Channel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @videos.each do |video| %>
+      <tr>
+        <td><%= video.title %></td>
+        <td><%= video.description %></td>
+        <td><%= video.channel %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
