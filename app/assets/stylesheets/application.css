@@ -60,7 +60,7 @@
   // } */
   @media (min-width: 700px) {
     .main-header {
-      grid-column: col-start 1 / span 12;
+      grid-column: col-start 2 / span 12;
       grid-row: 1 / 2;
       }
     .video {
@@ -168,7 +168,7 @@
     letter-spacing: -1px;
     padding-top: 5px; 
     padding-bottom: 5px;
-    padding-left: 30px;
+    padding-left: 5px;
     font-weight: bold;
     text-decoration: none;
   }
