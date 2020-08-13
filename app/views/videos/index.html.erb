@@ -25,13 +25,45 @@
       </div>
       <div class= "content">    
             <%= render "shared/column_filters" %>
-            <div data-controller="select-filter" data-select-filter-url="<%= videos_filter_path %>">
-                     <h2>Filter channels:</h2>
-         <select name="channels" multiple size="13" data-action="select-filter#change">
-            <%= @channels.each do |channel| %>
-            <option value="<%= channel %>"><%= channel %></option>
-            <% end %>
-         </select>
+            <div class="container">
+               <div data-controller="select-filter" data-select-filter-url="<%= videos_filter_path %>">
+               
+                  <h2>Filter Type:</h2>
+                  <select name="videotypes" multiple size="13"  data-action="select-filter#videotypeChange">
+                     <%= @videotypes.each do |videotype| %>
+                     <option value="<%= videotype.id %>"><%= videotype.name %></option>
+                     <% end %>
+                  </select>
+                  
+                  <h2>Filter Genre:</h2>
+                  <select name="genres" multiple size="13"  data-action="select-filter#genreChange">
+                     <%= @genre.each do |genre| %>
+                     <option value="<%= genre %>"><%= genre %></option>
+                     <% end %>
+                  </select>
+                  
+                  <h2>Filter Leader:</h2>
+                  <select name="leaders" multiple size="13"  data-action="select-filter#leaderChange">
+                     <%= @leaders.each do |leader| %>
+                     <option value="<%= leader.id %>"><%= leader.name %></option>
+                     <% end %>
+                  </select>
+                  
+                  <h2>Filter Event:</h2>
+                  <select name="followers" multiple size="13"  data-action="select-filter#followerChange">
+                     <%= @followers.each do |follower| %>
+                     <option value="<%= follower.id %>"><%= follower.name %></option>
+                     <% end %>
+                  </select>
+
+                  <h2>Filter channels:</h2>
+                  <select name="channels" multiple size="13" data-action="select-filter#channelChange">
+                  <option value=  "<%= @channels %>"><%= "All #{Video.pluck('channel').uniq.count} Channels" %> </option>
+                     <%= @channels.each do |channel| %>
+                     <option value="<%= channel %>"><%= channel %></option>
+                     <% end %>
+                  </select>
+               </div>
                <div data-target="select-filter.videos">
                   <%= render partial: 'videos/video_list', locals: { videos: @videos} %>
                </div>

@@ -31,14 +31,16 @@ class VideosController < ApplicationController
     # end
 
 
-
-    @leaders = Video.all.joins(:leader).pluck('leaders.name').uniq
-    @followers = Video.all.joins(:follower).pluck('followers.name').uniq
-    @channels = Video.all.order(:channel).pluck(:channel).uniq
-    @songs = Video.all.joins(:song).pluck('songs.genre').uniq
-    @events = Video.all.joins(:event).pluck('events.name').uniq
-    @videotypes = Video.all.joins(:videotype).pluck('name').uniq
-    @videos = Video.all.where.not(leader: nil, follower: nil, song: nil).limit(100)
+    @videos = Video.includes(:leader, :follower, :song, :videotype, :event)
+                   .where.not(leader: nil, follower: nil, song: nil).limit(3000)
+    @leaders = Leader.joins(:videos).order(:name).distinct
+    @followers = Follower.joins(:videos).order(:name).distinct
+    @channels = Video.order(:channel).pluck(:channel).uniq
+    @genre = Song.all.pluck(:genre).uniq
+    @songs = Song.all
+    @events = Event.all
+    @videotypes = Videotype.all
+    
   end
 
   def search
