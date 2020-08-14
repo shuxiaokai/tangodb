@@ -4,10 +4,8 @@ export default class extends Controller {
   static targets = [ "videos"]
 
   connect() {
-    this.filters =  { videotype: [] , leaders: [], followers: [], event: [], channels: [] } 
+    this.filters =  { videotypes: [] , leaders: [], followers: [], events: [], channels: [] } 
 }
-
-
 
 videotypeChange(event) {
   this.filters.videotypes = getSelectedValues(event)

@@ -38,8 +38,8 @@ class VideosController < ApplicationController
     @channels = @videos.pluck(:channel).compact.uniq.sort
     @genres = @videos.includes(:song).pluck(:genre).compact.uniq.sort
     @songs = @videos.includes(:song).map(&:song).compact.uniq.sort
-    @events = Event.all
-    @videotypes = Videotype.all
+    @events = @videos.includes(:event).map(&:event).compact.uniq.sort
+    @videotypes = @videos.includes(:videotype).map(&:videotype).compact.uniq.sort
     
   end
 
