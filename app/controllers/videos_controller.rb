@@ -32,12 +32,12 @@ class VideosController < ApplicationController
 
 
     @videos = Video.includes(:leader, :follower, :song, :videotype, :event)
-                   .where.not(leader: nil, follower: nil, song: nil).limit(3000)
-    @leaders = Leader.joins(:videos).order(:name).distinct
-    @followers = Follower.joins(:videos).order(:name).distinct
-    @channels = Video.order(:channel).pluck(:channel).uniq
-    @genre = Song.all.pluck(:genre).uniq
-    @songs = Song.all
+                   .where.not(leader: nil, follower: nil, song: nil).limit(1000)
+    @leaders = @videos.includes(:leader).map(&:leader).compact.uniq.sort
+    @followers = @videos.includes(:follower).map(&:follower).compact.uniq.sort
+    @channels = @videos.pluck(:channel).compact.uniq.sort
+    @genres = @videos.includes(:song).pluck(:genre).compact.uniq.sort
+    @songs = @videos.includes(:song).map(&:song).compact.uniq.sort
     @events = Event.all
     @videotypes = Videotype.all
     
