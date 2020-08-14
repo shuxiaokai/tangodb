@@ -1,87 +1,172 @@
 <!DOCTYPE html>
 <html>
 
-   <div class= "wrapper">
-      <div class= "main-header">
-         <%= render "shared/header" %>
-      </div>
+<div class="wrapper">
+    <div class="main-header">
+        <%= render "shared/header" %>
+    </div>
 
-      <% if false %>
-      <div class= "side">
-         <%= render "shared/search" %>
-         <%= render "shared/side_menu" %>
-      </div>
-      <% end %>
+    <% if false %>
+    <div class="side">
+        <%= render "shared/search" %>
+        <%= render "shared/side_menu" %>
+    </div>
+    <% end %>
 
-    
 
-      <% if false %>
-      <div class= "details">
-      </div>
-      <% end %>
 
-      <div class= "video">
-      <%= render "shared/video" %>
-      </div>
-      <div class= "content">
-         <div class= "container">    
-            <%#= render "shared/column_filters" %>
-               <div data-controller="select-filter" data-select-filter-url="<%= videos_filter_path %>">
+    <% if false %>
+    <div class="details">
+    </div>
+    <% end %>
 
-                     <h2>Filter Type:</h2>
-                     <select name="videotypes" multiple size="13"  data-action="select-filter#videotypeChange">
-                        <%= @videotypes.each do |videotype| %>
-                        <option value="<%= videotype.id %>"><%= videotype.name %></option>
-                        <% end %>
-                     </select>
-                     <h2>Filter Genre:</h2>
-                     <select name="genres" multiple size="13"  data-action="select-filter#genreChange">
-                        <%= @genres.each do |genre| %>
-                        <option value="<%= genre %>"><%= genre %></option>
-                        <% end %>
-                     </select>
+    <div class="video">
+        <%= render "shared/video" %>
+    </div>
+    <div class="content">
 
-                  <h2>Filter Leader:</h2>
-                  <select name="leaders" multiple size="13"  data-action="select-filter#leaderChange">
-                     <%= @leaders.each do |leader| %>
-                     <option value="<%= leader.id %>"><%= leader.name %></option>
-                     <% end %>
-                  </select>
+        <%#= render "shared/column_filters" %>
+        <div data-controller="select-filter" data-select-filter-url="<%= videos_filter_path %>">
+            <div class="container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                <label for=" ">Filter Type:</label>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <select name="videotypes" multiple size="13" data-action="select-filter#videotypeChange">
+                                    <%= @videotypes.each do |videotype| %>
+                                    <option value="<%= videotype.id %>"><%= videotype.name %></option>
+                                    <% end %>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                <label for=" ">Filter Genres:</label>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
 
-                  <h2>Filter Follower:</h2>
-                  <select name="followers" multiple size="13"  data-action="select-filter#followerChange">
-                     <%= @followers.each do |follower| %>
-                     <option value="<%= follower.id %>"><%= follower.name %></option>
-                     <% end %>
-                  </select>
+                                <select name="genres" multiple size="13" data-action="select-filter#genreChange">
+                                    <%= @genres.each do |genre| %>
+                                    <option value="<%= genre %>"><%= genre %></option>
+                                    <% end %>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                <label for=" ">Filter Leaders:</label>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
 
-                     <h2>Filter Event:</h2>
-                     <select name="events" multiple size="13"  data-action="select-filter#eventChange">
-                        <%= @events.each do |event| %>
-                        <option value="<%= event.id %>"><%= event.name %></option>
-                        <% end %>
-                     </select>
+                                <select name="leaders" multiple size="13" data-action="select-filter#leaderChange">
+                                    <%= @leaders.each do |leader| %>
+                                    <option value="<%= leader.id %>"><%= leader.name %></option>
+                                    <% end %>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                <label for=" ">Filter Followers:</label>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
 
-                  <h2>Filter channels:</h2>
-                  <select name="channels" multiple size="13" data-action="select-filter#channelChange">
-                     <%= @channels.each do |channel| %>
-                     <option value="<%= channel %>"><%= channel %></option>
-                     <% end %>
-                  </select>
+                                <select name="followers" multiple size="13" data-action="select-filter#followerChange">
+                                    <%= @followers.each do |follower| %>
+                                    <option value="<%= follower.id %>"><%= follower.name %></option>
+                                    <% end %>
+                                </select>
 
-               <div data-target="select-filter.videos">
-                  <%= render partial: 'videos/video_list', locals: { videos: @videos} %>
-               </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                <label for=" ">Filter Events:</label>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+
+                                <select name="events" multiple size="13" data-action="select-filter#eventChange">
+                                    <%= @events.each do |event| %>
+                                    <option value="<%= event.id %>"><%= event.name %></option>
+                                    <% end %>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                <label for=" ">Filter Channels:</label>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <select name="channels" multiple size="13" data-action="select-filter#channelChange">
+                                    <%= @channels.each do |channel| %>
+                                    <option value="<%= channel %>"><%= channel %></option>
+                                    <% end %>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+            <div data-target="select-filter.videos">
+                <%= render partial: 'videos/video_list', locals: { videos: @videos} %>
             </div>
-            <%#= render "shared/main_table" %>
-         <div class="apple_pagination">
-            <div class= "footer">
-               <%= render "shared/footer" %>
+
+        </div>
+        <%#= render "shared/main_table" %>
+        <div class="apple_pagination">
+            <div class="footer">
+                <%= render "shared/footer" %>
             </div>
-         </div>
-      </div>
-      <div class= "recommended_videos"> 
-         <%= render "shared/recommended_videos" %>
-      </div>
-   </div>
+        </div>
+    </div>
+    <div class="recommended_videos">
+        <%= render "shared/recommended_videos" %>
+    </div>
+</div>
