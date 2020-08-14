@@ -1,4 +1,38 @@
 <div class = "scrollTableContainer" >
+ <table class="scrollTableHeader">
+        <thead>
+            <tr>
+                <th class ="row-1 row-thumbnail"></th>
+                <th class="row-1 row-dancers">
+                    <%= "Song" %>
+                    /
+                    <%= "Artist" %> 
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+                    <%= "Leader" %>
+                    /
+                    <%="Follower" %>
+                </th>
+                <th class="row-1 row-event">
+                    <%= "Event" %>
+                </th>
+                <th class="row-1 row-videotype">
+                    <%="Type" %>
+                </th>
+                <th class="row-1 row-genre">
+                    <%="Genre" %>
+                </th>
+                <th class="row-1 row-channel">
+                    <%="Channel" %>
+                </th>
+                <th class="row-1 row-view_count">
+                    <%="View Count" %>
+                </th>
+                <th class="row-1 row-upload_date">
+                    <%="Upload Date" %>
+                </th>
+            </tr>
+        </thead>
+        </table>
   <table class="scrollTable">
     <tbody>
       <% @videos.each do |video| %>

@@ -39,7 +39,7 @@ class VideosController < ApplicationController
     @genres = @videos.includes(:song).pluck(:genre).compact.uniq.sort
     @songs = @videos.includes(:song).map(&:song).compact.uniq.sort
     @events = @videos.includes(:event).map(&:event).compact.uniq.sort
-    @videotypes = @videos.includes(:videotype).map(&:videotype).compact.uniq.sort
+    @videotypes = @videos.includes(:videotype).map(&:videotype).compact.uniq
     
   end
 
@@ -50,7 +50,6 @@ class VideosController < ApplicationController
   end
 
 private
-
 
   def sort_column
     Video.column_names.include?(params[:sort]) ? params[:sort] : "upload_date"
