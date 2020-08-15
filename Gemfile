@@ -19,7 +19,7 @@ gem 'json',                   '~> 2.3', '>= 2.3.1'
 gem 'pg_search',              '~> 2.3', '>= 2.3.2'
 gem 'pagy',                   '~> 0.6.0'
 gem 'devise',                 '~> 4.7', '>= 4.7.2'
-
+gem "stimulus_reflex", "~> 3.2"
 
 group :development, :test do
   gem 'byebug'
@@ -34,3 +34,4 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver',       '3.142.7'
 end
+
