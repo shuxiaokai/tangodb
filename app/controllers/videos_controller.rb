@@ -86,7 +86,7 @@ private
   # end
 
   def permitted_column_name(column_name)
-    %w[channel view_count  upload_date].find { |permitted| column_name == permitted } || "channel"
+    %w[song_id follower_id leader_id channel song_genre event_id videotype_id view_count upload_date].find { |permitted| column_name == permitted } || "channel"
   end
 
   def permitted_direction(direction)
