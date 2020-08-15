@@ -40,7 +40,7 @@
                         <tr>
                             <td>
                                 <select name="videotypes" multiple size="13" data-action="select-filter#videotypeChange">
-                                <option value="">All <%= @videotypes.count %> Types</option>
+                                <option selected="selected" value= " " >All <%= @videotypes.count %> Types</option>
                                     <%= @videotypes.each do |videotype| %>
                                     <option value="<%= videotype.id %>"><%= videotype.name %></option>
                                     <% end %>
@@ -62,7 +62,7 @@
                             <td>
 
                                 <select name="genres" multiple size="13" data-action="select-filter#genreChange">
-                                <option value="">All <%= @genres.count %> Genres</option>
+                                <option selected="selected" value= " " >All <%= @genres.count %> Genres</option>
                                     <%= @genres.each do |genre| %>
                                     <option value="<%= genre %>"><%= genre %></option>
                                     <% end %>
@@ -84,7 +84,7 @@
                             <td>
 
                                 <select name="leaders" multiple size="13" data-action="select-filter#leaderChange">
-                                <option value="">All <%= @leaders.count %> Leaders</option>
+                                <option selected="selected" value= " ">All <%= @leaders.count %> Leaders</option>
                                     <%= @leaders.each do |leader| %>
                                     <option value="<%= leader.id %>"><%= leader.name %></option>
                                     <% end %>
@@ -106,7 +106,7 @@
                             <td>
 
                                 <select name="followers" multiple size="13" data-action="select-filter#followerChange">
-                                <option value="">All <%= @followers.count %> Followers</option>
+                                <option selected="selected" value= " " >All <%= @followers.count %> Followers</option>
                                     <%= @followers.each do |follower| %>
                                     <option value="<%= follower.id %>"><%= follower.name %></option>
                                     <% end %>
@@ -129,7 +129,7 @@
                             <td>
 
                                 <select name="events" multiple size="13" data-action="select-filter#eventChange">
-                                <option value="">All <%= @events.count %> Events</option>
+                                <option selected="selected" value= " " >All <%= @events.count %> Events</option>
                                     <%= @events.each do |event| %>
                                     <option value="<%= event.id %>"><%= event.name %></option>
                                     <% end %>
@@ -150,7 +150,7 @@
                         <tr>
                             <td>
                                 <select name="channel=[]" multiple size="13" data-action="select-filter#channelChange">
-                                <option value="">All <%= @channels.count %> Channels</option>
+                                <option selected="selected" value= " " >All <%= @channels.count %> Channels</option>
                                     <%= @channels.each do |channel| %>
                                     <option value="<%= channel %>"><%= channel %></option>
                                     <% end %>

@@ -4,7 +4,8 @@ export default class extends Controller {
   static targets = [ "videos"]
 
   connect() {
-    this.filters =  { videotypes: [] ,genres: [], leaders: [], followers: [], events: [], channels: [] } 
+    this.filters =  { videotypes: [] , genres: [], leaders: [], followers: [], events: [], channels: [] }
+    console.log(this.filters) 
 }
 
 videotypeChange(event) {
@@ -14,7 +15,7 @@ videotypeChange(event) {
 }
 
 genreChange(event) {
-  this.filters.genres = getSelectedValues(event)
+  this.filters.genres= getSelectedValues(event)
   console.log(this.filters.genres)
   this.change()
 }
@@ -38,8 +39,8 @@ eventChange(event) {
 }
 
 channelChange(event) {
-  this.filters.channels = getSelectedValues(event)
-  console.log(this.filters.channels)
+  this.filters.channels  = getSelectedValues(event)
+  console.log(this.filters.channels )
   this.change()
 }
 
@@ -58,6 +59,7 @@ change() {
     .then(html => {
       this.videosTarget.innerHTML = html
     }).catch(error => {console.log(error)} )
+    console.log(this.filters) 
   }
 }
 
