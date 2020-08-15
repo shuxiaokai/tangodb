@@ -12,12 +12,23 @@ class Video < ApplicationRecord
   validates :youtube_id, presence: true, uniqueness: true
   validates :title, presence: true
 
-  scope   :filter_by_leader_id,   -> (leader_id)    { where("leader_id = ?",   leader_id) }
-  scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
-  scope   :filter_by_event_id, -> (event_id)  { where("event_id = ?", event_id) }
-  scope   :filter_by_videotype_id, -> (videotype_id)  { where("videotype_id = ?", videotype_id) }
-  scope   :filter_by_channel, -> (channel)  { where("channel = ?", channel) }
-  scope   :filter_by_genre, -> (genre)  { joins(:song).where("genre = ?", genre) }
+  # scope   :filter_by_leader_id,   -> (leader_id)    { where("leader_id = ?",   leader_id) }
+  # scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
+  # scope   :filter_by_event_id, -> (event_id)  { where("event_id = ?", event_id) }
+  # scope   :filter_by_videotype_id, -> (videotype_id)  { where("videotype_id = ?", videotype_id) }
+  # scope   :filter_by_channel, -> (channel)  { where("channel = ?", channel) }
+  # scope   :filter_by_genre, -> (genre)  { joins(:song).where("genre = ?", genre) }
+
+   scope :search, ->(query) {
+     query = sanitize_sql_like(query)
+     where(arel_table[:name].matches("%#{query}%"))
+       .or(where(arel_table[:category].matches("%#{query}%")))
+   }
+
+  scope :channel, ->(channel) { where(channel: channel) if channel.present? }
+  scope :view_count, ->(view_count) { where(view_count: view_count..) if view_count.present? }
+  scope :upload_date, ->(upload_date) { where(upload_date: upload_date) if upload_date.present? }
+
 
 
   belongs_to :leader
@@ -26,12 +37,12 @@ class Video < ApplicationRecord
   belongs_to :videotype
   belongs_to :event
 
-  pg_search_scope :search_by_keyword,
-                    against: %i[title description tags],
-                    using: {
-                      tsearch: {normalization: 32}
-                    },
-                    ignoring: :accents
+  # pg_search_scope :search_by_keyword,
+  #                   against: %i[title description tags],
+  #                   using: {
+  #                     tsearch: {normalization: 32}
+  #                   },
+  #                   ignoring: :accents
                     
                
   #pg_search_scope :filter_by_leader_id, against: [:leader_id]

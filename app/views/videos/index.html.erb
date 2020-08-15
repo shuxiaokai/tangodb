@@ -13,8 +13,6 @@
     </div>
     <% end %>
 
-
-
     <% if false %>
     <div class="details">
     </div>
@@ -26,150 +24,79 @@
     <div class="content">
 
         <%#= render "shared/column_filters" %>
-        <div data-controller="select-filter" data-select-filter-url="<%= videos_filter_path %>">
-            <div class="container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <label for=" ">Filter Type:</label>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <select name="videotypes" multiple size="13" data-action="select-filter#videotypeChange">
-                                <option selected="selected" value= " " >All <%= @videotypes.count %> Types</option>
-                                    <%= @videotypes.each do |videotype| %>
-                                    <option value="<%= videotype.id %>"><%= videotype.name %></option>
-                                    <% end %>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <label for=" ">Filter Genres:</label>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-
-                                <select name="genres" multiple size="13" data-action="select-filter#genreChange">
-                                <option selected="selected" value= " " >All <%= @genres.count %> Genres</option>
-                                    <%= @genres.each do |genre| %>
-                                    <option value="<%= genre %>"><%= genre %></option>
-                                    <% end %>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <label for=" ">Filter Leaders:</label>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-
-                                <select name="leaders" multiple size="13" data-action="select-filter#leaderChange">
-                                <option selected="selected" value= " ">All <%= @leaders.count %> Leaders</option>
-                                    <%= @leaders.each do |leader| %>
-                                    <option value="<%= leader.id %>"><%= leader.name %></option>
-                                    <% end %>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <label for=" ">Filter Followers:</label>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-
-                                <select name="followers" multiple size="13" data-action="select-filter#followerChange">
-                                <option selected="selected" value= " " >All <%= @followers.count %> Followers</option>
-                                    <%= @followers.each do |follower| %>
-                                    <option value="<%= follower.id %>"><%= follower.name %></option>
-                                    <% end %>
-                                </select>
-
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <label for=" ">Filter Events:</label>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-
-                                <select name="events" multiple size="13" data-action="select-filter#eventChange">
-                                <option selected="selected" value= " " >All <%= @events.count %> Events</option>
-                                    <%= @events.each do |event| %>
-                                    <option value="<%= event.id %>"><%= event.name %></option>
-                                    <% end %>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <label for=" ">Filter Channels:</label>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <select name="channel=[]" multiple size="13" data-action="select-filter#channelChange">
-                                <option selected="selected" value= " " >All <%= @channels.count %> Channels</option>
-                                    <%= @channels.each do |channel| %>
-                                    <option value="<%= channel %>"><%= channel %></option>
-                                    <% end %>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <% if false %>
+        <div class="form-row mb-4">
+            <div class="col-6">
+                <input type="text" placeholder="Search..." class="form-control form-control-lg" value="<%= @query %>" data-reflex="input->TabularReflex#search" data-reflex-root="#search-results">
             </div>
-            <div data-target="select-filter.videos">
-                <%= render partial: 'videos/video_list', locals: { videos: @videos} %>
-            </div>
-
         </div>
-        <%#= render "shared/main_table" %>
-        <div class="apple_pagination">
-            <div class="footer">
-                <%= render "shared/footer" %>
-            </div>
+        <% end %>
+
+        <div class="scrollTableContainer">
+            <% if @pagy.count > 0 %>
+            <table class="scrollTableHeader">
+                <thead class="bg-primary">
+                    <tr>
+                        <th style="width:25%">
+                            <%= link_to "Channel #{arrow :channel}", "#", class: column_css(:channel),
+                            data: { reflex: "click->TabularReflex#order", column_name: :channel, direction: direction } %>
+                        </th>
+                        <th style="width:25%">
+                            <%= link_to "View Count #{arrow :view_count}", "#", class: column_css(:view_count),
+                            data: { reflex: "click->TabularReflex#order", column_name: :view_count, direction: direction } %>
+                        </th>
+                        <th style="width:25%">
+                            <%= link_to "Upload Date #{arrow :upload_date}", "#", class: column_css(:upload_date),
+                            data: { reflex: "click->TabularReflex#order", column_name: :upload_date, direction: direction } %>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class="scrollTableContainer">
+            <table class="scrollTable">
+                <tbody>
+                    <% @videos.each do |video| %>
+                    <tr>
+                        <td class="row-1 row-thumbnail">
+                            <%= link_to image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg",width: 120), current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
+                        </td>
+                        <td class="row-1 row-dancers">
+                            <%= link_to "#{video.song.try(:title)} - #{video.song.try(:artist)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
+                            <%= link_to "#{video.leader.try(:name)} & #{video.follower.try(:name)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}"), class:"dancers_color" %>
+                        </td>
+                        <td class="row-1 row-event">
+                            <%= link_to "#{video.event.try(:name)}", current_page_params.merge(:youtube_id => "#{video.event.try(:title)}" ) %>
+                        </td>
+                        <td class="row-1 row-videotype">
+                            <%= link_to "#{video.videotype.try(:name)}", current_page_params.merge(:youtube_id => "#{video.videotype.try(:name)}" ) %>
+                        </td>
+                        <td class="row-1 row-genre">
+                            <%= link_to "#{video.song.try(:genre)}", current_page_params.merge(:youtube_id => "#{video.song.try(:genre)}" ) %>
+                        </td>
+                        <td class="row-1 row-channel">
+                            <%= link_to "#{video.channel}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
+                        </td>
+                        <td class="row-1 row-view_count">
+                            <%= link_to "#{video.view_count}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
+                        </td>
+                        <td class="row-1 row-upload_date">
+                            <%= link_to "#{video.upload_date}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+        <p class="lead"><%= @pagy.count %> Results Found</p>
+        <%= render "/videos/paginator" if @pagy.pages > 1 %>
+        <% end %>
+    </div>
+    <%#= render "shared/main_table" %>
+    <div class="apple_pagination">
+        <div class="footer">
+            <%= render "shared/footer" %>
         </div>
     </div>
     <div class="recommended_videos">
