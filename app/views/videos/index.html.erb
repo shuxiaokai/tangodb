@@ -37,29 +37,26 @@
             <table class="scrollTableHeader">
                 <thead class="bg-primary">
                     <tr>
-                        <th style="width:15%">
+                        <th style="min-width:180px"></th>
+                        <th style="width:5%">
                             <%= link_to "Song #{arrow :song_id}", "#", class: column_css(:song_id),
                             data: { reflex: "click->TabularReflex#order", column_name: :song_id, direction: direction } %>
                         </th>
-                        <th style="width:15%">
+                        <th style="width:10%">
                             <%= link_to "Leader #{arrow :leader_id}", "#", class: column_css(:leader_id),
                             data: { reflex: "click->TabularReflex#order", column_name: :leader_id, direction: direction } %>
                         </th>
-                        <th style="width:15%">
+                        <th style="width:6%">
                             <%= link_to "Follower #{arrow :follower_id}", "#", class: column_css(:follower_id),
                             data: { reflex: "click->TabularReflex#order", column_name: :follower_id, direction: direction } %>
                         </th>
-                        <th style="width:15%">
-                            <%= link_to "Genre #{arrow :genre}", "#", class: column_css(:genre),
-                            data: { reflex: "click->TabularReflex#order", column_name: :genre, direction: direction } %>
-                        </th>
-                        <th style="width:15%">
+                        <th style="width:20%">
                             <%= link_to "Event #{arrow :event_id}", "#", class: column_css(:event_id),
                             data: { reflex: "click->TabularReflex#order", column_name: :event_id, direction: direction } %>
                         </th>
                         <th style="width:15%">
-                            <%= link_to "Type #{arrow :videotype_id}", "#", class: column_css(:videotype_id),
-                            data: { reflex: "click->TabularReflex#order", column_name: :videotype_id, direction: direction } %>
+                            <%= link_to "Genre #{arrow :genre}", "#", class: column_css(:genre),
+                            data: { reflex: "click->TabularReflex#order", column_name: :genre, direction: direction } %>
                         </th>
                         <th style="width:15%">
                             <%= link_to "Channel #{arrow :channel}", "#", class: column_css(:channel),
