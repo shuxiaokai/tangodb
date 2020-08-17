@@ -23,6 +23,211 @@
     </div>
     <div class="content">
 
+        <div class="form-row mb-4" data-controller="permalink" 
+            data-permalink-videotype_id="<%= params[:videotype_id] %>" 
+            data-permalink-genre="       <%= params[:genre] %>" 
+            data-permalink-leader_id="   <%= params[:leader_id] %>" 
+            data-permalink-follower_id=" <%= params[:follower_id] %>" 
+            data-permalink-event_id="    <%= params[:event_id] %>" 
+            data-permalink-channel="     <%= params[:channel] %>">
+
+            <div class="col-3">
+                    <%= label_tag "Types" %>
+                    <%= select_tag "videotype_id",
+                options_from_collection_for_select(@videotypes, "id", "name", params[:videotype_id]),
+                include_blank: true,
+                class: "form-control",
+                data: { action: "change->permalink#filter",
+                        reflex_root: "#search-results" } %>
+            </div>
+            <div class="col-3">
+                    <%= label_tag "Genres" %>
+                    <%= select_tag "genre",
+                options_for_select(@genres, params[:genre]),
+                include_blank: true,
+                class: "form-control",
+                data: { action: "change->permalink#filter",
+                        reflex_root: "#search-results" } %>
+            </div>
+            <div class="col-3">
+                    <%= label_tag "Leaders" %>
+                    <%= select_tag "leader_id",
+                options_from_collection_for_select(@leaders, "id", "name", params[:leader_id]),
+                include_blank: true,
+                class: "form-control",
+                data: { action: "change->permalink#filter",
+                        reflex_root: "#search-results" } %>
+            </div>
+            <div class="col-3">
+                    <%= label_tag "Followers" %>
+                    <%= select_tag "follower_id",
+                options_from_collection_for_select(@followers, "id", "name", params[:follower_id]),
+                include_blank: true,
+                class: "form-control",
+                data: { action: "change->permalink#filter",
+                        reflex_root: "#search-results" } %>
+            </div>
+            <div class="col-3">
+                    <%= label_tag "Events" %>
+                    <%= select_tag "event_id",
+                options_from_collection_for_select(@events, "id", "name", params[:event_id]),
+                include_blank: true,
+                class: "form-control",
+                data: { action: "change->permalink#filter",
+                        reflex_root: "#search-results" } %>
+            </div>
+            <div class="col-3">
+                    <%= label_tag "Channels" %>
+                    <%= select_tag "channel",
+                options_for_select(@channels, params[:channel]),
+                include_blank: true,
+                class: "form-control",
+                data: { action: "change->permalink#filter",
+                        reflex_root: "#search-results" } %>
+            </div>
+        </div>
+    </div>
+
+    <div data-controller="select-filter" data-select-filter-url="<%= videos_filter_path %>">
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for=" ">Filter Type:</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select name="videotypes" multiple size="13" data-action="select-filter#videotypeChange">
+                                <option selected="selected" value=" ">All <%= @videotypes.count %> Types</option>
+                                <%= @videotypes.each do |videotype| %>
+                                <option value="<%= videotype.id %>"><%= videotype.name %></option>
+                                <% end %>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for=" ">Filter Genres:</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <select name="genres" multiple size="13" data-action="select-filter#genreChange">
+                                <option selected="selected" value=" ">All <%= @genres.count %> Genres</option>
+                                <%= @genres.each do |genre| %>
+                                <option value="<%= genre %>"><%= genre %></option>
+                                <% end %>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for=" ">Filter Leaders:</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <select name="leaders" multiple size="13" data-action="select-filter#leaderChange">
+                                <option selected="selected" value=" ">All <%= @leaders.count %> Leaders</option>
+                                <%= @leaders.each do |leader| %>
+                                <option value="<%= leader.id %>"><%= leader.name %></option>
+                                <% end %>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for=" ">Filter Followers:</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <select name="followers" multiple size="13" data-action="select-filter#followerChange">
+                                <option selected="selected" value=" ">All <%= @followers.count %> Followers</option>
+                                <%= @followers.each do |follower| %>
+                                <option value="<%= follower.id %>"><%= follower.name %></option>
+                                <% end %>
+                            </select>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for=" ">Filter Events:</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <select name="events" multiple size="13" data-action="select-filter#eventChange">
+                                <option selected="selected" value=" ">All <%= @events.count %> Events</option>
+                                <%= @events.each do |event| %>
+                                <option value="<%= event.id %>"><%= event.name %></option>
+                                <% end %>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for=" ">Filter Channels:</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select name="channel=[]" multiple size="13" data-action="select-filter#channelChange">
+                                <option selected="selected" value=" ">All <%= @channels.count %> Channels</option>
+                                <%= @channels.each do |channel| %>
+                                <option value="<%= channel %>"><%= channel %></option>
+                                <% end %>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <% if false %>
+        <div data-target="select-filter.videos">
+            <%= render partial: 'videos/video_list', locals: { videos: @videos} %>
+        </div>
+        <% end %>
+
         <%#= render "shared/column_filters" %>
         <% if false %>
         <div class="form-row mb-4">
@@ -70,7 +275,7 @@
                             <%= link_to "Upload Date #{arrow :upload_date}", "#", class: column_css(:upload_date),
                             data: { reflex: "click->TabularReflex#order", column_name: :upload_date, direction: direction } %>
                         </th>
-                        
+
                     </tr>
                 </thead>
             </table>
@@ -111,17 +316,19 @@
                 </tbody>
             </table>
         </div>
+
         <p class="lead"><%= @pagy.count %> Results Found</p>
         <%= render "/videos/paginator" if @pagy.pages > 1 %>
         <% end %>
     </div>
-    <%#= render "shared/main_table" %>
-    <div class="apple_pagination">
-        <div class="footer">
-            <%= render "shared/footer" %>
-        </div>
+</div>
+<%#= render "shared/main_table" %>
+<div class="apple_pagination">
+    <div class="footer">
+        <%= render "shared/footer" %>
     </div>
-    <div class="recommended_videos">
-        <%= render "shared/recommended_videos" %>
-    </div>
+</div>
+<div class="recommended_videos">
+    <%= render "shared/recommended_videos" %>
+</div>
 </div>

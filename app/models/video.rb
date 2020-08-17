@@ -24,12 +24,12 @@ class Video < ApplicationRecord
      where(arel_table[:name].matches("%#{query}%"))
        .or(where(arel_table[:category].matches("%#{query}%")))
    }
-
+  scope :genre, ->(genre) { joins(:song).where("genre = ?", genre) if genre.present? }
+  scope :videotype, ->(videotype_id) { where(videotype_id: videotype_id) if videotype_id.present? }
+  scope :leader, ->(leader_id) { where(leader_id: leader_id) if leader_id.present? }
+  scope :follower, ->(follower_id) { where(follower_id: follower_id) if follower_id.present? }
+  scope :event, ->(event_id) { where(event_id: event_id) if event_id.present? }
   scope :channel, ->(channel) { where(channel: channel) if channel.present? }
-  scope :view_count, ->(view_count) { where(view_count: view_count..) if view_count.present? }
-  scope :upload_date, ->(upload_date) { where(upload_date: upload_date) if upload_date.present? }
-
-
 
   belongs_to :leader
   belongs_to :follower

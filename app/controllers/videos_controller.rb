@@ -9,13 +9,31 @@ class VideosController < ApplicationController
     @order_by = permitted_column_name(session[:order_by])
     @direction = permitted_direction(session[:direction])
 
-    videos = Video.order(@order_by => @direction).where.not(leader: nil, follower: nil, song: nil)
+    videos = Video
+            .videotype(params[:videotype_id])
+            .genre(params[:genre])
+            .follower(params[:follower_id])
+            .leader(params[:leader_id])
+            .event(params[:event_id])
+            .channel(params[:channel])
+            .order(@order_by => @direction)
+            .where.not(leader: nil, follower: nil, song: nil)
+            
     videos = videos.search(@query) if @query.present?
     page_count = (videos.count / Pagy::VARS[:items].to_f).ceil
 
     @page = (session[:page] || 1).to_i
     @page = page_count if @page > page_count
     @pagy, @videos = pagy(videos, page: @page)
+
+     @videotypes = videos.includes(:videotype).map(&:videotype).compact.uniq
+     @genres = videos.includes(:song).pluck(:genre).compact.uniq.sort
+     @leaders = videos.includes(:leader).map(&:leader).compact.uniq.sort
+     @followers = videos.includes(:follower).map(&:follower).compact.uniq.sort
+     @events = videos.includes(:event).map(&:event).compact.uniq.sort
+     @channels = videos.map(&:channel).uniq.sort
+   
+     @songs = videos.includes(:song).map(&:song).compact.uniq.sort
 
     # if params[:search_by_keyword]
     #          @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel, :song_id, :view_count, :upload_date, :genre, :videotype_id, :event_id))
@@ -44,30 +62,8 @@ class VideosController < ApplicationController
 
     # @videos = Video.includes(:leader, :follower, :song, :videotype, :event)
     #                .where.not(leader: nil, follower: nil, song: nil).limit(1000)
-    # @leaders = @videos.includes(:leader).map(&:leader).compact.uniq.sort
-    # @followers = @videos.includes(:follower).map(&:follower).compact.uniq.sort
-    # @channels = @videos.pluck(:channel).compact.uniq.sort
-    # @genres = @videos.includes(:song).pluck(:genre).compact.uniq.sort
-    # @songs = @videos.includes(:song).map(&:song).compact.uniq.sort
-    # @events = @videos.includes(:event).map(&:event).compact.uniq.sort
-    # @videotypes = @videos.includes(:videotype).map(&:videotype).compact.uniq
     
   end
-
-  def show
-    @query = session[:query]
-    @order_by = permitted_column_name(session[:order_by])
-    @direction = permitted_direction(session[:direction])
-
-    videos = Video.order(@order_by => @direction)
-    videos = videos.search(@query) if @query.present?
-    page_count = (videos.count / Pagy::VARS[:items].to_f).ceil
-
-    @page = (session[:page] || 1).to_i
-    @page = page_count if @page > page_count
-    @pagy, @videos = pagy(videos, page: @page)
-  end
-
 
   def search
   
