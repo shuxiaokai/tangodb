@@ -4,13 +4,12 @@ export default class extends Controller {
   static targets = [ "videos"]
 
   connect() {
-    this.filters =  { videotypes: [] , genres: [], leaders: [], followers: [], events: [], channels: [] }
-    console.log(this.filters) 
+    this.filters =  { videotypes: [] , genres: [], leaders: [], followers: [], events: [], channels: [] } 
 }
 
 videotypeChange(event) {
   this.filters.videotypes = getSelectedValues(event)
-  console.log(this.filters.videotypes)
+  // console.log(this.filters.videotypes)
   this.change()
 }
 

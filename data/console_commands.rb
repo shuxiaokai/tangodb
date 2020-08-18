@@ -52,7 +52,7 @@ end
   #Matches Event with Video description
 
   Event.all.each do |event|
-    Video.where( "unaccent(description) ILIKE unaccent(?)", "%'#{event.name}%").each do |video|
+    Video.where( "unaccent(description) ILIKE unaccent(?)", "%#{event.name}%").each do |video|
       video.event = event
       video.save
     end
@@ -61,7 +61,7 @@ end
     #Matches Event with Video title
 
    Event.all.each do |event|
-    Video.where( "unaccent(description) ILIKE unaccent(?)", "%#{event.name}%").each do |video|
+    Video.where( "unaccent(title) ILIKE unaccent(?)", "%#{event.name}%").each do |video|
       video.event = event
       video.save
     end
@@ -69,7 +69,7 @@ end
 
     #Matches Videotype with Video title
     Videotype.all.each do |videotype|
-      Video.where( "unaccent(title) ILIKE unaccent(?)", "%' '#{videotype.name}' '%").each do |video|
+      Video.where( "unaccent(title) ILIKE unaccent(?)", "'% #{videotype.name} %'").each do |video|
         video.videotype = videotype
         video.save
       end
@@ -78,7 +78,7 @@ end
     #Matches Videotype with Video description
 
     Videotype.all.each do |videotype|
-      Video.where( "unaccent(description) ILIKE unaccent(?)", "%\s#{videotype.name}\s%").each do |video|
+      Video.where( "unaccent(description) ILIKE unaccent(?)", "'% #{videotype.name} %'").each do |video|
         video.videotype = videotype
         video.save
       end
@@ -96,8 +96,23 @@ end
 
     #SQL match for Leader
     Leader.all.each do |leader|
-      Video.all.where( "unaccent(title) ILIKE unaccent(?)", "%#{leader.name}%").each do |video|
+      Video.where(leader_id: nil).where( "levenshtein(unaccent(title), unaccent(?) ) < 6 ", leader.name).each do |video|
         video.leader = leader
+        video.save
+      end
+    end
+
+        #SQL match for Leader
+        Leader.all.each do |leader|
+          Video.where(leader_id: nil).where( "levenshtein(unaccent(description), unaccent(?) ) < 6 ", leader.name).each do |video|
+            video.leader = leader
+            video.save
+          end
+        end
+
+    Follower.all.each do |follower|
+      Video.where(follower_id: nil).where( "levenshtein(unaccent(title), unaccent(?) ) < 6", follower.name).each do |video|
+        video.follower = follower
         video.save
       end
     end
@@ -116,7 +131,7 @@ video_types =
               ]
 
   video_types.each do |video_type|
-  Video.all.where( "unaccent(title) ILIKE unaccent(?)", "% #{video_type} %").each do |video|
+  Video.all.where( "unaccent(title) ILIKE unaccent(?)", "'% #{video_type} %'").each do |video|
     video.video_type = video_type 
     video.save
   end

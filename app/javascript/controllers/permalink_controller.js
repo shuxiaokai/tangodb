@@ -6,19 +6,30 @@ import ApplicationController from './application_controller'
 export default class extends ApplicationController {
   filter (e) {
     this.stimulate('PermalinkReflex#filter', e.target)
+    console.log(e)
   }
 
   beforeReflex (element) {
-    if (element.type === 'checkbox') {
-      this.data.set(
-        element.name,
-        Array.from(document.querySelectorAll(`input[name=${element.name}]`))
-          .filter(e => e.checked)
-          .map(e => e.value)
-          .join(',')
-      )
-    } else {
-      this.data.set(element.name, element.value)
+    switch(element.type) {
+      case 'checkbox':
+        this.data.set(
+          element.name,
+          Array.from(document.querySelectorAll(`input[name=${element.name}]`))
+            .filter(e => e.checked)
+            .map(e => e.value)
+            .join(',')
+        )
+        break
+      case 'select-multiple':
+        this.data.set(
+          element.name,
+          Array.from(element.querySelectorAll('option:checked'))
+            .map(e => e.value)
+            .join(',')
+        )
+        break
+      default:
+        this.data.set(element.name, element.value)
     }
     console.log(element.name, element.value)
   }

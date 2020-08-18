@@ -20,6 +20,7 @@ gem 'pg_search',              '~> 2.3', '>= 2.3.2'
 gem 'pagy',                   '~> 0.6.0'
 gem 'devise',                 '~> 4.7', '>= 4.7.2'
 gem "stimulus_reflex",        '~> 3.2'
+gem 'pry-rails',              '~> 0.3.9'
 
 group :development, :test do
   gem 'byebug'

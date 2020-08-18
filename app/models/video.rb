@@ -1,6 +1,5 @@
 class Video < ApplicationRecord
   
-
   include Filterable
   include PgSearch::Model
   
@@ -9,8 +8,8 @@ class Video < ApplicationRecord
   #validates :follower, presence: true
   #validates :song, presence: true
   #validates :artist, presence: true
-  validates :youtube_id, presence: true, uniqueness: true
-  validates :title, presence: true
+  #validates :youtube_id, presence: true, uniqueness: true
+  #validates :title, presence: true
 
   # scope   :filter_by_leader_id,   -> (leader_id)    { where("leader_id = ?",   leader_id) }
   # scope   :filter_by_follower_id, -> (follower_id)  { where("follower_id = ?", follower_id) }
@@ -21,15 +20,16 @@ class Video < ApplicationRecord
 
    scope :search, ->(query) {
      query = sanitize_sql_like(query)
-     where(arel_table[:name].matches("%#{query}%"))
+     where(arel_table[:name].matches("%#{query}%")) 
        .or(where(arel_table[:category].matches("%#{query}%")))
    }
-  scope :genre, ->(genre) { joins(:song).where("genre = ?", genre) if genre.present? }
+  scope :genre, ->(genre) { joins(:song).where(songs: { genre: genre}) if genre.present? }
   scope :videotype, ->(videotype_id) { where(videotype_id: videotype_id) if videotype_id.present? }
-  scope :leader, ->(leader_id) { where(leader_id: leader_id) if leader_id.present? }
+  scope :leader, ->(leader) { where(leader_id: leader.split(",")) if leader.present? }
   scope :follower, ->(follower_id) { where(follower_id: follower_id) if follower_id.present? }
   scope :event, ->(event_id) { where(event_id: event_id) if event_id.present? }
   scope :channel, ->(channel) { where(channel: channel) if channel.present? }
+  
 
   belongs_to :leader
   belongs_to :follower
