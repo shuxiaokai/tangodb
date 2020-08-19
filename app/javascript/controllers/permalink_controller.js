@@ -6,7 +6,6 @@ import ApplicationController from './application_controller'
 export default class extends ApplicationController {
   filter (e) {
     this.stimulate('PermalinkReflex#filter', e.target)
-    console.log(e)
   }
 
   beforeReflex (element) {
@@ -29,9 +28,9 @@ export default class extends ApplicationController {
         )
         break
       default:
-        this.data.set(element.name, element.value)
+        this.data.set(element.name)
     }
-    console.log(element.name, element.value)
+    console.log(element.name, element.values)
   }
 
   afterReflex (element, reflex, error) {

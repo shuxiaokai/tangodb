@@ -94,6 +94,13 @@ end
     end
   end
 
+  Leader.all.each do |leader|
+    Video.all.where( "unaccent(title) ILIKE unaccent(?)", "%#{leader.name}%").each do |video|
+      video.leader = leader
+      video.save
+    end
+  end
+
     #SQL match for Leader
     Leader.all.each do |leader|
       Video.where(leader_id: nil).where( "levenshtein(unaccent(title), unaccent(?) ) < 6 ", leader.name).each do |video|
@@ -110,7 +117,7 @@ end
           end
         end
 
-    Follower.all.each do |follower|
+    leader.all.each do |follower|
       Video.where(follower_id: nil).where( "levenshtein(unaccent(title), unaccent(?) ) < 6", follower.name).each do |video|
         video.follower = follower
         video.save

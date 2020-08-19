@@ -19,92 +19,163 @@
         <%= render "shared/video" %>
     </div>
     <div class="content">
+        <div class="container" data-controller="permalink">
 
-        <div class="form-row mb-4" data-controller="permalink"  
-        data-permalink-videotype_id="<%= params[:videotype_id] %>" 
-        data-permalink-genre="       <%= params[:genre] %>" 
-        data-permalink-leader_id="   <%= params[:leader_id] %>" 
-        data-permalink-follower_id=" <%= params[:follower_id] %>" 
-        data-permalink-event_id="    <%= params[:event_id] %>" 
-        data-permalink-channel="     <%= params[:channel] %>">
-        
-
-            <div class="col-3">
-                    <%= label_tag "Types" %>
-                    <%= select_tag "videotype_id",
-                options_from_collection_for_select(@videotypes, "id", "name", params[:videotype_id]),
-                include_blank: true,
-                class: "form-control",
-                name: "types",
-                multiple: true,
-                size: 10,
-                data: { action: "change->permalink#filter",
-                        reflex_root: "#search-results" } %>
-            </div>
-            <div class="col-3">
-                    <%= label_tag "Genres" %>
-                    <%= select_tag "genre",
-                options_for_select(@genres, params[:genre]),
-                include_blank: true,
-                class: "form-control",
-                name: "genre",
-                multiple: true,
-                size: 10,
-                data: { action: "change->permalink#filter",
-                        reflex_root: "#search-results" } %>
-            </div>
-            <div class="col-3">
-                    <%= label_tag "Leaders" %>
-                    <%= select_tag "leader",
-                options_from_collection_for_select(@leaders, "id", "name", params[:leader_id]),
-                include_blank: true,
-                name: "leader",
-                class: "form-control",
-                multiple: true,
-                size: 10,
-                data: { action: "change->permalink#filter",
-                reflex_root: "#search-results",
-                reflex_dataset: "combined"} %>
-            </div>
-            <div class="col-3">
-                    <%= label_tag "Followers" %>
-                    <%= select_tag "follower_id",
-                options_from_collection_for_select(@followers, "id", "name", params[:follower_id]),
-                include_blank: true,
-                name: "follower",
-                class: "form-control",
-                multiple: true,
-                size: 10,
-                data: { action: "change->permalink#filter",
-                        reflex_root: "#search-results" } %>
-            </div>
-            <div class="col-3">
-                    <%= label_tag "Events" %>
-                    <%= select_tag "event_id",
-                options_from_collection_for_select(@events, "id", "name", params[:event_id]),
-                include_blank: true,
-                name: "event",
-                class: "form-control",
-                multiple: true,
-                size: 10,
-                data: { action: "change->permalink#filter",
-                        reflex_root: "#search-results" } %>
-            </div>
-            <div class="col-3">
-                    <%= label_tag "Channels" %>
-                    <%= select_tag "channel",
-                options_for_select(@channels, params[:channel]),
-                include_blank: true,
-                class: "form-control",
-                name: "channel",
-                multiple: true,
-                size: 10,
-                data: { action: "change->permalink#filter",
-                        reflex_root: "#search-results" } %>
-            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for=" ">Filter Type:</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= select_tag "videotype_id",
+                                options_from_collection_for_select(@videotypes, "id", "name"),
+                                include_blank: "All Values",
+                                selected: true,
+                                class: "form-control",
+                                name: "videotype_id",  
+                                multiple: true,
+                                size: 10,
+                                data: { action: "change->permalink#filter",
+                                        reflex_root: "#search-results",
+                                        reflex_dataset: "combined" } %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for=" ">Filter Type:</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= select_tag "genre",
+                            options_for_select(@genres),
+                            include_blank: "All Values",
+                            class: "form-control",
+                            name: "genre",
+                            multiple: true,
+                            size: 10,
+                            data: { action: "change->permalink#filter",
+                                    reflex_root: "#search-results",
+                                    reflex_dataset: "combined" } %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for=" ">Filter Type:</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= select_tag "leader",
+                            options_from_collection_for_select(@leaders, "id", "name"),
+                            include_blank: "All Values",
+                            name: "leader_id",
+                            class: "form-control",
+                            multiple: true,
+                            size: 10,
+                            data: { action: "change->permalink#filter",
+                            reflex_root: "#search-results",
+                            reflex_dataset: "combined"} %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for=" ">Filter Type:</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= select_tag "follower_id",
+                            options_from_collection_for_select(@followers, "id", "name"),
+                            include_blank: "All Values",
+                            name: "follower_id",
+                            class: "form-control",
+                            multiple: true,
+                            size: 10,
+                            data: { action: "change->permalink#filter",
+                                    reflex_root: "#search-results",
+                                    reflex_dataset: "combined" } %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for=" ">Filter Type:</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= select_tag "event_id",
+                            options_from_collection_for_select(@events, "id", "name"),
+                            include_blank: "All Values",
+                            name: "event_id",
+                            class: "form-control",
+                            multiple: true,
+                            size: 10,
+                            data: { action: "change->permalink#filter",
+                                    reflex_root: "#search-results",
+                                    reflex_dataset: "combined" } %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label for=" ">Filter Type:</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= select_tag "channel",
+                            options_for_select(@channels),
+                            include_blank: "All Values",
+                            class: "form-control",
+                            name: "channel_id",
+                            multiple: true,
+                            size: 10,
+                            data: { action: "change->permalink#filter",
+                                    reflex_root: "#search-results",
+                                    reflex_dataset: "combined" } %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
+    <% if false %>
     <div data-controller="select-filter" data-select-filter-url="<%= videos_filter_path %>">
         <div class="container">
             <table>
@@ -139,7 +210,6 @@
                 <tbody>
                     <tr>
                         <td>
-
                             <select name="genres" multiple size="13" data-action="select-filter#genreChange">
                                 <option selected="selected" value=" ">All <%= @genres.count %> Genres</option>
                                 <%= @genres.each do |genre| %>
@@ -239,7 +309,7 @@
                 </tbody>
             </table>
         </div>
-        <% if false %>
+
         <div data-target="select-filter.videos">
             <%= render partial: 'videos/video_list', locals: { videos: @videos} %>
         </div>
