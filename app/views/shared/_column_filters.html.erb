@@ -1,4 +1,11 @@
-<div class="container" data-controller="permalink" data-permalink-videotype_id="<%= params[:videotype_id] %>" data-permalink-genre="<%= params[:genre] %>" data-permalink-leader_id="<%= params[:leader_id] %>" data-permalink-follower_id="<%= params[:follower_id] %>" data-permalink-event_id="<%= params[:event_id] %>" data-permalink-channel="<%= params[:channel] %>">
+<div class="container" 
+data-controller="permalink" 
+data-permalink-videotype_id="<%= params[:videotype_id] %>"
+data-permalink-genre="<%= params[:genre] %>"
+data-permalink-leader_id="<%= params[:leader_id] %>"
+data-permalink-follower_id="<%= params[:follower_id] %>"
+data-permalink-event_id="<%= params[:event_id] %>"
+data-permalink-channel="<%= params[:channel] %>">
 
     <table>
         <thead>
@@ -11,16 +18,14 @@
         <tbody>
             <tr>
                 <td>
-                    <%= select_tag "videotype_id",
+                    <%= select_tag "videotype_id", content_tag(:option,"Select All #{@videotypes.count} Types",:value=>"", selected: "selected",:value=>"")+
                         options_from_collection_for_select(@videotypes, "id", "name"),
-                        include_blank: true,
                         class: "form-control",
                         name: "videotype_id",
                         multiple: true,
                         size: 10,
                         data: { action: "change->permalink#filter",
-                                reflex_root: "#search-results",
-                                reflex_dataset: "combined" } %>
+                                reflex_root: "#search-results" } %>
                 </td>
             </tr>
         </tbody>
@@ -29,23 +34,21 @@
         <thead>
             <tr>
                 <th>
-                    <label>Filter Type:</label>
+                    <label>Filter Genre:</label>
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>
-                    <%= select_tag "genre",
+                    <%= select_tag "genre", content_tag(:option,"Select All #{@genres.count} Types",:value=>"", selected: "selected",:value=>"")+
                         options_for_select(@genres),
-                        include_blank: true,
                         class: "form-control",
                         name: "genre",
                         multiple: true,
                         size: 10,
                         data: { action: "change->permalink#filter",
-                                reflex_root: "#search-results",
-                                reflex_dataset: "combined" } %>
+                                reflex_root: "#search-results" } %>
                 </td>
             </tr>
         </tbody>
@@ -54,23 +57,21 @@
         <thead>
             <tr>
                 <th>
-                    <label>Filter Type:</label>
+                    <label>Filter Leader:</label>
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>
-                    <%= select_tag "leader",
+                    <%= select_tag "leader", content_tag(:option,"Select All #{@leaders.count} Types",:value=>"", selected: "selected", :value=>"")+
                         options_from_collection_for_select(@leaders, "id", "name"),
-                        include_blank: true,
                         name: "leader_id",
                         class: "form-control",
                         multiple: true,
                         size: 10,
                         data: { action: "change->permalink#filter",
-                                reflex_root: "#search-results",
-                                reflex_dataset: "combined"} %>
+                                reflex_root: "#search-results" } %>
                 </td>
             </tr>
         </tbody>
@@ -79,7 +80,7 @@
         <thead>
             <tr>
                 <th>
-                    <label>Filter Type:</label>
+                    <label>Filter Follower:</label>
                 </th>
             </tr>
         </thead>
@@ -87,16 +88,14 @@
             <tr>
                 <td>
 
-                    <%= select_tag "follower_id",
+                    <%= select_tag "follower_id", content_tag(:option,"Select All #{@followers.count} Types",:value=>"", selected: "selected", :value=>"")+
                         options_from_collection_for_select(@followers, "id", "name"),
-                        include_blank: true,
                         name: "follower_id",
                         class: "form-control",
                         multiple: true,
                         size: 10,
                         data: { action: "change->permalink#filter",
-                                reflex_root: "#search-results",
-                                reflex_dataset: "combined" } %>
+                                reflex_root: "#search-results" } %>
                 </td>
             </tr>
         </tbody>
@@ -105,7 +104,7 @@
         <thead>
             <tr>
                 <th>
-                    <label>Filter Type:</label>
+                    <label>Filter Event:</label>
                 </th>
             </tr>
         </thead>
@@ -113,16 +112,14 @@
             <tr>
                 <td>
 
-                    <%= select_tag "event_id",
+                    <%= select_tag "event_id", content_tag(:option, "Select All #{@events.count} Types", selected: "selected", :value=>"")+
                         options_from_collection_for_select(@events, "id", "name"),
-                        include_blank: true,
                         name: "event_id",
                         class: "form-control",
                         multiple: true,
                         size: 10,
                         data: { action: "change->permalink#filter",
-                                reflex_root: "#search-results",
-                                reflex_dataset: "combined" } %>
+                                reflex_root: "#search-results" } %>
                 </td>
             </tr>
         </tbody>
@@ -131,7 +128,7 @@
         <thead>
             <tr>
                 <th>
-                    <label>Filter Type:</label>
+                    <label>Filter Channel:</label>
                 </th>
             </tr>
         </thead>
@@ -139,16 +136,14 @@
             <tr>
                 <td>
 
-                    <%= select_tag "channel",
+                    <%= select_tag "channel", content_tag(:option,"Select All #{@channels.count} Types",:value=>"", selected: "selected",:value=>"")+
                         options_for_select(@channels),
-                        include_blank: true,
                         class: "form-control",
                         name: "channel",
                         multiple: true,
                         size: 10,
                         data: { action: "change->permalink#filter",
-                                reflex_root: "#search-results",
-                                reflex_dataset: "combined" } %>
+                                reflex_root: "#search-results" } %>
                 </td>
             </tr>
         </tbody>
