@@ -1,51 +1,60 @@
+<div class="scrollTableContainer">
     <table class="scrollTableHeader">
-        <thead>
+        <thead class="bg-primary">
             <tr>
-                <th class ="row-1 row-thumbnail"></th>
-                <th class="row-1 row-dancers">
-                    <%= sortable "song_id", "Song" %>
-                    /
-                    <%= sortable "artist", "Artist" %> 
-                    &nbsp; &nbsp; &nbsp; &nbsp;
-                    <%= sortable "leader_id", "Leader" %>
-                    /
-                    <%= sortable "follower_id", "Follower" %>
+                <th style="min-width:180px"></th>
+                <th style="width:5%">
+                    <%= link_to "Song #{arrow :song_id}", "#", class: column_css(:song_id),
+                    data: { reflex: "click->TabularReflex#order", column_name: :song_id, direction: direction } %>
                 </th>
-                <th class="row-1 row-event">
-                    <%= sortable "song_event", "Event" %>
+                <th style="width:10%">
+                    <%= link_to "Leader #{arrow :leader_id}", "#", class: column_css(:leader_id),
+                    data: { reflex: "click->TabularReflex#order", column_name: :leader_id, direction: direction } %>
                 </th>
-                <th class="row-1 row-videotype">
-                    <%= sortable "videotype_name", "Type" %>
+                <th style="width:6%">
+                    <%= link_to "Follower #{arrow :follower_id}", "#", class: column_css(:follower_id),
+                    data: { reflex: "click->TabularReflex#order", column_name: :follower_id, direction: direction } %>
                 </th>
-                <th class="row-1 row-genre">
-                    <%= sortable "song_genre", "Genre" %>
+                <th style="width:20%">
+                    <%= link_to "Event #{arrow :event_id}", "#", class: column_css(:event_id),
+                    data: { reflex: "click->TabularReflex#order", column_name: :event_id, direction: direction } %>
                 </th>
-                <th class="row-1 row-channel">
-                    <%= sortable "channel", "Channel" %>
+                <th style="width:15%">
+                    <%= link_to "Genre #{arrow :genre}", "#", class: column_css(:genre),
+                    data: { reflex: "click->TabularReflex#order", column_name: :genre, direction: direction } %>
                 </th>
-                <th class="row-1 row-view_count">
-                    <%= sortable "view_count", "View Count" %>
+                <th style="width:15%">
+                    <%= link_to "Channel #{arrow :channel}", "#", class: column_css(:channel),
+                    data: { reflex: "click->TabularReflex#order", column_name: :channel, direction: direction } %>
                 </th>
-                <th class="row-1 row-upload_date">
-                    <%= sortable "upload_date", "Upload Date" %>
+                <th style="width:15%">
+                    <%= link_to "View Count #{arrow :view_count}", "#", class: column_css(:view_count),
+                    data: { reflex: "click->TabularReflex#order", column_name: :view_count, direction: direction } %>
                 </th>
+                <th style="width:15%">
+                    <%= link_to "Upload Date #{arrow :upload_date}", "#", class: column_css(:upload_date),
+                    data: { reflex: "click->TabularReflex#order", column_name: :upload_date, direction: direction } %>
+                </th>
+
             </tr>
         </thead>
-        </table>
-<div class = "scrollTableContainer" >
+    </table>
+</div>
+
+<div class="scrollTableContainer">
     <table class="scrollTable">
         <tbody>
             <% @videos.each do |video| %>
             <tr>
-            <td class="row-1 row-thumbnail">
-            <%= link_to image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg",width: 120), current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
-            </td>
+                <td class="row-1 row-thumbnail">
+                    <%= link_to image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg",width: 120), current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
+                </td>
                 <td class="row-1 row-dancers">
                     <%= link_to "#{video.song.try(:title)} - #{video.song.try(:artist)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
                     <%= link_to "#{video.leader.try(:name)} & #{video.follower.try(:name)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}"), class:"dancers_color" %>
-                </td>  
+                </td>
                 <td class="row-1 row-event">
-                    <%= link_to "#{video.event.try(:title)}", current_page_params.merge(:youtube_id => "#{video.event.try(:title)}" ) %>
+                    <%= link_to "#{video.event.try(:name)}", current_page_params.merge(:youtube_id => "#{video.event.try(:title)}" ) %>
                 </td>
                 <td class="row-1 row-videotype">
                     <%= link_to "#{video.videotype.try(:name)}", current_page_params.merge(:youtube_id => "#{video.videotype.try(:name)}" ) %>
@@ -67,3 +76,7 @@
         </tbody>
     </table>
 </div>
+<% if @pagy.count > 0 %>
+<p class="lead"><%= @pagy.count %> Results Found</p>
+<%= render "/videos/paginator" if @pagy.pages > 1 %>
+<% end %>

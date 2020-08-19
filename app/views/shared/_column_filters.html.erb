@@ -1,140 +1,156 @@
-<div class="container">
-   <div id="Type Filter" class="tableContainerFilter" >
-         <table class="scrollTableFilter">
-            <thead class="fixedHeaderFilter">
-               <tr>
-                  <th>Type</th>
-               </tr>
-            </thead>
-             <tbody class="scrollContentFilter">
+<div class="container" data-controller="permalink" data-permalink-videotype_id="<%= params[:videotype_id] %>" data-permalink-genre="<%= params[:genre] %>" data-permalink-leader_id="<%= params[:leader_id] %>" data-permalink-follower_id="<%= params[:follower_id] %>" data-permalink-event_id="<%= params[:event_id] %>" data-permalink-channel="<%= params[:channel] %>">
+
+    <table>
+        <thead>
             <tr>
-               <td>
-                  <%= link_to "All (#{Video.pluck('videotype_id').uniq.count} Type)", current_page_params.merge(:videotype_id => " ") %>
-               </td>
+                <th>
+                    <label>Filter Type:</label>
+                </th>
             </tr>
-               <% @videotypes.each do |videotype| %>
-             <tr>
-               <td>
-                  <%= link_to videotype, current_page_params.merge(videotype_id: videotype ) %>
-               </td>
-            </tr>
-            <% end %>
-         </tbody>
-         </table>
-   </div>    
-   <div id="Genre Filter" class="tableContainerFilter" >
-         <table class="scrollTableFilter" >
-            <thead class="fixedHeaderFilter">
-               <tr>
-                  <th>Genre</th>
-               </tr>
-            </thead>
-            <tbody class="scrollContentFilter">
+        </thead>
+        <tbody>
             <tr>
-               <td>
-                  <%= link_to "All (#{Video.joins(:song).pluck(:genre).compact.uniq.count} Genre)", current_page_params.merge(:genre => " ") %>
-               </td>
-            </tr>  
-               <% @songs.each do |genre| %>  
-             <tr>
-               <td>
-                  <%= link_to genre, current_page_params.merge(genre: genre ) %>
-               </td>
-            </tr>
-            <% end %>
-         </tbody>
-         </table>
-   </div> 
-   <div id="Leader Filter" class="tableContainerFilter">
-      <table class="scrollTableFilter">
-         <thead class="fixedHeaderFilter">
-            <tr>
-               <th>Leader</th>
-            </tr>
-         </thead>
-         <tbody class="scrollContentFilter">
-            <tr>
-               <td>
-                  <%= link_to "All (#{Video.pluck('leader_id').uniq.count} Leaders)", current_page_params.merge(:leader_id => " ") %>
-               </td>
-            </tr>
-               <% @leaders.each do |leader| %>
-             <tr>
-               <td>
-                  <%= link_to leader, current_page_params.merge(leader_id: leader ) %>
-               </td>
-            </tr>
-            <% end %>
-         </tbody>
-      </table>
-   </div>     
-   <div id="Follower Filter" class="tableContainerFilter">
-      <table class="scrollTableFilter">
-         <thead class="fixedHeaderFilter">
-            <tr>
-               <th>Follower</th>
-            </tr>
-         </thead>
-         <tbody class="scrollContentFilter">
-            <tr>
-               <td>
-                   <%= link_to "All (#{Video.pluck('follower_id').uniq.count} Followers)", current_page_params.merge(:follower_id => " ") %>
-               </td>
-            </tr>
-                <% @followers.each do |follower| %>
-             <tr>
-               <td>
-                  <%= link_to follower, current_page_params.merge(follower_id: follower ) %>
-               </td>
-            </tr>
-            <% end %>
-         </tbody>
-      </table>
-   </div>
-   <div id="Event Filter" class="tableContainerFilter" >
-      <table class="scrollTableFilter">
-         <thead class="fixedHeaderFilter">
-            <tr>
-               <th>Event</th>
-            </tr>
-         </thead>
-         <tbody class="scrollContentFilter">
-            <tr>
-               <td>
-                   <%= link_to "All (#{Video.pluck('event_id').uniq.count} Events)", current_page_params.merge(:event_id => " ") %>
-               </td>
-            </tr>
-                <% @events.each do |event| %>
-             <tr>
-               <td>
-                  <%= link_to event, current_page_params.merge(event_id: event ) %>
-               </td>
-            </tr>
-            <% end %>
-         </tbody>
-      </table>
-   </div>
-   <div id="Channel Filter" class="tableContainerFilter">
-      <table class="scrollTableFilter">
-         <thead class="fixedHeaderFilter">
-            <tr>
-               <th>Channel</th>
-            </tr>
-         </thead>
-         <tbody class="scrollContentFilter">
-         <tr>
-               <td>
-                   <%= link_to "All (#{Video.pluck(:channel).uniq.count} Channels)", current_page_params.merge(:channel => " ") %>
-               </td>
-            </tr>
-                <% @channels.each do |channel| %>
-             <tr>
                 <td>
-                  <%= link_to "#{channel}", current_page_params.merge(:channel => "#{channel}" )%>
-               </td>
+                    <%= select_tag "videotype_id",
+                        options_from_collection_for_select(@videotypes, "id", "name"),
+                        include_blank: true,
+                        class: "form-control",
+                        name: "videotype_id",
+                        multiple: true,
+                        size: 10,
+                        data: { action: "change->permalink#filter",
+                                reflex_root: "#search-results",
+                                reflex_dataset: "combined" } %>
+                </td>
             </tr>
-             <% end %>
-         </tbody>
-      </table>
-   </div>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <label>Filter Type:</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <%= select_tag "genre",
+                        options_for_select(@genres),
+                        include_blank: true,
+                        class: "form-control",
+                        name: "genre",
+                        multiple: true,
+                        size: 10,
+                        data: { action: "change->permalink#filter",
+                                reflex_root: "#search-results",
+                                reflex_dataset: "combined" } %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <label>Filter Type:</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <%= select_tag "leader",
+                        options_from_collection_for_select(@leaders, "id", "name"),
+                        include_blank: true,
+                        name: "leader_id",
+                        class: "form-control",
+                        multiple: true,
+                        size: 10,
+                        data: { action: "change->permalink#filter",
+                                reflex_root: "#search-results",
+                                reflex_dataset: "combined"} %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <label>Filter Type:</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+
+                    <%= select_tag "follower_id",
+                        options_from_collection_for_select(@followers, "id", "name"),
+                        include_blank: true,
+                        name: "follower_id",
+                        class: "form-control",
+                        multiple: true,
+                        size: 10,
+                        data: { action: "change->permalink#filter",
+                                reflex_root: "#search-results",
+                                reflex_dataset: "combined" } %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <label>Filter Type:</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+
+                    <%= select_tag "event_id",
+                        options_from_collection_for_select(@events, "id", "name"),
+                        include_blank: true,
+                        name: "event_id",
+                        class: "form-control",
+                        multiple: true,
+                        size: 10,
+                        data: { action: "change->permalink#filter",
+                                reflex_root: "#search-results",
+                                reflex_dataset: "combined" } %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <label>Filter Type:</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+
+                    <%= select_tag "channel",
+                        options_for_select(@channels),
+                        include_blank: true,
+                        class: "form-control",
+                        name: "channel",
+                        multiple: true,
+                        size: 10,
+                        data: { action: "change->permalink#filter",
+                                reflex_root: "#search-results",
+                                reflex_dataset: "combined" } %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
