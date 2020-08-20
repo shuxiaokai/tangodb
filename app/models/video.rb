@@ -31,11 +31,11 @@ class Video < ApplicationRecord
   scope :event, ->(event_id) { where(event_id: event_id) if event_id.present? }
   scope :channel, ->(channel) { where(channel: channel) if channel.present? }
   
-  belongs_to :leader
-  belongs_to :follower
-  belongs_to :song
-  belongs_to :videotype
-  belongs_to :event
+  #belongs_to :leader
+  #belongs_to :follower
+  #belongs_to :song
+  #belongs_to :videotype
+  #belongs_to :event
 
   # pg_search_scope :search_by_keyword,
   #                   against: %i[title description tags],
