@@ -23,14 +23,19 @@ export default class extends ApplicationController {
         this.data.set(
           element.name,
           Array.from(element.querySelectorAll('option:checked'))
-            .map(e => e.value)
+            .map(e => e.values)
             .join(',')
         )
         break
       default:
         this.data.set(element.name)
     }
-    console.log(element.name, element.values)
+    console.log(this.data.set(
+      element.name,
+      Array.from(element.querySelectorAll('option:checked'))
+        .map(e => e.value)
+        .join(',')
+    ))
   }
 
   afterReflex (element, reflex, error) {

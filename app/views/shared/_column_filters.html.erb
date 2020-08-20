@@ -136,7 +136,7 @@ data-permalink-channel="<%= params[:channel] %>">
             <tr>
                 <td>
 
-                    <%= select_tag "channel", content_tag(:option,"Select All #{@channels.count} Types",:value=>"", selected: "selected",:value=>"")+
+                    <%= select_tag "channel", content_tag(:option,"Select All #{@channels.count} Types",:value=>"", selected: "selected", :value=>"")+
                         options_for_select(@channels),
                         class: "form-control",
                         name: "channel",
