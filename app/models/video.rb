@@ -24,18 +24,18 @@ class Video < ApplicationRecord
        .or(where(arel_table[:category].matches("%#{query}%")))
    }
 
-  scope :genre, ->(genre) { joins(:song).where(songs: { genre: genre}) if genre.present? }
-  scope :videotype, ->(videotype_id) { where(videotype_id: videotype_id) if videotype_id.present? }
-  scope :leader, ->(leader) { where(leader_id: leader.split(",")) if leader.present? }
-  scope :follower, ->(follower_id) { where(follower_id: follower_id) if follower_id.present? }
-  scope :event, ->(event_id) { where(event_id: event_id) if event_id.present? }
-  scope :channel, ->(channel) { where(channel: channel) if channel.present? }
+  scope :genre, ->(genre) { joins(:song).where( songs: { genre: genre} ) }
+  scope :videotype, ->(videotype_id) { where( videotype_id: videotype_id ) }
+  scope :leader, ->(leader_id) { where( leader_id: leader_id ) }
+  scope :follower, ->(follower_id) { where( follower_id: follower_id ) }
+  scope :event, ->(event_id) { where( event_id: event_id ) }
+  scope :channel, ->(channel) { where( channel: channel ) }
   
-  #belongs_to :leader
-  #belongs_to :follower
-  #belongs_to :song
-  #belongs_to :videotype
-  #belongs_to :event
+  belongs_to :leader
+  belongs_to :follower
+  belongs_to :song
+  belongs_to :videotype
+  belongs_to :event
 
   # pg_search_scope :search_by_keyword,
   #                   against: %i[title description tags],

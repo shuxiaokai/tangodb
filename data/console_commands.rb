@@ -1,31 +1,3 @@
-Leader.all.each do |leader|
-  Video.search_by_keyword("\"#{leader.name}\"").each do |video|
-    if video.leader.nil?
-      video.leader = leader
-    end
-    video.save
-  end
-end
-
-Follower.all.each do |follower|
-  Video.search_by_keyword("\"#{follower.name}\"").each do |video|
-    if video.follower.nil?
-      video.follower = follower
-    end
-    video.save
-  end
-end
-
-  Video.all.each do |video|
-    video.leader = Leader.all.find { |leader| video.description.match(leader.name) }
-    video.save
-  end
-
-  Video.all.each do |video|
-    video.follower = Follower.all.find { |follower| video.description.match(follower.name) }
-    video.save
-  end
-
 
 #Matches Song AND Artist with Video description
 
@@ -33,21 +5,11 @@ end
     Video.where( "unaccent(description) ILIKE unaccent(?) AND unaccent(description) ILIKE unaccent(?) ", "%#{song.title}%", "%#{song.artist.split.last}%").each do |video|
       if video.song.nil?
       video.song = song
-      video.saves
+      video.save
       end
+      puts "#{Song.count} matches"
     end
   end
-
-  #Matches Song title with video title
-
-  # Song.all.each do |song|
-  #   Video.where( "unaccent(title) ILIKE unaccent(?)", "%#{song.title}%").each do |video|
-  #     if video.song.nil?
-  #     video.song = song
-  #     video.save
-  #     end
-  #   end
-  # end
 
   #Matches Event with Video description
 
@@ -56,6 +18,7 @@ end
       video.event = event
       video.save
     end
+    puts Video.pluck(:event_id).count
   end
 
     #Matches Event with Video title
@@ -65,6 +28,7 @@ end
       video.event = event
       video.save
     end
+    puts "#{Event.count} matches"
    end
 
     #Matches Videotype with Video title
@@ -73,6 +37,7 @@ end
         video.videotype = videotype
         video.save
       end
+      puts Video.pluck(:videotype_id).count
     end
 
     #Matches Videotype with Video description
@@ -82,6 +47,7 @@ end
         video.videotype = videotype
         video.save
       end
+      puts Video.pluck(:videotype_id).count
     end
 
 
@@ -92,6 +58,7 @@ end
       video.follower = follower
       video.save
     end
+    puts Video.pluck(:follower_id).count
   end
 
   Leader.all.each do |leader|
@@ -99,9 +66,10 @@ end
       video.leader = leader
       video.save
     end
+    puts "#{Leader.count} matches"
   end
 
-    #SQL match for Leader
+    #SQL match for Leader using fuzzystrmatch
     Leader.all.each do |leader|
       Video.where(leader_id: nil).where( "levenshtein(unaccent(title), unaccent(?) ) < 6 ", leader.name).each do |video|
         video.leader = leader
@@ -109,7 +77,7 @@ end
       end
     end
 
-        #SQL match for Leader
+        #SQL match for Leader using fuzzystrmatch
         Leader.all.each do |leader|
           Video.where(leader_id: nil).where( "levenshtein(unaccent(description), unaccent(?) ) < 6 ", leader.name).each do |video|
             video.leader = leader
@@ -124,26 +92,6 @@ end
       end
     end
 
-  # Video Type Parsing
-
-video_types = 
-              [ "class",
-                "workshop",
-                "performance",
-                "documentary",
-                "vlog",
-                "interview",
-                "short",
-                "technique"
-              ]
-
-  video_types.each do |video_type|
-  Video.all.where( "unaccent(title) ILIKE unaccent(?)", "'% #{video_type} %'").each do |video|
-    video.video_type = video_type 
-    video.save
-  end
-end
-
 /* Performance Number */
 regExp = /\([\d]{1}([\/]+[\d]{1})\)/
 split_value = "/(-)(/)/"
@@ -154,3 +102,14 @@ Video.all.each do |video|
   video.performance_total  = performance_number.last
 video.save
 end
+
+  Video.all.each do |video|
+    video.leader = Leader.all.find { |leader| video.description.match(leader.name) }
+    video.save
+  end
+
+  Video.all.each do |video|
+    video.follower = Follower.all.find { |follower| video.description.match(follower.name) }
+    video.save
+  end
+

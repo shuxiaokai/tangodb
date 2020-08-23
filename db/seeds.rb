@@ -32,21 +32,57 @@ CSV.foreach('data/tangodb-datasets/Followers-Followers.csv', headers: true) do |
 end
 puts "There are now #{Follower.count} followers in the database."
 
-CSV.foreach('data/tangodb-datasets/Videos-videos_dataset_master.csv', headers: true) do |column|
-  title = column[3]
-  youtube_id = column[4]
-  description = column[7]
-  channel = column[8]
-  channel_id = column[9]
-  duration = column[10]
-  upload_date = column[11]
-  view_count = column[12]
-  avg_rating = column[13]
+# Seed raw json data for videos without relations
+# CSV.foreach('data/tangodb-datasets/Videos-videos_dataset_master.csv', headers: true) do |column|
+#   title = column[3]
+#   youtube_id = column[4]
+#   description = column[7]
+#   channel = column[8]
+#   channel_id = column[9]
+#   duration = column[10]
+#   upload_date = column[11]
+#   view_count = column[12]
+#   avg_rating = column[13]
+#   tags = column[14]
+#   youtube_song = column[16]
+#   youtube_artist = column[17]
+#   Video.create( title: title, 
+#                 youtube_id: youtube_id,
+#                 description: description, 
+#                 channel: channel, 
+#                 channel_id: channel_id,
+#                 duration: duration, 
+#                 upload_date: upload_date, 
+#                 view_count: view_count,
+#                 avg_rating: avg_rating, 
+#                 tags: tags, 
+#                 youtube_song: youtube_song,
+#                 youtube_artist: youtube_artist ) 
+# end
+# puts "There are now #{Video.count} videos in the database."
+
+#Seeding data with relations 
+CSV.foreach('data/tangodb-datasets/videos_w_relation_seed.csv', headers: true) do |column|
+  title = column[1]
+  youtube_id = column[2]
+  leader_id = leader[3]
+  follower_id = follower[4]
+  description = column[5]
+  channel = column[6]
+  channel_id = column[7]
+  duration = column[8]
+  upload_date = column[9]
+  view_count = column[10]
+  avg_rating = column[11]
   tags = column[14]
+  song_id = column[15]
   youtube_song = column[16]
   youtube_artist = column[17]
+  event_id = column[22]
   Video.create( title: title, 
                 youtube_id: youtube_id,
+                leader_id: leader_id,
+                follower_id: follower_id,
                 description: description, 
                 channel: channel, 
                 channel_id: channel_id,
@@ -55,7 +91,9 @@ CSV.foreach('data/tangodb-datasets/Videos-videos_dataset_master.csv', headers: t
                 view_count: view_count,
                 avg_rating: avg_rating, 
                 tags: tags, 
+                song_id: song_id,
                 youtube_song: youtube_song,
-                youtube_artist: youtube_artist ) 
+                youtube_artist: youtube_artist,
+                event_id: event_id ) 
 end
-puts "There are now #{Video.count} videos in the database.
+puts "There are now #{Video.count} videos with relations in the database.

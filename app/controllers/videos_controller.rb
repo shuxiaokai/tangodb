@@ -8,32 +8,41 @@ class VideosController < ApplicationController
     @query = session[:query]
     @order_by = permitted_column_name(session[:order_by])
     @direction = permitted_direction(session[:direction])
-
-    videos = Video
-            .videotype(params[:videotype_id])
-            .genre(params[:genre])
-            .follower(params[:follower_id])
-            .leader(params[:leader_id])
-            .event(params[:event_id])
-            .channel(params[:channel])
-            .order(@order_by => @direction)
-            .where.not(leader: nil, follower: nil, song: nil)
+    #byebug
+    video = Video
+    video = video.where(channel: params[:channel]) unless params[:channel].blank?
+    video = video.includes(:leader).where(leader_id: params[:leader_id]) unless params[:leader_id].blank?
+    video = video.includes(:follower).where(follower_id: params[:follower_id]) unless params[:follower_id].blank?
+    video = video.includes(:event).where(event_id: params[:event_id]) unless params[:event_id].blank?
+    video = video.includes(:videotype).where(videotype_id: params[:videotype_id]) unless params[:videotype_id].blank?
+    video = video.includes(:song).where(:songs => {:genre => params[:genre] }).references(:songs) unless params[:genre].blank?
+    video = video.all if params[:leader_id].blank? and params[:follower_id].blank? and params[:channel_id].blank? and params[:event_id].blank? and params[:videotype_id].blank? and params[:genre].blank?
+            # .videotype(params[:videotype_id]) unless params[:videotype_id].all?(&:blank?) 
+            # .genre(params[:genre]) unless params[:genres].all?(&:blank?) 
+            # .follower(params[:follower_id]) unless params[:follower_id].all?(&:blank?) 
+            # .leader(params[:leader_id]) unless params[:leader_id].all?(&:blank?) 
+            # .event(params[:event_id]) unless params[:event_id].all?(&:blank?) 
+            # .channel(params[:channel]) unless params[:channel].all?(&:blank?) 
+            # .order(@order_by => @direction)
+            # .where.not(leader: nil, follower: nil, song: nil)
             
-    videos = videos.search(@query) if @query.present?
-    page_count = (videos.count / Pagy::VARS[:items].to_f).ceil
-
+    video = video.search(@query) if @query.present?
+    page_count   = (video.count / Pagy::VARS[:items].to_f).ceil
+    
     @page = (session[:page] || 1).to_i
     @page = page_count if @page > page_count
-    @pagy, @videos = pagy(videos, page: @page)
+    @pagy, @videos = pagy(video, page: @page)
 
-     @videotypes = videos.includes(:videotype).map(&:videotype).compact.uniq
-     @genres = videos.includes(:song).pluck(:genre).compact.uniq.sort
-     @leaders = videos.includes(:leader).map(&:leader).compact.uniq.sort
-     @followers = videos.includes(:follower).map(&:follower).compact.uniq.sort
-     @events = videos.includes(:event).map(&:event).compact.uniq.sort
-     @channels = videos.map(&:channel).uniq.sort
+  
+
+     @videotypes  = video.includes(:videotype).map(&:videotype).compact.uniq
+     @genres      = video.includes(:song).pluck(:genre).compact.uniq.sort
+     @leaders     = video.includes(:leader).map(&:leader).compact.uniq.sort
+     @followers   = video.includes(:follower).map(&:follower).compact.uniq.sort
+     @events      = video.includes(:event).map(&:event).compact.uniq.sort
+     @channels    = video.pluck(:channel).compact.uniq.sort
    
-     @songs = videos.includes(:song).map(&:song).compact.uniq.sort
+     @songs = video.includes(:song).map(&:song).compact.uniq.sort
 
     # if params[:search_by_keyword]
     #          @videos = Video.filter(params.slice(:leader_id, :follower_id, :channel, :song_id, :view_count, :upload_date, :genre, :videotype_id, :event_id))

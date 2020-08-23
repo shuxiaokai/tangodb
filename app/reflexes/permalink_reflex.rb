@@ -1,7 +1,7 @@
 class PermalinkReflex < ApplicationReflex
     def filter 
       #byebug
-      params[element[:name].to_sym] = element.values.present? ? element.values.join(',') : element.value
+      params[element[:name].to_sym] = element.values.present? ? element.values.flatten : element.value.flatten
     end
   end
   

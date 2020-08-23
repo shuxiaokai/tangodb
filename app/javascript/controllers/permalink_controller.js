@@ -56,6 +56,8 @@ export default class extends ApplicationController {
         .replace(/%28/g, '(')
         .replace(/%29/g, ')')
         .replace(/%2C/g, ',')
+        .replace(/%5D/g, '')
+        .replace(/%5B/g, '')
       const query = qs.length ? '?' : ''
       history.pushState({}, '', `${window.location.pathname}${query}${qs}`)
     }
