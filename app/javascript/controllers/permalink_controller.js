@@ -19,23 +19,18 @@ export default class extends ApplicationController {
             .join(',')
         )
         break
-      case 'select-multiple':
-        this.data.set(
-          element.name,
-          Array.from(element.querySelectorAll('option:checked'))
-            .map(e => e.values)
-            .join(',')
-        )
-        break
+      // case 'select-multiple':
+      //   this.data.set(
+      //     element.name,
+      //     Array.from(element.querySelectorAll('option:checked'))
+      //       .filter(e => e.checked)
+      //       .map(e => e.values)
+      //       .join(',')
+      //   )
+      //   break
       default:
         this.data.set(element.name)
     }
-    console.log(this.data.set(
-      element.name,
-      Array.from(element.querySelectorAll('option:checked'))
-        .map(e => e.value)
-        .join(',')
-    ))
   }
 
   afterReflex (element, reflex, error) {

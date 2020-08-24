@@ -18,11 +18,11 @@ data-permalink-channel="<%= params[:channel] %>">
         <tbody>
             <tr>
                 <td>
-                    <%= select_tag "videotype_id", content_tag(:option,"Select All #{@videotypes.count} Types",:value=>"", selected: "selected",:value=>"")+
-                        options_from_collection_for_select(@videotypes, "id", "name"),
+                    <%= select_tag "videotype_id", content_tag(:option,"Select All #{@videotypes.count} Types", selected: "selected",:value=>"")+
+                        options_from_collection_for_select(@videotypes, 'id', 'name'),
                         class: "form-control",
                         name: "videotype_id",
-                        multiple: true,
+                        multiple: false,
                         size: 10,
                         data: { action: "change->permalink#filter",
                                 reflex_root: "#search-results" } %>
@@ -41,11 +41,11 @@ data-permalink-channel="<%= params[:channel] %>">
         <tbody>
             <tr>
                 <td>
-                    <%= select_tag "genre", content_tag(:option,"Select All #{@genres.count} Types",:value=>"", selected: "selected",:value=>"")+
+                    <%= select_tag "genre", content_tag(:option,"Select All #{@genres.count} Types", selected: "selected",:value=>"")+
                         options_for_select(@genres),
                         class: "form-control",
                         name: "genre",
-                        multiple: true,
+                        multiple: false,
                         size: 10,
                         data: { action: "change->permalink#filter",
                                 reflex_root: "#search-results" } %>
@@ -64,11 +64,11 @@ data-permalink-channel="<%= params[:channel] %>">
         <tbody>
             <tr>
                 <td>
-                    <%= select_tag "leader", content_tag(:option,"Select All #{@leaders.count} Types",:value=>"", selected: "selected", :value=>"")+
-                        options_from_collection_for_select(@leaders, "id", "name"),
+                    <%= select_tag "leader", content_tag(:option,"Select All #{@leaders.count} Types", selected: "selected",:value=>"")+
+                        options_from_collection_for_select(@leaders, 'id', 'name'),
                         name: "leader_id",
                         class: "form-control",
-                        multiple: true,
+                        multiple: false,
                         size: 10,
                         data: { action: "change->permalink#filter",
                                 reflex_root: "#search-results" } %>
@@ -88,11 +88,11 @@ data-permalink-channel="<%= params[:channel] %>">
             <tr>
                 <td>
 
-                    <%= select_tag "follower_id", content_tag(:option,"Select All #{@followers.count} Types",:value=>"", selected: "selected", :value=>"")+
-                        options_from_collection_for_select(@followers, "id", "name"),
+                    <%= select_tag "follower_id", content_tag(:option,"Select All #{@followers.count} Types", selected: "selected",:value=>"")+
+                        options_from_collection_for_select(@followers, 'id', 'name'),
                         name: "follower_id",
                         class: "form-control",
-                        multiple: true,
+                        multiple: false,
                         size: 10,
                         data: { action: "change->permalink#filter",
                                 reflex_root: "#search-results" } %>
@@ -112,11 +112,11 @@ data-permalink-channel="<%= params[:channel] %>">
             <tr>
                 <td>
 
-                    <%= select_tag "event_id", content_tag(:option, "Select All #{@events.count} Types", selected: "selected", :value=>"")+
-                        options_from_collection_for_select(@events, "id", "name"),
+                    <%= select_tag "event_id", content_tag(:option, "Select All #{@events.count} Types", selected: "selected",:value=>"")+
+                        options_from_collection_for_select(@events, 'id', 'name'),
                         name: "event_id",
                         class: "form-control",
-                        multiple: true,
+                        multiple: false,
                         size: 10,
                         data: { action: "change->permalink#filter",
                                 reflex_root: "#search-results" } %>
@@ -136,11 +136,11 @@ data-permalink-channel="<%= params[:channel] %>">
             <tr>
                 <td>
 
-                    <%= select_tag "channel", content_tag(:option,"Select All #{@channels.count} Types",:value=>"", selected: "selected", :value=>"")+
+                    <%= select_tag "channel", content_tag(:option,"Select All #{@channels.count} Types", selected: "selected",:value=>"")+
                         options_for_select(@channels),
                         class: "form-control",
                         name: "channel",
-                        multiple: true,
+                        multiple: false,
                         size: 10,
                         data: { action: "change->permalink#filter",
                                 reflex_root: "#search-results" } %>
