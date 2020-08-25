@@ -360,7 +360,7 @@
       text-decoration: none;
   }
    .scrollTableHeader a:hover {
-    color:white;
+    color:#c9c9c9;
   }
 
   .scrollTable td {
@@ -449,7 +449,7 @@
       border-collapse: collapse;
       height: 220px;
       overflow-y: scroll;
-      overflow-x: hidden;
+      overflow-x: clip;
       overscroll-behavior: contain;
       table-layout:fixed;
       max-width: 220px;
@@ -477,14 +477,14 @@
 }
 
 .scrollTableFilter a:hover {
-  color:white;
+  color:#c9c9c9;
 }
 
 /* Highlight Element */
 
 tbody.scrollContentFilter tr:hover {
   background:#2465D9;
-  color:white;
+  color:#c9c9c9;
 }
 
 .apple_pagination {

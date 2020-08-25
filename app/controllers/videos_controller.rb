@@ -16,7 +16,7 @@ class VideosController < ApplicationController
     video = video.includes(:event).where(event_id: params[:event_id]) unless params[:event_id].blank?
     video = video.includes(:videotype).where(videotype_id: params[:videotype_id]) unless params[:videotype_id].blank?
     video = video.includes(:song).where(:songs => {:genre => params[:genre] }).references(:songs) unless params[:genre].blank?
-    video = video.all if params[:leader_id].blank? and params[:follower_id].blank? and params[:channel_id].blank? and params[:event_id].blank? and params[:videotype_id].blank? and params[:genre].blank?
+    video = video.all.order(@order_by => @direction).where.not(leader: nil, follower: nil, song: nil) if params[:leader_id].blank? and params[:follower_id].blank? and params[:channel_id].blank? and params[:event_id].blank? and params[:videotype_id].blank? and params[:genre].blank?
             # .videotype(params[:videotype_id]) unless params[:videotype_id].all?(&:blank?) 
             # .genre(params[:genre]) unless params[:genres].all?(&:blank?) 
             # .follower(params[:follower_id]) unless params[:follower_id].all?(&:blank?) 
