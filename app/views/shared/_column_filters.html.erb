@@ -13,7 +13,7 @@
                     <td>
                         <%= select_tag "videotype_id", content_tag(:option, "Select All #{@videotypes.count} Types", selected: "selected", value: "" ) +
                         options_from_collection_for_select(@videotypes, 'id', 'name'),
-                        class: "form-control",
+                        class: "select-css",
                         name: "videotype_id",
                         multiple: false,
                         size: 10,
@@ -38,7 +38,7 @@
                     <td>
                         <%= select_tag "genre", content_tag(:option, "Select All #{@genres.count} Types", selected: "selected", value: "" ) +
                         options_for_select(@genres),
-                        class: "form-control",
+                        class: "select-css",
                         name: "genre",
                         multiple: false,
                         size: 10,
@@ -64,7 +64,7 @@
                         <%= select_tag "leader", content_tag(:option, "Select All #{@leaders.count} Types", selected: "selected", value: "" ) +
                         options_from_collection_for_select(@leaders, 'id', 'name'),
                         name: "leader_id",
-                        class: "form-control",
+                        class: "select-css",
                         multiple: false,
                         size: 10,
                         data: { action: "change->permalink#filter",
@@ -89,7 +89,7 @@
                         <%= select_tag "follower_id", content_tag(:option, "Select All #{@followers.count} Types", selected: "selected", value: "" ) +
                         options_from_collection_for_select(@followers, 'id', 'name'),
                         name: "follower_id",
-                        class: "form-control",
+                        class: "select-css",
                         multiple: false,
                         size: 10,
                         data: { action: "change->permalink#filter",
@@ -114,7 +114,7 @@
                         <%= select_tag "event_id", content_tag(:option, "Select All #{@events.count} Types", selected: "selected", value: "" ) +
                         options_from_collection_for_select(@events, 'id', 'name'),
                         name: "event_id",
-                        class: "form-control",
+                        class: "select-css",
                         multiple: false,
                         size: 10,
                         data: { action: "change->permalink#filter",
@@ -138,10 +138,11 @@
                     <td>
                         <%= select_tag "channel", content_tag(:option, "Select All #{@channels.count} Types", selected: "selected", value: "" ) +
                         options_for_select(@channels),
-                        class: "form-control",
+                        class: "select-css",
                         name: "channel",
                         multiple: false,
                         size: 10,
+                        width: "10px",
                         data: { action: "change->permalink#filter",
                                 reflex_root: "#search-results" } %>
                     </td>
