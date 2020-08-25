@@ -1,5 +1,4 @@
 <div class="container" data-controller="permalink" data-permalink-videotype_id="<%= params[:videotype_id] %>" data-permalink-genre="<%= params[:genre] %>" data-permalink-leader_id="<%= params[:leader_id] %>" data-permalink-follower_id="<%= params[:follower_id] %>" data-permalink-event_id="<%= params[:event_id] %>" data-permalink-channel="<%= params[:channel] %>">
-    <div class="scrollContentFilter">
         <table>
             <thead>
                 <tr>
@@ -23,8 +22,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div class="scrollContentFilter">
         <table>
             <thead>
                 <tr>
@@ -48,8 +45,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div class="scrollContentFilter">
         <table>
             <thead>
                 <tr>
@@ -73,8 +68,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div class="scrollContentFilter">
         <table>
             <thead>
                 <tr>
@@ -98,8 +91,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div class="scrollContentFilter">
         <table>
             <thead>
                 <tr>
@@ -123,8 +114,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div class="scrollContentFilter">
         <table>
             <thead>
                 <tr>
@@ -142,12 +131,10 @@
                         name: "channel",
                         multiple: false,
                         size: 10,
-                        width: "10px",
                         data: { action: "change->permalink#filter",
                                 reflex_root: "#search-results" } %>
                     </td>
                 </tr>
             </tbody>
         </table>
-    </div>
 </div>
