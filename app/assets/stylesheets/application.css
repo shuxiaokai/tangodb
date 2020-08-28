@@ -422,7 +422,7 @@
   display: block;
   color: #444;
   width: 100%;
-  max-width: 200px; /* useful when width is set to anything other than 100% */
+  max-width: 190px; /* useful when width is set to anything other than 100% */
   box-sizing: border-box;
   margin: 0;
   border: 1px solid #aaa;
