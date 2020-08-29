@@ -10,12 +10,12 @@ class VideosController < ApplicationController
     @direction = permitted_direction(session[:direction])
     #byebug
     video = Video
-    video = video.where(channel: params[:channel]) unless params[:channel].blank?
-    video = video.includes(:leader).where(leader_id: params[:leader_id]) unless params[:leader_id].blank?
-    video = video.includes(:follower).where(follower_id: params[:follower_id]) unless params[:follower_id].blank?
-    video = video.includes(:event).where(event_id: params[:event_id]) unless params[:event_id].blank?
-    video = video.includes(:videotype).where(videotype_id: params[:videotype_id]) unless params[:videotype_id].blank?
-    video = video.includes(:song).where(:songs => {:genre => params[:genre] }).references(:songs) unless params[:genre].blank?
+    video = video.where(channel: params[:channel]).order(@order_by => @direction).where.not(leader: nil, follower: nil, song: nil) unless params[:channel].blank?
+    video = video.includes(:leader).where(leader_id: params[:leader_id]).order(@order_by => @direction).where.not(leader: nil, follower: nil, song: nil) unless params[:leader_id].blank?
+    video = video.includes(:follower).where(follower_id: params[:follower_id]).order(@order_by => @direction).where.not(leader: nil, follower: nil, song: nil) unless params[:follower_id].blank?
+    video = video.includes(:event).where(event_id: params[:event_id]).order(@order_by => @direction).where.not(leader: nil, follower: nil, song: nil) unless params[:event_id].blank?
+    video = video.includes(:videotype).where(videotype_id: params[:videotype_id]).order(@order_by => @direction).where.not(leader: nil, follower: nil, song: nil) unless params[:videotype_id].blank?
+    video = video.includes(:song).where(:songs => {:genre => params[:genre] }).references(:songs).order(@order_by => @direction).where.not(leader: nil, follower: nil, song: nil) unless params[:genre].blank?
     video = video.all.order(@order_by => @direction).where.not(leader: nil, follower: nil, song: nil) if params[:leader_id].blank? and params[:follower_id].blank? and params[:channel_id].blank? and params[:event_id].blank? and params[:videotype_id].blank? and params[:genre].blank?
             # .videotype(params[:videotype_id]) unless params[:videotype_id].all?(&:blank?) 
             # .genre(params[:genre]) unless params[:genres].all?(&:blank?) 
@@ -31,7 +31,7 @@ class VideosController < ApplicationController
     
     @page = (session[:page] || 1).to_i
     @page = page_count if @page > page_count
-    @pagy, @videos = pagy(video, page: @page)
+    @pagy, @videos = pagy(video, page: @page, items: 100)
 
   
 
