@@ -24,6 +24,7 @@ gem "redis",                  ">= 4.0", :require => ["redis", "redis/connection/
 gem 'hiredis',                '~> 0.6.3'
 gem 'factory_bot',            '~> 6.1'
 
+
 group :development, :test do
   gem 'byebug',               '~> 11.1', '>= 11.1.3'
   gem 'rspec-rails',          '~> 4.0', '>= 4.0.1'
@@ -32,6 +33,7 @@ end
 group :development do
   gem 'web-console',           '4.0.2'
   gem 'listen',                '3.2.1'
+  gem 'annotate',             '~> 2.7', '>= 2.7.1'
 end
 
 group :test do
