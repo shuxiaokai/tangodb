@@ -26,7 +26,7 @@ gem 'factory_bot',            '~> 6.1'
 
 group :development, :test do
   gem 'byebug',               '~> 11.1', '>= 11.1.3'
-  gem 'rspec',                '~> 3.4'
+  gem 'rspec-rails',          '~> 4.0', '>= 4.0.1'
 end
 
 group :development do
