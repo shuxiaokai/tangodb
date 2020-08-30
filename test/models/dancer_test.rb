@@ -1,4 +1,4 @@
-require 'test_helper'
+corequire 'test_helper'
 
 class DancerTest < ActiveSupport::TestCase
   # test "the truth" do

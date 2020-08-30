@@ -5,4 +5,11 @@ class VideoControllerTest < ActionDispatch::IntegrationTest
      assert true
    end
 
+   def add_index 
+    @stories = Story.label
+    
+    some_actions_to_be_tested
+    
+  end
+
 end

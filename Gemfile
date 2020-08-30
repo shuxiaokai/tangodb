@@ -21,11 +21,12 @@ gem 'pagy',                   '~> 0.6.0'
 gem 'devise',                 '~> 4.7', '>= 4.7.2'
 gem "stimulus_reflex",        '~> 3.2'
 gem "redis",                  ">= 4.0", :require => ["redis", "redis/connection/hiredis"]
-gem "hiredis"
-gem 'rspec',                  '~> 3.4'
+gem 'hiredis',                '~> 0.6.3'
+gem 'factory_bot',            '~> 6.1'
 
 group :development, :test do
-  gem 'byebug'
+  gem 'byebug',               '~> 11.1', '>= 11.1.3'
+  gem 'rspec',                '~> 3.4'
 end
 
 group :development do
