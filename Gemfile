@@ -22,6 +22,7 @@ gem 'devise',                 '~> 4.7', '>= 4.7.2'
 gem "stimulus_reflex",        '~> 3.2'
 gem "redis",                  ">= 4.0", :require => ["redis", "redis/connection/hiredis"]
 gem "hiredis"
+gem 'rspec',                  '~> 3.4'
 
 group :development, :test do
   gem 'byebug'
