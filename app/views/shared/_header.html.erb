@@ -1,22 +1,12 @@
 <header>
     <div>
             <nav>
-            <% if user_signed_in? %>
                 <ul>
-                    
-                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                    <li><%= link_to "Sign Up", '' %></li>
                 </ul>
                 <ul>
-                    <li><%= link_to current_user.email, edit_user_registration_path %></li>
+                    <li><%= link_to "Login", '' %></li>
                 </ul>
-            <% else %>
-                <ul>
-                    <li><%= link_to "Sign Up", new_user_registration_path %></li>
-                </ul>
-                <ul>
-                    <li><%= link_to "Login", new_user_session_path %></li>
-                </ul>
-               <% end %>
             </nav>
             <%= link_to "TangoTube", root_path, id: "logo" %> 
     </div>
