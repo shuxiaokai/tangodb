@@ -1,140 +1,151 @@
-<div class="container" data-controller="permalink" data-permalink-videotype_id="<%= params[:videotype_id] %>" data-permalink-genre="<%= params[:genre] %>" data-permalink-leader_id="<%= params[:leader_id] %>" data-permalink-follower_id="<%= params[:follower_id] %>" data-permalink-event_id="<%= params[:event_id] %>" data-permalink-channel="<%= params[:channel] %>">
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <label>Filter Type:</label>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <%= select_tag "videotype_id", content_tag(:option, "Select All #{@videotypes.count} Types", selected: "selected", value: "" ) +
-                        options_from_collection_for_select(@videotypes, 'id', 'name'),
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <label>Filter Type:</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                <% form_with(scope: "videotype") do |f| %>
+                <%= f.select :id, @videotypes.map { |v| [v.name, v.id] } %>
+                <% end %>
+                    <%= select_tag "videotype[name]", 
+                        content_tag(:option, 
+                                    "Select All #{@videotypes.count} Types",
+                                    selected: "selected", value: "" ) +
+                        options_from_collection_for_select(@videotypes, :id, :name, params[:name].to_i),
                         class: "select-css",
                         name: "videotype_id",
                         multiple: false,
-                        size: 10,
-                        data: { action: "change->permalink#filter",
-                                reflex_root: "#search-results" } %>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <label>Filter Genre:</label>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <%= select_tag "genre", content_tag(:option, "Select All #{@genres.count} Types", selected: "selected", value: "" ) +
+                        id: "different_option_value_html",
+                        onchange: "this.form.submit();",
+                        size: 10 %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <label>Filter Genre:</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <%= select_tag "genre", 
+                        content_tag(:option, 
+                                    "Select All #{@genres.count} Genres", 
+                                    selected: "selected", value: "" ) +
                         options_for_select(@genres),
                         class: "select-css",
                         name: "genre",
                         multiple: false,
-                        size: 10,
-                        data: { action: "change->permalink#filter",
-                                reflex_root: "#search-results" } %>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <label>Filter Leader:</label>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <%= select_tag "leader", content_tag(:option, "Select All #{@leaders.count} Types", selected: "selected", value: "" ) +
-                        options_from_collection_for_select(@leaders, 'id', 'name'),
+                        size: 10 %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <label>Filter Leader:</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <%= select_tag "leader", 
+                        content_tag(:option, 
+                                    "Select All #{@leaders.count} Leaders", 
+                                    selected: "selected", value: "" ) +
+                        options_from_collection_for_select(@leaders, :id, :name),
                         name: "leader_id",
                         class: "select-css",
                         multiple: false,
-                        size: 10,
-                        data: { action: "change->permalink#filter",
-                                reflex_root: "#search-results" } %>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <label>Filter Follower:</label>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <%= select_tag "follower_id", content_tag(:option, "Select All #{@followers.count} Types", selected: "selected", value: "" ) +
-                        options_from_collection_for_select(@followers, 'id', 'name'),
+                        size: 10 %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <label>Filter Follower:</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <%= select_tag "follower_id", 
+                        content_tag(:option, 
+                                    "Select All #{@followers.count} Types", 
+                                    selected: "selected", value: "" ) +
+                        options_from_collection_for_select(@followers, :id, :name),
                         name: "follower_id",
                         class: "select-css",
                         multiple: false,
-                        size: 10,
-                        data: { action: "change->permalink#filter",
-                                reflex_root: "#search-results" } %>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <label>Filter Event:</label>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <%= select_tag "event_id", content_tag(:option, "Select All #{@events.count} Types", selected: "selected", value: "" ) +
-                        options_from_collection_for_select(@events, 'id', 'name'),
+                        size: 10 %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <label>Filter Event:</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <%= select_tag "event_id", 
+                        content_tag(:option, 
+                                    "Select All #{@events.count} Types", 
+                                    selected: "selected", value: "" ) +
+                        options_from_collection_for_select(@events, :id, :name),
                         name: "event_id",
                         class: "select-css",
                         multiple: false,
-                        size: 10,
-                        data: { action: "change->permalink#filter",
-                                reflex_root: "#search-results" } %>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <label>Filter Channel:</label>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <%= select_tag "channel", content_tag(:option, "Select All #{@channels.count} Types", selected: "selected", value: "" ) +
-                        options_for_select(@channels),
+                        size: 10 %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <label>Filter Channel:</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <%= select_tag :channels, 
+                        content_tag(:option, 
+                                        "Select All #{@channels.count} Types", 
+                                        selected: "selected", value: "" ) +
+                        options_for_select(@channels, request.params.merge(channel: params[:channel])),
                         class: "select-css",
                         name: "channel",
                         multiple: false,
-                        size: 10,
-                        data: { action: "change->permalink#filter",
-                                reflex_root: "#search-results" } %>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        size: 10 %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
