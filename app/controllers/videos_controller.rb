@@ -28,8 +28,6 @@ class VideosController < ApplicationController
     video = video.search(@query) if @query.present?
     page_count   = (video.count / Pagy::VARS[:items].to_f).ceil
     
-    @page = (session[:page] || 1).to_i
-    @page = page_count if @page > page_count
     @pagy, @videos = pagy(video, page: @page, items: 100)
 
   

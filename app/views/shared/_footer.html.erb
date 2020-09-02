@@ -1,5 +1,10 @@
 <footer class="footer">
- <%#== pagy_nav @pagy %>
+
+ <% if @pagy.count > 0 %>
+  <%== pagy_nav @pagy %>
+<p class="lead"><%= @pagy.count %> Results Found</p>
+<% end %>
+
   <small>
     The Tango Library App
     by Justin Marsh

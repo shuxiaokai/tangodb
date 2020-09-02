@@ -5,35 +5,35 @@
                 <th style="min-width:180px"></th>
                 <th style="width:5%">
                     <%= link_to "Song #{arrow :song_id}", "#", class: column_css(:song_id),
-                    data: { reflex: "click->TabularReflex#order", column_name: :song_id, direction: direction } %>
+                    data: {column_name: :song_id, direction: direction } %>
                 </th>
                 <th style="width:10%">
                     <%= link_to "Leader #{arrow :leader_id}", "#", class: column_css(:leader_id),
-                    data: { reflex: "click->TabularReflex#order", column_name: :leader_id, direction: direction } %>
+                    data: {column_name: :leader_id, direction: direction } %>
                 </th>
                 <th style="width:6%">
                     <%= link_to "Follower #{arrow :follower_id}", "#", class: column_css(:follower_id),
-                    data: { reflex: "click->TabularReflex#order", column_name: :follower_id, direction: direction } %>
+                    data: {column_name: :follower_id, direction: direction } %>
                 </th>
                 <th style="width:20%">
                     <%= link_to "Event #{arrow :event_id}", "#", class: column_css(:event_id),
-                    data: { reflex: "click->TabularReflex#order", column_name: :event_id, direction: direction } %>
+                    data: {column_name: :event_id, direction: direction } %>
                 </th>
                 <th style="width:15%">
                     <%= link_to "Genre #{arrow :genre}", "#", class: column_css(:genre),
-                    data: { reflex: "click->TabularReflex#order", column_name: :genre, direction: direction } %>
+                    data: {column_name: :genre, direction: direction } %>
                 </th>
                 <th style="width:15%">
                     <%= link_to "Channel #{arrow :channel}", "#", class: column_css(:channel),
-                    data: { reflex: "click->TabularReflex#order", column_name: :channel, direction: direction } %>
+                    data: {column_name: :channel, direction: direction } %>
                 </th>
                 <th style="width:15%">
                     <%= link_to "View Count #{arrow :view_count}", "#", class: column_css(:view_count),
-                    data: { reflex: "click->TabularReflex#order", column_name: :view_count, direction: direction } %>
+                    data: {column_name: :view_count, direction: direction } %>
                 </th>
                 <th style="width:15%">
                     <%= link_to "Upload Date #{arrow :upload_date}", "#", class: column_css(:upload_date),
-                    data: { reflex: "click->TabularReflex#order", column_name: :upload_date, direction: direction } %>
+                    data: {column_name: :upload_date, direction: direction } %>
                 </th>
 
             </tr>
@@ -76,7 +76,4 @@
         </tbody>
     </table>
 </div>
-<% if @pagy.count > 0 %>
-<p class="lead"><%= @pagy.count %> Results Found</p>
-<%= render "/videos/paginator" if @pagy.pages > 1 %>
-<% end %>
+
