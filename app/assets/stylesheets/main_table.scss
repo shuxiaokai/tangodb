@@ -1,0 +1,139 @@
+/* Main table */
+  
+  /* define height and width of scrollable area. Add 16px to width for scrollbar */
+
+  .scrollTableContainer{
+    max-height: 400px;
+    width: 100%;
+    overflow-y: scroll;
+  }
+
+  .dancers_color {
+    color: #c2c2c2;
+    padding: 5px;
+  }
+    
+  .scrollTable {
+    table-layout: fixed;
+    display: table;
+    width: 100%;
+    height: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    white-space: nowrap;
+    border-collapse: collapse;
+    overscroll-behavior: auto contain;
+  }
+
+  
+  /* Column widths are based on these cells */
+  .row-thumbnail {
+    width: 140px;
+  }
+  .row-dancers {
+    width: 220px;
+  }
+  .row-song-artist {
+    width: 10%;
+  }
+  .row-event {
+    width: 10%;
+  }
+  .row-videotype {
+    width: 10%;
+  }
+  .row-genre {
+    width: 10%;
+  }
+  
+  .row-channel {
+    width: 15%;
+  }
+  .row-view_count {
+    width: 10%;
+  }
+  .row-upload_date {
+    width: 10%;
+  }
+
+  .scrollTableHeader {
+    border-top: 1px solid #c2c2c2;
+    border-bottom: 1px solid #c2c2c2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%; 
+    align-text:left; 
+    background: white;
+    border-collapse: collapse;
+  }
+  .scrollTableHeader th {
+    border: 0px solid #c2c2c2;
+    padding: 4px 3px;
+  }
+
+  /* Arrow toggle for headings */
+  .scrollTableHeader th .current {
+    width:100%;
+    padding-right: 15px;
+    background-repeat: no-repeat;
+    background-position: right;
+  } 
+
+.scrollTableHeader th .asc {
+    background-image: url(/assets/up_arrow.png);
+    background-size: 10px 10px;
+    font-weight:bold;
+  }
+
+.scrollTableHeader th .desc {
+    background-image: url(/assets/down_arrow.png);
+    background-size: 10px 10px;
+    font-weight: bold;
+  }
+
+  /* remove underline */
+   .scrollTableHeader a:link{
+      text-decoration: none;
+  }
+   .scrollTableHeader a:hover {
+    color:#c2c2c2;
+  }
+
+  .scrollTable td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  /* .scrollTable th {
+    background: #ffffff;
+    border: 1px solid #f9f9f9;
+  } */
+  .scrollTable td,
+  .scrollTable th {
+    text-align: left;
+    padding: 15px 10px 10px 30px;
+    border-bottom:1px solid #c2c2c2;
+  }
+
+  /* .scrollTable tr:nth-child(odd) {
+    background: #f9f9f9;
+  } */
+
+    /* Highlight Element */
+  /* .scrollTable tr:hover {
+      background:#2465D9;
+      color:#FFF;
+  } */
+
+  /* Make entire row clickable */
+   .scrollTable tr a {
+      display:block;
+  }  
+
+  /* remove underline */
+   .scrollTable a:link{
+      text-decoration: none;
+  }
+   .scrollTable a:hover {
+    color:#c9c9c9;
+  }
