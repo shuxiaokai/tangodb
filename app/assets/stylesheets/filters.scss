@@ -1,18 +1,18 @@
-  /* -------------------------- filter table ---------------------- */
+/* -------------------------- filter table ---------------------- */
 
-  .container {
-    border: 0px solid #963;
-    display:flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-  }
-  .container > div {
-    border: 0px solid #963;
-    flex: 1; /*grow*/
-    flex-wrap: wrap;
-    flex-direction:row;
-  }
+.container {
+  border: 0px solid #963;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
+ div {
+  border: 0px solid #963;
+  flex: 1; /*grow*/
+  flex-wrap: wrap;
+  flex-direction: row;
+    }
+}
 /* class applies to select element itself, not a wrapper element */
 .select-css {
   display: block;
