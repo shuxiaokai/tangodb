@@ -20,6 +20,7 @@
 
   .wrapper {
       max-width: 2000px;
+      min-width: 600px;
       margin: 0 auto;
       font: 1.2em Helvetica, arial, sans-serif;
   }
@@ -64,7 +65,7 @@
       grid-row: 1 / 2;
       }
     .video {
-      grid-column: col-start 2 / span 8;
+      grid-column: col-start 1 / span 12;
       grid-row: 2 / 3;
     }
     .details {
@@ -72,7 +73,7 @@
       grid-row: 2 / 3;
     }
     .content {
-      grid-column: col-start 2 / span 12;
+      grid-column: col-start 1 / span 12;
       grid-row: 3 / 5;
     }
     .side {
@@ -210,10 +211,10 @@
     padding-bottom: 5px;
   }
   .search-bar {
-    padding-top: 30px;
+    padding-top: 5px;
     padding-bottom: 30px;
     align-content: center;
-    width: 200px;
+    width: 100%;
   }
 
 
