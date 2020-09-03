@@ -4,36 +4,31 @@
             <tr>
                 <th style="min-width:180px"></th>
                 <th style="width:5%">
-                    <%= link_to "Song #{arrow :song_id}", "#", class: column_css(:song_id),
-                    data: {column_name: :song_id, direction: direction } %>
+                    <%= sortable "song_id", "Song" %>
+                </th>
+                <th style="width:5%">
+                    <%= sortable "artist", "Artist" %>
                 </th>
                 <th style="width:10%">
-                    <%= link_to "Leader #{arrow :leader_id}", "#", class: column_css(:leader_id),
-                    data: {column_name: :leader_id, direction: direction } %>
+                    <%= sortable "leader_id", "Leader" %>
                 </th>
                 <th style="width:6%">
-                    <%= link_to "Follower #{arrow :follower_id}", "#", class: column_css(:follower_id),
-                    data: {column_name: :follower_id, direction: direction } %>
+                    <%= sortable "follower_id", "Follower" %>
                 </th>
                 <th style="width:20%">
-                    <%= link_to "Event #{arrow :event_id}", "#", class: column_css(:event_id),
-                    data: {column_name: :event_id, direction: direction } %>
+                    <%= sortable "Event_id", "Event" %>
                 </th>
                 <th style="width:15%">
-                    <%= link_to "Genre #{arrow :genre}", "#", class: column_css(:genre),
-                    data: {column_name: :genre, direction: direction } %>
+                    <%= sortable "Genre" %>
                 </th>
                 <th style="width:15%">
-                    <%= link_to "Channel #{arrow :channel}", "#", class: column_css(:channel),
-                    data: {column_name: :channel, direction: direction } %>
+                    <%= sortable "channel_id", "Channel" %>
                 </th>
                 <th style="width:15%">
-                    <%= link_to "View Count #{arrow :view_count}", "#", class: column_css(:view_count),
-                    data: {column_name: :view_count, direction: direction } %>
+                    <%= sortable "View Count" %>
                 </th>
                 <th style="width:15%">
-                    <%= link_to "Upload Date #{arrow :upload_date}", "#", class: column_css(:upload_date),
-                    data: {column_name: :upload_date, direction: direction } %>
+                    <%= sortable "upload_date", "Upload Date" %>
                 </th>
 
             </tr>
