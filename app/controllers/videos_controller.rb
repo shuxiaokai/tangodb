@@ -79,20 +79,20 @@ class VideosController < ApplicationController
 
 private
 
-  # def sort_column
-  #   Video.column_names.include?(params[:sort]) ? params[:sort] : "upload_date"
-  # end
-
-  # def sort_direction
-  #   %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
-  # end
-
-  def permitted_column_name(column_name)
-    %w[song_id follower_id leader_id channel song_genre event_id videotype_id view_count upload_date].find { |permitted| column_name == permitted } || "channel"
+  def sort_column
+    Video.column_names.include?(params[:sort]) ? params[:sort] : "upload_date"
   end
 
-  def permitted_direction(direction)
-    %w[asc desc].find { |permitted| direction == permitted } || "asc"
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
+
+  # def permitted_column_name(column_name)
+  #   %w[song_id follower_id leader_id channel song_genre event_id videotype_id view_count upload_date].find { |permitted| column_name == permitted } || "channel"
+  # end
+
+  # def permitted_direction(direction)
+  #   %w[asc desc].find { |permitted| direction == permitted } || "asc"
+  # end
 
 end
