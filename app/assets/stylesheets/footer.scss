@@ -41,6 +41,8 @@ span {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
 
   div {
     border: 0px solid #963;

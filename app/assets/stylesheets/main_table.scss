@@ -36,10 +36,10 @@
   width: 10%;
 }
 .row-events {
-  width: 5%;
+  width: 10%;
 }
 .row-videotypes {
-  width: 10%;
+  width: 5%;
 }
 .row-genres {
   width: 5%;
@@ -53,6 +53,9 @@
 .row-upload_dates {
   width: 10%;
 }
+.row-scrollbar-width{
+  width: 14px;
+}
 
 .scrollTableHeader {
   border-top: 1px solid #c2c2c2;
@@ -64,7 +67,9 @@
   border-collapse: collapse;
 }
 .scrollTableHeader th {
-  border: 1px solid #c2c2c2;
+  border: 0px solid #c2c2c2;
+  border-left: 1px solid #c2c2c2;
+  border-right: 1px solid #c2c2c2;
   padding: 4px 3px;
 }
 
@@ -104,9 +109,9 @@
 
 .scrollTable td,
 .scrollTable th {
-  border: 1px solid #c2c2c2;
+  border: 0px solid #c2c2c2;
   text-align: left;
-  padding: 15px 10px 10px 30px;
+  padding: 5px 5px 5px 5px;
   border-bottom: 1px solid #c2c2c2;
 }
 
