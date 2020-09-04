@@ -19,6 +19,7 @@ gem 'json',                   '~> 2.3', '>= 2.3.1'
 gem 'pg_search',              '~> 2.3', '>= 2.3.2'
 gem 'pagy',                   '~> 0.6.0'
 gem 'factory_bot',            '~> 6.1'
+gem "redis",                  '~> 4.0.1'
 
 
 group :development, :test do
