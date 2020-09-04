@@ -21,7 +21,7 @@
 }
   /* Column widths are based on these cells */
 .row-thumbnails {
-  width: 180px;
+  width: 10%;
 }
 .row-titles {
   width: 10%;
@@ -35,27 +35,24 @@
 .row-followers {
   width: 10%;
 }
-.row-event {
+.row-events {
+  width: 5%;
+}
+.row-videotypes {
   width: 10%;
 }
-.row-videotype {
+.row-genres {
+  width: 5%;
+}
+.row-channels {
   width: 10%;
 }
-.row-genre {
+.row-view_counts {
   width: 10%;
 }
-.row-channel {
-  width: 15%;
-}
-.row-view_count {
+.row-upload_dates {
   width: 10%;
 }
-.row-upload_date {
-  width: 10%;
-}
-
-
-
 
 .scrollTableHeader {
   border-top: 1px solid #c2c2c2;
@@ -67,7 +64,7 @@
   border-collapse: collapse;
 }
 .scrollTableHeader th {
-  border: 0px solid #c2c2c2;
+  border: 1px solid #c2c2c2;
   padding: 4px 3px;
 }
 
@@ -107,6 +104,7 @@
 
 .scrollTable td,
 .scrollTable th {
+  border: 1px solid #c2c2c2;
   text-align: left;
   padding: 15px 10px 10px 30px;
   border-bottom: 1px solid #c2c2c2;
