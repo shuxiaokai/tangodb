@@ -3,14 +3,9 @@
 /* define height and width of scrollable area. Add 16px to width for scrollbar */
 
 .scrollTableContainer {
-  max-height: 400px;
+  max-height: 1000px;
   width: 100%;
   overflow-y: scroll;
-}
-
-.dancers_color {
-  color: #c2c2c2;
-  padding: 5px;
 }
 
 .scrollTable {
@@ -23,17 +18,16 @@
   white-space: nowrap;
   border-collapse: collapse;
   overscroll-behavior: auto contain;
-}
 
-/* Column widths are based on these cells */
-.row-thumbnail {
-  width: 140px;
+  /* Column widths are based on these cells */
+.row-thumbnail td{
+  width: 300px;
 }
-.row-dancers {
-  width: 220px;
+.row-titles {
+  width: 30%;
 }
-.row-song-artist {
-  width: 10%;
+.row-song {
+  width: 15%;
 }
 .row-event {
   width: 10%;
@@ -53,6 +47,10 @@
 .row-upload_date {
   width: 10%;
 }
+
+}
+
+
 
 .scrollTableHeader {
   border-top: 1px solid #c2c2c2;

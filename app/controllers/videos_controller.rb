@@ -4,7 +4,7 @@ class VideosController < ApplicationController
   include Pagy::Backend
 
   def index
-    @query = session[:query]
+    # @query = session[:query]
     # @order_by = permitted_column_name(session[:order_by])
     # @direction = permitted_direction(session[:direction])
 
