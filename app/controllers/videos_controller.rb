@@ -15,9 +15,8 @@ class VideosController < ApplicationController
     # video = video.includes(:event).where(event_id: params[:event_id]).order(sort_column + " " + sort_direction).where.not(leader: nil, follower: nil, song: nil) unless params[:event_id].blank?
     # video = video.includes(:videotype).where(videotype_id: params[:videotype_id]).order(sort_column + " " + sort_direction).where.not(leader: nil, follower: nil, song: nil) unless params[:videotype_id].blank?
     # video = video.includes(:song).where(:songs => {:genre => params[:genre] }).references(:songs).order(sort_column + " " + sort_direction).where.not(leader: nil, follower: nil, song: nil) unless params[:genre].blank?
-    video = video.order(sort_column + " " + sort_direction).search(params[:query]) if params[:query].present?
-    video = video.all.order(sort_column + " " + sort_direction).where.not(leader: nil, follower: nil, song: nil) if params[:leader_id].blank? and params[:follower_id].blank? and params[:channel_id].blank? and params[:event_id].blank? and params[:videotype_id].blank? and params[:genre].blank?
-
+    video = video.includes(:song, :leader, :follower, :event, :videotype).order(sort_column + " " + sort_direction).search(params[:query]) if params[:query].present?
+    video = video.all.includes(:song, :leader, :follower, :event, :videotype).order(sort_column + " " + sort_direction).where.not(leader: nil, follower: nil, song: nil)
 
     page_count   = (video.count / Pagy::VARS[:items].to_f).ceil
     
@@ -64,7 +63,8 @@ class VideosController < ApplicationController
 private
 
   def sort_column
-    Video.column_names.include?(params[:sort]) ? params[:sort] : "upload_date"
+    acceptable_cols = ["songs.artist", "songs.genre","youtube_id","sort","direction","leader_id","follower_id","channel","upload_date","view_count","song_id","songs.artist", "songs.genre", "videotype_id", "event_id", "query"]
+    acceptable_cols.include?(params[:sort]) ? params[:sort] : "upload_date"
   end
 
   def sort_direction

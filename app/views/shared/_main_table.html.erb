@@ -2,35 +2,35 @@
     <table class="scrollTableHeader">
         <thead class="bg-primary">
             <tr>
-                <th style="min-width:180px"></th>
-                <th style="width:5%">
+                <th class="row-thumbnails">&nbsp;</th>
+                <th class="row-titles">
                     <%= sortable "song_id", "Song" %>
                 </th>
-                <th style="width:15%">
-                    <%= sortable "artist", "Artist" %>
+                <th class="row-artists">
+                    <%= sortable "songs.artist", "Artist" %>
                 </th>
-                <th style="width:10%">
+                <th class="row-leaders">
                     <%= sortable "leader_id", "Leader" %>
                 </th>
-                <th style="width:6%">
+                <th class="row-followers">
                     <%= sortable "follower_id", "Follower" %>
                 </th>
-                <th style="width:10%">
-                    <%= sortable "Event_id", "Event" %>
+                <th class="row-events">
+                    <%= sortable "event_id", "Event" %>
                 </th>
-                <th style="width:10%">
-                    <%= sortable "Type" %>
+                <th class="row-types">
+                    <%= sortable "videotype_id", "Type" %>
                 </th>
-                <th style="width:10%">
-                    <%= sortable "Genre" %>
+                <th class="row-genres">
+                    <%= sortable "songs.genre", "Genre" %>
                 </th>
-                <th style="width:10%">
-                    <%= sortable "channel_id", "Channel" %>
+                <th class="row-channels">
+                    <%= sortable "channel", "Channel" %>
                 </th>
-                <th style="width:15%">
-                    <%= sortable "View Count" %>
+                <th class="row-view_counts">
+                    <%= sortable "view_count" %>
                 </th>
-                <th style="width:15%">
+                <th class="row-upload_dates">
                     <%= sortable "upload_date", "Upload Date" %>
                 </th>
 
@@ -44,19 +44,19 @@
         <tbody>
             <% @videos.each do |video| %>
             <tr>
-                <td class="row-thumbnail">
+                <td class="row-thumbnails">
                     <%= link_to image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg",width: 120), current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
                 </td>
-                <td class="row-titles" style="width:12%">
+                <td class="row-titles">
                     <%= link_to "#{video.song.try(:title)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
                 </td>
-                <td class="row-songs" style="width:12%">
+                <td class="row-artists">
                     <%= link_to "#{video.song.try(:artist)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
                 </td>
-                <td class="row-leaders" style="width:10%">
+                <td class="row-leaders">
                 <%= link_to "#{video.leader.try(:name)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}"), class:"dancers_color" %>
                 </td>
-                <td class="row-followers" style="width:10%">
+                <td class="row-followers">
                 <%= link_to "#{video.follower.try(:name)}", current_page_params.merge(:youtube_id => "#{video.youtube_id}"), class:"dancers_color" %>
                 </td>
                 <td class="row-event">

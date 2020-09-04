@@ -13,13 +13,13 @@
  *= require_self
  */
  
-@import "layout.scss";
-@import "filters.scss";
-@import "footer.scss";
-@import "header.scss";
-@import "iframe.scss";
-@import "main_table.scss";
-@import "recommended_videos.scss";
-@import "search_bar.scss";
-@import "sidebar.scss";
-@import "video_details.scss";
+@import "layout";
+@import "filters";
+@import "footer";
+@import "header";
+@import "iframe";
+@import "main_table";
+@import "recommended_videos";
+@import "search_bar";
+@import "sidebar";
+@import "video_details";
