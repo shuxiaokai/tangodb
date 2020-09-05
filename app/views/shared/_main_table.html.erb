@@ -44,8 +44,7 @@
       <% @videos.each do |video| %>
       <tr>
         <td class="row-thumbnails">
-          <%= link_to image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg",
-                width: 120), 
+          <%= link_to image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg", class: 'thumbnail'), 
                 current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
         </td>
         <td class="row-titles">

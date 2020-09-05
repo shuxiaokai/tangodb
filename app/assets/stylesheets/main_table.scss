@@ -22,6 +22,8 @@
   /* Column widths are based on these cells */
 .row-thumbnails {
   width: 10%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .row-titles {
   width: 10%;
@@ -126,4 +128,12 @@
 }
 .scrollTable a:hover {
   color: #c9c9c9;
+}
+
+.thumbnail {
+  border-radius: 5px;
+  width: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
