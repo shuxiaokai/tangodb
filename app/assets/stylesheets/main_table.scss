@@ -22,11 +22,9 @@
   /* Column widths are based on these cells */
 .row-thumbnails {
   width: 10%;
-  margin-left: auto;
-  margin-right: auto;
 }
 .row-titles {
-  width: 10%;
+  width: 10%
 }
 .row-artists {
   width: 10%;
@@ -70,8 +68,8 @@
 }
 .scrollTableHeader th {
   border: 0px solid #c2c2c2;
-  border-left: 1px solid #c2c2c2;
-  border-right: 1px solid #c2c2c2;
+  // border-left: 1px solid #c2c2c2;
+  // border-right: 1px solid #c2c2c2;
   padding: 4px 3px;
 }
 
@@ -115,6 +113,10 @@
   text-align: left;
   padding: 5px 5px 5px 5px;
   border-bottom: 1px solid #c2c2c2;
+}
+.scrollTableHeader #inner {
+border-left: 1px solid #c2c2c2;
+border-right: 1px solid #c2c2c2;
 }
 
 /* Make entire row clickable */
