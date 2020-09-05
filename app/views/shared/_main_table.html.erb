@@ -1,97 +1,95 @@
-
-    <table class="scrollTableHeader">
-        <thead>
-            <tr>
-                <th class="row-thumbnails"></th>
-                <th class="row-titles">
-                    <%= sortable "song_id", "Song" %>
-                </th>
-                <th class="row-artists">
-                    <%= sortable "songs.artist", "Artist" %>
-                </th>
-                <th class="row-leaders">
-                    <%= sortable "leader_id", "Leader" %>
-                </th>
-                <th class="row-followers">
-                    <%= sortable "follower_id", "Follower" %>
-                </th>
-                <th class="row-events">
-                    <%= sortable "event_id", "Event" %>
-                </th>
-                <th class="row-types">
-                    <%= sortable "videotype_id", "Type" %>
-                </th>
-                <th class="row-genres">
-                    <%= sortable "songs.genre", "Genre" %>
-                </th>
-                <th class="row-channels">
-                    <%= sortable "channel", "Channel" %>
-                </th>
-                <th class="row-view_counts">
-                    <%= sortable "view_count" %>
-                </th>
-                <th class="row-upload_dates">
-                    <%= sortable "upload_date", "Upload Date" %>
-                </th>
-                <th class="row-scrollbar-width">
-                </th>
-            </tr>
-        </thead>
-    </table>
+<table class="scrollTableHeader">
+  <thead>
+    <tr>
+      <th class="row-thumbnails"></th>
+      <th class="row-titles">
+        <%= sortable "song_id", "Song" %>
+      </th>
+      <th class="row-artists">
+        <%= sortable "songs.artist", "Artist" %>
+      </th>
+      <th class="row-leaders">
+        <%= sortable "leader_id", "Leader" %>
+      </th>
+      <th class="row-followers">
+        <%= sortable "follower_id", "Follower" %>
+      </th>
+      <th class="row-events">
+        <%= sortable "event_id", "Event" %>
+      </th>
+      <th class="row-types">
+        <%= sortable "videotype_id", "Type" %>
+      </th>
+      <th class="row-genres">
+        <%= sortable "songs.genre", "Genre" %>
+      </th>
+      <th class="row-channels">
+        <%= sortable "channel", "Channel" %>
+      </th>
+      <th class="row-view_counts">
+        <%= sortable "view_count" %>
+      </th>
+      <th class="row-upload_dates">
+        <%= sortable "upload_date", "Upload Date" %>
+      </th>
+      <th class="row-scrollbar-width">
+      </th>
+    </tr>
+  </thead>
+</table>
 
 <div class="scrollTableContainer">
-    <table class="scrollTable">
-        <tbody>
-            <% @videos.each do |video| %>
-            <tr>
-                <td class="row-thumbnails">
-                    <%= link_to image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg",
-                    width: 120), 
-                    current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
-                </td>
-                <td class="row-titles">
-                    <%= link_to "#{video.song.try(:title)}", 
+  <table class="scrollTable">
+    <tbody>
+      <% @videos.each do |video| %>
+      <tr>
+        <td class="row-thumbnails">
+          <%= link_to image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg",
+                width: 120), 
+                current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
+        </td>
+        <td class="row-titles">
+          <%= link_to "#{video.song.try(:title)}", 
                         current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
-                </td>
-                <td class="row-artists">
-                    <%= link_to "#{video.song.try(:artist)}", 
+        </td>
+        <td class="row-artists">
+          <%= link_to "#{video.song.try(:artist)}", 
                         current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
-                </td>
-                <td class="row-leaders">
-                    <%= link_to "#{video.leader.try(:name)}", 
+        </td>
+        <td class="row-leaders">
+          <%= link_to "#{video.leader.try(:name)}", 
                         current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
-                </td>
-                <td class="row-followers">
-                    <%= link_to "#{video.follower.try(:name)}", 
+        </td>
+        <td class="row-followers">
+          <%= link_to "#{video.follower.try(:name)}", 
                         current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
-                </td>
-                <td class="row-events">
-                    <%= link_to "#{video.event.try(:name)}", 
+        </td>
+        <td class="row-events">
+          <%= link_to "#{video.event.try(:name)}", 
                         current_page_params.merge(:youtube_id => "#{video.event.try(:title)}" ) %>
-                </td>
-                <td class="row-videotypes">
-                    <%= link_to "#{video.videotype.try(:name)}", 
+        </td>
+        <td class="row-videotypes">
+          <%= link_to "#{video.videotype.try(:name)}", 
                         current_page_params.merge(:youtube_id => "#{video.videotype.try(:name)}" ) %>
-                </td>
-                <td class="row-genres">
-                    <%= link_to "#{video.song.try(:genre)}", 
+        </td>
+        <td class="row-genres">
+          <%= link_to "#{video.song.try(:genre)}", 
                         current_page_params.merge(:youtube_id => "#{video.song.try(:genre)}" ) %>
-                </td>
-                <td class="row-channels">
-                    <%= link_to "#{video.channel}", 
+        </td>
+        <td class="row-channels">
+          <%= link_to "#{video.channel}", 
                         current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
-                </td>
-                <td class="row-view_counts">
-                    <%= link_to "#{video.view_count}", 
+        </td>
+        <td class="row-view_counts">
+          <%= link_to "#{video.view_count}", 
                         current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
-                </td>
-                <td class="row-upload_dates">
-                    <%= link_to "#{video.upload_date}", 
+        </td>
+        <td class="row-upload_dates">
+          <%= link_to "#{video.upload_date}", 
                         current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
-                </td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
