@@ -3,7 +3,7 @@
 /* define height and width of scrollable area. Add 16px to width for scrollbar */
 
 .scrollTableContainer {
-  max-height: 430px;
+  max-height: 1000px;
   width: 100%;
   overflow-y: scroll;
 }
@@ -12,7 +12,7 @@
   table-layout: fixed;
   display: table;
   width: 100%;
-  height: 430px;
+  height: 1000px;
   overflow-y: scroll;
   overflow-x: hidden;
   white-space: nowrap;
@@ -20,6 +20,9 @@
   overscroll-behavior: auto contain;
 }
   /* Column widths are based on these cells */
+.row-videotypes {
+  width: 5%;
+}
 .row-thumbnails {
   width: 10%;
 }
@@ -38,9 +41,6 @@
 .row-events {
   width: 10%;
 }
-.row-videotypes {
-  width: 5%;
-}
 .row-genres {
   width: 5%;
 }
@@ -51,10 +51,10 @@
   width: 10%;
 }
 .row-upload_dates {
-  width: 10%;
+  width: 9%;
 }
 .row-scrollbar-width{
-  width: 14px;
+  width: 1%;
 }
 
 .scrollTableHeader {
@@ -66,11 +66,14 @@
   background: white;
   border-collapse: collapse;
 }
+
 .scrollTableHeader th {
   border: 0px solid #c2c2c2;
   // border-left: 1px solid #c2c2c2;
   // border-right: 1px solid #c2c2c2;
-  padding: 4px 3px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: left;
 }
 
 /* Arrow toggle for headings */
@@ -111,12 +114,16 @@
 .scrollTable th {
   border: 0px solid #c2c2c2;
   text-align: left;
-  padding: 5px 5px 5px 5px;
-  border-bottom: 1px solid #c2c2c2;
+  // padding: 5px 5px 5px 5px;
+  border-bottom: 0px solid #c2c2c2;
 }
+  #details {
+  border-bottom: 1px solid #c2c2c2;
+  align-text: left;
+  }
 .scrollTableHeader #inner {
-border-left: 1px solid #c2c2c2;
-border-right: 1px solid #c2c2c2;
+  align-text: left;
+  border-left: 1px;
 }
 
 /* Make entire row clickable */
@@ -133,9 +140,16 @@ border-right: 1px solid #c2c2c2;
 }
 
 .thumbnail {
-  border-radius: 5px;
-  width: 100px;
+  border-radius: 4px;
+  width: 90px;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.scrollTableHeader #thumnails {
+  border-top: 0px;
+  border-bottom: 0px;
 }
