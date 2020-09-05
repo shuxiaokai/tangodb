@@ -24,7 +24,7 @@
   width: 5%;
 }
 .row-thumbnails {
-  width: 10%;
+  width: 8%;
 }
 .row-titles {
   width: 10%
@@ -39,7 +39,7 @@
   width: 10%;
 }
 .row-events {
-  width: 10%;
+  width: 12%;
 }
 .row-genres {
   width: 5%;
@@ -136,7 +136,13 @@
   text-decoration: none;
 }
 .scrollTable a:hover {
-  color: #c9c9c9;
+  color: #3d3d3d;
+  text-decoration: underline;
+}
+
+.scrollTable tr:hover {
+  color: #3d3d3d;
+  background-color: rgb(241, 241, 241);
 }
 
 .thumbnail {
