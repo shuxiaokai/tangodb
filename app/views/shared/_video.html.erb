@@ -2,7 +2,7 @@
   <div id="youtube_video">
     <div class="iframe-container">
       <iframe scrolling="no" 
-              src="https://www.youtube.com/embed/<%= @active_video %>" 
+              src="https://www.youtube.com/embed/<%= @active_video_url %>" 
               allow="accelerometer;
                 autoplay;
                 encrypted-media;
@@ -14,21 +14,16 @@
   </div>
   <div class="scrollTabledDetailContainer">
     <div class="video_details_content">
-      <% if params[:youtube_id].nil? %>
-      <% video_details = Video.find_by(youtube_id: 's6iptZdCcG0') %>
-      <% else %>
-      <% video_details = Video.find_by(youtube_id: params[:youtube_id]) %>
-      <% end %>
       <%= render "shared/search" %>
       <table>
         <tr>
           <td>
-            <b>Title:</b> <%= video_details.title %>
+            <b>Title:</b> <%= @active_video.title %>
           </td>
         </tr>
         <tr>
           <td>
-            <b>Description:</b> <%= video_details.description %>
+            <b>Description:</b> <%= @active_video.description %>
           </td>
         </tr>
       </table>
@@ -40,45 +35,45 @@
         </tr>
         <tr>
           <td>
-            <b>Channel:</b> <%= video_details.channel %>
+            <b>Channel:</b> <%= @active_video.channel %>
           </td>
         </tr>
       </table>
       <table>
         <tr>
           <td>
-            <b>Leader</b> <%= video_details.leader.try(:name) %>
+            <b>Leader</b> <%= @active_video.leader.try(:name) %>
           </td>
           <td>
-            <b>Follower:</b> <%= video_details.follower.try(:name) %>
+            <b>Follower:</b> <%= @active_video.follower.try(:name) %>
           </td>
         </tr>
         <tr>
           <td>
-            <b>Genre:</b> <%= video_details.song.try(:genre) %>
+            <b>Genre:</b> <%= @active_video.song.try(:genre) %>
           </td>
           <td>
-            <b>Song:</b> <%= video_details.song.try(:title) %>
+            <b>Song:</b> <%= @active_video.song.try(:title) %>
           </td>
           <td>
-            <b>Artist:</b> <%= video_details.song.try(:artist) %>
+            <b>Artist:</b> <%= @active_video.song.try(:artist) %>
           </td>
         </tr>
       </table>
       <table>
         <tr>
           <td>
-            <b>Rating:</b> <%= video_details.avg_rating %> stars
+            <b>Rating:</b> <%= @active_video.avg_rating %> stars
           </td>
           <td>
-            <b>View Count:</b> <%= video_details.view_count %>
+            <b>View Count:</b> <%= @active_video.view_count %>
           </td>
         <tr>
           <td>
-            <b>Length:</b> <%= video_details.duration %> seconds
+            <b>Length:</b> <%= @active_video.duration %> seconds
           </td>
           <td>
-            <b>Upload Date:</b> <%= video_details.upload_date %>
+            <b>Upload Date:</b> <%= @active_video.upload_date %>
           </td>
         </tr>
         </tr>

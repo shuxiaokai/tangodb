@@ -6,11 +6,13 @@ class VideosController < ApplicationController
   def index
     
     # Feeds default url to iframe if a params link isn't selected
-    
-    if params[:youtube_id].nil? 
-      @active_video = 's6iptZdCcG0'
+
+    if params[:youtube_id].blank? 
+      @active_video_url = 's6iptZdCcG0'
+      @active_video = Video.find_by(youtube_id: @active_video_url)
     else
-      @active_video = params[:youtube_id]
+      @active_video_url = params[:youtube_id]
+      @active_video = Video.find_by(youtube_id: params[:youtube_id])
     end
 
     video = Video

@@ -2,22 +2,22 @@
 
   <% if @pagy.count > 0 %>
   <div>
-      <table>
-          <%= @pagy.count %> Results Found
-      </table>
+    <table>
+      <%= @pagy.count %> Results Found
+    </table>
   </div>
   <div>
-      <table>
-          <%== pagy_nav @pagy %>
-      </table>
+    <table>
+      <%== pagy_nav @pagy %>
+    </table>
   </div>
   <% end %>
   <div>
-      <table>
-          <small>
-              The Tango Library App
-              by Justin Marsh
-          </small>
-      </table>
+    <table>
+      <small>
+        The Tango Library App
+        by Justin Marsh
+      </small>
+    </table>
   </div>
 </footer>
