@@ -1,8 +1,7 @@
 /* video details area */
 
 .scrollTabledDetailContainer {
-  max-height: 335px;
-  max-width: 590px;
+  max-height: 400px;
   min-width: 300px;
   padding-left: 20px;
   padding-right: 20px;
@@ -11,15 +10,14 @@
   overscroll-behavior: auto contain;
 }
 
-.video_details_content {
-  float: right;
-}
 
 .video_details_content tr {
   padding-top: 5px;
+  padding-right: 5px;
   padding-bottom: 5px;
 }
 .video_details_content td {
   padding-top: 5px;
+  padding-right: 5px;
   padding-bottom: 5px;
 }

@@ -75,7 +75,7 @@
         <td class="row-events" id="details">
           <%= link_to "#{video.event.try(:name)}", 
                         current_page_params
-                        .merge(:youtube_id => "#{video.event.try(:title)}" ) %>
+                        .merge(:youtube_id => "#{video.youtube_id}" ) %>
         </td>
         
         <td class="row-genres" id="details">

@@ -48,11 +48,11 @@
     grid-row: 1 / 2;
   }
   .video {
-    grid-column: col-start 1 / span 12;
+    grid-column: col-start 1 / span 6;
     grid-row: 2 / 3;
   }
   .details {
-    grid-column: col-start 6 / span 4;
+    grid-column: col-start 7 / span 6;
     grid-row: 2 / 3;
   }
   .content {
@@ -85,7 +85,7 @@
   td,
   a {
     color: #3d3d3d;
-    font: normal normal 12px Helvetica, Arial, sans-serif;
+    font: normal normal 11px Helvetica, Arial, sans-serif;
   }
 
   h1 {
