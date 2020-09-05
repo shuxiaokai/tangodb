@@ -28,15 +28,15 @@
 #
 
 class Video < ApplicationRecord
-  
+
   include Filterable
   include PgSearch::Model
-  
 
-  #validates :leader, presence: true
-  #validates :follower, presence: true
-  #validates :song, presence: true
-  #validates :artist, presence: true
+
+  validates :leader, presence: true
+  validates :follower, presence: true
+  validates :song, presence: true
+  validates :artist, presence: true
   validates :youtube_id, presence: true, uniqueness: true
   validates :title, presence: true
 
@@ -46,7 +46,7 @@ class Video < ApplicationRecord
   scope :follower, ->(follower_id) { where( follower_id: follower_id ) }
   scope :event, ->(event_id) { where( event_id: event_id ) }
   scope :channel, ->(channel) { where( channel: channel ) }
-  
+
   belongs_to :leader
   belongs_to :follower
   belongs_to :song
@@ -59,18 +59,18 @@ class Video < ApplicationRecord
                       tsearch: {normalization: 32}
                     },
                     ignoring: :accents
-                    
+
 
   class << self
     # To fetch video, run this from the console:
     # Video.parse_json('data/030tango_channel_data_json')
     # Video.parse_json('/Users/justin/data/channel_json')
     def parse_json(file_path)
-      json_file = Dir.glob("#{file_path}/**/*.json").map 
+      json_file = Dir.glob("#{file_path}/**/*.json").map
       json_file.each do |youtube_video|
           video = JSON.parse(File.read(youtube_video))
           video = Video.new(
-                          youtube_id: video["id"], 
+                          youtube_id: video["id"],
                           title: video["title"],
                           description: video["description"],
                           youtube_song: video["track"],
@@ -85,7 +85,7 @@ class Video < ApplicationRecord
                         )
            #video.grep_title
            video.save
-       end 
+       end
     end
   end
 
@@ -99,10 +99,10 @@ class Video < ApplicationRecord
       self.follower = Follower.all.find { |follower| title.match(follower.name) }
       # Grep song from Title
         # if self.song.nil?
-        
+
         #   self.song = Song.all.find { |song| title.match(song.title) }
         #   self.artist = Song.all.find { |artist| title.match(song.artist) }
-        
+
         # end
     end
   end
