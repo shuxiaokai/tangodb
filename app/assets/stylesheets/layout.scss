@@ -10,7 +10,7 @@
   margin: 0 auto;
   margin-left: 50px;
   margin-right: 50px;
-  font: 1.2em Helvetica, arial, sans-serif;
+  font-size: 0.7em;
 }
 
 .wrapper > * {
@@ -75,9 +75,8 @@
   /* start basic styling */
 
   body {
-    background: #fff;
     color: #000;
-    font: normal normal 10px Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
     margin: 10px;
   }
 
@@ -85,22 +84,21 @@
   td,
   a {
     color: #3d3d3d;
-    font: normal normal 11px Helvetica, Arial, sans-serif;
   }
 
   h1 {
-    font: normal normal 40px Helvetica, Arial, sans-serif;
+    font-size: 40px;
     margin: 0 0 5px 0;
   }
 
   h2 {
-    font: normal normal 14px Helvetica, Arial, sans-serif;
+    font-size: 14px;
     font-weight: 600;
     margin: 0 0 5px 0;
   }
 
   h3 {
-    font: normal normal 12px Helvetica, Arial, sans-serif;
+    font-size: 12px;
     color: #000;
     margin: 0 0 15px 0;
   }

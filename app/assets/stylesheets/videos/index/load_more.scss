@@ -1,0 +1,10 @@
+.load-more-link {
+  display: block;
+  padding: 20px 0;
+  color: #0c3869;
+  text-align: center;
+  text-decoration: none;
+  &:hover {
+    background-color: #e8f0fa;
+  }
+}
