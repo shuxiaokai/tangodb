@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root "videos#index"
 
-  resources :videos
-
+  resources :videos, only: %i[index]
 end
