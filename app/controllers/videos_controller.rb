@@ -1,4 +1,6 @@
 class VideosController < ApplicationController
+  NUMBER_OF_VIDEOS_PER_PAGE = 2.freeze
+
   helper_method :sort_column, :sort_direction
 
   def index
@@ -19,7 +21,7 @@ class VideosController < ApplicationController
 
     @videos = @videos.order(sort_column + " " + sort_direction).search(params[:query]) if params[:query].present?
 
-    @videos = @videos.limit(2).offset(2 * page)
+    @videos = @videos.limit(NUMBER_OF_VIDEOS_PER_PAGE).offset(NUMBER_OF_VIDEOS_PER_PAGE * page)
   end
 
 private
@@ -50,6 +52,6 @@ private
   end
 
   def page
-    params.permit(:page).fetch(:page, default: 0).to_i
+    @page ||= params.permit(:page).fetch(:page, 1).to_i
   end
 end
