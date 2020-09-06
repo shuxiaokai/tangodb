@@ -13,31 +13,37 @@
   }
 }
 
-.video-videotypes {
-  width: 5%;
-}
+
 .video-thumbnails {
   width: 8%;
-  min-width: 80px;
+  min-width: 110px;
   img {
     width: 90px;
     height: auto;
   }
 }
+.video-videotypes {
+  width: 5%;
+}
 .video-titles {
-  width: 10%
+  width: 10%;
+  min-width: 80px;
 }
 .video-artists {
   width: 10%;
+  min-width: 80px;
 }
 .video-leaders {
   width: 10%;
+  min-width: 80px;
 }
 .video-followers {
   width: 10%;
+  min-width: 80px;
 }
 .video-events {
   width: 12%;
+  min-width: 80px;
 }
 
 @media (max-width: 1000px) {
