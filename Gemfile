@@ -18,7 +18,6 @@ gem 'spring',                 '2.1.0'
 gem 'spring-watcher-listen',  '2.0.1'
 gem 'json',                   '~> 2.3', '>= 2.3.1'
 gem 'pg_search',              '~> 2.3', '>= 2.3.2'
-gem 'pagy',                   '~> 0.6.0'
 gem 'factory_bot',            '~> 6.1'
 gem "redis",                  '~> 4.0.1'
 
