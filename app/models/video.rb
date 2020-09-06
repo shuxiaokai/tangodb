@@ -31,10 +31,10 @@ class Video < ApplicationRecord
   include Filterable
   include PgSearch::Model
 
-  validates :leader, presence: true
-  validates :follower, presence: true
-  validates :song, presence: true
-  validates :artist, presence: true
+  # validates :leader, presence: true
+  # validates :follower, presence: true
+  # validates :song, presence: true
+  # validates :artist, presence: true
   validates :youtube_id, presence: true, uniqueness: true
   validates :title, presence: true
 

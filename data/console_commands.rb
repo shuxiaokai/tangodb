@@ -37,7 +37,6 @@
         video.videotype = videotype
         video.save
       end
-      puts Video.pluck(:videotype_id).compact.count
     end
 
     #Matches Videotype with Video description
@@ -47,7 +46,6 @@
         video.videotype = videotype
         video.save
       end
-      puts Video.pluck(:videotype_id).compact.count
     end
 
 
