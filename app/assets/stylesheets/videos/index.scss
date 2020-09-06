@@ -10,6 +10,10 @@
 }
 .video-thumbnails {
   width: 8%;
+  img {
+    width: 90px;
+    height: auto;
+  }
 }
 .video-titles {
   width: 10%
