@@ -28,10 +28,8 @@
 #
 
 class Video < ApplicationRecord
-
   include Filterable
   include PgSearch::Model
-
 
   validates :leader, presence: true
   validates :follower, presence: true
@@ -90,27 +88,14 @@ class Video < ApplicationRecord
   end
 
   class << self
-
     def grep_title
-
       # Grep Leader from Title
       self.leader = Leader.all.find { |leader| title.match(leader.name) }
       # Grep Follower from Title
       self.follower = Follower.all.find { |follower| title.match(follower.name) }
-      # Grep song from Title
-        # if self.song.nil?
-
-        #   self.song = Song.all.find { |song| title.match(song.title) }
-        #   self.artist = Song.all.find { |artist| title.match(song.artist) }
-
-        # end
     end
-  end
-
-  class << self
 
     def match_dancers
-
           Leader.all.each do |leader|
             Video.search_by_keyword(leader.name).each do |video|
               if video.leader.nil?
@@ -129,9 +114,7 @@ class Video < ApplicationRecord
           end
         end
     end
-  end
-
-  class << self
+    
     # To fetch video, run this from the console:
     # Video.for_channel('UCtdgMR0bmogczrZNpPaO66Q')
     def for_channel(id)
@@ -143,10 +126,4 @@ class Video < ApplicationRecord
       end
     end
   end
-
-  def self.unaccent(column,value)
-    a=self.where('unaccent(?) LIKE ?', column, "%value%")
-    a
-  end
-
 end
