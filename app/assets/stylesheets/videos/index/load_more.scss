@@ -8,3 +8,18 @@
     background-color: #e8f0fa;
   }
 }
+
+@media (max-width: 1000px) {
+
+  .load-more-link {
+    display: block;
+    padding: 50px 0;
+    font-size: 20px;
+    color: #0c3869;
+    text-align: center;
+    text-decoration: none;
+    &:hover {
+      background-color: #e8f0fa;
+    }
+  }
+}

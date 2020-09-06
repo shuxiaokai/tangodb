@@ -3,8 +3,14 @@
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
-  padding: 20px 0;
-  font-weight: bold;
+  padding: 10px 0;
+  // font-weight: bold;
+  border-top: 1px solid #c2c2c2;
+  border-bottom: 1px solid #c2c2c2;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .video-videotypes {
@@ -52,7 +58,4 @@
 }
 .video-upload_dates {
   width: 9%;
-}
-.video-scrollbar-width{
-  width: 1%;
 }

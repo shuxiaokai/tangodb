@@ -53,11 +53,11 @@ class Video < ApplicationRecord
 
   pg_search_scope :search,
                     associated_against: {
-                      leader: :name,
-                      follower: :name,
-                      song: [:genre, :title, :artist],
+                      leader:    :name,
+                      follower:  :name,
+                      song:     [:genre, :title, :artist],
                       videotype: :name,
-                      event: :name
+                      event:     :name
                     },
                     using: {
                       tsearch: {prefix: true},
