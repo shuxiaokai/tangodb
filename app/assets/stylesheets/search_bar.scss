@@ -9,6 +9,11 @@ $search-height: 30px;
     height: $search-height;
     outline-width: 2;
     border: 1px solid grey;
+    &:focus {
+      outline: none;
+      border-color: #1970d2;
+    }
     border-radius: #{$search-height / 2};
+    padding: 0 #{$search-height / 2};
   }
 }
