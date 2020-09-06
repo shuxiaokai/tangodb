@@ -4,7 +4,6 @@
   justify-content: flex-start;
   align-items: center;
   padding: 10px 0;
-  // font-weight: bold;
   border-top: 1px solid #c2c2c2;
   border-bottom: 1px solid #c2c2c2;
 
@@ -12,7 +11,6 @@
     text-decoration: none;
   }
 }
-
 
 .video-thumbnails {
   width: 8%;
@@ -57,13 +55,17 @@
 }
 .video-genres {
   width: 5%;
+  min-width: 80px;
 }
 .video-channels {
   width: 10%;
+  min-width: 80px;
 }
 .video-view_counts {
   width: 10%;
+  min-width: 80px;
 }
 .video-upload_dates {
   width: 9%;
+  min-width: 80px;
 }
