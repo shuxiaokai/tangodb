@@ -1,3 +1,4 @@
 document.getElementById("videos").insertAdjacentHTML("beforeend",
   "<%= j render 'videos/index/videos', videos: @videos %>"
 )
+document.getElementById("load-more-link").innerHTML = "<%= j render 'videos/index/load_more', page: @page %>"
