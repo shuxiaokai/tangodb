@@ -1,19 +1,11 @@
 class VideosController < ApplicationController
   NUMBER_OF_VIDEOS_PER_PAGE = 2.freeze
+  HERO_YOUTUBE_ID = 's6iptZdCcG0'.freeze
 
   helper_method :sort_column, :sort_direction
 
   def index
-
-    # Feeds default url to iframe if a params link isn't selected
-
-    if params[:youtube_id].blank?
-      @active_video_url = 's6iptZdCcG0'
-      @active_video = Video.find_by(youtube_id: @active_video_url)
-    else
-      @active_video_url = params[:youtube_id]
-      @active_video = Video.find_by(youtube_id: params[:youtube_id])
-    end
+    @active_video = Video.find_by(youtube_id: active_youtube_id)
 
     @videos = Video.includes(:song, :leader, :follower)
             .order(sort_column + " " + sort_direction)
@@ -25,6 +17,10 @@ class VideosController < ApplicationController
   end
 
 private
+
+  def active_youtube_id
+    @active_youtube_id ||= params[:youtube_id] || HERO_YOUTUBE_ID
+  end
 
   def sort_column
     acceptable_cols = ["songs.artist",
