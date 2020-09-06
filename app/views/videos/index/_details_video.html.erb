@@ -17,25 +17,19 @@
         <tbody>
           <tr>
             <td><b>Leader</b> <%= @active_video.leader.try(:name) %></td>
-            <td>
             <td><b>Genre:</b> <%= @active_video.song.try(:genre) %></td>
-            </td>
             <td><b>Length:</b> <%= @active_video.duration %> seconds</td>
             <td><b>Type:</b> <%= @active_video.videotype.try(:name) %></td>
           </tr>
           <tr>
             <td><b>Follower:</b> <%= @active_video.follower.try(:name) %></td>
-            <td>
             <td><b>Artist:</b> <%= @active_video.song.try(:artist) %></td>
-            </td>
             <td><b>Upload Date:</b> <%= @active_video.upload_date %></td>
             <td><b>Event:</b> <%= @active_video.event.try(:name) %></td>
           </tr>
           <tr>
             <td></td>
-            <td>
             <td><b>Song:</b> <%= @active_video.song.try(:title) %></td>
-            </td>
             <td><b>Rating:</b> <%= @active_video.avg_rating %> stars</td>
             <td><b>Year:</b> </td>
           </tr>
@@ -52,7 +46,6 @@
             <td><b>Length:</b> <%= @active_video.duration %></td>
           </tr>
         </tbody>
-      </table>
       </table>
     </div>
   </div>
