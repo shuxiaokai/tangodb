@@ -7,22 +7,27 @@
   border-top: 1px solid #c2c2c2;
   border-bottom: 1px solid #c2c2c2;
 
-  div .current {
-    padding-right: 12px;
-    background-repeat: no-repeat;
-    background-position: right center;
-    }
-  
-  div .asc {
-    background-image: url(/images/up_arrow.gif);
-  }
-  
-  div .desc {
-    background-image: url(/images/down_arrow.gif);
-  }
   a {
     text-decoration: none;
+    
+  }  
+
+  a.current{
+    padding-right: 15px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 12px;
   }
+
+  a.asc{
+    background-image: url(up_arrow.png);
+  }
+
+  a.desc{
+    background-image: url(down_arrow.png);
+  }
+
+
 }
 
 .video-thumbnails {
@@ -48,11 +53,11 @@
 }
 .video-leaders {
   width: 10%;
-  min-width: 80px;
+  min-width: 100px;
 }
 .video-followers {
   width: 10%;
-  min-width: 80px;
+  min-width: 100px;
 }
 .video-events {
   width: 12%;
@@ -74,7 +79,7 @@
 }
 .video-channels {
   width: 10%;
-  min-width: 80px;
+  min-width: 120px;
 }
 .video-view_counts {
   width: 10%;
