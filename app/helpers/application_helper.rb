@@ -7,7 +7,6 @@ module ApplicationHelper
   end
 
   def current_page_params
-    request.params.slice("youtube_id","sort","direction","leader_id","follower_id","channel","upload_date","view_count","song_id","songs.artist", "songs.genre", "videotype_id", "event_id", "query", "page")
+    request.params
   end
-
 end
