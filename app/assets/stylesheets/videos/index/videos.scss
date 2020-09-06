@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: flex-start;
   min-height: 70px;
-  border-bottom: 1px solid #c2c2c2;
   text-decoration: none;
   padding-top: 7px;
   padding-bottom: 5px;
@@ -14,6 +13,10 @@
   &:hover {
     transition: 500ms all ease;
     background-color: #dfe0e1;
+  }
+  #bottom_border{
+    border-bottom: 1px solid #c2c2c2;
+    box-shadow: 0 5px 0 -130px #c2c2c2;
   }
 }
 
