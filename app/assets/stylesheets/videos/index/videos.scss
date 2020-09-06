@@ -14,15 +14,21 @@
     transition: 500ms all ease;
     background-color: #dfe0e1;
   }
-  #bottom_border{
-    border-bottom: 1px solid #c2c2c2;
-    box-shadow: 0 5px 0 -130px #c2c2c2;
-  }
+}
+
+hr {
+  margin-left:120px;
+  margin-top:0;
+  margin-bottom:0;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  
 }
 
 a.active {
   background-color: #e8f0fa;
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
   &:hover {
     background-color: #e8f0fa;
   }
