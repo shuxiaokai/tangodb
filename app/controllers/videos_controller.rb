@@ -1,8 +1,6 @@
 class VideosController < ApplicationController
   helper_method :sort_column, :sort_direction
 
-  include Pagy::Backend
-
   def index
 
     # Feeds default url to iframe if a params link isn't selected
@@ -15,19 +13,13 @@ class VideosController < ApplicationController
       @active_video = Video.find_by(youtube_id: params[:youtube_id])
     end
 
-    video = Video
-
-    video = video
-            .includes(:song, :leader, :follower)
-            .order(sort_column + " " + sort_direction)
-            .search(params[:query]) if params[:query].present?
-    video = video
-            .all
-            .includes(:song, :leader, :follower)
+    @videos = Video.includes(:song, :leader, :follower)
             .order(sort_column + " " + sort_direction)
             .where.not(leader: nil, follower: nil, song: nil)
 
-    @pagy, @videos = pagy(video, items: 100)
+    @videos = @videos.order(sort_column + " " + sort_direction).search(params[:query]) if params[:query].present?
+
+    @videos = @videos.limit(2).offset(2 * page)
   end
 
 private
@@ -57,4 +49,7 @@ private
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
+  def page
+    params.permit(:page).fetch(:page, default: 0).to_i
+  end
 end
