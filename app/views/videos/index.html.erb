@@ -10,12 +10,52 @@
         <%= render "videos/index/details_video" %>
     </div>
     <div class="content">
-        <%= render "videos/index/videos" %>
-    </div>
+      <table class="scrollTableHeader">
+        <thead>
+          <tr>
+            <th class="row-thumbnails" id="thumbnails"></th>
+            <th class="row-videotypes" id="inner">
+              <%= sortable "videotype_id", "Type" %>
+            </th>
+            <th class="row-titles" id="inner">
+              <%= sortable "song_id", "Song" %>
+            </th>
+            <th class="row-artists" id="inner">
+              <%= sortable "songs.artist", "Artist" %>
+            </th>
+            <th class="row-leaders" id="inner">
+              <%= sortable "leader_id", "Leader" %>
+            </th>
+            <th class="row-followers" id="inner">
+              <%= sortable "follower_id", "Follower" %>
+            </th>
+            <th class="row-events" id="inner">
+              <%= sortable "event_id", "Event" %>
+            </th>
+            <th class="row-genres" id="inner">
+              <%= sortable "songs.genre", "Genre" %>
+            </th>
+            <th class="row-channels" id="inner">
+              <%= sortable "channel", "Channel" %>
+            </th>
+            <th class="row-view_counts" id="inner">
+              <%= sortable "view_count" %>
+            </th>
+            <th class="row-upload_dates" id="inner">
+              <%= sortable "upload_date", "Upload Date" %>
+            </th>
+            <th class="row-scrollbar-width">
+            </th>
+          </tr>
+        </thead>
+      </table>
 
-    <div class="apple_pagination">
-        <div class="footer">
-            <%= render "videos/index/footer" %>
-        </div>
+      <div class="scrollTableContainer">
+        <table class="scrollTable">
+          <tbody>
+            <%= render "videos/index/videos" %>
+          </tbody>
+        </table>
+      </div>
     </div>
 </div>
