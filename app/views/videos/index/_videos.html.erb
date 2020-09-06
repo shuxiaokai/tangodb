@@ -1,5 +1,5 @@
 <% videos.each do |video| %>
-  <%= link_to current_page_params.merge(youtube_id: video.youtube_id), class: "video" do %>
+  <%= active_link_to current_page_params.merge(youtube_id: video.youtube_id), class: "video" do %>
     <div class="video-thumbnails" id="arrow">
       <%= image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg", class: 'thumbnail') %>
     </div>

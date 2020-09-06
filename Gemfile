@@ -20,6 +20,7 @@ gem 'json',                   '~> 2.3', '>= 2.3.1'
 gem 'pg_search',              '~> 2.3', '>= 2.3.2'
 gem 'factory_bot',            '~> 6.1'
 gem "redis",                  '~> 4.0.1'
+gem 'active_link_to',         '~> 1.0', '>= 1.0.5'
 
 
 group :development, :test do
