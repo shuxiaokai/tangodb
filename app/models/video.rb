@@ -54,9 +54,10 @@ class Video < ApplicationRecord
   pg_search_scope :search,
                     against: %i[title description tags],
                     using: {
-                      tsearch: {normalization: 32}
+                      tsearch: { prefix: true }
                     },
                     ignoring: :accents
+                    
 
 
   class << self
