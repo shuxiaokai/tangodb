@@ -7,6 +7,19 @@
   border-top: 1px solid #c2c2c2;
   border-bottom: 1px solid #c2c2c2;
 
+  div .current {
+    padding-right: 12px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    }
+  
+  div .asc {
+    background-image: url(/images/up_arrow.gif);
+  }
+  
+  div .desc {
+    background-image: url(/images/down_arrow.gif);
+  }
   a {
     text-decoration: none;
   }

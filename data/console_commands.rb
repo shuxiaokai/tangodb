@@ -33,7 +33,7 @@
 
     #Matches Videotype with Video title
     Videotype.all.each do |videotype|
-      Video.where( "unaccent(title) ILIKE unaccent(?)", "%#{videotype.name}%").each do |video|
+      Video.where( "unaccent(title) ILIKE unaccent(?)", "% #{videotype.name} %").each do |video|
         video.videotype = videotype
         video.save
       end
@@ -42,7 +42,7 @@
     #Matches Videotype with Video description
 
     Videotype.all.each do |videotype|
-      Video.where( "unaccent(description) ILIKE unaccent(?)", "%#{videotype.name}%").each do |video|
+      Video.where( "unaccent(description) ILIKE unaccent(?)", "% #{videotype.name} %").each do |video|
         video.videotype = videotype
         video.save
       end
