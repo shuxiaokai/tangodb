@@ -3,59 +3,51 @@
         <%= render "videos/index/header" %>
     </div>
 
-    <div class="video">
+    <div class="hero-video">
         <%= render "videos/index/video" %>
     </div>
     <div class="details">
         <%= render "videos/index/details_video" %>
     </div>
     <div class="content">
-      <div class="scrollTableHeader">
-        <div>
-          <div>
-            <div class="row-thumbnails" id="thumbnails"></div>
-            <div class="row-videotypes" id="inner">
-              <%= sortable "videotype_id", "Type" %>
-            </div>
-            <div class="row-titles" id="inner">
-              <%= sortable "song_id", "Song" %>
-            </div>
-            <div class="row-artists" id="inner">
-              <%= sortable "songs.artist", "Artist" %>
-            </div>
-            <div class="row-leaders" id="inner">
-              <%= sortable "leader_id", "Leader" %>
-            </div>
-            <div class="row-followers" id="inner">
-              <%= sortable "follower_id", "Follower" %>
-            </div>
-            <div class="row-events" id="inner">
-              <%= sortable "event_id", "Event" %>
-            </div>
-            <div class="row-genres" id="inner">
-              <%= sortable "songs.genre", "Genre" %>
-            </div>
-            <div class="row-channels" id="inner">
-              <%= sortable "channel", "Channel" %>
-            </div>
-            <div class="row-view_counts" id="inner">
-              <%= sortable "view_count" %>
-            </div>
-            <div class="row-upload_dates" id="inner">
-              <%= sortable "upload_date", "Upload Date" %>
-            </div>
-            <div class="row-scrollbar-width">
-            </div>
-          </div>
+      <div class="videos-header">
+        <div class="video-thumbnails"></div>
+        <div class="video-videotypes">
+          <%= sortable "videotype_id", "Type" %>
+        </div>
+        <div class="video-titles">
+          <%= sortable "song_id", "Song" %>
+        </div>
+        <div class="video-artists">
+          <%= sortable "songs.artist", "Artist" %>
+        </div>
+        <div class="video-leaders">
+          <%= sortable "leader_id", "Leader" %>
+        </div>
+        <div class="video-followers">
+          <%= sortable "follower_id", "Follower" %>
+        </div>
+        <div class="video-events">
+          <%= sortable "event_id", "Event" %>
+        </div>
+        <div class="video-genres">
+          <%= sortable "songs.genre", "Genre" %>
+        </div>
+        <div class="video-channels">
+          <%= sortable "channel", "Channel" %>
+        </div>
+        <div class="video-view_counts">
+          <%= sortable "view_count" %>
+        </div>
+        <div class="video-upload_dates">
+          <%= sortable "upload_date", "Upload Date" %>
+        </div>
+        <div class="video-scrollbar-width">
         </div>
       </div>
 
-      <div class="scrollTableContainer">
-        <div class="scrollTable">
-          <div id="videos">
-            <%= render "videos/index/videos", videos: @videos %>
-          </div>
-        </div>
+      <div id="videos">
+        <%= render "videos/index/videos", videos: @videos %>
       </div>
     </div>
 

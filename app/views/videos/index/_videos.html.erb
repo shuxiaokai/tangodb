@@ -1,56 +1,56 @@
 <% videos.each do |video| %>
-  <div>
-    <div class="row-thumbnails">
+  <div class="video">
+    <div class="video-thumbnails">
       <%= link_to image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg", class: 'thumbnail'),
             current_page_params.merge(:youtube_id => "#{video.youtube_id}" ) %>
     </div>
-    <div class="row-videotypes" id="details">
+    <div class="video-videotypes">
       <%= link_to "#{video.videotype.try(:name)}",
                     current_page_params
                     .merge(:youtube_id => "#{video.videotype.try(:name)}" ) %>
     </div>
-    <div class="row-titles" id="details">
+    <div class="video-titles">
       <%= link_to "#{video.song.try(:title)}",
                     current_page_params
                     .merge(:youtube_id => "#{video.youtube_id}" ) %>
     </div>
-    <div class="row-artists" id="details">
+    <div class="video-artists">
       <%= link_to "#{video.song.try(:artist)}",
                     current_page_params
                     .merge(:youtube_id => "#{video.youtube_id}" ) %>
     </div>
-    <div class="row-leaders" id="details">
+    <div class="video-leaders">
       <%= link_to "#{video.leader.try(:name)}",
                     current_page_params
                     .merge(:youtube_id => "#{video.youtube_id}" ) %>
     </div>
-    <div class="row-followers" id="details">
+    <div class="video-followers">
       <%= link_to "#{video.follower.try(:name)}",
                     current_page_params
                     .merge(:youtube_id => "#{video.youtube_id}" ) %>
     </div>
-    <div class="row-events" id="details">
+    <div class="video-events">
       <%= link_to "#{video.event.try(:name)}",
                     current_page_params
                     .merge(:youtube_id => "#{video.youtube_id}" ) %>
     </div>
 
-    <div class="row-genres" id="details">
+    <div class="video-genres">
       <%= link_to "#{video.song.try(:genre)}",
                     current_page_params
                     .merge(:youtube_id => "#{video.song.try(:genre)}" ) %>
     </div>
-    <div class="row-channels" id="details">
+    <div class="video-channels">
       <%= link_to "#{video.channel}",
                     current_page_params
                     .merge(:youtube_id => "#{video.youtube_id}" ) %>
     </div>
-    <div class="row-view_counts" id="details">
+    <div class="video-view_counts">
       <%= link_to "#{video.view_count}",
                     current_page_params
                     .merge(:youtube_id => "#{video.youtube_id}" ) %>
     </div>
-    <div class="row-upload_dates" id="details">
+    <div class="video-upload_dates">
       <%= link_to "#{video.upload_date}",
                     current_page_params
                     .merge(:youtube_id => "#{video.youtube_id}" ) %>

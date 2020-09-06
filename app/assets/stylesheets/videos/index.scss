@@ -1,0 +1,43 @@
+.videos-header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.video-videotypes {
+  width: 5%;
+}
+.video-thumbnails {
+  width: 8%;
+}
+.video-titles {
+  width: 10%
+}
+.video-artists {
+  width: 10%;
+}
+.video-leaders {
+  width: 10%;
+}
+.video-followers {
+  width: 10%;
+}
+.video-events {
+  width: 12%;
+}
+.video-genres {
+  width: 5%;
+}
+.video-channels {
+  width: 10%;
+}
+.video-view_counts {
+  width: 10%;
+}
+.video-upload_dates {
+  width: 9%;
+}
+.video-scrollbar-width{
+  width: 1%;
+}

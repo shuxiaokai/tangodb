@@ -12,14 +12,15 @@
  *
  *= require_self
  */
- 
+
 @import "layout";
 @import "filters";
 @import "footer";
 @import "header";
 @import "iframe";
-@import "main_table";
 @import "recommended_videos";
 @import "search_bar";
 @import "sidebar";
 @import "video_details";
+
+@import "videos/**/*";
