@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  NUMBER_OF_VIDEOS_PER_PAGE = 25.freeze
+  NUMBER_OF_VIDEOS_PER_PAGE = 10.freeze
   HERO_YOUTUBE_ID = 's6iptZdCcG0'.freeze
 
   helper_method :sort_column, :sort_direction

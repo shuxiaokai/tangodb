@@ -10,6 +10,7 @@ $search-height: 30px;
     border: 1px solid grey;
     border-radius: #{$search-height / 5};
     padding: 0 #{$search-height / 5};
+    transition: 0.3s all ease;
     &:focus {
       outline: none; 
       border-radius: 5px;  /* Your border radius here */

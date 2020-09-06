@@ -52,13 +52,15 @@ class Video < ApplicationRecord
   belongs_to :event
 
   pg_search_scope :search,
-                    against: %i[title description tags],
+                    associated_against: {
+                      leader: :name,
+                      follower: :name
+                    },
                     using: {
-                      tsearch: { prefix: true }
+                      tsearch: {prefix: true},
+                      trigram: {threshold: 0.1}
                     },
                     ignoring: :accents
-                    
-
 
   class << self
     # To fetch video, run this from the console:
