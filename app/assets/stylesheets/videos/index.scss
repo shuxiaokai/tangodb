@@ -30,6 +30,15 @@
 .video-events {
   width: 12%;
 }
+
+@media (max-width: 700px) {
+  .video-genres,
+  .video-view_counts,
+  .video-upload_dates
+   {
+    display: none;
+  }
+}
 .video-genres {
   width: 5%;
 }
