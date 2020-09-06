@@ -6,16 +6,24 @@
   min-height: 70px;
   border-bottom: 1px solid #c2c2c2;
   text-decoration: none;
-  transition: 500ms all ease;
   padding-top: 7px;
   padding-bottom: 5px;
   &:nth-child(even) {
     background-color: #f8f9fa;
   }
   &:hover {
+    transition: 500ms all ease;
     background-color: #dfe0e1;
   }
-  &:active {
-    background-color: #3b7bbb;
+}
+
+a.active {
+  background-color: #e8f0fa;
+  border-radius: 5px;
+  &:hover {
+    background-color: #e8f0fa;
+  }
+  &:nth-child(even) {
+    background-color: #e8f0fa;
   }
 }

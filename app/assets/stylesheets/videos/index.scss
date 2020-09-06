@@ -9,27 +9,26 @@
 
   a {
     text-decoration: none;
-  } 
+    &.current{
+      padding-right: 15px;
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-size: 12px;
+    }
+    &.asc{
+      background-image: url(up_arrow.png);
+    }
 
-  a.current{
-    padding-right: 15px;
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: 12px;
-  }
-
-  a.asc{
-    background-image: url(up_arrow.png);
-  }
-
-  a.desc{
-    background-image: url(down_arrow.png);
-  }
+    &.desc{
+      background-image: url(down_arrow.png);
+    }
+} 
 }
 
 .video-thumbnails {
   width: 8%;
   min-width: 110px;
+  padding-left:10px;
   img {
     width: 90px;
     height: auto;
