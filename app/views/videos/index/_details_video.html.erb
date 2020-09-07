@@ -1,51 +1,66 @@
- <div class="scrollTabledDetailContainer">
-    <div class="video_details_content">
-      <%= render "videos/index/search" %>
-      <table>
-        <tr>
-          <td>
-            <b>Title:</b> <%= @active_video.title %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <b>Description:</b> <%= @active_video.description %>
-          </td>
-        </tr>
-      </table>
-      <table>
-        <tbody>
-          <tr>
-            <td><b>Leader</b> <%= @active_video.leader.try(:name) %></td>
-            <td><b>Genre:</b> <%= @active_video.song.try(:genre) %></td>
-            <td><b>Length:</b> <%= @active_video.duration %> seconds</td>
-            <td><b>Type:</b> <%= @active_video.videotype.try(:name) %></td>
-          </tr>
-          <tr>
-            <td><b>Follower:</b> <%= @active_video.follower.try(:name) %></td>
-            <td><b>Artist:</b> <%= @active_video.song.try(:artist) %></td>
-            <td><b>Upload Date:</b> <%= @active_video.upload_date %></td>
-            <td><b>Event:</b> <%= @active_video.event.try(:name) %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><b>Song:</b> <%= @active_video.song.try(:title) %></td>
-            <td><b>Rating:</b> <%= @active_video.avg_rating %> stars</td>
-            <td><b>Year:</b> </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><b>View Count:</b> <%= @active_video.view_count %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><b>Length:</b> <%= @active_video.duration %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div class="video_title_description">
+  <div>
+    <h2>Title</h2>
+    <%= @active_video.title %>
+    <br>
+    <br>
+    <h2>Description</h2>
+    <%= @active_video.description %>
   </div>
+</div>
+<div class="video_details">
+  <div class="items">
+  <h2>Dancers</h2>
+    <h3>Leader</h3>
+    <%= @active_video.leader.try(:name) %>
+    <br>
+    <br>
+    <h3>Follower</h3>
+    <%= @active_video.follower.try(:name) %>
+  </div>
+  <div class="items">
+  <h2>Music</h2>
+    <h3>Song</h3>
+    <%= @active_video.song.try(:title) %>
+    <br>
+    <br>
+    <h3>Genre</h3>
+    <%= @active_video.song.try(:genre) %>
+    <br>
+    <br>
+    <h3>Artist</h3>
+    <%= @active_video.song.try(:artist) %>
+  </div>
+
+  <div class="items">
+  <h2>Video Info</h2>
+    <h3>Type</h3>
+    <%= @active_video.videotype.try(:name) %>
+    <br>
+    <h3>Rating</h3>
+    <%= @active_video.avg_rating %> stars
+    <br>
+    <br>
+    <h3>View Count</h3>
+    <%= @active_video.view_count %> views
+    <br>
+    <br>
+    <h3>Duration</h3>
+    <%= @active_video.duration %> seconds
+    <br>
+    <br>
+    
+  </div>
+  <div class="items">
+  <h2>Event Info</h2>
+  <br>
+  <h3>Name</h3>
+  <br>
+<%= @active_video.event.try(:name) %>
+  <h3>Location</h3>
+  <br>
+  <h3>Edition</h3>
+  <br>
+  <h3>
+  </div>
+</div>

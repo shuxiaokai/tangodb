@@ -1,23 +1,23 @@
 /* video details area */
 
-.scrollTabledDetailContainer {
-  max-height: 400px;
-  min-width: 300px;
+.video_title_description {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: left;
+  justify-content: flex-start;
   padding-left: 20px;
-  padding-right: 20px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  overscroll-behavior: auto contain;
+  padding-right:20px;
+  max-width:500px;
 }
+.video_details {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: left;
+  justify-content: flex-start;
 
-
-.video_details_content tr {
-  padding-top: 5px;
-  padding-right: 5px;
-  padding-bottom: 5px;
-}
-.video_details_content td {
-  padding-top: 5px;
-  padding-right: 5px;
-  padding-bottom: 5px;
+  .items {
+    padding-top:50px;
+    padding-left:20px;
+    padding-right:20px;
+  }
 }
