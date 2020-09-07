@@ -42,7 +42,7 @@ class Video < ApplicationRecord
   scope :videotype, ->(videotype_id) { where( videotype_id: videotype_id ) }
   scope :leader, ->(leader_id) { where( leader_id: leader_id ) }
   scope :follower, ->(follower_id) { where( follower_id: follower_id ) }
-  scope :event, ->(event_id) { where( event_id: event_id ) }
+  scope :event, ->(event_id) { joins(:event).where( event_id: event_id ) }
   scope :channel, ->(channel) { where( channel: channel ) }
 
   belongs_to :leader

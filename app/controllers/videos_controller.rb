@@ -9,7 +9,7 @@ class VideosController < ApplicationController
   def index
     @active_video = Video.find_by(youtube_id: active_youtube_id)
 
-    @videos = Video.includes(:song, :leader, :follower)
+    @videos = Video.includes(:song, :leader, :follower, :videotype, :event)
                    .where.not(leader: nil)
                    .where.not(follower: nil)
                    .where.not(song: nil)
@@ -28,7 +28,7 @@ private
   end
 
   def sort_column
-    acceptable_cols = ["songs.artist",
+    acceptable_cols = [ "songs.artist",
                         "songs.genre",
                         "youtube_id",
                         "sort",
@@ -39,12 +39,10 @@ private
                         "upload_date",
                         "view_count",
                         "song_id",
-                        "songs.artist",
-                        "songs.genre",
                         "videotype_id",
                         "event_id",
                         "query",
-                        "page"]
+                        "page" ]
     acceptable_cols.include?(params[:sort]) ? params[:sort] : "upload_date"
   end
 
