@@ -1,4 +1,6 @@
 class VideosController < ApplicationController
+  # before_action :authenticate_user!
+
   NUMBER_OF_VIDEOS_PER_PAGE = 10.freeze
   HERO_YOUTUBE_ID = 's6iptZdCcG0'.freeze
 

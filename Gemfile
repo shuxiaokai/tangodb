@@ -21,6 +21,8 @@ gem 'pg_search',              '~> 2.3', '>= 2.3.2'
 gem 'factory_bot',            '~> 6.1'
 gem "redis",                  '~> 4.0.1'
 gem 'active_link_to',         '~> 1.0', '>= 1.0.5'
+gem 'devise',                 '~> 4.7', '>= 4.7.2'
+gem 'omniauth',               '~> 1.9', '>= 1.9.1'
 
 
 group :development, :test do
