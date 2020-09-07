@@ -3,9 +3,10 @@ $search-height: 30px;
 .search_bar {
   align-content: center;
   padding-bottom: 30px;
-  padding-top: 2px;
+  padding-top: 5px;
   input {
     width: 100%;
+    min-width:500px;
     height: $search-height;
     border: 1px solid grey;
     border-radius: #{$search-height / 5};
