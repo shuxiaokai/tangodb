@@ -1,5 +1,4 @@
 <div class="video_title_description">
-
   <div>
     <h2>Title</h2>
     <%= @active_video.title %>
@@ -28,12 +27,13 @@
     <%= @active_video.song.try(:title) %>
     <br>
     <br>
+    <h3>Artist</h3>
+    <%= @active_video.song.try(:artist) %>
+    <br>
+    <br>
     <h3>Genre</h3>
     <%= @active_video.song.try(:genre) %>
     <br>
-    <br>
-    <h3>Artist</h3>
-    <%= @active_video.song.try(:artist) %>
   </div>
 
   <div class="items">
@@ -57,15 +57,14 @@
 
   <div class="items">
     <h2>Event Info</h2>
-    <br>
     <h3>Name</h3>
-    <br>
     <%= @active_video.event.try(:name) %>
+    <br>
+    <br>
     <h3>Location</h3>
     <br>
     <h3>Edition</h3>
     <br>
-    <h3>
   </div>
 
 </div>

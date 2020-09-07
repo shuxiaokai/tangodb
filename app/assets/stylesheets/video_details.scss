@@ -1,13 +1,19 @@
 /* video details area */
-
-.video_title_description {
+.details {
   display: flex;
   flex-flow: row nowrap;
-  align-items: left;
-  justify-content: flex-start;
+  justify-content: space-between;
+  width: 1320px;
+  margin: 0 auto;
+}
+.video_title_description {
+  padding-top:10px;
   padding-left: 20px;
   padding-right:20px;
+  align-items: left;
+  justify-content: flex-start;
   max-width:500px;
+
 }
 .video_details {
   display: flex;
@@ -16,7 +22,8 @@
   justify-content: flex-start;
 
   .items {
-    padding-top:50px;
+    align-items: left;
+    padding-top:10px;
     padding-left:20px;
     padding-right:20px;
   }

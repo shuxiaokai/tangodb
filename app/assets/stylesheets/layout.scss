@@ -46,16 +46,16 @@
     grid-row: 1 / 2;
   }
   .hero-video {
-    grid-column: col-start 1 / span 6;
+    grid-column: col-start 3 / span 8;
     grid-row: 2 / 3;
   }
   .details {
-    grid-column: col-start 7 / span 6;
-    grid-row: 2 / 3;
+    grid-column: col-start 3 / span 8;
+    grid-row: 3 / 4;
   }
   .content {
     grid-column: col-start 1 / span 12;
-    grid-row: 3 / 5;
+    grid-row: 4 / 5;
   }
   // .side {
   //   grid-column: col-start 1 / span 1;
