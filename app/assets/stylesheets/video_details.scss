@@ -1,30 +1,28 @@
 /* video details area */
 .details {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: wrap;
   justify-content: space-between;
-  width: 1320px;
+  width: 100%;
+  max-width:1280px;
   margin: 0 auto;
+  border: 1px solid orange;
 }
 .video_title_description {
   padding-top:10px;
-  padding-left: 20px;
-  padding-right:20px;
   align-items: left;
-  justify-content: flex-start;
   max-width:500px;
+  flex-flow: wrap;
 
 }
 .video_details {
   display: flex;
   flex-flow: row nowrap;
   align-items: left;
-  justify-content: flex-start;
 
   .items {
     align-items: left;
     padding-top:10px;
-    padding-left:20px;
     padding-right:20px;
   }
 }

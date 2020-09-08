@@ -19,7 +19,7 @@ module TangoLibrary
     config.active_record.schema_format = :sql
 
     config.factory_bot.definition_file_paths = ["custom/factories"]
-    
+      
   end
 
 end
