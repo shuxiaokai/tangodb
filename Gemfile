@@ -26,7 +26,11 @@ gem 'omniauth',               '~> 1.9', '>= 1.9.1'
 
 group :development, :test do
   gem 'byebug',               '~> 11.1', '>= 11.1.3'
-  gem 'rspec-rails',          '~> 4.0', '>= 4.0.1'
+  
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master' # Previously '4-0-dev' or '4-0-maintenance' branch
+end
+
 end
 
 group :development do
