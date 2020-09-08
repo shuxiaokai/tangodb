@@ -18,6 +18,7 @@ gem 'spring',                 '2.1.0'
 gem 'spring-watcher-listen',  '2.0.1'
 gem 'json',                   '~> 2.3', '>= 2.3.1'
 gem 'pg_search',              '~> 2.3', '>= 2.3.2'
+gem 'factory_bot',            '~> 6.1'
 gem "redis",                  '~> 4.0.1'
 gem 'active_link_to',         '~> 1.0', '>= 1.0.5'
 gem 'devise',                 '~> 4.7', '>= 4.7.2'
@@ -26,21 +27,16 @@ gem 'omniauth',               '~> 1.9', '>= 1.9.1'
 
 group :development, :test do
   gem 'byebug',               '~> 11.1', '>= 11.1.3'
-  
-  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
-    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master' # Previously '4-0-dev' or '4-0-maintenance' branch
-end
-
+  gem 'rspec-rails',          '~> 4.0', '>= 4.0.1'
 end
 
 group :development do
   gem 'web-console',           '4.0.2'
   gem 'listen',                '3.2.1'
-  gem 'annotate',              '~> 2.7', '>= 2.7.1'
+  gem 'annotate',             '~> 2.7', '>= 2.7.1'
 end
 
 group :test do
-  gem 'capybara',              '>= 2.15'
-  gem 'selenium-webdriver',    '3.142.7'
-  gem 'factory_bot_rails',     '~> 6.1'
+  gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver',       '3.142.7'
 end

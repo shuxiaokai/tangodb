@@ -17,9 +17,6 @@ module TangoLibrary
     # the framework and any gems in your application.
 
     config.active_record.schema_format = :sql
-
-    config.factory_bot.definition_file_paths = ["custom/factories"]
-      
   end
 
 end
