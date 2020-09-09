@@ -51,11 +51,11 @@ class Video < ApplicationRecord
   belongs_to :videotype
   belongs_to :event
 
-  scope :search, ->(query) {  where( "LOWER(leaders.name) LIKE :query or 
-                                      LOWER(followers.name) LIKE :query or 
-                                      LOWER(songs.genre) LIKE :query or 
-                                      LOWER(songs.title) LIKE :query or 
-                                      LOWER(songs.artist) LIKE :query", 
+  scope :search, ->(query) {  where( "leaders.name ILIKE :query or 
+                                      followers.name ILIKE :query or 
+                                      songs.genre ILIKE :query or 
+                                      songs.title ILIKE :query or 
+                                      songs.artist ILIKE :query", 
                                       query: "%#{query.downcase}%")
 
   }
