@@ -16,7 +16,10 @@ module ApplicationHelper
                           "view_count",
                           "song_id",
                           "videotype_id",
-                          "event_id")
+                          "event_id",
+                          "q",
+                          "page",
+                          "youtube_id")
   end
 
   def format_value(value)

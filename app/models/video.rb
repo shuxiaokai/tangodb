@@ -51,17 +51,14 @@ class Video < ApplicationRecord
   belongs_to :videotype
   belongs_to :event
 
-  pg_search_scope :search,
-                    associated_against: {
-                      leader:    :name,
-                      follower:  :name,
-                      song:     [:genre, :title, :artist],
-                    },
-                    using: { 
-                      tsearch: { prefix: true },
-                      },
-                    ignoring: :accents,
-                    ranked_by: ":trigram"
+  scope :search, ->(query) {  where( "LOWER(leaders.name) LIKE :query or 
+                                      LOWER(followers.name) LIKE :query or 
+                                      LOWER(songs.genre) LIKE :query or 
+                                      LOWER(songs.title) LIKE :query or 
+                                      LOWER(songs.artist) LIKE :query", 
+                                      query: "%#{query.downcase}%")
+
+  }
 
   class << self
     # To fetch video, run this from the console:
@@ -131,3 +128,7 @@ class Video < ApplicationRecord
     end
   end
 end
+
+
+Video.includes(:leader, :follower, :song).where("LOWER(leaders.name) LIKE :query", query: "%carlos%")
+

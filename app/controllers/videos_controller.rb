@@ -13,7 +13,7 @@ class VideosController < ApplicationController
 
     @videos = @videos.search(params[:q]) if params[:q].present?
     
-    @videos = @videos.includes(:song, :leader, :follower, :videotype, :event)
+    @videos = @videos.includes(:song, :leader, :follower, :videotype, :event).references(:song, :leader, :follower)
                    .where.not(leader: nil)
                    .where.not(follower: nil)
                    .where.not(song: nil)
@@ -29,16 +29,16 @@ private
   end
 
   def sort_column
-    acceptable_cols = [ "songs.artist",
-                          "songs.genre",
-                          "leader_id",
-                          "follower_id",
-                          "channel",
-                          "upload_date",
-                          "view_count",
-                          "song_id",
-                          "videotype_id",
-                          "event_id"]
+    acceptable_cols = [ "songs.title",
+                        "songs.artist",
+                        "songs.genre",
+                        "leader_id",
+                        "follower_id",
+                        "channel",
+                        "upload_date",
+                        "view_count",
+                        "videotype_id",
+                        "event_id"]
     acceptable_cols.include?(params[:sort]) ? params[:sort] : "upload_date"
   end
 
