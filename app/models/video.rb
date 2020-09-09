@@ -56,14 +56,12 @@ class Video < ApplicationRecord
                       leader:    :name,
                       follower:  :name,
                       song:     [:genre, :title, :artist],
-                      videotype: :name,
-                      event:     :name
                     },
-                    using: {
-                      tsearch: {prefix: true},
-                      trigram: {threshold: 0.1}
-                    },
-                    ignoring: :accents
+                    using: { 
+                      tsearch: { prefix: true },
+                      },
+                    ignoring: :accents,
+                    ranked_by: ":trigram"
 
   class << self
     # To fetch video, run this from the console:
