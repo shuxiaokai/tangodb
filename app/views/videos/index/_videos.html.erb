@@ -1,7 +1,11 @@
 <% videos.each do |video| %>
-  <%= active_link_to current_page_params.merge(youtube_id: video.youtube_id), {class: "video", active: :exact} do %>
+  <%= active_link_to current_page_params
+        .merge(youtube_id: video.youtube_id), 
+        {class: "video", active: :exact} do %>
+
     <div class="video-thumbnails">
-      <%= image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg", class: 'thumbnail') %>
+      <%= image_tag("http://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg",
+         class: 'thumbnail') %>
     </div>
     <div class="video-videotypes">
       <%= video.videotype.try(:name) %>
