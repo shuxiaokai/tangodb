@@ -38,6 +38,12 @@ class Video < ApplicationRecord
   validates :youtube_id, presence: true, uniqueness: true
   validates :title, presence: true
 
+  belongs_to :leader
+  belongs_to :follower
+  belongs_to :song
+  belongs_to :videotype
+  belongs_to :event
+
   scope :genre, ->(genre) { joins(:song).where( songs: { genre: genre} ) }
   scope :videotype, ->(videotype_id) { where( videotype_id: videotype_id ) }
   scope :leader, ->(leader_id) { where( leader_id: leader_id ) }
@@ -45,20 +51,12 @@ class Video < ApplicationRecord
   scope :event, ->(event_id) { joins(:event).where( event_id: event_id ) }
   scope :channel, ->(channel) { where( channel: channel ) }
 
-  belongs_to :leader
-  belongs_to :follower
-  belongs_to :song
-  belongs_to :videotype
-  belongs_to :event
-
-  scope :search, ->(query) {  where( "leaders.name ILIKE :query or 
-                                      followers.name ILIKE :query or 
-                                      songs.genre ILIKE :query or 
-                                      songs.title ILIKE :query or 
-                                      songs.artist ILIKE :query", 
-                                      query: "%#{query.downcase}%")
-
-  }
+  scope :search, ->(query) {  where( "unaccent(leaders.name) ILIKE :query or 
+                                      unaccent(followers.name) ILIKE :query or 
+                                      unaccent(songs.genre) ILIKE :query or 
+                                      unaccent(songs.title) ILIKE :query or 
+                                      unaccent(songs.artist) ILIKE :query", 
+                                      query: "%#{query.downcase}%") }
 
   class << self
     # To fetch video, run this from the console:
