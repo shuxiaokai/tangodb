@@ -26,7 +26,7 @@
   grid-column: col-start / span 12;
 }
 
-@media (min-width: 700px) {
+@media (max-width: 700px) {
   .main-header {
     grid-column: col-start 1 / span 12;
     grid-row: 1 / 2;
@@ -49,7 +49,7 @@
 }
 
 
-@media (min-width: 1000px) {
+@media (min-width: 700px) {
   .main-header {
     grid-column: col-start 1 / span 12;
     grid-row: 1 / 2;
