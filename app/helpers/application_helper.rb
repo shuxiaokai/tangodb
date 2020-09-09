@@ -9,4 +9,9 @@ module ApplicationHelper
   def current_page_params
     request.params
   end
+
+  def format_value(value)
+    value ||= 'N/A'
+  end
+  
 end

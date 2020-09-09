@@ -1,11 +1,11 @@
 <div class="video_title_description">
   <div>
     <h2>Title</h2>
-    <%= @active_video.title %>
+    <%= format_value(@active_video.title) %>
     <br>
     <br>
     <h2>Description</h2>
-    <%= @active_video.description %>
+    <%= format_value(@active_video.description) %>
   </div>
 </div>
 
@@ -14,44 +14,44 @@
   <div class="items">
     <h2>Dancers</h2>
     <h3>Leader</h3>
-    <%= @active_video.leader.try(:name) %>
+    <%= format_value(@active_video.leader.try(:name)) %>
     <br>
     <br>
     <h3>Follower</h3>
-    <%= @active_video.follower.try(:name) %>
+    <%= format_value(@active_video.follower.try(:name)) %>
   </div>
 
   <div class="items">
     <h2>Music</h2>
     <h3>Song</h3>
-    <%= @active_video.song.try(:title) %>
+    <%= format_value(@active_video.song.try(:title)) %>
     <br>
     <br>
     <h3>Artist</h3>
-    <%= @active_video.song.try(:artist) %>
+    <%= format_value(@active_video.song.try(:artist)) %>
     <br>
     <br>
     <h3>Genre</h3>
-    <%= @active_video.song.try(:genre) %>
+    <%= format_value(@active_video.song.try(:genre)) %>
     <br>
   </div>
 
   <div class="items">
     <h2>Video Info</h2>
     <h3>Type</h3>
-    <%= @active_video.videotype.try(:name) %>
+    <%= format_value(@active_video.videotype.try(:name)) %>
     <br>
     <br>
     <h3>Rating</h3>
-    <%= @active_video.avg_rating %> stars
+    <%= format_value(@active_video.avg_rating) %> stars
     <br>
     <br>
     <h3>View Count</h3>
-    <%= @active_video.view_count %> views
+    <%= format_value(@active_video.view_count) %> views
     <br>
     <br>
     <h3>Duration</h3>
-    <%= @active_video.duration %> seconds
+    <%= format_value(@active_video.duration) %> seconds
     <br>
     <br>
   </div>
@@ -59,13 +59,11 @@
   <div class="items">
     <h2>Event Info</h2>
     <h3>Name</h3>
-    <%= @active_video.event.try(:name) %>
+    <%= format_value(@active_video.event.try(:name)) %>
     <br>
     <br>
     <h3>Location</h3>
-    <br>
-    <h3>Edition</h3>
-    <br>
+    <%= format_value(@active_video.event.try(:location)) %>
   </div>
 
 </div>
