@@ -17,7 +17,7 @@ class VideosController < ApplicationController
                    .limit(NUMBER_OF_VIDEOS_PER_PAGE)
                    .offset(NUMBER_OF_VIDEOS_PER_PAGE * page)
 
-    @videos = @videos.search(params[:query]) if params[:query].present?
+    @videos = @videos.search(params[:q]) if params[:q].present?
 
   end
 
@@ -41,7 +41,7 @@ private
                         "song_id",
                         "videotype_id",
                         "event_id",
-                        "query",
+                        "q",
                         "page" ]
     acceptable_cols.include?(params[:sort]) ? params[:sort] : "upload_date"
   end
