@@ -15,7 +15,7 @@
 
 }
 .video_details {
-  display: flex-start;
+  display: flex;
   flex-flow: column;
   justify-content: space-between;
   align-items: left;
@@ -26,4 +26,13 @@
   }
 }
 
-
+@media (max-width: 1000px) {
+  .video_details {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: left;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
