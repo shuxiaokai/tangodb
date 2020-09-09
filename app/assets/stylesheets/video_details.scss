@@ -1,7 +1,6 @@
 .details {
   display: flex;
   flex-flow: row nowrap;
-  flex-flow: wrap;
   justify-content: space-between;
   max-width:960px;
   margin: 0 auto;
@@ -16,12 +15,11 @@
 
 }
 .video_details {
-  display: flex;
-  display: inline-flex;
+  display: flex-start;
+  flex-flow: column;
+  justify-content: space-between;
   align-items: left;
   flex-wrap: wrap;
-  padding-top:10px;
-  gap: 12px;
 
   .items {
     align-items: left;

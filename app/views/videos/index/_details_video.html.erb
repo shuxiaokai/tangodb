@@ -24,6 +24,8 @@
     <br>
     <h3>Follower</h3>
     <%= format_value(@active_video.follower.try(:name)) %>
+    <br>
+    <br>
   </div>
 
   <div class="items">
@@ -38,6 +40,7 @@
     <br>
     <h3>Genre</h3>
     <%= format_value(@active_video.song.try(:genre)) %>
+    <br>
     <br>
   </div>
 
@@ -69,6 +72,8 @@
     <br>
     <h3>Location</h3>
     <%= format_value(@active_video.event.try(:location)) %>
+    <br>
+    <br>
   </div>
 
 </div>
