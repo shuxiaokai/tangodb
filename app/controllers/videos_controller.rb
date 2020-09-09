@@ -10,6 +10,7 @@ class VideosController < ApplicationController
     @active_video = Video.find_by(youtube_id: active_youtube_id)
     
     @videos = Video
+
     @videos = @videos.search(params[:q]) if params[:q].present?
     
     @videos = @videos.includes(:song, :leader, :follower, :videotype, :event)
@@ -19,7 +20,6 @@ class VideosController < ApplicationController
                    .order(sort_column + " " + sort_direction)
                    .limit(NUMBER_OF_VIDEOS_PER_PAGE)
                    .offset(NUMBER_OF_VIDEOS_PER_PAGE * page)
-                   .references(:song, :leader, :follower, :videotype, :event)
   end
 
 private
@@ -30,20 +30,15 @@ private
 
   def sort_column
     acceptable_cols = [ "songs.artist",
-                        "songs.genre",
-                        "youtube_id",
-                        "sort",
-                        "direction",
-                        "leader_id",
-                        "follower_id",
-                        "channel",
-                        "upload_date",
-                        "view_count",
-                        "song_id",
-                        "videotype_id",
-                        "event_id",
-                        "q",
-                        "page" ]
+                          "songs.genre",
+                          "leader_id",
+                          "follower_id",
+                          "channel",
+                          "upload_date",
+                          "view_count",
+                          "song_id",
+                          "videotype_id",
+                          "event_id"]
     acceptable_cols.include?(params[:sort]) ? params[:sort] : "upload_date"
   end
 

@@ -4,7 +4,3 @@
           placeholder="Search by Song, Leader, Follower" 
           value="<%= params[:q] %>" >
 </form>
-
-<%= form_tag root_path, method: :get do %>
-<%= text_field_tag :q, params[:q] %>
-<% end %>

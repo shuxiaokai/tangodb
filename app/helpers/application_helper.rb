@@ -9,9 +9,6 @@ module ApplicationHelper
   def current_page_params
     request.params.slice("songs.artist",
                           "songs.genre",
-                          "youtube_id",
-                          "sort",
-                          "direction",
                           "leader_id",
                           "follower_id",
                           "channel",
@@ -19,9 +16,7 @@ module ApplicationHelper
                           "view_count",
                           "song_id",
                           "videotype_id",
-                          "event_id",
-                          "q",
-                          "page")
+                          "event_id")
   end
 
   def format_value(value)
