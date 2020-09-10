@@ -7,19 +7,16 @@ module ApplicationHelper
   end
 
   def current_page_params
-    request.params.slice("songs.artist",
+    request.params.slice( "songs.title",
+                          "songs.artist",
                           "songs.genre",
-                          "leader_id",
-                          "follower_id",
+                          "leaders.name",
+                          "followers.name",
                           "channel",
                           "upload_date",
                           "view_count",
-                          "songs.title",
-                          "videotype_id",
-                          "event_id",
-                          "q",
-                          "page",
-                          "youtube_id")
+                          "videotypes.name",
+                          "event.name")
   end
 
   def format_value(value)

@@ -32,13 +32,13 @@ private
     acceptable_cols = [ "songs.title",
                         "songs.artist",
                         "songs.genre",
-                        "leader_id",
-                        "follower_id",
+                        "leaders.name",
+                        "followers.name",
                         "channel",
                         "upload_date",
                         "view_count",
-                        "videotype_id",
-                        "event_id"]
+                        "videotypes.name",
+                        "event.name"]
     acceptable_cols.include?(params[:sort]) ? params[:sort] : "upload_date"
   end
 
