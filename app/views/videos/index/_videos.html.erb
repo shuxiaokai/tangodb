@@ -34,7 +34,7 @@
       <%= video.view_count %>
     </div>
     <div class="video-upload_dates">
-      <%= video.upload_date %>
+      <%= video.upload_date.to_s(:long) %>
     </div>
   <% end %>
   <hr>
