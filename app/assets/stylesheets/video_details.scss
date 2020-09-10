@@ -27,6 +27,7 @@
   .video_details {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-around;
     padding-left: 0px;
   }
