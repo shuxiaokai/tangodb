@@ -7,14 +7,14 @@ module ApplicationHelper
   end
 
   def current_page_params
-    request.params.slice("songs.artist",
+    request.params.permit("songs.artist",
                           "songs.genre",
                           "leader_id",
                           "follower_id",
                           "channel",
                           "upload_date",
                           "view_count",
-                          "song_id",
+                          "songs.title",
                           "videotype_id",
                           "event_id",
                           "q",
