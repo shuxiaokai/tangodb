@@ -20,6 +20,8 @@ class VideosController < ApplicationController
                    .order(sort_column + " " + sort_direction)
                    .limit(NUMBER_OF_VIDEOS_PER_PAGE)
                    .offset(NUMBER_OF_VIDEOS_PER_PAGE * page)
+
+    
   end
 
 private
