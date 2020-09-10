@@ -40,9 +40,6 @@
   grid-column: col-start 1 / span 12;
   grid-row: 3 / 5;
 }
-nav ul {
-  flex-direction: column;
-}
 
 @media (max-width: 1000px) {
   .main-header {

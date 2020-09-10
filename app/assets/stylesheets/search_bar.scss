@@ -4,12 +4,10 @@ $search-height: 30px;
   align-content: center;
   padding-bottom: 30px;
   padding-top: 5px;
-  min-width: 130px;
+  min-width: 500px;
   max-width: 800px;
   input {
     width: 100%;
-    min-width: 300px;
-    max-width: 1000px;
     height: $search-height;
     border: 1px solid grey;
     border-radius: #{$search-height / 5};
@@ -20,5 +18,12 @@ $search-height: 30px;
       border-radius: 5px;  /* Your border radius here */
       box-shadow: 0px 0px 0px 2px #308af1,
     }
+  }
+}
+
+@media (max-width: 1000px) {
+  .search_bar {
+    min-width: 100px;
+    max-width: 250px;
   }
 }
