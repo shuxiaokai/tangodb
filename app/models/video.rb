@@ -125,7 +125,3 @@ class Video < ApplicationRecord
     end
   end
 end
-
-
-Video.includes(:leader, :follower, :song).where("LOWER(leaders.name) LIKE :query", query: "%carlos%")
-

@@ -12,11 +12,13 @@ module ApplicationHelper
                           "songs.genre",
                           "leaders.name",
                           "followers.name",
+                          "youtube_id",
                           "channel",
                           "upload_date",
                           "view_count",
                           "videotypes.name",
-                          "event.name")
+                          "event.name",
+                          "q")
   end
 
   def format_value(value)
