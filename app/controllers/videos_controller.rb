@@ -9,19 +9,17 @@ class VideosController < ApplicationController
   def index
     @active_video = Video.find_by(youtube_id: active_youtube_id)
     
-    @videos = Video
+    @videos = Video.all
 
     @videos = @videos.search(params[:q]) if params[:q].present?
     
-    @videos = @videos.includes(:song, :leader, :follower, :videotype, :event).references(:song, :leader, :follower)
+    @videos = @videos.includes(:song, :leader, :follower, :videotype, :event).references(:song, :leader, :follower, :videotype, :event)
                    .where.not(leader: nil)
                    .where.not(follower: nil)
                    .where.not(song: nil)
                    .order(sort_column + " " + sort_direction)
                    .limit(NUMBER_OF_VIDEOS_PER_PAGE)
                    .offset(NUMBER_OF_VIDEOS_PER_PAGE * page)
-
-    
   end
 
 private
@@ -40,7 +38,7 @@ private
                         "upload_date",
                         "view_count",
                         "videotypes.name",
-                        "event.name"]
+                        "events.name"]
     acceptable_cols.include?(params[:sort]) ? params[:sort] : "upload_date"
   end
 
