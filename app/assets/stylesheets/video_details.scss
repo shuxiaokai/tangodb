@@ -1,5 +1,6 @@
 .details {
-  max-width:960px;
+  width: 100%;
+  max-width:400px;
   border: 0px solid orange;
 }
 .video_title_description {
@@ -25,6 +26,11 @@
 }
 
 @media (max-width: 1000px) {
+
+  .details {
+    width: 100%;
+    max-width:960px;
+  }
   .video_details {
     display: flex;
     flex-direction: row;
