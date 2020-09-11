@@ -6,13 +6,24 @@ $search-height: 30px;
   padding-top: 5px;
   min-width: 500px;
   max-width: 800px;
-  input {
+  
+  .search_icon{
+    position: relative;
+    float: left;
+    top: 21px;
+    left: 9px;
+    color: #CCC;
+  }
+
+  .input { 
+    text-indent: 22px;
     width: 100%;
     height: $search-height;
     border: 1px solid grey;
     border-radius: #{$search-height / 5};
     padding: 0 #{$search-height / 5};
     transition: 0.3s all ease;
+
     &:focus {
       outline: none; 
       border-radius: 5px;  /* Your border radius here */
