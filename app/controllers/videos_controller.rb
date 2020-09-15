@@ -12,6 +12,12 @@ class VideosController < ApplicationController
     @videos = Video.all
 
     @videos = @videos.search(params[:q]) if params[:q].present?
+
+    @videos_unpaginated = @videos.includes(:song, :leader, :follower, :videotype, :event).references(:song, :leader, :follower, :videotype, :event)
+                   .where.not(leader: nil)
+                   .where.not(follower: nil)
+                   .where.not(song: nil)
+                   .order(sort_column + " " + sort_direction)
     
     @videos = @videos.includes(:song, :leader, :follower, :videotype, :event).references(:song, :leader, :follower, :videotype, :event)
                    .where.not(leader: nil)
