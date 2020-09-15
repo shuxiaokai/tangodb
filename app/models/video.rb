@@ -37,11 +37,11 @@ class Video < ApplicationRecord
   # validates :youtube_id, presence: true, uniqueness: true
   # validates :title, presence: true
 
-  # belongs_to :leader
-  # belongs_to :follower
-  # belongs_to :song
-  # belongs_to :videotype
-  # belongs_to :event
+  belongs_to :leader
+  belongs_to :follower
+  belongs_to :song
+  belongs_to :videotype
+  belongs_to :event
 
   scope :genre, ->(genre) { joins(:song).where( songs: { genre: genre} ) }
   scope :videotype, ->(videotype_id) { where( videotype_id: videotype_id ) }
