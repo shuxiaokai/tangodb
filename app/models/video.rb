@@ -50,13 +50,28 @@ class Video < ApplicationRecord
   scope :event, ->(event_id) { joins(:event).where( event_id: event_id ) }
   scope :channel, ->(channel) { where( channel: channel ) }
 
-  scope :search, ->(query) {  where( "leaders.name ILIKE :query or 
+  scope :search, ->(query) {  where( 'leaders.name ILIKE :query or 
                                       followers.name ILIKE :query or 
                                       songs.genre ILIKE :query or 
                                       songs.title ILIKE :query or 
                                       songs.artist ILIKE :query or 
-                                      videotypes.name ILIKE :query", 
+                                      videotypes.name ILIKE :query', 
                                       query: "%#{query.downcase}%") }
+
+
+  def self.search(query)
+    if query
+      where( 'leaders.name ILIKE :query or 
+              followers.name ILIKE :query or 
+              songs.genre ILIKE :query or 
+              songs.title ILIKE :query or 
+              songs.artist ILIKE :query or 
+              videotypes.name ILIKE :query',  
+              query: "%#{query.downcase}%" )
+    else
+      scoped
+    end
+  end
 
   class << self
     # To fetch video, run this from the console:

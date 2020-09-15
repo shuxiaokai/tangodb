@@ -8,24 +8,14 @@ class VideosController < ApplicationController
 
   def index
     @active_video = Video.find_by(youtube_id: active_youtube_id)
+ 
+    @videos_sorted = Video.search(params[:q])
+                          .includes(:song, :leader, :follower, :videotype, :event)
+                          .references(:song, :leader, :follower, :videotype, :event)
+                          .order(sort_column + " " + sort_direction)
     
-    @videos = Video.all
-
-    @videos = @videos.search(params[:q]) if params[:q].present?
-
-    # @videos_unpaginated = @videos.includes(:song, :leader, :follower, :videotype, :event).references(:song, :leader, :follower, :videotype, :event)
-    #                .where.not(leader: nil)
-    #                .where.not(follower: nil)
-    #                .where.not(song: nil)
-    #                .order(sort_column + " " + sort_direction)
-    
-    @videos = @videos.includes(:song, :leader, :follower, :videotype, :event).references(:song, :leader, :follower, :videotype, :event)
-                   .where.not(leader: nil)
-                   .where.not(follower: nil)
-                   .where.not(song: nil)
-                   .order(sort_column + " " + sort_direction)
-                   .limit(NUMBER_OF_VIDEOS_PER_PAGE)
-                   .offset(NUMBER_OF_VIDEOS_PER_PAGE * page)
+    @videos_paginated = @videos_sorted.offset(NUMBER_OF_VIDEOS_PER_PAGE * page)
+                                      .limit(NUMBER_OF_VIDEOS_PER_PAGE)
   end
 
 private
@@ -53,6 +43,6 @@ private
   end
 
   def page
-    @page ||= params.permit(:page).fetch(:page, 1).to_i
+    @page ||= params.permit(:page).fetch(:page, 0).to_i
   end
 end
