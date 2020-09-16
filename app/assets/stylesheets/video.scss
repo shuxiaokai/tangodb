@@ -1,0 +1,19 @@
+.video {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 132.5px;
+  text-decoration: none;
+  padding-top: 7px;
+  padding-bottom: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  &:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  &:hover {
+    transition: 500ms all ease;
+    background-color: #dfe0e1;
+  }
+}
