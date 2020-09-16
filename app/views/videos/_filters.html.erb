@@ -3,7 +3,7 @@
     <label>Type</label>
     <%= select_tag "videotype", 
         content_tag( :option, 
-                    "Select All #{@followers.count} Types", 
+                    "Select All #{@videotypes.count} Types", 
                     selected: "selected", value: "" ) +
                     options_for_select(@videotypes),
         class: "select-css",
