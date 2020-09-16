@@ -7,20 +7,29 @@ class VideosController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @active_video = Video.find_by(youtube_id: active_youtube_id)
- 
     @videos_sorted = Video.search(params[:q])
                           .includes(:song, :leader, :follower, :videotype, :event)
                           .references(:song, :leader, :follower, :videotype, :event)
                           .order(sort_column + " " + sort_direction)
     
     @videos_paginated = @videos_sorted.paginate( page, NUMBER_OF_VIDEOS_PER_PAGE )
+
+    first_youtube_id = @videos_sorted.first.youtube_id
+
+    @active_youtube_id ||= params[:youtube_id] || first_youtube_id
+    
+    @active_video = Video.find_by(youtube_id: active_youtube_id)
   end
 
   private
 
+  def first_youtube_id
+
+  end
+
   def active_youtube_id
-    @active_youtube_id ||= params[:youtube_id] || HERO_YOUTUBE_ID
+
+    @active_youtube_id ||= params[:youtube_id] || "#{first_youtube_id}"
   end
 
   def sort_column
@@ -42,6 +51,6 @@ class VideosController < ApplicationController
   end
 
   def page
-    @page ||= params.permit(:page).fetch(:page, 1).to_i
+    @page ||= params.permit(:page).fetch(:page, 0).to_i
   end
 end
