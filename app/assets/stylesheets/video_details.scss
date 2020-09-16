@@ -30,6 +30,7 @@
   .details {
     width: 100%;
     max-width:960px;
+    margin: 0 auto 0 auto;
   }
   .video_details {
     display: flex;
@@ -37,7 +38,7 @@
     flex-wrap: nowrap;
     justify-content: space-around;
     padding-left: 0px;
-
+    
     .items {
       min-width:0px;
     }
