@@ -14,23 +14,19 @@ class VideosController < ApplicationController
     
     @videos_paginated = @videos_sorted.paginate( page, NUMBER_OF_VIDEOS_PER_PAGE )
 
-    first_youtube_id = @videos_sorted.first.youtube_id
+    first_youtube_id ||= if @videos_sorted.empty?
+                          HERO_YOUTUBE_ID
+                        else
+                          @videos_sorted.first.youtube_id 
+                        end
 
     @active_youtube_id ||= params[:youtube_id] || first_youtube_id
     
-    @active_video = Video.find_by(youtube_id: active_youtube_id)
+    @active_video = Video.find_by(youtube_id: @active_youtube_id)
+
   end
 
   private
-
-  def first_youtube_id
-
-  end
-
-  def active_youtube_id
-
-    @active_youtube_id ||= params[:youtube_id] || "#{first_youtube_id}"
-  end
 
   def sort_column
     acceptable_cols = [ "songs.title",
@@ -51,6 +47,6 @@ class VideosController < ApplicationController
   end
 
   def page
-    @page ||= params.permit(:page).fetch(:page, 0).to_i
+    @page ||= params.permit(:page).fetch(:page, 1).to_i
   end
 end
