@@ -18,7 +18,9 @@ module ApplicationHelper
                           "view_count",
                           "videotypes.name",
                           "event.name",
-                          "q")
+                          "q",
+                          "sort",
+                          "direction")
   end
 
   def format_value(value)

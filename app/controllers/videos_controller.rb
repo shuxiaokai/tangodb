@@ -16,9 +16,9 @@ class VideosController < ApplicationController
 
     first_youtube_id ||= if @videos_sorted.empty?
                           HERO_YOUTUBE_ID
-                        else
+                         else
                           @videos_sorted.first.youtube_id 
-                        end
+                         end
 
     @active_youtube_id ||= params[:youtube_id] || first_youtube_id
     
