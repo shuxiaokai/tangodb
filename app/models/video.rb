@@ -49,13 +49,12 @@ class Video < ApplicationRecord
   scope :follower, ->(follower_id) { where( follower_id: follower_id ) }
   scope :event, ->(event_id) { joins(:event).where( event_id: event_id ) }
   scope :channel, ->(channel) { where( channel: channel ) }
-  
+
   scope :paginate, ->(page:, per_page: 25)  {
     page = (page || 1).to_i
 
     limit(per_page).offset((page - 1) * per_page)
   }
-
 
   def self.search(query)
     if query
