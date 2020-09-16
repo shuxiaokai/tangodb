@@ -14,10 +14,10 @@ class VideosController < ApplicationController
                           .references(:song, :leader, :follower, :videotype, :event)
                           .order(sort_column + " " + sort_direction)
     
-    @videos_paginated = @videos_sorted.paginate(page: page, per_page: NUMBER_OF_VIDEOS_PER_PAGE )
+    @videos_paginated = @videos_sorted.paginate( page, NUMBER_OF_VIDEOS_PER_PAGE )
   end
 
-private
+  private
 
   def active_youtube_id
     @active_youtube_id ||= params[:youtube_id] || HERO_YOUTUBE_ID

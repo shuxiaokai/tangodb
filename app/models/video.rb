@@ -50,10 +50,8 @@ class Video < ApplicationRecord
   scope :event, ->(event_id) { joins(:event).where( event_id: event_id ) }
   scope :channel, ->(channel) { where( channel: channel ) }
 
-  scope :paginate, ->(page:, per_page: 25)  {
-    page = (page || 1).to_i
-
-    limit(per_page).offset((page - 1) * per_page)
+  scope :paginate, ->(page, per_page)  {
+    offset(per_page * page).limit(per_page)
   }
 
   def self.search(query)
