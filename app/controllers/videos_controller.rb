@@ -14,8 +14,7 @@ class VideosController < ApplicationController
                           .references(:song, :leader, :follower, :videotype, :event)
                           .order(sort_column + " " + sort_direction)
     
-    @videos_paginated = @videos_sorted.offset(NUMBER_OF_VIDEOS_PER_PAGE * page)
-                                      .limit(NUMBER_OF_VIDEOS_PER_PAGE)
+    @videos_paginated = @videos_sorted.paginate(page: page, per_page: NUMBER_OF_VIDEOS_PER_PAGE )
   end
 
 private
@@ -43,6 +42,6 @@ private
   end
 
   def page
-    @page ||= params.permit(:page).fetch(:page, 0).to_i
+    @page ||= params.permit(:page).fetch(:page, 1).to_i
   end
 end
