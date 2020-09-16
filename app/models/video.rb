@@ -49,14 +49,12 @@ class Video < ApplicationRecord
   scope :follower, ->(follower_id) { where( follower_id: follower_id ) }
   scope :event, ->(event_id) { joins(:event).where( event_id: event_id ) }
   scope :channel, ->(channel) { where( channel: channel ) }
+  
+  scope :paginate, ->(page:, per_page: 25)  {
+    page = (page || 1).to_i
 
-  scope :search, ->(query) {  where( 'leaders.name ILIKE :query or 
-                                      followers.name ILIKE :query or 
-                                      songs.genre ILIKE :query or 
-                                      songs.title ILIKE :query or 
-                                      songs.artist ILIKE :query or 
-                                      videotypes.name ILIKE :query', 
-                                      query: "%#{query.downcase}%") }
+    limit(per_page).offset((page - 1) * per_page)
+  }
 
 
   def self.search(query)
@@ -69,7 +67,7 @@ class Video < ApplicationRecord
               videotypes.name ILIKE :query',  
               query: "%#{query.downcase}%" )
     else
-      scoped
+      all
     end
   end
 
