@@ -24,13 +24,13 @@ class VideosController < ApplicationController
     
     @active_video = Video.find_by(youtube_id: @active_youtube_id)
 
-        # Populate Filters 
-     @videotypes  = @videos_sorted.pluck(:"videotypes.name").compact.uniq.sort
-     @leaders     = @videos_sorted.pluck(:"leaders.name").compact.uniq.sort
-     @followers   = @videos_sorted.pluck(:"followers.name").compact.uniq.sort
-     @events      = @videos_sorted.pluck(:"events.name").compact.uniq.sort
-     @channels    = @videos_sorted.pluck(:channel).compact.uniq.sort
-     @genres      = @videos_sorted.pluck(:"songs.genre").compact.uniq.sort
+      # Populate Filters 
+    @videotypes  = @videos_sorted.pluck(:"videotypes.name").compact.uniq.sort
+    @leaders     = @videos_sorted.pluck(:"leaders.name").compact.uniq.sort
+    @followers   = @videos_sorted.pluck(:"followers.name").compact.uniq.sort
+    @events      = @videos_sorted.pluck(:"events.name").compact.uniq.sort
+    @channels    = @videos_sorted.pluck(:channel).compact.uniq.sort
+    @genres      = @videos_sorted.pluck(:"songs.genre").compact.uniq.sort
 
   end
 
