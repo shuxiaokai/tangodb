@@ -1,3 +1,18 @@
+.hidden {
+  display: none;
+}
+
+.hidden.show {
+  display: block;
+}
+
+.filter_button {
+  padding:10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f2f2f2;
+}
+
 .filter_container {
   border: 0px solid #963;
   display: flex;

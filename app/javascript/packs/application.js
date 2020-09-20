@@ -9,13 +9,7 @@
  require("channels")
 
  import "@fortawesome/fontawesome-free/js/all";
-
- import { Application } from "stimulus"
- import { definitionsFromContext } from "stimulus/webpack-helpers"
- 
- const application = Application.start()
- const context = require.context("./controllers", true, /\.js$/)
- application.load(definitionsFromContext(context))
+ import "controllers";
 
 
  // Uncomment to copy all static images under ../images to the output folder and reference
