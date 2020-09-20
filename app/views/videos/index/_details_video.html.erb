@@ -1,0 +1,83 @@
+<%
+=begin%>
+ <div class="video_title_description">
+  <div>
+    <h2>Title</h2>
+    <%= format_value(@active_video.title) %>
+    <br>
+    <br>
+    <h2>Description</h2>
+    <%= format_value(@active_video.description) %>
+  </div>
+</div> 
+<%
+=end%>
+
+
+<div class="video_details">
+
+  <div class="items">
+    <h2>Dancers</h2>
+    <h3>Leader</h3>
+    <%= format_value(@active_video.leader.try(:name)) %>
+    <br>
+    <br>
+    <h3>Follower</h3>
+    <%= format_value(@active_video.follower.try(:name)) %>
+    <br>
+    <br>
+  </div>
+
+  <div class="items">
+    <h2>Music</h2>
+    <h3>Song</h3>
+    <%= format_value(@active_video.song.try(:title)) %>
+    <br>
+    <br>
+    <h3>Artist</h3>
+    <%= format_value(@active_video.song.try(:artist)) %>
+    <br>
+    <br>
+    <h3>Genre</h3>
+    <%= format_value(@active_video.song.try(:genre)) %>
+    <br>
+    <br>
+  </div>
+
+  <div class="items">
+    <h2>Video Info</h2>
+    <h3>Type</h3>
+    <%= format_value(@active_video.videotype.try(:name)) %>
+    <br>
+    <br>
+    <h3>Channel</h3>
+    <%= format_value(@active_video.channel) %>
+    <br>
+    <br>
+    <h3>Rating</h3>
+    <%= format_value(@active_video.avg_rating) %> stars
+    <br>
+    <br>
+    <h3>View Count</h3>
+    <%= format_value(@active_video.view_count) %> views
+    <br>
+    <br>
+    <h3>Duration</h3>
+    <%= format_value(@active_video.duration) %> seconds
+    <br>
+    <br>
+  </div>
+
+  <div class="items">
+    <h2>Event Info</h2>
+    <h3>Name</h3>
+    <%= format_value(@active_video.event.try(:name)) %>
+    <br>
+    <br>
+    <h3>Location</h3>
+    <%= format_value(@active_video.event.try(:location)) %>
+    <br>
+    <br>
+  </div>
+
+</div>
