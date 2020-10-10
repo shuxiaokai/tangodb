@@ -1,9 +1,9 @@
 .hidden {
-  display: none;
+  display: block;
 }
 
 .hidden.show {
-  display: block;
+  display: none;
 }
 
 .filter_button {

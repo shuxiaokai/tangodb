@@ -1,9 +1,8 @@
 $search-height: 30px;
 
 .search_bar {
-  min-width: 500px;
-  max-width: 800px;
-  
+
+
   .search_icon{
     position: relative;
     float: left;
@@ -13,8 +12,8 @@ $search-height: 30px;
   }
 
   .input { 
+    min-width:500px;
     text-indent: 22px;
-    width: 100%;
     height: $search-height;
     border: 1px solid grey;
     border-radius: #{$search-height / 5};
@@ -28,8 +27,8 @@ $search-height: 30px;
   }
 }
 
-@media (max-width: 100px) {
-  .search_bar {
+@media (max-width: 1300px) {
+  .search_bar.input {
     min-width: 250px;
     max-width: 550px;
   }

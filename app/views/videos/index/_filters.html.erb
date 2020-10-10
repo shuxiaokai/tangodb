@@ -39,8 +39,9 @@
             content_tag(:option, 
                         "Select All #{@leaders.count} Leaders", 
                         selected: "selected", value: "" ) +
-            options_for_select(@leaders),
+            options_for_select(@leaders, params[:leader]),
             name: "leader_id",
+            onchange: "this.form.submit();"
             style:"max-width:100%",
             class: "select-css",
             data: { action: "filters#filter", target: "filters.filter" },

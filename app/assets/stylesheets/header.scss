@@ -4,6 +4,7 @@ flex-wrap: nowrap;
 flex-direction: row;
 justify-content: space-between;
 height: 50px;
+border: 1px solid orange;
 }
 
 #logo {
@@ -16,12 +17,12 @@ height: 50px;
   padding-left: 5px;
   font-weight: bold;
   text-decoration: none;
-}  
 
-#logo:hover {
-  color: #3d3d3d;
-  text-decoration: none;
-}
+  &:hover {
+    color: #3d3d3d;
+    text-decoration: none;
+  }
+}  
 
 nav ul {
 list-style: row;
