@@ -33,7 +33,9 @@
             multiple: false,
             size: 12 %>
       </div>
-      <div class="filter_item">
+      <%
+=begin%>
+ <div class="filter_item">
         <label>Leader</label>
         <%= select_tag "leader", 
             content_tag(:option, 
@@ -44,7 +46,9 @@
             onchange: "this.form.submit();",
             multiple: false,
             size: 12 %>
-      </div>
+      </div> 
+<%
+=end%>
       
       <div class="filter_item">
         <label>Follower</label>
