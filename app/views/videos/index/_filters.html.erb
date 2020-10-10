@@ -33,9 +33,7 @@
             multiple: false,
             size: 12 %>
       </div>
-      <%
-=begin%>
- <div class="filter_item">
+      <div class="filter_item">
         <label>Leader</label>
         <%= select_tag "leader", 
             content_tag(:option, 
@@ -43,12 +41,9 @@
                         selected: "selected", value: "" ) +
             options_from_collection_for_select(@leaders, "id", "name"),
             name: "leader_id",
-            onchange: "this.form.submit();",
             multiple: false,
             size: 12 %>
-      </div> 
-<%
-=end%>
+      </div>
       
       <div class="filter_item">
         <label>Follower</label>
