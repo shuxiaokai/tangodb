@@ -44,8 +44,8 @@
                         "Select All #{@followers.count} Followers", 
                         selected: "selected", value: "" ) +
             options_for_select(@followers),
-            name: "follower_id",
-            class: 'js-searchable' %>
+            class: 'js-searchable',
+            name: "follower_id" %>
       </div>
       <div class="filter_item">
         <label>Event</label>
@@ -54,8 +54,8 @@
                             "Select All #{@events.count} Events", 
                             selected: "selected", value: "" ) +
                             options_for_select(@events),
-            name: "event_id",
-            class: 'js-searchable' %>
+            class: 'js-searchable',
+            name: "event_id" %>
       </div>
       <div class="filter_item">
         <label>Channel</label>
