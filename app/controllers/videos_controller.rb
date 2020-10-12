@@ -12,11 +12,15 @@ class VideosController < ApplicationController
                           .references(:song, :leader, :follower, :videotype, :event)
                           .order(sort_column + " " + sort_direction)
 
-    # @videos_filtered = @videos_sorted
-    # @videos_filtered = @videos_filtered.leader(params[:leader_id]) unless params[:leader_id].nil?
-    # @videos_filtered = @videos_filtered.follower(params[:follower_id]) unless params[:follower_id].nil?
-    
-    @videos_paginated = @videos_sorted.paginate( page, NUMBER_OF_VIDEOS_PER_PAGE )
+    @videos_filtered = @videos_sorted
+    @videos_filtered = @videos_filtered.videotype(params[:videotype]) unless params[:videotype].nil?
+    @videos_filtered = @videos_filtered.genre(params[:genre]) unless params[:genre].nil?
+    @videos_filtered = @videos_filtered.leader(params[:leader]) unless params[:leader].nil?
+    @videos_filtered = @videos_filtered.follower(params[:follower]) unless params[:follower].nil?
+    @videos_filtered = @videos_filtered.event(params[:event]) unless params[:event].nil?
+    @videos_filtered = @videos_filtered.channel(params[:channel]) unless params[:channel].nil?
+
+    @videos_paginated = @videos_filtered.paginate( page, NUMBER_OF_VIDEOS_PER_PAGE )
 
     first_youtube_id ||= if @videos_sorted.empty?
                           HERO_YOUTUBE_ID
@@ -29,12 +33,12 @@ class VideosController < ApplicationController
     @active_video = Video.find_by(youtube_id: @active_youtube_id)
 
       # Populate Filters 
-    @videotypes  = @videos_sorted.pluck(:"videotypes.name").compact.uniq.sort
-    @leaders     = @videos_sorted.map(&:leader).compact.uniq.sort
-    @followers   = @videos_sorted.pluck(:"followers.name").compact.uniq.sort
-    @events      = @videos_sorted.pluck(:"events.name").compact.uniq.sort
-    @channels    = @videos_sorted.pluck(:channel).compact.uniq.sort
-    @genres      = @videos_sorted.pluck(:"songs.genre").compact.uniq.sort
+    @videotypes  = @videos_filtered.pluck(:"videotypes.name").compact.uniq.sort
+    @leaders     = @videos_filtered.map(&:leader).compact.uniq.sort
+    @followers   = @videos_filtered.pluck(:"followers.name").compact.uniq.sort
+    @events      = @videos_filtered.pluck(:"events.name").compact.uniq.sort
+    @channels    = @videos_filtered.pluck(:channel).compact.uniq.sort
+    @genres      = @videos_filtered.pluck(:"songs.genre").compact.uniq.sort
 
   end
 
