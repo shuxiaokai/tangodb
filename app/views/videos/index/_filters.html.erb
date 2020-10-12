@@ -13,12 +13,8 @@
                         "Select All #{@videotypes.count} Types", 
                         selected: "selected", value: "" ) +
                         options_for_select(@videotypes),
-            class: "select-css",
-            data: { action: "filters#filter", target: "filters.filter" },
-            name: "videotype_id",
-            multiple: false,
-            id: "different_option_value_html",
-            size: 12 %>
+            class: 'js-searchable',
+            name: "videotype_id" %>
       </div>
       <div class="filter_item">
         <label>Genre</label>
@@ -27,11 +23,8 @@
                         "Select All #{@genres.count} Genres", 
                         selected: "selected", value: "" ) +
             options_for_select(@genres),
-            class: "select-css",
-            data: { action: "filters#filter", target: "filters.filter" },
-            name: "genre",
-            multiple: false,
-            size: 12 %>
+            class: 'js-searchable',
+            name: "genre" %>
       </div>
       <div class="filter_item">
         <label>Leader</label>
@@ -40,9 +33,8 @@
                         "Select All #{@leaders.count} Leaders", 
                         selected: "selected", value: "" ) +
             options_from_collection_for_select(@leaders, "id", "name"),
-            name: "leader_id",
-            multiple: false,
-            size: 12 %>
+            class: 'js-searchable',
+            name: "leader_id" %>
       </div>
       
       <div class="filter_item">
@@ -53,10 +45,7 @@
                         selected: "selected", value: "" ) +
             options_for_select(@followers),
             name: "follower_id",
-            class: "select-css",
-            data: { action: "filters#filter", target: "filters.filter" },
-            multiple: false,
-            size: 12 %>
+            class: 'js-searchable' %>
       </div>
       <div class="filter_item">
         <label>Event</label>
@@ -66,10 +55,7 @@
                             selected: "selected", value: "" ) +
                             options_for_select(@events),
             name: "event_id",
-            class: "select-css",
-            data: { action: "filters#filter", target: "filters.filter" },
-            multiple: false,
-            size: 12 %>
+            class: 'js-searchable' %>
       </div>
       <div class="filter_item">
         <label>Channel</label>
@@ -79,11 +65,8 @@
                           selected: "selected", value: "" ) +
                           options_for_select(@channels,
                           request.params.merge(channel: params[:channel])),
-            class: "select-css",
-            data: { action: "filters#filter", target: "filters.filter" },
-            name: "channel",
-            multiple: false,
-            size: 12 %>
+            class: 'js-searchable',
+            name: "channel" %>
       </div>
     </div>
 </div>
