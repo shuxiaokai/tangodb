@@ -25,8 +25,6 @@ gem 'devise',                 '~> 4.7', '>= 4.7.2'
 gem 'omniauth',               '~> 1.9', '>= 1.9.1'
 gem 'font-awesome-rails',     '~> 4.7', '>= 4.7.0.5'
 
-
-
 group :development, :test do
   gem 'byebug',               '~> 11.1', '>= 11.1.3'
   gem 'rspec-rails',          '~> 4.0', '>= 4.0.1'

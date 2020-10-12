@@ -4,10 +4,11 @@
     <i class="fas fa-filter fa-lg" aria-hidden="true"></i>
   </button>
   <div class="hidden" data-target="toggle.toggleable">
+  <%= form_with(url: root_path, method: 'get') do |f| %>
     <div class="filter_container">
       <div class="filter_item">
         <label>Type</label>
-        <%= select_tag "videotype", 
+        <%= f.select "videotype", 
             content_tag( :option, 
                         "Select All #{@videotypes.count} Types", 
                         selected: "selected", value: "" ) +
@@ -17,7 +18,7 @@
       </div>
       <div class="filter_item">
         <label>Genre</label>
-        <%= select_tag "genre", 
+        <%= f.select "genre", 
             content_tag(:option, 
                         "Select All #{@genres.count} Genres", 
                         selected: "selected", value: "" ) +
@@ -27,7 +28,6 @@
       </div>
       <div class="filter_item">
         <label>Leader</label>
-      <%= form_with(url: root_path, method: 'get') do |f| %>
         <%= f.select "leader", 
             content_tag(:option, 
                         "Select All #{@leaders.count} Leaders", 
@@ -36,12 +36,10 @@
             class: 'js-searchable',
             name: "leader_id" %>
       </div>
-      <%= f.submit("Filter") %>
-      <% end %>
       
       <div class="filter_item">
         <label>Follower</label>
-        <%= select_tag "follower", 
+        <%= f.select "follower", 
             content_tag(:option, 
                         "Select All #{@followers.count} Followers", 
                         selected: "selected", value: "" ) +
@@ -51,7 +49,7 @@
       </div>
       <div class="filter_item">
         <label>Event</label>
-        <%= select_tag "event", 
+        <%= f.select "event", 
             content_tag( :option, 
                             "Select All #{@events.count} Events", 
                             selected: "selected", value: "" ) +
@@ -61,7 +59,7 @@
       </div>
       <div class="filter_item">
         <label>Channel</label>
-        <%= select_tag :channels,
+        <%= f.select :channel,
             content_tag(:option,
                           "Select All #{@channels.count} Channels",
                           selected: "selected", value: "" ) +
@@ -70,6 +68,8 @@
             class: 'js-searchable',
             name: "channel" %>
       </div>
+      <%= f.submit("Filter")%>
+      <% end %>
     </div>
   </div>
 </div>

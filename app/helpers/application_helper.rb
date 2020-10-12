@@ -20,7 +20,12 @@ module ApplicationHelper
                           "event.name",
                           "q",
                           "sort",
-                          "direction")
+                          "direction",
+                          "genre",
+                          "videotype",
+                          "leader",
+                          "follower",
+                          "channel")
   end
 
   def format_value(value)
