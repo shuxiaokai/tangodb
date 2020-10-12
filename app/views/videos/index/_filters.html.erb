@@ -32,7 +32,7 @@
             content_tag(:option, 
                         "Select All #{@leaders.count} Leaders", 
                         selected: "selected", value: "" ) +
-            options_from_collection_for_select(@leaders, "id", "name"),
+            options_for_select(@leaders),
             class: 'js-searchable',
             name: "leader_id" %>
       </div>
