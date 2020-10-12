@@ -1,10 +1,9 @@
 <%= "Displaying #{@videos_sorted.count} Videos" %>
 <div data-controller="toggle">
-    <button type= 'submit', data-action="toggle#toggle", class= "filter_button">
-      <i class="fas fa-filter fa-lg" aria-hidden="true"></i>
-    </button>
-    <div class="hidden" data-target="toggle.toggleable">
-
+  <button type= 'submit', data-action="toggle#toggle", class= "filter_button">
+    <i class="fas fa-filter fa-lg" aria-hidden="true"></i>
+  </button>
+  <div class="hidden" data-target="toggle.toggleable">
     <div class="filter_container">
       <div class="filter_item">
         <label>Type</label>
@@ -28,7 +27,8 @@
       </div>
       <div class="filter_item">
         <label>Leader</label>
-        <%= select_tag "leader", 
+      <%= form_with(url: root_path, method: 'get') do |f| %>
+        <%= f.select "leader", 
             content_tag(:option, 
                         "Select All #{@leaders.count} Leaders", 
                         selected: "selected", value: "" ) +
@@ -36,6 +36,8 @@
             class: 'js-searchable',
             name: "leader_id" %>
       </div>
+      <%= f.submit("Filter") %>
+      <% end %>
       
       <div class="filter_item">
         <label>Follower</label>
@@ -69,6 +71,5 @@
             name: "channel" %>
       </div>
     </div>
-</div>
-</div>
+  </div>
 </div>

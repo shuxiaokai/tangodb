@@ -200,7 +200,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    select2-rails (4.0.13)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -268,7 +267,6 @@ DEPENDENCIES
   redis (~> 4.0.1)
   rspec-rails (~> 4.0, >= 4.0.1)
   sass-rails (= 6.0.0)
-  select2-rails
   selenium-webdriver (= 3.142.7)
   spring (= 2.1.0)
   spring-watcher-listen (= 2.0.1)
