@@ -13,12 +13,12 @@ class VideosController < ApplicationController
                           .order(sort_column + " " + sort_direction)
 
     @videos_filtered = @videos_sorted
-    @videos_filtered = @videos_filtered.videotype(params[:videotype]) unless params[:videotype].nil?
-    @videos_filtered = @videos_filtered.genre(params[:genre]) unless params[:genre].nil?
-    @videos_filtered = @videos_filtered.leader(params[:leader]) unless params[:leader].nil?
-    @videos_filtered = @videos_filtered.follower(params[:follower]) unless params[:follower].nil?
-    @videos_filtered = @videos_filtered.event(params[:event]) unless params[:event].nil?
-    @videos_filtered = @videos_filtered.channel(params[:channel]) unless params[:channel].nil?
+    @videos_filtered = @videos_filtered.videotype(params[:videotype]) if params[:videotype].present?
+    @videos_filtered = @videos_filtered.genre(params[:genre]) if params[:genre].present?
+    @videos_filtered = @videos_filtered.leader(params[:leader]) if params[:leader].present?
+    @videos_filtered = @videos_filtered.follower(params[:follower]) if params[:follower].present?
+    @videos_filtered = @videos_filtered.event(params[:event]) if params[:event].present?
+    @videos_filtered = @videos_filtered.channel(params[:channel]) if params[:channel].present?
 
     @videos_paginated = @videos_filtered.paginate( page, NUMBER_OF_VIDEOS_PER_PAGE )
 

@@ -4,71 +4,46 @@
     <i class="fas fa-filter fa-lg" aria-hidden="true"></i>
   </button>
   <div class="hidden" data-target="toggle.toggleable">
-  <%= form_with(url: root_path, method: 'get') do |f| %>
-    <div class="filter_container">
+  <%= form_with( model: @videos, local: true) do |f| %>
+    <div class="filter_container" data-controller='select2'>
       <div class="filter_item">
         <label>Type</label>
-        <%= f.select "videotype", 
-            content_tag( :option, 
-                        "Select All #{@videotypes.count} Types", 
-                        selected: "selected", value: "" ) +
-                        options_for_select(@videotypes),
-            class: 'js-searchable',
-            name: "videotype_id" %>
+        <%= f.select( :videotype, @videotypes,
+            { include_blank: true },
+            { class: "js-searchable" } ) %>
       </div>
-      <div class="filter_item">
+      <div class="filter_item" data-controller='select2'>
         <label>Genre</label>
-        <%= f.select "genre", 
-            content_tag(:option, 
-                        "Select All #{@genres.count} Genres", 
-                        selected: "selected", value: "" ) +
-            options_for_select(@genres),
-            class: 'js-searchable',
-            name: "genre" %>
+        <%= f.select( :genre, @genres,
+            { include_blank: true },
+            { class: "js-searchable" } ) %>
       </div>
-      <div class="filter_item">
+      <div class="filter_item" data-controller='select2'>
         <label>Leader</label>
-        <%= f.select "leader", 
-            content_tag(:option, 
-                        "Select All #{@leaders.count} Leaders", 
-                        selected: "selected", value: "" ) +
-            options_for_select(@leaders),
-            class: 'js-searchable',
-            name: "leader_id" %>
+        <%= f.select( :leader, @leaders,
+            { include_blank: true },
+            { class: "js-searchable" } ) %>
       </div>
       
-      <div class="filter_item">
+      <div class="filter_item" data-controller='select2'>
         <label>Follower</label>
-        <%= f.select "follower", 
-            content_tag(:option, 
-                        "Select All #{@followers.count} Followers", 
-                        selected: "selected", value: "" ) +
-            options_for_select(@followers),
-            class: 'js-searchable',
-            name: "follower_id" %>
+        <%= f.select( :follower, @followers,
+            { include_blank: true },
+            { class: "js-searchable" } ) %>
       </div>
-      <div class="filter_item">
+      <div class="filter_item" data-controller='select2'>
         <label>Event</label>
-        <%= f.select "event", 
-            content_tag( :option, 
-                            "Select All #{@events.count} Events", 
-                            selected: "selected", value: "" ) +
-                            options_for_select(@events),
-            class: 'js-searchable',
-            name: "event_id" %>
+        <%= f.select( :event, @events,
+            { include_blank: true },
+            { class: "js-searchable" } ) %>
       </div>
-      <div class="filter_item">
+      <div class="filter_item" data-controller='select2'>
         <label>Channel</label>
-        <%= f.select :channel,
-            content_tag(:option,
-                          "Select All #{@channels.count} Channels",
-                          selected: "selected", value: "" ) +
-                          options_for_select(@channels,
-                          request.params.merge(channel: params[:channel])),
-            class: 'js-searchable',
-            name: "channel" %>
+        <%= f.select( :channel, @channels,
+            { include_blank: true },
+            { class: "js-searchable" } ) %>
       </div>
-      <%= f.submit("Filter")%>
+      <%= f.submit("Filter") %>
       <% end %>
     </div>
   </div>
