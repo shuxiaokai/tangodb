@@ -2,6 +2,10 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
   static targets = [ "videos" ]
+  
+  connect() {
+    console.log(this.videosTarget)
+  }
 
   change(event) {
     fetch(this.data.get("url"), { 
@@ -16,9 +20,9 @@ export default class extends Controller {
     })
       .then(response => response.text())
       .then(html => {
-        this.videosTarget.innerHTML = html
+        this.innerHTML = html
       })
-  }
+  } 
 }
 
 function getMetaValue(name) {
