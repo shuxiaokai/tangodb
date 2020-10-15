@@ -13,12 +13,10 @@ class VideosController < ApplicationController
                           .order(sort_column + " " + sort_direction)
 
     @videos_filtered = @videos_sorted
-    @videos_filtered = @videos_filtered.videotype(params[:videotype]) if params[:videotype].present?
-    @videos_filtered = @videos_filtered.genre(params[:genre]) if params[:genre].present?
-    @videos_filtered = @videos_filtered.leader(params[:leader]) if params[:leader].present?
-    @videos_filtered = @videos_filtered.follower(params[:follower]) if params[:follower].present?
-    @videos_filtered = @videos_filtered.event(params[:event]) if params[:event].present?
-    @videos_filtered = @videos_filtered.channel(params[:channel]) if params[:channel].present?
+
+    filtering_params(params).each do |key, value|
+      @videos_filtered = @videos_filtered.public_send(key, value) if value.present?
+    end
 
     @videos_paginated = @videos_filtered.paginate( page, NUMBER_OF_VIDEOS_PER_PAGE )
 
@@ -64,5 +62,9 @@ class VideosController < ApplicationController
 
   def page
     @page ||= params.permit(:page).fetch(:page, 0).to_i
+  end
+
+  def filtering_params(params)
+    params.slice(:genre, :videotype, :leader, :follower, :event, :channel)
   end
 end
