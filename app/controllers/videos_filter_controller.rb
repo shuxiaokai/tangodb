@@ -11,7 +11,7 @@ class VideosFilterController < ApplicationController
                           .references(:song, :leader, :follower, :videotype, :event)
                           .order(sort_column + " " + sort_direction)
 
-    @videos_filtered = @videos_sorted.limit(1000)
+    @videos_filtered = @videos_sorted
     # @videos_filtered = @videos_filtered.videotype(params[:videotype]) if params[:videotype].present?
     @videos_filtered = @videos_filtered.genre(videos_filter_params[:genre])
     # @videos_filtered = @videos_filtered.leader(params[:leader]) if params[:leader].present?
@@ -26,7 +26,7 @@ class VideosFilterController < ApplicationController
   private
 
   def videos_filter_params
-    params.require('videos_filter').permit(genres: [])
+    params.require('videos_filter').permit(genres:)
   end
 
   def sort_column

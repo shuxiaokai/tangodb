@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   post 'savenew', to: 'users#savenew'
 
-  post 'videos_filter', action: :index, controller: 'videos_filter'
+  post 'videos', action: :index, controller: 'videos'
 
   resources :videos, only: %i[index]
 

@@ -48,17 +48,15 @@
         </div>
       </div>
 
-      <%
-=begin%>
- <div data-target="select-filter.videos">
-        <%= render partial: 'videos/index/videos', locals: { videos: @videos} %>
+
+      <div >
+        <%= render partial: 'videos/index/videos' %>
       </div>
 
       <div id="videos">
         <%= render "videos/index/videos", videos: @videos %>
       </div> 
-<%
-=end%>
+
     </div>
 
     <div id="load-more-container">
