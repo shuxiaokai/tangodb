@@ -6,12 +6,10 @@ export default class extends Controller {
 
   connect() {
     console.log('Filter-Controller ON')
-    console.log(this.filterTargets)
   }
 
   filter() {
     const url = `${window.location.pathname}?${this.params}`;
-    console.log(this.params)
     Turbolinks.clearCache();
     Turbolinks.visit(url);
   }

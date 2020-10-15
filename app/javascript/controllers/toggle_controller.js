@@ -5,7 +5,7 @@ export default class extends Controller {
 
 
   connect() {
-    console.log(this.toggleableTarget)
+    console.log('Toggle-Controller ON')
   }
 
   toggle() {  
