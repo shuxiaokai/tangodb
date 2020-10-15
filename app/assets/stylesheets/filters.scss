@@ -48,6 +48,7 @@
   -webkit-appearance: none;
   appearance: none;
   background-color: #fff;
+  overscroll-behavior-y: none;
 }
 
 @media (max-width: 1300px) {
