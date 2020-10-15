@@ -5,8 +5,8 @@
   </button>
   <div class="hidden" data-target="toggle.toggleable">
 
-    <div class="filter_container" data-controller="filter">
-      <div class="filter_item">
+    <div class="filter_container">
+      <div class="filter_item" data-controller="filter">
         <label>Type</label>
         <%= select_tag :videotype, options_for_select(@videotypes), 
             multiple: false, 
