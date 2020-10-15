@@ -5,12 +5,13 @@
   </button>
   <div class="hidden" data-target="toggle.toggleable">
 
-    <div class="filter_container">
+    <div class="filter_container" >
       <div class="filter_item" data-controller="filter">
         <label>Type</label>
-        <%= select_tag :videotype, options_for_select(@videotypes), 
+        <%= select_tag :videotype, options_for_select(@videotypes, params[:videotype]), 
             multiple: false, 
             size: 12,
+            class: "select-css",
             include_blank: "Select All Types",
             data: { action: "filter#filter", target: "filter.filter"} %>
       </div>  
@@ -18,43 +19,48 @@
     <div class="filter_item" data-controller="filter" >
       <label>Genre</label>
       <%= select_tag :genre, 
-            options_for_select( @genres), 
+            options_for_select( @genres, params[:genre]), 
             multiple: false, 
             size: 12,
+            class: "select-css",
             include_blank: "Select All Genres",
             data: { action: "filter#filter", target: "filter.filter"} %>
     </div>
 
  <div class="filter_item" data-controller="filter">
         <label>Leader</label>
-        <%= select_tag :leader, options_for_select(@leaders), 
+        <%= select_tag :leader, options_for_select(@leaders, params[:leader]), 
             multiple: false, 
             size: 12,
+            class: "select-css",
             include_blank: "Select All Leaders",
             data: { action: "filter#filter", target: "filter.filter"} %>
       </div>
       
       <div class="filter_item" data-controller="filter">
         <label>Follower</label>
-        <%= select_tag :follower, options_for_select(@followers), 
+        <%= select_tag :follower, options_for_select(@followers, params[:follower]), 
             multiple: false, 
             size: 12,
+            class: "select-css",
             include_blank: "Select All Followers",
             data: { action: "filter#filter", target: "filter.filter"}  %>
       </div>
       <div class="filter_item" data-controller="filter">
         <label>Event</label>
-        <%= select_tag :event, options_for_select(@events), 
+        <%= select_tag :event, options_for_select(@events, params[:event]), 
             multiple: false, 
             size: 12,
+            class: "select-css",
             include_blank: "Select All Events",
             data: { action: "filter#filter", target: "filter.filter"}  %>
       </div>
       <div class="filter_item" data-controller="filter">
         <label>Channel</label>
-        <%= select_tag :channel, options_for_select(@channels), 
+        <%= select_tag :channel, options_for_select(@channels, params[:channel]), 
             multiple: false, 
             size: 12,
+            class: "select-css",
             include_blank: "Select All Channels",
             data: { action: "filter#filter", target: "filter.filter"} %>
       </div>  
