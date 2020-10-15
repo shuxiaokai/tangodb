@@ -44,10 +44,10 @@ class Video < ApplicationRecord
   belongs_to :event
 
   scope :genre, ->(genre) { joins(:song).where( songs: { genre: genre} ) }
-  scope :videotype, ->(videotype) { joins(:videotype).where( videotypes: { name: videotype} ) }
-  scope :leader, ->(leader) { joins(:leader).where( leaders: {name: leader } ) }
-  scope :follower, ->(follower) { joins(:follower).where( follower: {name: follower } ) }
-  scope :event, ->(event) { joins(:event).where( event: event ) }
+  scope :videotype, ->(videotype) { joins(:videotype).where( videotypes: { name: videotype } ) }
+  scope :leader, ->(leader) { joins(:leader).where( leaders: { name: leader } ) }
+  scope :follower, ->(follower) { joins(:follower).where( followers: { name: follower } ) }
+  scope :event, ->(event) { joins(:event).where( events: { name: event } ) }
   scope :channel, ->(channel) { where( channel: channel ) }
 
   scope :paginate, ->(page, per_page)  {

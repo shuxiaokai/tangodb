@@ -1,65 +1,58 @@
 <div class="wrapper">
-    <div class="main-header">
-        <%= render "videos/index/header" %>
-    </div>
+  <div class="main-header">
+    <%= render "videos/index/header" %>
+  </div>
 
-    <div class="hero-video">
-        <%= render "videos/index/video" %>
-    </div>
-    <div class="details">
-        <%= render "videos/index/details_video" %>
-    </div>
-    <div class="content">
-        <%= render "videos/index/filters" %>
-        <%= render "videos/index/searchresult_details" %>
-      <div class="videos-header">
-        <div class="video-thumbnails"></div>
-        <div class="video-videotypes">
-          <%= sortable "videotypes.name", "Type" %>
-        </div>
-        <div class="video-titles">
-          <%= sortable "songs.title", "Song" %>
-        </div>
-        <div class="video-artists">
-          <%= sortable "songs.artist", "Artist" %>
-        </div>
-        <div class="video-genres">
-          <%= sortable "songs.genre", "Genre" %>
-        </div>
-        <div class="video-leaders">
-          <%= sortable "leaders.name", "Leader" %>
-        </div>
-        <div class="video-followers">
-          <%= sortable "followers.name", "Follower" %>
-        </div>
-        <div class="video-events">
-          <%= sortable "events.name", "Event" %>
-        </div>
-        <div class="video-channels">
-          <%= sortable "channel", "Channel" %>
-        </div>
-        <div class="video-view_counts">
-          <%= sortable "view_count" %>
-        </div>
-        <div class="video-upload_dates">
-          <%= sortable "upload_date", "Upload Date" %>
-        </div>
-        <div class="video-scrollbar-width">
-        </div>
+  <div class="hero-video">
+    <%= render "videos/index/video" %>
+  </div>
+  <div class="details">
+    <%= render "videos/index/details_video" %>
+  </div>
+  <div class="content">
+    <%= render "videos/index/filters" %>
+    <%= render "videos/index/searchresult_details" %>
+    <div class="videos-header">
+      <div class="video-thumbnails"></div>
+      <div class="video-videotypes">
+        <%= sortable "videotypes.name", "Type" %>
       </div>
-
-
-      <div >
-        <%= render partial: 'videos/index/videos' %>
+      <div class="video-titles">
+        <%= sortable "songs.title", "Song" %>
       </div>
-
-      <div id="videos">
-        <%= render "videos/index/videos", videos: @videos %>
-      </div> 
-
+      <div class="video-artists">
+        <%= sortable "songs.artist", "Artist" %>
+      </div>
+      <div class="video-genres">
+        <%= sortable "songs.genre", "Genre" %>
+      </div>
+      <div class="video-leaders">
+        <%= sortable "leaders.name", "Leader" %>
+      </div>
+      <div class="video-followers">
+        <%= sortable "followers.name", "Follower" %>
+      </div>
+      <div class="video-events">
+        <%= sortable "events.name", "Event" %>
+      </div>
+      <div class="video-channels">
+        <%= sortable "channel", "Channel" %>
+      </div>
+      <div class="video-view_counts">
+        <%= sortable "view_count" %>
+      </div>
+      <div class="video-upload_dates">
+        <%= sortable "upload_date", "Upload Date" %>
+      </div>
+      <div class="video-scrollbar-width">
+      </div>
     </div>
-
-    <div id="load-more-container">
-      <%= render "videos/index/load_more", page: @page %>
+    <div id="videos">
+      <%= render "videos/index/videos", videos: @videos %>
     </div>
+  </div>
+
+  <div id="load-more-container">
+    <%= render "videos/index/load_more", page: @page %>
+  </div>
 </div>

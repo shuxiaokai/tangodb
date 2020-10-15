@@ -5,19 +5,17 @@
   </button>
   <div class="hidden" data-target="toggle.toggleable">
 
-
- <%= form_with( model: @videos, local: true) do |f| %>
-    <div class="filter_container" data-controller='select-filter' data-select-filter-url="<%= videos_path %>">
+    <div class="filter_container" data-controller="filter">
       <div class="filter_item">
         <label>Type</label>
         <%= select_tag :videotype, options_for_select(@videotypes), 
             multiple: false, 
             size: 12,
-            include_blank: "Select All Genres",
+            include_blank: "Select All Types",
             data: { action: "filter#filter", target: "filter.filter"} %>
       </div>  
 
-    <div class="filter_item" data-controller='filter' >
+    <div class="filter_item" data-controller="filter" >
       <label>Genre</label>
       <%= select_tag :genre, 
             options_for_select( @genres), 
@@ -27,40 +25,39 @@
             data: { action: "filter#filter", target: "filter.filter"} %>
     </div>
 
- <div class="filter_item" data-controller="select-filter" data-select-filter-url="<%= videos_path %>">
+ <div class="filter_item" data-controller="filter">
         <label>Leader</label>
         <%= select_tag :leader, options_for_select(@leaders), 
             multiple: false, 
             size: 12,
-            include_blank: "Select All Genres",
+            include_blank: "Select All Leaders",
             data: { action: "filter#filter", target: "filter.filter"} %>
       </div>
       
-      <div class="filter_item" data-controller='select-filter' data-select-filter-url="<%= videos_path %>">
+      <div class="filter_item" data-controller="filter">
         <label>Follower</label>
         <%= select_tag :follower, options_for_select(@followers), 
             multiple: false, 
             size: 12,
-            include_blank: "Select All Genres",
+            include_blank: "Select All Followers",
             data: { action: "filter#filter", target: "filter.filter"}  %>
       </div>
-      <div class="filter_item" data-controller='select-filter' data-select-filter-url="<%= videos_path %>">
+      <div class="filter_item" data-controller="filter">
         <label>Event</label>
         <%= select_tag :event, options_for_select(@events), 
             multiple: false, 
             size: 12,
-            include_blank: "Select All Genres",
+            include_blank: "Select All Events",
             data: { action: "filter#filter", target: "filter.filter"}  %>
       </div>
-      <div class="filter_item" data-controller='select-filter' data-select-filter-url="<%= videos_path %>">
+      <div class="filter_item" data-controller="filter">
         <label>Channel</label>
         <%= select_tag :channel, options_for_select(@channels), 
             multiple: false, 
             size: 12,
-            include_blank: "Select All Genres",
+            include_blank: "Select All Channels",
             data: { action: "filter#filter", target: "filter.filter"} %>
       </div>  
-      <% end %>
     </div> 
   </div>
 </div>
