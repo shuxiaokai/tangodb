@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
   # before_action :authenticate_user!
 
-  NUMBER_OF_VIDEOS_PER_PAGE = 25.freeze
+  NUMBER_OF_VIDEOS_PER_PAGE = 10.freeze
   HERO_YOUTUBE_ID = 's6iptZdCcG0'.freeze
 
   helper_method :sort_column, :sort_direction
@@ -20,10 +20,10 @@ class VideosController < ApplicationController
 
     @videos_paginated = @videos_filtered.paginate( page, NUMBER_OF_VIDEOS_PER_PAGE )
 
-    first_youtube_id ||= if @videos_sorted.empty?
+    first_youtube_id ||= if @videos_filtered.empty?
                           HERO_YOUTUBE_ID
                          else
-                          @videos_sorted.first.youtube_id 
+                          @videos_filtered.first.youtube_id 
                          end
 
     @active_youtube_id ||= params[:youtube_id] || first_youtube_id
@@ -37,7 +37,7 @@ class VideosController < ApplicationController
     @events      = @videos_filtered.pluck(:"events.name").compact.uniq.sort
     @channels    = @videos_filtered.pluck(:channel).compact.uniq.sort
     @genres      = @videos_filtered.pluck(:"songs.genre").compact.uniq.sort
-
+ 
   end
 
   private
