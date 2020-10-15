@@ -4,26 +4,34 @@
     <i class="fas fa-filter fa-lg" aria-hidden="true"></i>
   </button>
   <div class="hidden" data-target="toggle.toggleable">
-  <%= form_with( model: @videos, local: true) do |f| %>
+
+ <%
+=begin%>
+ <%= form_with( model: @videos, local: true) do |f| %>
     <div class="filter_container" data-controller='select-filter' data-select-filter-url="<%= videos_path %>">
       <div class="filter_item">
         <label>Type</label>
         <%= select_tag "videotype", options_for_select(@videotypes), 
               data: { action: "select-filter#change" } %>
-      </div>
+      </div>  
+<%
+=end%>
 
-      <div data-target="select-filter.videos" >
-        <%= render partial: 'videos/index/videos', locals: { videos: @videos} %>
+    <div class="filter_item" data-controller='filter' data-filter-url="<%= videos_filter_path %>">
+      <label>Genre</label>
+      <%= select_tag :genres, 
+            options_for_select( @genres, params[:genre]), 
+            multiple: true, 
+            include_blank: true,
+            data: { action: "filter#filter" } %>
+      <div data-target="filters.filter" >
+        <%= render partial: 'videos/index/videos' %>
       </div>
     </div>
+
       <%
 =begin%>
- <div class="filter_item" data-controller='select-filter' data-select-filter-url="<%= videos_path %>">
-        <label>Genre</label>
-        <%= select_tag "genre", options_for_select(@genres), 
-              data: { action: "select-filter#change" }  %>
-      </div>
-      <div class="filter_item" data-controller="select-filter" data-select-filter-url="<%= videos_path %>">
+ <div class="filter_item" data-controller="select-filter" data-select-filter-url="<%= videos_path %>">
         <label>Leader</label>
         <%= select_tag "leader", options_for_select(@leaders), 
               data: { action: "select-filter#change" } %>
@@ -43,10 +51,10 @@
         <label>Channel</label>
         <%= select_tag "channel", options_for_select(@channels), 
               data: { action: "select-filter#change" } %>
-      </div> 
+      </div>  
+      <% end %>
+    </div> 
 <%
 =end%>
-      <% end %>
-    </div>
   </div>
 </div>
