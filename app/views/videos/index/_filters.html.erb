@@ -46,7 +46,7 @@
             include_blank: "Select All Followers",
             data: { action: "filter#filter", target: "filter.filter"}  %>
       </div>
-      <div class="filter_item" data-controller="filter">
+      <div class="filter_item">
         <label>Event</label>
         <%= select_tag :event, options_for_select(@events, params[:event]), 
             multiple: false, 
