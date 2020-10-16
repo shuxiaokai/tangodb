@@ -2,7 +2,13 @@
 
   <%= link_to "TangoTube", root_path, id: "logo" %>
 
-  <%= render "videos/index/search" %>
+  <div class="search_bar">
+
+<%= form_tag root_path, method: 'get' do %>
+      <%= text_field_tag :q, params[:q], class: "input" %>
+      <i class="fa fa-search search_icon"></i>
+<% end %>
+</div>
 
   <nav>
     <% if user_signed_in? %>
