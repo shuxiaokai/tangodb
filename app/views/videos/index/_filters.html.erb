@@ -8,60 +8,71 @@
     <div class="filter_container" data-controller="filter">
       <div class="filter_item">
         <label>Type</label>
-        <%= select_tag :videotype, options_for_select(@videotypes, params[:videotype]), 
+      <%= select_tag :videotype, 
+            options_for_select([["Select All #{@videotypes.count} Types", " "]] + @videotypes,
+              params[:videotype].presence || " "
+            ),
             multiple: false, 
             size: 12,
             class: "select-css",
-            include_blank: "Select All Types",
             data: { action: "filter#filter", target: "filter.filter"} %>
       </div>
 
       <div class="filter_item">
       <label>Genre</label>
         <%= select_tag :genre, 
-            options_for_select( @genres, params[:genre]), 
+              options_for_select([["Select All  #{@genres.count} Genres", " "]] + @genres, 
+              params[:genre].presence || " "
+            ), 
             multiple: false, 
             size: 12,
             class: "select-css",
-            include_blank: "Select All Genres",
             data: { action: "filter#filter", target: "filter.filter"} %>
       </div>
 
       <div class="filter_item">
         <label>Leader</label>
-        <%= select_tag :leader, options_for_select(@leaders, params[:leader]), 
+        <%= select_tag :leader, 
+              options_for_select([["Select All  #{@leaders.count} Leaders", " "]]+ @leaders, 
+              params[:leader].presence || " "
+            ), 
             multiple: false, 
             size: 12,
             class: "select-css",
-            include_blank: "Select All Leaders",
             data: { action: "filter#filter", target: "filter.filter"} %>
       </div>
 
       <div class="filter_item">
         <label>Follower</label>
-        <%= select_tag :follower, options_for_select(@followers, params[:follower]), 
+        <%= select_tag :follower, 
+              options_for_select( [["Select All #{@followers.count} Followers", " "]] + @followers, 
+              params[:follower].presence || " "
+            ), 
             multiple: false, 
             size: 12,
             class: "select-css",
-            include_blank: "Select All Followers",
             data: { action: "filter#filter", target: "filter.filter"}  %>
       </div>
       <div class="filter_item">
         <label>Event</label>
-        <%= select_tag :event, options_for_select(@events, params[:event]), 
+        <%= select_tag :event, 
+              options_for_select( [["Select All #{@events.count} Events", " "]] + @events, 
+              params[:event].presence || " "
+            ), 
             multiple: false, 
             size: 12,
             class: "select-css",
-            include_blank: "Select All Events",
             data: { action: "filter#filter", target: "filter.filter"}  %>
       </div>
       <div class="filter_item">
         <label>Channel</label>
-        <%= select_tag :channel, options_for_select(@channels, params[:channel]), 
+        <%= select_tag :channel, 
+              options_for_select( [["Select All #{@channels.count} Channels", " "]]+ @channels, 
+              params[:channel].presence || " "
+            ), 
             multiple: false, 
             size: 12,
             class: "select-css",
-            include_blank: "Select All Channels",
             data: { action: "filter#filter", target: "filter.filter"} %>
       </div>
     </div>

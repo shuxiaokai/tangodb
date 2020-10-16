@@ -1,7 +1,6 @@
 body {
   color: #999;
   font-family: nationale,nationale-regular,Helvetica,sans-serif;
-  margin: 10px;
   font-size: 14px;
 }
 
@@ -13,7 +12,9 @@ a {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 17px;
+  color: #1d1d1f;
+  font-weight: 600;
   margin: 0 0 5px 0;
 }
 
@@ -21,14 +22,21 @@ h2 {
   font-size: 13px;
   color: #1d1d1f;
   font-weight: 600;
-  margin: 0 0 5px 0;
+  margin: 0 0px 5px 0;
 }
 
 h3 {
   font-size: 12px;
   color: #444;
   font-weight:400;
-  margin: 0 0 0px 0;
+  margin: 0 0px 5px 0;
+}
+
+h4 {
+  font-size: 14px;
+  color: #999;
+  font-weight:400;
+  margin: 0 0px 5px 0;
 }
 
 @media (max-width: 1000px) {

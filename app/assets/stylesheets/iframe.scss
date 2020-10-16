@@ -1,15 +1,17 @@
 .container {
   max-height: 540px;
   max-width: 960px;
+  min-width: 801px;
   overflow: hidden;
   margin: 0 auto 20px auto;
-  
 }
 
 .iframe-container {
   position: relative;
   display: block;
   margin: 0 auto;
+  min-height: 450px;
+  min-width: 801px;
   width: 100%;
   padding-bottom: 56.25%;
   padding-top: 0px;
