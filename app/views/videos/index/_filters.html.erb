@@ -1,4 +1,4 @@
-<%= "Displaying #{@videos_sorted.count} Videos" %>
+<%= "#{@videos_filtered.count} Results" %>
 <div data-controller="toggle">
   <button type='submit' data-action="toggle#toggle" class="filter_button">
     <i class="fas fa-filter fa-lg" aria-hidden="true"></i>
@@ -17,7 +17,7 @@
       </div>
 
       <div class="filter_item">
-        <label>Genre</label>
+      <label>Genre</label>
         <%= select_tag :genre, 
             options_for_select( @genres, params[:genre]), 
             multiple: false, 

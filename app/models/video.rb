@@ -71,7 +71,7 @@ class Video < ApplicationRecord
   class << self
     # To fetch video, run this from the console:
     # Video.parse_json('data/030tango_channel_data_json')
-    # Video.parse_json('/Users/justin/data/channel_json')
+    # Video.parse_json('/Users/justin/desktop/environment/data/channel_json')
     def parse_json(file_path)
       json_file = Dir.glob("#{file_path}/**/*.json").map
       json_file.each do |youtube_video|

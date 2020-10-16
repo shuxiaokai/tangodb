@@ -1,12 +1,12 @@
 require 'csv'
 
-CSV.foreach('data/tangodb-datasets/Songs.csv', headers: true) do |column|
-  genre   = column[0]
-  title   = column[1]
-  artist  = column[2]
-  Song.create(genre: genre, title: title, artist: artist) 
-end
-puts "There are now #{Song.count} Songs in the database."
+# CSV.foreach('data/tangodb-datasets/Songs.csv', headers: true) do |column|
+#   genre   = column[0]
+#   title   = column[1]
+#   artist  = column[2]
+#   Song.create(genre: genre, title: title, artist: artist) 
+# end
+# puts "There are now #{Song.count} Songs in the database."
 
 CSV.foreach('data/tangodb-datasets/Videotypes.csv', headers: true) do |column|
   name = column[1]
@@ -14,23 +14,23 @@ CSV.foreach('data/tangodb-datasets/Videotypes.csv', headers: true) do |column|
 end
 puts "There are now #{Videotype.count} videotypes in the database."
 
-CSV.foreach('data/tangodb-datasets/Events.csv', headers: true) do |column|
-  name = column[1]
-  Event.create(name: name) 
-end
-puts "There are now #{Event.count} events in the database."
+# CSV.foreach('data/tangodb-datasets/Events.csv', headers: true) do |column|
+#   name = column[1]
+#   Event.create(name: name) 
+# end
+# puts "There are now #{Event.count} events in the database."
 
-CSV.foreach('data/tangodb-datasets/Leaders.csv', headers: true) do |column|
-  name = column[1]
-  Leader.create(name: name) 
-end
-puts "There are now #{Leader.count} leaders in the database."
+# CSV.foreach('data/tangodb-datasets/Leaders.csv', headers: true) do |column|
+#   name = column[1]
+#   Leader.create(name: name) 
+# end
+# puts "There are now #{Leader.count} leaders in the database."
 
-CSV.foreach('data/tangodb-datasets/Followers.csv', headers: true) do |column|
-  name = column[1]
-  Follower.create(name: name) 
-end
-puts "There are now #{Follower.count} followers in the database."
+# CSV.foreach('data/tangodb-datasets/Followers.csv', headers: true) do |column|
+#   name = column[1]
+#   Follower.create(name: name) 
+# end
+# puts "There are now #{Follower.count} followers in the database."
 
 #Seed raw json data for videos without relations
 # CSV.foreach('data/tangodb-datasets/Videos-videos_dataset_master.csv', headers: true) do |column|

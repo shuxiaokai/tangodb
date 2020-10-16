@@ -7,7 +7,6 @@
       video.song = song
       video.save
       end
-      puts "#{Song.count} matches"
     end
   end
 
@@ -33,7 +32,7 @@
 
     #Matches Videotype with Video title
     Videotype.all.each do |videotype|
-      Video.where( "unaccent(title) ILIKE unaccent(?)", "% #{videotype.name} %").each do |video|
+      Video.where(videotype_id: nil).where( "unaccent(title) ILIKE unaccent(?)", "% #{videotype.name} %").each do |video|
         video.videotype = videotype
         video.save
       end
@@ -42,7 +41,7 @@
     #Matches Videotype with Video description
 
     Videotype.all.each do |videotype|
-      Video.where( "unaccent(description) ILIKE unaccent(?)", "% #{videotype.name} %").each do |video|
+      Video.where(videotype_id: nil).where( "unaccent(description) ILIKE unaccent(?)", "% #{videotype.name} %").each do |video|
         video.videotype = videotype
         video.save
       end
@@ -59,17 +58,34 @@
     puts Video.pluck(:follower_id).count
   end
 
+    #SQL match for Follower
+    Follower.all.each do |follower|
+      Video.all.where(follower_id: nil).where( "unaccent(tags) ILIKE unaccent(?)", "%#{follower.name}%").each do |video|
+        video.follower = follower
+        video.save
+      end
+    end
+
+    #SQL match for Leader
+    Leader.all.each do |leader|
+      Video.all.where(leader_id: nil).where( "unaccent(tags) ILIKE unaccent(?)", "%#{leader.name}%").each do |video|
+        video.leader = leader
+        video.save
+      end
+    end
+    
+
   Leader.all.each do |leader|
     Video.all.where( "unaccent(title) ILIKE unaccent(?)", "%#{leader.name}%").each do |video|
       video.leader = leader
       video.save
     end
-    puts "#{Leader.count} matches"
+    puts Video.pluck(:leader_id).count
   end
 
     #SQL match for Leader using fuzzystrmatch
     Leader.all.each do |leader|
-      Video.where(leader_id: nil).where( "levenshtein(unaccent(title), unaccent(?) ) < 6 ", leader.name).each do |video|
+      Video.where(leader_id: nil).where( "levenshtein(unaccent(title), unaccent(?) ) < 4 ", leader.name).each do |video|
         video.leader = leader
         video.save
       end
@@ -77,14 +93,14 @@
 
         #SQL match for Leader using fuzzystrmatch
         Leader.all.each do |leader|
-          Video.where(leader_id: nil).where( "levenshtein(unaccent(description), unaccent(?) ) < 6 ", leader.name).each do |video|
+          Video.where(leader_id: nil).where( "levenshtein(unaccent(description), unaccent(?) ) < 4 ", leader.name).each do |video|
             video.leader = leader
             video.save
           end
         end
 
-    leader.all.each do |follower|
-      Video.where(follower_id: nil).where( "levenshtein(unaccent(title), unaccent(?) ) < 6", follower.name).each do |video|
+    Follower.all.each do |follower|
+      Video.where(follower_id: nil).where( "levenshtein(unaccent(title), unaccent(?) ) < 4", follower.name).each do |video|
         video.follower = follower
         video.save
       end
