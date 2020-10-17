@@ -9,8 +9,8 @@
       <div class="filter_item">
         <label>Type</label>
       <%= select_tag :videotype, 
-            options_for_select([["Select All #{@videotypes.count} Types", " "]] + @videotypes,
-                params[:videotype].presence || " "
+            options_for_select([["Select All #{@videotypes.count} Types", "all"]] + @videotypes,
+                params[:videotype].presence || "all"
               ),
               multiple: false, 
               size: 12,
@@ -21,8 +21,8 @@
       <div class="filter_item">
       <label>Genre</label>
         <%= select_tag :genre, 
-              options_for_select([["Select All  #{@genres.count} Genres", " "]] + @genres, 
-                params[:genre].presence || " "
+              options_for_select([["Select All  #{@genres.count} Genres", "all"]] + @genres, 
+                params[:genre].presence || "all"
               ), 
               multiple: false, 
               size: 12,
@@ -33,8 +33,8 @@
       <div class="filter_item">
         <label>Leader</label>
         <%= select_tag :leader, 
-              options_for_select([["Select All  #{@leaders.count} Leaders", " "]]+ @leaders, 
-                params[:leader].presence || " "
+              options_for_select([["Select All  #{@leaders.count} Leaders", "all"]]+ @leaders, 
+                params[:leader].presence || "all"
               ), 
               multiple: false, 
               size: 12,
@@ -45,8 +45,8 @@
       <div class="filter_item">
         <label>Follower</label>
         <%= select_tag :follower, 
-              options_for_select( [["Select All #{@followers.count} Followers", " "]] + @followers, 
-                params[:follower].presence || " "
+              options_for_select( [["Select All #{@followers.count} Followers", "all"]] + @followers, 
+                params[:follower].presence || "all"
               ), 
               multiple: false, 
               size: 12,
@@ -56,8 +56,8 @@
       <div class="filter_item">
         <label>Event</label>
         <%= select_tag :event, 
-              options_for_select( [["Select All #{@events.count} Events", " "]] + @events, 
-                params[:event].presence || " "
+              options_for_select( [["Select All #{@events.count} Events", "all"]] + @events, 
+                params[:event].presence || "all"
               ), 
               multiple: false, 
               size: 12,
@@ -67,8 +67,8 @@
       <div class="filter_item">
         <label>Channel</label>
         <%= select_tag :channel, 
-              options_for_select( [["Select All #{@channels.count} Channels", " "]]+ @channels, 
-              params[:channel].presence || " "
+              options_for_select( [["Select All #{@channels.count} Channels", "all"]]+ @channels, 
+              params[:channel].presence || "all"
             ), 
             multiple: false, 
             size: 12,
