@@ -2,6 +2,7 @@
   "name": "tangodb",
   "private": true,
   "dependencies": {
+    "@activeadmin/activeadmin": "^2.8.1",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",

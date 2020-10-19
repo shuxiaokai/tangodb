@@ -97,3 +97,5 @@ CSV.foreach('data/tangodb-datasets/videos_w_relation_seed.csv', headers: true) d
                 event_id:       event_id ) 
  end
 puts "There are now #{Video.count} videos with relations in the database."
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
