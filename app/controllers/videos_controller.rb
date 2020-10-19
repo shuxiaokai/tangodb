@@ -6,10 +6,6 @@ class VideosController < ApplicationController
 
   helper_method :sort_column, :sort_direction
 
-  def search
-    render json: Video.typeahead_search(params[:name])
-    end
-
   def index
     @videos_sorted = Video.search(params[:q])
                           .includes(:song, :leader, :follower, :videotype, :event)
@@ -36,7 +32,7 @@ class VideosController < ApplicationController
     @active_video = Video.find_by(youtube_id: @active_youtube_id)
 
     # Populate Filters 
-    @videotypes  = @videos_filtered.pluck(:"videotypes.name").compact.uniq.sort
+    @videotypes  = Videotype.all
     @leaders     = @videos_filtered.pluck(:"leaders.name").compact.uniq.sort
     @followers   = @videos_filtered.pluck(:"followers.name").compact.uniq.sort
     @events      = @videos_filtered.pluck(:"events.name").compact.uniq.sort

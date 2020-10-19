@@ -20,8 +20,3 @@
 // Import css from js for webpack to process it correctly
 import '../css/application.css'
 
-// Add Choices Dropdown
-const Choices = require('choices.js')
-document.addEventListener("turbolinks:load", function() {
-    var dropDownSelects = new Choices('#dropdown-choice-select');
-})
