@@ -6,6 +6,10 @@ class VideosController < ApplicationController
 
   helper_method :sort_column, :sort_direction
 
+  def search
+    render json: Video.typeahead_search(params[:name])
+    end
+
   def index
     @videos_sorted = Video.search(params[:q])
                           .includes(:song, :leader, :follower, :videotype, :event)

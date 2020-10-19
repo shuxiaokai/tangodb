@@ -29,6 +29,7 @@
 
 class Video < ApplicationRecord
   include Filterable
+  include PgSearch::Model
 
   # validates :leader, presence: true
   # validates :follower, presence: true
@@ -53,6 +54,13 @@ class Video < ApplicationRecord
   scope :paginate, ->(page, per_page)  {
     offset(per_page * page).limit(per_page)
   }
+
+  pg_search_scope :stemmed, against: :leader :follower, using: {tsearch: {prefix: true}, trigram: {}}
+    def self.typeahead_search(term)
+    Video
+    .stemmed(term)
+    .map { |video| {value: video.id, label: video.name} }
+  end
 
   def self.search(query)
     if query

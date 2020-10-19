@@ -5,6 +5,11 @@
   </button>
   <div class="hidden" data-target="toggle.toggleable">
 
+<div data-controller="choices" data-search-path="/videos/search?name=" data-remove-item-button="true" data-search-result-limit="100" data-no-choices-text="Start typing to search...">
+<datalist data-choices-target="options"></datalist>
+<%= f.collection_select :video_id, @videos, :id, :name, {include_blank: true}, {data: {"choices-target": "select"}} %>
+</div>
+
     <div class="filter_container" data-controller="filter">
       <div class="filter_item">
         <label>Type</label>
@@ -14,7 +19,7 @@
               ),
               multiple: false, 
               size: 12,
-              id: 'dropdown-choice-select',
+              id: 'select-css',
               data: { action: "filter#filter", target: "filter.filter"} %>
       </div>
 
@@ -26,7 +31,7 @@
               ), 
               multiple: false, 
               size: 12,
-              id: 'dropdown-choice-select',
+              id: 'select-css',
               data: { action: "filter#filter", target: "filter.filter"} %>
       </div>
 
@@ -38,7 +43,7 @@
               ), 
               multiple: false, 
               size: 12,
-              id: 'dropdown-choice-select',
+              id: 'select-css',
               data: { action: "filter#filter", target: "filter.filter"} %>
       </div>
 
@@ -50,7 +55,7 @@
               ), 
               multiple: false, 
               size: 12,
-              id: 'dropdown-choice-select',
+              id: 'select-css',
               data: { action: "filter#filter", target: "filter.filter"}  %>
       </div>
       <div class="filter_item">
@@ -61,7 +66,7 @@
               ), 
               multiple: false, 
               size: 12,
-              id: 'dropdown-choice-select',
+              id: 'select-css',
               data: { action: "filter#filter", target: "filter.filter"}  %>
       </div>
       <div class="filter_item">
@@ -72,7 +77,7 @@
             ), 
             multiple: false, 
             size: 12,
-            id: 'dropdown-choice-select',
+            id: 'select-css',
             data: { action: "filter#filter", target: "filter.filter"} %>
       </div>
     </div>
