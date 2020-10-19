@@ -17,19 +17,11 @@
  import "select2";
  import "select2/dist/css/select2.css"; 
 
- // Uncomment to copy all static images under ../images to the output folder and reference
- // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
- // or the `imagePath` JavaScript helper below.
- //
- // const images = require.context('../images', true)
- // const imagePath = (name) => images(name, true)
+// Import css from js for webpack to process it correctly
+import '../css/application.css'
 
- $(document).ready(function(){
-  // Turn on js-selectable class so that it becomes SELCT 2 tag
-  $('.js-searchable').select2({
-    allowClear: true,
-    width: 200,
-    closeOnSelect: false
-  });
-
-});
+// Add Choices Dropdown
+const Choices = require('choices.js')
+document.addEventListener("turbolinks:load", function() {
+    var dropDownSelects = new Choices('#dropdown-choice-select')
+})
