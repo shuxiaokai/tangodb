@@ -55,13 +55,6 @@ class Video < ApplicationRecord
     offset(per_page * page).limit(per_page)
   }
 
-  pg_search_scope :stemmed, against: :leader :follower, using: {tsearch: {prefix: true}, trigram: {}}
-    def self.typeahead_search(term)
-    Video
-    .stemmed(term)
-    .map { |video| {value: video.id, label: video.name} }
-  end
-
   def self.search(query)
     if query
       where( 'leaders.name ILIKE :query or 
