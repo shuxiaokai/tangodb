@@ -62,8 +62,8 @@ class Video < ApplicationRecord
 
   scope :filter_by_orchestra, ->(song_artist)     { joins(:song).where('songs.artist ILIKE ?', song_artist) }
   scope :filter_by_genre,     ->(song_genre)      { joins(:song).where('songs.genre ILIKE ?', song_genre) }
-  scope :filter_by_leader,    ->(leader_name)     { joins(:leader).where('leaders.name ILIKE ?', leader_name) }
-  scope :filter_by_follower,  ->(follower_name)   { joins(:follower).where('followers.name ILIKE ?', follower_name) }
+  scope :filter_by_leader,    ->(leader_id)       { joins(:leader).where(leader_id: leader_id) }
+  scope :filter_by_follower,  ->(follower_id)     { joins(:follower).where(follower_id: follower_id) }
   scope :filter_by_channel,   ->(channel_title)   { joins(:channel).where('channels.title ILIKE ?', channel_title) }
   scope :filter_by_event_id,  ->(event_id)        { where(event_id: event_id) }
   scope :filter_by_song_id,   ->(song_id)         { where(song_id: song_id) }

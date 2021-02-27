@@ -14,10 +14,12 @@
     </div>
   </div>
   <div class="filter-container isHidden" data-toggle-target="toggleable" id="filters">
-    <%= render partial: "videos/index/filter_item", locals: { model: @genres, model_count: @genre_count, title: :genre, id: 'genre-filter' } %>
-    <%= render partial: "videos/index/filter_item", locals: { model: @leaders, model_count: @leader_count, title: :leader, id: 'leader-filter' } %>
-    <%= render partial: "videos/index/filter_item", locals: { model: @followers, model_count: @follower_count, title: :follower, id: 'follower-filter' } %>
-    <%= render partial: "videos/index/filter_item", locals: { model: @artists, model_count: @artist_count, title: :orchestra, id: 'orchestra-filter' } %>
+
+      <%= render partial: "videos/index/filter_item", locals: { data: @genres, title: :genre, id: 'genre-filter' } %>
+      <%= render partial: "videos/index/filter_item", locals: { data: @leaders, title: :leader, id: 'leader-filter' } %>
+      <%= render partial: "videos/index/filter_item", locals: { data: @followers, title: :follower, id: 'follower-filter' } %>
+      <%= render partial: "videos/index/filter_item", locals: { data: @orchestras, title: :orchestra, id: 'orchestra-filter' } %>
+
     <div class="videos-sortable-container">
       <label>
         Sort By

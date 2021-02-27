@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get '/terms',    to: 'static_pages#terms'
   get '/about',    to: 'static_pages#about'
 
+  post '/videos/filter', to: 'videos#filter'
+
   resources :channels, only: :index
   resources :playlists, only: :index
   resources :videos

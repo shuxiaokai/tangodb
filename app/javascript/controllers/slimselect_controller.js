@@ -4,30 +4,51 @@ import 'slim-select/dist/slimselect.min.css'
 
 export default class extends Controller {
    static targets = ['field']
+   static values = { data: Array }
 
-  connect() {
-    const limit = this.data.get('limit')
-    const placeholder = this.data.get('placeholder')
-    const searchText = this.data.get('no-results')
-    const closeOnSelect = false
-    const allowDeselect = !this.element.required
-    const showContent = 'down'
-    const searchFocus = false
+   connect() {
+      this.dataInitialize()
+   }
 
-    var select = new SlimSelect({
+   dataInitialize() {
+      const limit = '5'
+      const placeholder = false
+      const searchText = this.data.get('no-results')
+      const closeOnSelect = false
+      const allowDeselect = !this.element.required
+      const showContent = 'down'
+      const searchFocus = false
+      const data = this.dataValue
+
+      this.slimselect = new SlimSelect({
         select: this.element,
-        beforeClose: function (e) { e.preventDefault() },
         closeOnSelect,
         allowDeselect,
         limit,
-        placeholder,
         searchText,
         showContent,
-        searchFocus
+        searchFocus,
+        data
       })
-      select.open()
+      this.slimselect.open()
+   }
+
+  dataValueChanged() {
+    if (this.slimselect) {
+      const selectedValue = this.slimselect.selected()
+      this.slimselect.setData(this.dataValue)
+      this.slimselect.set(selectedValue)
+      this.slimselect.open()
+    }
+  }
+
+  open() {
+    console.log('open fired')
+    let select = document.querySelector('select')
+    select.open()
   }
 }
+
 
 // const url = this.fieldTarget.dataset.slimselectUrl
 

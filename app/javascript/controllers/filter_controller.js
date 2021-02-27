@@ -18,37 +18,30 @@ export default class extends Controller {
   // }
 
   filter() {
-    // console.log(window.location.pathname)
-    const url = `${window.location.pathname}?${this.params}`;
+    const filterData = this.filterTargets.map( (select) => { return [ select.name, [...select.selectedOptions].map( option => option.value ) ] } )
+
+    const url = `/videos/filter?${this.params}`
 
     Rails.ajax({
-     type: "get",
+     type: "post",
      url: url,
      success: (data) => {
-       const newContainerGenreFilters = data.getElementById('genre-filter')
-       const containerGenreFilters = document.getElementById('genre-filter')
-       const newContainerLeaderFilters = data.getElementById('leader-filter')
-       const containerLeaderFilters = document.getElementById('leader-filter')
-       const newContainerFollowerFilters = data.getElementById('follower-filter')
-       const containerFollowerFilters = document.getElementById('follower-filter')
-       const newContainerOrchestraFilters = data.getElementById("orchestra-filter")
-       const containerOrchestraFilters = document.getElementById("orchestra-filter")
-       const newContainerVideos = data.getElementById('videos')
-       const containerVideos = document.getElementById('videos')
-       const newContainerLoadmore = data.getElementById('load-more-container')
-       const containerLoadmore = document.getElementById('load-more-container')
-       const newContainerFilterresults = data.getElementById('filter_results')
-       const containerFilterresults = document.getElementById('filter_results')
+     console.log(data)
+          const newContainerGenreFilters = document.getElementById('genre').setAttribute('data-slimselect-data-value', JSON.stringify(data.genre))
+          const newContainerLeaderFilters = document.getElementById('leader').setAttribute('data-slimselect-data-value', JSON.stringify(data.leader))
+          const newContainerFollowerFilters = document.getElementById('follower').setAttribute('data-slimselect-data-value', JSON.stringify(data.follower))
+          const newContainerOrchestraFilters = document.getElementById('orchestra').setAttribute('data-slimselect-data-value', JSON.stringify(data.orchestra))
+          const containerVideos = (document.getElementById('videos').innerHTML = data.video)
 
-       containerGenreFilters.innerHTML = newContainerGenreFilters.innerHTML
-       containerLeaderFilters.innerHTML = newContainerLeaderFilters.innerHTML
-       containerFollowerFilters.innerHTML = newContainerFollowerFilters.innerHTML
-       containerOrchestraFilters.innerHTML = newContainerOrchestraFilters.innerHTML
-       containerVideos.innerHTML = newContainerVideos.innerHTML
-       containerLoadmore.innerHTML = newContainerLoadmore.innerHTML
-       containerFilterresults.innerHTML = newContainerFilterresults.innerHTML
+    //  const newContainerLoadmore = data.getElementById('load-more-container')
+    //  const containerLoadmore = document.getElementById('load-more-container')
+    //  const newContainerFilterresults = data.getElementById('filter_results')
+    //  const containerFilterresults = document.getElementById('filter_results')
+    //  containerVideos.innerHTML = newContainerVideos.innerHTML
+    //    containerLoadmore.innerHTML = newContainerLoadmore.innerHTML
+    //    containerFilterresults.innerHTML = newContainerFilterresults.innerHTML
 
-       history.pushState({}, '', `${window.location.pathname}?${this.params}`)
+    //    history.pushState({}, '', `${window.location.pathname}?${this.params}`)
      },
      error: (data) => {
        console.log(data)

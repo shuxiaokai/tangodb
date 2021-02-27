@@ -1,29 +1,22 @@
 class VideosController < ApplicationController
   # before_action :authenticate_user!
   before_action :set_video, only: %i[show edit]
+  before_action :filter_videos, only: %i[filter index]
 
   NUMBER_OF_VIDEOS_PER_PAGE = 120
 
   helper_method :sort_column, :sort_direction
 
-  def index
-    @videos_total = Video.all.where(hidden: false).size
-    @videos = Video.where(hidden: false)
-                   .includes(:leader, :follower, :channel, :song, :event)
-                   .order(sort_column + ' ' + sort_direction)
-                   .filter_videos(filtering_params)
+  def index; end
 
-    @videos_paginated = @videos.paginate(page, NUMBER_OF_VIDEOS_PER_PAGE)
-    @videos_paginated = @videos_paginated.shuffle if filtering_params.blank?
-
-    @current_search = params[:query]
-    @videos_paginated_size = @videos_paginated.size * (@page + 1)
-
-    @leaders    = @videos.joins(:leader).pluck('leaders.name').uniq.sort.map(&:titleize)
-    @followers  = @videos.joins(:follower).pluck('followers.name').uniq.sort.map(&:titleize)
-    @channels   = @videos.joins(:channel).pluck('channels.title').uniq.compact.sort
-    @artists    = @videos.joins(:song).pluck('songs.artist').uniq.compact.sort.map(&:titleize)
-    @genres     = @videos.joins(:song).pluck('songs.genre').uniq.compact.sort.map(&:titleize).uniq
+  def filter
+    render json: {
+      genre: @genres,
+      leader: @leaders,
+      follower: @followers,
+      orchestra: @orchestras,
+      video: render_to_string(partial: 'videos/index/videos', layout: false)
+    }
   end
 
   def show
@@ -52,6 +45,42 @@ class VideosController < ApplicationController
   end
 
   private
+
+  def filter_videos
+    @videos_total = Video.all.where(hidden: false).size
+    @videos = Video.where(hidden: false)
+                   .includes(:leader, :follower, :channel, :song, :event)
+                   .order(sort_column + ' ' + sort_direction)
+                   .filter_videos(filtering_params)
+
+    @videos_paginated = @videos.paginate(page, NUMBER_OF_VIDEOS_PER_PAGE)
+    @videos_paginated = @videos_paginated.shuffle if filtering_params.blank?
+
+    @current_search = params[:query]
+    @videos_paginated_size = @videos_paginated.size * (@page + 1)
+
+    @genres = @videos.joins(:song).pluck('songs.genre').uniq.compact.sort.map(&:titleize).uniq.map do |text|
+      { text: text }
+    end
+
+    @leaders = @videos.joins(:leader).pluck('leaders.name',
+                                            'leaders.id').uniq(&:last).sort_by(&:first).map do |text, id|
+      { text: text.titleize, value: id }
+    end
+    @followers = @videos.joins(:follower).pluck('followers.name',
+                                                'followers.id').uniq(&:last).sort_by(&:first).map do |text, id|
+      { text: text.titleize, value: id }
+    end
+
+    @orchestras = @videos.joins(:song).pluck('songs.artist').uniq.compact.sort.map(&:titleize).map do |text|
+      { text: text }
+    end
+
+    @genres = [{ text: '', value: '' }] + @genres
+    @leaders = [{ text: '', value: '' }] + @leaders
+    @followers = [{ text: '', value: '' }] + @followers
+    @orchestras = [{ text: '', value: '' }] + @orchestras
+  end
 
   def set_video
     @video = Video.find_by(youtube_id: params[:v])
