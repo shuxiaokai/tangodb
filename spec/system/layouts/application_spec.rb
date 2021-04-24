@@ -19,7 +19,6 @@ RSpec.describe "Videos::Index", type: :system do
       performs_autocomplete_search
       select_video
       shows_edit_button
-      click_on("TangoTube")
       logout
     end
   end
