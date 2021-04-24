@@ -70,6 +70,7 @@
   margin-bottom: 20px;
   background-color: $secondary-color;
   border-bottom: 1px solid $border-color;
+  z-index: 10;
 
   #form-frame {
     flex: 1;

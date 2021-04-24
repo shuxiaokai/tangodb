@@ -17,6 +17,9 @@ RSpec.describe "Videos::Index", type: :system do
       edit_user_page
       performs_a_search
       performs_autocomplete_search
+      select_video
+      shows_edit_button
+      click_on("TangoTube")
       logout
     end
   end
@@ -48,7 +51,7 @@ RSpec.describe "Videos::Index", type: :system do
 
   def set_up_videos
     leader = create(:leader, name: "Leader Name")
-    create(:video, :display, title: "expected_result", popularity: "1", leader: leader)
+    @video = create(:video, :display, title: "expected_result", popularity: "1", leader: leader)
     create(:video, :display, title: "video_b", popularity: "2")
     VideosSearch.refresh
   end
@@ -103,6 +106,14 @@ RSpec.describe "Videos::Index", type: :system do
     click_on("Log in")
 
     expect(page).to have_content("Signed in successfully.")
+  end
+
+  def select_video
+    find("a#video-link").click
+  end
+
+  def shows_edit_button
+    expect(page).to have_link("Edit", href: edit_video_path(@video))
   end
 
   def shows_page_registrations_new
@@ -183,6 +194,7 @@ RSpec.describe "Videos::Index", type: :system do
 
   def performs_a_search
     click_on("Popularity")
+    expect(page).to have_current_path("/?direction=asc&sort=videos.popularity")
     expect(video_title_collection).to eq(%w[expected_result video_b])
     fill_in("query", with: "expected_result")
     click_on(class: "searchButton")

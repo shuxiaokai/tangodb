@@ -12,7 +12,6 @@ export default class extends Controller {
      type: "get",
      url: url,
      success: (data) => {
-
       const newContainerFilters = data.getElementById('filter-container-upper')
       const containerFilters = document.getElementById('filter-container-upper')
       const newContainerVideos = data.getElementById('videos')
