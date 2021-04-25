@@ -11,21 +11,18 @@ export default class extends Controller {
       type: 'get',
       url: url,
       success: data => {
-        const newContainerFilters = data.getElementById('filter-container-upper')
-        const containerFilters = document.getElementById('filter-container-upper')
+        const newContainerFilters = data.getElementById('filter-container')
+        const containerFilters = document.getElementById('filter-container')
         const newContainerVideos = data.getElementById('videos')
         const containerVideos = document.getElementById('videos')
         const newContainerFilterresults = data.getElementById('filter_results')
         const containerFilterresults = document.getElementById('filter_results')
-        const containerSorting = document.getElementById('sortable_container')
-        const newContainerSorting = data.getElementById('sortable_container')
         const containerHd = document.getElementById('hd_filters')
         const newContainerHd = data.getElementById('hd_filters')
 
         containerFilters.innerHTML = newContainerFilters.innerHTML
         containerVideos.innerHTML = newContainerVideos.innerHTML
         containerFilterresults.innerHTML = newContainerFilterresults.innerHTML
-        containerSorting.innerHTML = newContainerSorting.innerHTML
         containerHd.innerHTML = newContainerHd.innerHTML
 
         history.pushState({}, '', `${window.location.pathname}?${this.params}`)
