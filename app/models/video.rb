@@ -1,6 +1,20 @@
 class Video < ApplicationRecord
   include Filterable
 
+  SEARCHABLE_COLUMNS = %w[videos.title
+                          videos.description
+                          videos.youtube_id
+                          videos.youtube_artist
+                          videos.youtube_song
+                          videos.spotify_track_name
+                          videos.spotify_artist_name
+                          channels.title
+                          leaders.name
+                          followers.name
+                          songs.genre
+                          songs.title
+                          songs.artist].freeze
+
   validates :youtube_id, presence: true, uniqueness: true
 
   belongs_to :leader, optional: true, counter_cache: true
@@ -53,7 +67,7 @@ class Video < ApplicationRecord
                           }
 
   scope :with_song_artist_keyword, lambda { |song_artist_keyword|
-                                     where("spotify_artist_name ILIKE :song_artist_keyword
+                                     where("unaccent(spotify_artist_name) ILIKE :song_artist_keyword
                                             OR unaccent(spotify_artist_name_2) ILIKE unaccent(:song_artist_keyword)
                                             OR unaccent(youtube_artist) ILIKE unaccent(:song_artist_keyword)
                                             OR unaccent(description) ILIKE unaccent(:song_artist_keyword)
@@ -70,16 +84,32 @@ class Video < ApplicationRecord
                                       where("unaccent(title) ILIKE unaccent(:dancer_name)", dancer_name: "%#{dancer_name}%")
                                     }
 
+  scope :filter_by_query, ->(search_string) {}
+
   # Combined Scopes
 
   scope :title_match_missing_leader, ->(leader_name) { missing_leader.with_dancer_name_in_title(leader_name) }
   scope :title_match_missing_follower, ->(follower_name) { missing_follower.with_dancer_name_in_title(follower_name) }
 
   class << self
-    # Filters videos by the results from the materialized
-    # full text search out of from VideosSearch
-    def filter_by_query(query)
-      where(id: VideosSearch.search(query).select(:video_id))
+    def filter_by_query(search_string)
+      examples = remove_stop_words(search_string).to_s.strip.split
+      query_string = SEARCHABLE_COLUMNS.map { |column_name| "unaccent(#{column_name}) ILIKE unaccent(:q)" }.join(" OR ")
+      examples.map do |search|
+        queries = Array(search).map do |search_term|
+          Video.joins(:song, :leader, :follower, :channel).where(query_string, q: "%#{search_term}%")
+        end
+        statement = queries.reduce do |statement, query|
+          statement.or(query)
+        end
+        statement
+      end
+    end
+
+    private
+
+    def remove_stop_words(str)
+      str.gsub(/\b(and|or|the|a|an|of|to)\b/, "")
     end
   end
 

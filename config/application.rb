@@ -22,7 +22,7 @@ module TangoLibrary
 
     config.autoload_paths += %W[#{config.root}/lib]
 
-    config.active_record.schema_format = :sql
+    config.active_record.schema_format = :ruby
 
     config.active_job.queue_adapter = :sidekiq
   end
