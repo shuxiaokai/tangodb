@@ -558,14 +558,6 @@ RSpec.describe Video, type: :model do
         expect(described_class.filter_by_query("030 T")).to eq [video]
       end
 
-      it "returns video with channel_id that matches query" do
-        channel = create(:channel, channel_id: "UCtdgMR0bmogczrZNpPaO66Q")
-        video = create(:video, channel: channel)
-        expect(described_class.filter_by_query("UCtdgMR0bmogczrZNpPaO66Q")).to eq [video]
-        expect(described_class.filter_by_query("John Doe")).not_to eq [video]
-        expect(described_class.filter_by_query("UCtdgMR0bmogczrZNpPaO")).to eq [video]
-      end
-
       it "returns video with song genre that matches query" do
         song = create(:song, genre: "Tango")
         video = create(:video, song: song)

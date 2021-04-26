@@ -207,34 +207,12 @@ RSpec.describe Video::Search, type: :model do
           expect(search_c.videos).to eq [video]
         end
 
-        it "returns video with leader nickname that matches query" do
-          leader = create(:leader, nickname: "Carlitos")
-          video = create(:video, leader: leader)
-          search_a = described_class.new(filtering_params: { query: "Carlitos" })
-          search_b = described_class.new(filtering_params: { query: "no match" })
-          search_c = described_class.new(filtering_params: { query: "Carlit" })
-          expect(search_a.videos).to eq [video]
-          expect(search_b.videos).not_to eq [video]
-          expect(search_c.videos).to eq [video]
-        end
-
         it "returns video with follower name that matches query" do
           follower = create(:follower, name: "Noelia Hurtado")
           video = create(:video, follower: follower)
           search_a = described_class.new(filtering_params: { query: "Noelia Hurtado" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "noeli" })
-          expect(search_a.videos).to eq [video]
-          expect(search_b.videos).not_to eq [video]
-          expect(search_c.videos).to eq [video]
-        end
-
-        it "returns video with follower nickname that matches query" do
-          follower = create(:follower, nickname: "Noelia")
-          video = create(:video, follower: follower)
-          search_a = described_class.new(filtering_params: { query: "Noelia" })
-          search_b = described_class.new(filtering_params: { query: "John Doe" })
-          search_c = described_class.new(filtering_params: { query: "Noel" })
           expect(search_a.videos).to eq [video]
           expect(search_b.videos).not_to eq [video]
           expect(search_c.videos).to eq [video]
@@ -296,17 +274,6 @@ RSpec.describe Video::Search, type: :model do
           search_a = described_class.new(filtering_params: { query: "030 tango" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "030 T" })
-          expect(search_a.videos).to eq [video]
-          expect(search_b.videos).not_to eq [video]
-          expect(search_c.videos).to eq [video]
-        end
-
-        it "returns video with channel_id that matches query" do
-          channel = create(:channel, channel_id: "UCtdgMR0bmogczrZNpPaO66Q")
-          video = create(:video, channel: channel)
-          search_a = described_class.new(filtering_params: { query: "UCtdgMR0bmogczrZNpPaO66Q" })
-          search_b = described_class.new(filtering_params: { query: "John Doe" })
-          search_c = described_class.new(filtering_params: { query: "UCtdgMR0bmogczrZNpPaO" })
           expect(search_a.videos).to eq [video]
           expect(search_b.videos).not_to eq [video]
           expect(search_c.videos).to eq [video]
