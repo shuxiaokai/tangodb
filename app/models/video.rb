@@ -8,6 +8,8 @@ class Video < ApplicationRecord
                           videos.youtube_song
                           videos.spotify_track_name
                           videos.spotify_artist_name
+                          videos.acr_cloud_track_name
+                          videos.acr_cloud_artist_name
                           channels.title
                           leaders.name
                           followers.name
@@ -93,17 +95,16 @@ class Video < ApplicationRecord
 
   class << self
     def filter_by_query(search_string)
+      statements = []
       examples = remove_stop_words(search_string).to_s.strip.split
-      query_string = SEARCHABLE_COLUMNS.map { |column_name| "unaccent(#{column_name}) ILIKE unaccent(:q)" }.join(" OR ")
-      examples.map do |search|
-        queries = Array(search).map do |search_term|
-          Video.joins(:song, :leader, :follower, :channel).where(query_string, q: "%#{search_term}%")
+      examples.each do |term|
+        query = []
+        SEARCHABLE_COLUMNS.each do |column|
+          query.push("unaccent(#{column}) ILIKE unaccent('%#{term}%')")
         end
-        statement = queries.reduce do |statement, query|
-          statement.or(query)
-        end
-        statement
+        statements.push(query.join(" OR "))
       end
+      Video.joins(:song, :leader, :follower, :channel).where(statements.flatten.join(") AND ("))
     end
 
     private
