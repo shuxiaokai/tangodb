@@ -10,6 +10,7 @@ class Video < ApplicationRecord
                           videos.spotify_artist_name
                           videos.acr_cloud_track_name
                           videos.acr_cloud_artist_name
+                          videos.tags
                           channels.title
                           leaders.name
                           followers.name
@@ -110,7 +111,7 @@ class Video < ApplicationRecord
     private
 
     def remove_stop_words(str)
-      str.gsub(/\b(and|or|the|a|an|of|to)\b/, "")
+      str.gsub(/\b(and|or|'|the|a|an|of|to)\b/, "")
     end
   end
 

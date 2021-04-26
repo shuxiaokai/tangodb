@@ -237,6 +237,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_185440) do
     t.index ["song_id"], name: "index_videos_on_song_id"
     t.index ["spotify_artist_name"], name: "index_videos_on_spotify_artist_name"
     t.index ["spotify_track_name"], name: "index_videos_on_spotify_track_name"
+    t.index ["tags"], name: "index_videos_on_tags"
     t.index ["youtube_artist"], name: "index_videos_on_youtube_artist"
     t.index ["youtube_id"], name: "index_videos_on_youtube_id"
     t.index ["youtube_song"], name: "index_videos_on_youtube_song"

@@ -6,5 +6,6 @@ class AddIndexesToVideo < ActiveRecord::Migration[6.1]
     add_index :videos, :spotify_artist_name
     add_index :videos, :acr_cloud_track_name
     add_index :videos, :acr_cloud_artist_name
+    add_index :videos, :tags
   end
 end
