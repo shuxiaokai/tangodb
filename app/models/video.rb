@@ -105,7 +105,7 @@ class Video < ApplicationRecord
         end
         statements.push(query.join(" OR "))
       end
-      Video.joins(:song, :leader, :follower, :channel).where(statements.flatten.join(") AND ("))
+      joins(:song, :leader, :follower, :channel).where(statements.flatten.join(") AND ("))
     end
 
     private
