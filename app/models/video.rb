@@ -26,8 +26,8 @@ class Video < ApplicationRecord
   belongs_to :channel, optional: false, counter_cache: true
   belongs_to :event, optional: true, counter_cache: true
 
-  scope :filter_by_orchestra, ->(song_artist) { joins(:song).where("songs.artist ILIKE ?", song_artist) }
-  scope :filter_by_genre, ->(song_genre) { joins(:song).where("songs.genre ILIKE ?", song_genre) }
+  scope :filter_by_orchestra, ->(song_artist) { left_outer_joins(:song).where("songs.artist ILIKE ?", song_artist) }
+  scope :filter_by_genre, ->(song_genre) { left_outer_joins(:song).where("songs.genre ILIKE ?", song_genre) }
   scope :filter_by_leader_id, ->(leader_id) { where(leader_id: leader_id) }
   scope :filter_by_follower_id, ->(follower_id) { where(follower_id: follower_id) }
   scope :filter_by_channel_id, ->(channel_id) { where(channel_id: channel_id) }
@@ -105,7 +105,7 @@ class Video < ApplicationRecord
         end
         statements.push(query.join(" OR "))
       end
-      joins(:song, :leader, :follower, :channel).where(statements.flatten.join(") AND ("))
+      left_outer_joins(:song, :leader, :follower, :channel).where(statements.flatten.join(") AND ("))
     end
 
     private
