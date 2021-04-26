@@ -101,7 +101,7 @@ class Video < ApplicationRecord
       examples.each do |term|
         query = []
         SEARCHABLE_COLUMNS.each do |column|
-          query.push("unaccent(#{column}) ILIKE unaccent('%#{term}%')")
+          query.push("unaccent(REPLACE(#{column},'''','')) ILIKE unaccent('%#{term}%')")
         end
         statements.push(query.join(" OR "))
       end
