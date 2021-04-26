@@ -178,7 +178,6 @@ RSpec.describe Video::Search, type: :model do
       describe "filter_by_query" do
         it "returns video with title that matches query" do
           video = create(:video, title: "Title with carlitos espinoza")
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "Carlitos Espinoza" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "Carlitos Espin" })
@@ -189,7 +188,6 @@ RSpec.describe Video::Search, type: :model do
 
         it "returns video with description that matches query" do
           video = create(:video, description: "description with carlitos espinoza")
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "Carlitos Espinoza" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "Carlitos Espin" })
@@ -201,7 +199,6 @@ RSpec.describe Video::Search, type: :model do
         it "returns video with leader name that matches query" do
           leader = create(:leader, name: "Carlitos Espinoza")
           video = create(:video, leader: leader)
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "Carlitos Espinoza" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "Carlitos Espin" })
@@ -213,7 +210,6 @@ RSpec.describe Video::Search, type: :model do
         it "returns video with leader nickname that matches query" do
           leader = create(:leader, nickname: "Carlitos")
           video = create(:video, leader: leader)
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "Carlitos" })
           search_b = described_class.new(filtering_params: { query: "no match" })
           search_c = described_class.new(filtering_params: { query: "Carlit" })
@@ -225,7 +221,6 @@ RSpec.describe Video::Search, type: :model do
         it "returns video with follower name that matches query" do
           follower = create(:follower, name: "Noelia Hurtado")
           video = create(:video, follower: follower)
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "Noelia Hurtado" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "noeli" })
@@ -237,7 +232,6 @@ RSpec.describe Video::Search, type: :model do
         it "returns video with follower nickname that matches query" do
           follower = create(:follower, nickname: "Noelia")
           video = create(:video, follower: follower)
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "Noelia" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "Noel" })
@@ -248,7 +242,6 @@ RSpec.describe Video::Search, type: :model do
 
         it "returns video with youtube_id that matches query" do
           video = create(:video, youtube_id: "s6iptZdCcG0")
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "s6iptZdCcG0" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "s6iptZdCcG" })
@@ -259,7 +252,6 @@ RSpec.describe Video::Search, type: :model do
 
         it "returns video with youtube_artist that matches query" do
           video = create(:video, youtube_artist: "Angel D'Agostino")
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "Agostino" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "Agostin" })
@@ -270,7 +262,6 @@ RSpec.describe Video::Search, type: :model do
 
         it "returns video with youtube_song that matches query" do
           video = create(:video, youtube_song: "No Vendrá")
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "no vendrá" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "no vend" })
@@ -281,7 +272,6 @@ RSpec.describe Video::Search, type: :model do
 
         it "returns video with spotify_track_name that matches query" do
           video = create(:video, spotify_track_name: "No Vendrá")
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "no vendrá" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "no vend" })
@@ -292,7 +282,6 @@ RSpec.describe Video::Search, type: :model do
 
         it "returns video with spotify_artist_name that matches query" do
           video = create(:video, spotify_artist_name: "Angel D'Agostino")
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "agostino" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "Angel D'Agosti" })
@@ -304,7 +293,6 @@ RSpec.describe Video::Search, type: :model do
         it "returns video with channel title that matches query" do
           channel = create(:channel, title: "030 Tango")
           video = create(:video, channel: channel)
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "030 tango" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "030 T" })
@@ -316,7 +304,6 @@ RSpec.describe Video::Search, type: :model do
         it "returns video with channel_id that matches query" do
           channel = create(:channel, channel_id: "UCtdgMR0bmogczrZNpPaO66Q")
           video = create(:video, channel: channel)
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "UCtdgMR0bmogczrZNpPaO66Q" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "UCtdgMR0bmogczrZNpPaO" })
@@ -328,7 +315,6 @@ RSpec.describe Video::Search, type: :model do
         it "returns video with song genre that matches query" do
           song = create(:song, genre: "Tango")
           video = create(:video, song: song)
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "tango" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "tang" })
@@ -340,7 +326,6 @@ RSpec.describe Video::Search, type: :model do
         it "returns video with song title that matches query" do
           song = create(:song, title: "La Mentirosa")
           video = create(:video, song: song)
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "mentirosa" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "menti" })
@@ -352,7 +337,6 @@ RSpec.describe Video::Search, type: :model do
         it "returns video with song artist that matches query" do
           song = create(:song, artist: "Angel D'Agostino")
           video = create(:video, song: song)
-          VideosSearch.refresh
           search_a = described_class.new(filtering_params: { query: "d'agostino" })
           search_b = described_class.new(filtering_params: { query: "John Doe" })
           search_c = described_class.new(filtering_params: { query: "Agosti" })
