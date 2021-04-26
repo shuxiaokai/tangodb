@@ -7,5 +7,7 @@ class AddIndexesToVideo < ActiveRecord::Migration[6.1]
     add_index :videos, :acr_cloud_track_name
     add_index :videos, :acr_cloud_artist_name
     add_index :videos, :tags
+    add_index :videos, :hidden,
+      where: "hidden IS FALSE"
   end
 end

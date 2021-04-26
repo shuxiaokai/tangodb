@@ -233,6 +233,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_185440) do
     t.index ["channel_id"], name: "index_videos_on_channel_id"
     t.index ["event_id"], name: "index_videos_on_event_id"
     t.index ["follower_id"], name: "index_videos_on_follower_id"
+    t.index ["hidden"], name: "index_videos_on_hidden", where: "(hidden IS FALSE)"
     t.index ["leader_id"], name: "index_videos_on_leader_id"
     t.index ["song_id"], name: "index_videos_on_song_id"
     t.index ["spotify_artist_name"], name: "index_videos_on_spotify_artist_name"
