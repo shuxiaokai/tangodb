@@ -2,7 +2,7 @@ class Video::Search
   SORTABLE_COLUMNS = %w[
     songs.title
     songs.last_name_search
-    videos.channel_id
+    channels.title
     videos.upload_date
     videos.view_count
     videos.updated_at
