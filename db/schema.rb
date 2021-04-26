@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_062126) do
+ActiveRecord::Schema.define(version: 2021_04_26_185440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_062126) do
     t.integer "yt_api_pull_count", default: 0
     t.boolean "reviewed", default: false
     t.integer "videos_count", default: 0, null: false
+    t.index ["title"], name: "index_channels_on_title"
   end
 
   create_table "events", force: :cascade do |t|
@@ -227,12 +228,18 @@ ActiveRecord::Schema.define(version: 2021_04_26_062126) do
     t.string "acr_cloud_artist_name_1"
     t.string "acr_cloud_album_name"
     t.string "acr_cloud_track_name"
+    t.index ["acr_cloud_artist_name"], name: "index_videos_on_acr_cloud_artist_name"
+    t.index ["acr_cloud_track_name"], name: "index_videos_on_acr_cloud_track_name"
     t.index ["channel_id"], name: "index_videos_on_channel_id"
     t.index ["event_id"], name: "index_videos_on_event_id"
     t.index ["follower_id"], name: "index_videos_on_follower_id"
     t.index ["leader_id"], name: "index_videos_on_leader_id"
     t.index ["song_id"], name: "index_videos_on_song_id"
+    t.index ["spotify_artist_name"], name: "index_videos_on_spotify_artist_name"
+    t.index ["spotify_track_name"], name: "index_videos_on_spotify_track_name"
+    t.index ["youtube_artist"], name: "index_videos_on_youtube_artist"
     t.index ["youtube_id"], name: "index_videos_on_youtube_id"
+    t.index ["youtube_song"], name: "index_videos_on_youtube_song"
   end
 
 end
