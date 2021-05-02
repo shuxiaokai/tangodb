@@ -87,8 +87,6 @@ class Video < ApplicationRecord
                                       where("unaccent(title) ILIKE unaccent(:dancer_name)", dancer_name: "%#{dancer_name}%")
                                     }
 
-  scope :filter_by_query, ->(search_string) {}
-
   # Combined Scopes
 
   scope :title_match_missing_leader, ->(leader_name) { missing_leader.with_dancer_name_in_title(leader_name) }
