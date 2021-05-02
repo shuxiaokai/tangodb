@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 2021_05_02_054037) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "reviewed", default: false
     t.index ["user_id"], name: "index_playlists_on_user_id"
     t.index ["videos_id"], name: "index_playlists_on_videos_id"
   end
