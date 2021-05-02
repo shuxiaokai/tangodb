@@ -212,7 +212,7 @@ RSpec.describe "Videos::Index", type: :system do
   end
 
   def logout
-    click_on "Logout"
+    all(class: "navbar-link", text: "Logout").last.click
     expect(page).to have_content("Signed out successfully.")
   end
 end
