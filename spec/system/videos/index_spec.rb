@@ -140,6 +140,10 @@ RSpec.describe "Videos::Index", type: :system do
     display_video_metadata
   end
 
+  def filter_collection
+    page.all("div.ss-option").map(&:text)
+  end
+
   def video_thumbnail_collection
     page.all("img.thumbnail-image").map { |img| img["src"] }
   end
@@ -368,14 +372,20 @@ RSpec.describe "Videos::Index", type: :system do
   def filter_by_genre_alone
     visit root_path
     filter_by_genre_a
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?genre=genre_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_genre_and_hd
     visit root_path
     filter_by_genre_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?genre=genre_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
     expect(page).to have_current_path("/?genre=genre_b&hd=1")
     expect(video_title_collection).to eq(["video_b"])
@@ -384,27 +394,43 @@ RSpec.describe "Videos::Index", type: :system do
   def filter_by_genre_and_leader
     visit root_path
     filter_by_genre_a
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?genre=genre_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_leader
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?genre=genre_a&leader_id=#{@leader.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_genre_and_follower
     visit root_path
     filter_by_genre_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?genre=genre_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_follower
     expect(page).to have_current_path("/?genre=genre_b&follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_genre_and_follower_and_hd
     visit root_path
     filter_by_genre_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?genre=genre_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_follower
     expect(page).to have_current_path("/?genre=genre_b&follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
     expect(page).to have_current_path("/?follower_id=#{@follower.id}&genre=genre_b&hd=1")
     expect(video_title_collection).to eq(["video_b"])
@@ -413,17 +439,29 @@ RSpec.describe "Videos::Index", type: :system do
   def filter_by_genre_and_orchestra
     visit root_path
     filter_by_genre_a
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?genre=genre_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_orchestra_a
     expect(page).to have_current_path("/?genre=genre_a&orchestra=artist_name_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_genre_and_orchestra_and_hd
     visit root_path
     filter_by_genre_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?genre=genre_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_orchestra_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_current_path("/?genre=genre_b&orchestra=artist_name_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
     expect(page).to have_current_path("/?genre=genre_b&hd=1&orchestra=artist_name_b")
     expect(video_title_collection).to eq(["video_b"])
@@ -432,17 +470,30 @@ RSpec.describe "Videos::Index", type: :system do
   def filter_by_genre_and_year
     visit root_path
     filter_by_genre_a
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?genre=genre_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_year_2000
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?genre=genre_a&year=2000")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_genre_and_year_and_hd
     visit root_path
     filter_by_genre_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?genre=genre_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_year_1999
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_current_path("/?genre=genre_b&year=1999")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
     expect(page).to have_current_path("/?genre=genre_b&hd=1&year=1999")
     expect(video_title_collection).to eq(["video_b"])
@@ -451,85 +502,134 @@ RSpec.describe "Videos::Index", type: :system do
   def filter_by_leader_alone
     visit root_path
     filter_by_leader
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?leader_id=#{@leader.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_leader_and_genre
     visit root_path
     filter_by_leader
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?leader_id=#{@leader.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_genre_a
     expect(page).to have_current_path("/?leader_id=#{@leader.id}&genre=genre_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_leader_and_orchestra
     visit root_path
     filter_by_leader
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?leader_id=#{@leader.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_orchestra_a
     expect(page).to have_current_path("/?leader_id=#{@leader.id}&orchestra=artist_name_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_leader_and_year
     visit root_path
     filter_by_leader
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?leader_id=#{@leader.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_year_2000
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?leader_id=#{@leader.id}&year=2000")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_follower_alone
     visit root_path
     filter_by_follower
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_follower_and_hd
     visit root_path
     filter_by_follower
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     click_on("HD")
     expect(page).to have_current_path("/?hd=1&follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_follower_and_genre
     visit root_path
     filter_by_follower
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_genre_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?follower_id=#{@follower.id}&genre=genre_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_follower_and_genre_and_hd
     visit root_path
     filter_by_follower
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_genre_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_current_path("/?follower_id=#{@follower.id}&genre=genre_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
-    expect(page).to have_current_path("/?follower_id=#{@follower.id}&hd=1&genre=genre_b")
+    expect(page).to have_current_path("/?follower_id=#{@follower.id}&genre=genre_b&hd=1")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_follower_and_orchestra
     visit root_path
     filter_by_follower
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_orchestra_b
     expect(page).to have_current_path("/?follower_id=#{@follower.id}&orchestra=artist_name_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_follower_and_orchestra_and_hd
     visit root_path
     filter_by_follower
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_orchestra_b
+    expect(page).to have_current_path("/?follower_id=#{@follower.id}&orchestra=artist_name_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
     expect(page).to have_current_path("/?follower_id=#{@follower.id}&hd=1&orchestra=artist_name_b")
     expect(video_title_collection).to eq(["video_b"])
@@ -538,17 +638,30 @@ RSpec.describe "Videos::Index", type: :system do
   def filter_by_follower_and_year
     visit root_path
     filter_by_follower
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_year_1999
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?follower_id=#{@follower.id}&year=1999")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_follower_and_year_and_hd
     visit root_path
     filter_by_follower
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_year_1999
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_current_path("/?follower_id=#{@follower.id}&year=1999")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
     expect(page).to have_current_path("/?follower_id=#{@follower.id}&hd=1&year=1999")
     expect(video_title_collection).to eq(["video_b"])
@@ -557,14 +670,20 @@ RSpec.describe "Videos::Index", type: :system do
   def filter_by_orchestra_alone
     visit root_path
     filter_by_orchestra_a
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?orchestra=artist_name_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_orchestra_and_hd
     visit root_path
     filter_by_orchestra_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?orchestra=artist_name_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
     expect(page).to have_current_path("/?hd=1&orchestra=artist_name_b")
     expect(video_title_collection).to eq(["video_b"])
@@ -573,27 +692,45 @@ RSpec.describe "Videos::Index", type: :system do
   def filter_by_orchestra_and_genre
     visit root_path
     filter_by_orchestra_a
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?orchestra=artist_name_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_genre_a
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?orchestra=artist_name_a&genre=genre_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_orchestra_and_genre_and_hd
     visit root_path
     filter_by_orchestra_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?orchestra=artist_name_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_genre_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
-    expect(page).to have_current_path("/?hd=1&orchestra=artist_name_b&genre=genre_b")
+    expect(page).to have_current_path("/?genre=genre_b&hd=1&orchestra=artist_name_b")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_orchestra_and_leader
     visit root_path
     filter_by_orchestra_a
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?orchestra=artist_name_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_leader
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
     expect(page).to have_current_path("/?orchestra=artist_name_a&leader_id=#{@leader.id}")
   end
@@ -601,36 +738,62 @@ RSpec.describe "Videos::Index", type: :system do
   def filter_by_orchestra_and_follower
     visit root_path
     filter_by_orchestra_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?orchestra=artist_name_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_follower
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?orchestra=artist_name_b&follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_orchestra_and_follower_and_hd
     visit root_path
     filter_by_orchestra_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?orchestra=artist_name_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_follower
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_current_path("/?orchestra=artist_name_b&follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
-    expect(page).to have_current_path("/?hd=1&orchestra=artist_name_b&follower_id=#{@follower.id}")
+    expect(page).to have_current_path("/?follower_id=#{@follower.id}&hd=1&orchestra=artist_name_b")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_orchestra_and_year
     visit root_path
     filter_by_orchestra_a
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?orchestra=artist_name_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_year_2000
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?orchestra=artist_name_a&year=2000")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_orchestra_and_year_and_hd
     visit root_path
     filter_by_orchestra_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?orchestra=artist_name_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_year_1999
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_current_path("/?orchestra=artist_name_b&year=1999")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
     expect(page).to have_current_path("/?hd=1&orchestra=artist_name_b&year=1999")
     expect(video_title_collection).to eq(["video_b"])
@@ -639,13 +802,20 @@ RSpec.describe "Videos::Index", type: :system do
   def filter_by_year_alone
     visit root_path
     filter_by_year_2000
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?year=2000")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_year_and_hd
     visit root_path
     filter_by_year_1999
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_current_path("/?year=1999")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
     expect(page).to have_current_path("/?hd=1&year=1999")
     expect(video_title_collection).to eq(["video_b"])
@@ -654,66 +824,111 @@ RSpec.describe "Videos::Index", type: :system do
   def filter_by_year_and_genre
     visit root_path
     filter_by_year_2000
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?year=2000")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_genre_a
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?year=2000&genre=genre_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_year_and_genre_and_hd
     visit root_path
     filter_by_year_1999
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?year=1999")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_genre_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_current_path("/?year=1999&genre=genre_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
-    expect(page).to have_current_path("/?hd=1&year=1999&genre=genre_b")
+    expect(page).to have_current_path("/?genre=genre_b&hd=1&year=1999")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_year_and_leader
     visit root_path
     filter_by_year_2000
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?year=2000")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_leader
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?year=2000&leader_id=#{@leader.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_year_and_follower
     visit root_path
     filter_by_year_1999
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?year=1999")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_follower
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?year=1999&follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_year_and_follower_and_hd
     visit root_path
     filter_by_year_1999
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?year=1999")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_follower
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_current_path("/?year=1999&follower_id=#{@follower.id}")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
-    expect(page).to have_current_path("/?hd=1&year=1999&follower_id=#{@follower.id}")
+    expect(page).to have_current_path("/?follower_id=#{@follower.id}&hd=1&year=1999")
     expect(video_title_collection).to eq(["video_b"])
   end
 
   def filter_by_year_and_orchestra
     visit root_path
     filter_by_year_2000
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?year=2000")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_orchestra_a
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?year=2000&orchestra=artist_name_a")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     expect(video_title_collection).to eq(["video_a"])
   end
 
   def filter_by_year_and_orchestra_and_hd
     visit root_path
     filter_by_year_1999
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
     expect(page).to have_current_path("/?year=1999")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     filter_by_orchestra_b
+    expect(page).to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_current_path("/?year=1999&orchestra=artist_name_b")
+    expect(page).not_to have_css("div.ss-content.ss-open.disabled")
+    expect(page).to have_css("div.ss-content.ss-open")
     click_on("HD")
-    expect(page).to have_current_path("/?hd=1&year=1999&orchestra=artist_name_b")
+    expect(page).to have_current_path("/?hd=1&orchestra=artist_name_b&year=1999")
     expect(video_title_collection).to eq(["video_b"])
   end
 end
