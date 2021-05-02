@@ -99,25 +99,37 @@ class Video < ApplicationRecord
       keywords_array_without_stop_words.each do |keyword|
         sql_query_array.push(sql_query(keyword))
       end
-      left_outer_joins(:song, :leader, :follower, :channel).where(combined_sql_query(sql_query_array))
+      left_outer_joins(:song, :leader, :follower, :channel).where(combined_sql_queries(sql_query_array))
     end
 
     private
 
+    def stop_words
+      %w[and or the a an of to]
+    end
+
+    def stop_words_regex
+      "/\b(#{stop_words.join('|')})\b/"
+    end
+
     def keywords_array_without_stop_words(query_string)
-      query_string.gsub(/\b(and|or|'|the|a|an|of|to)\b/, "").to_s.strip.split
+      query_string.gsub(stop_words_regex, "").gsub("'", "").to_s.strip.split
+    end
+
+    def searchable_column_ignoring_apostrophe(searchable_column)
+      "REPLACE(#{searchable_column},'''','')"
+    end
+
+    def combined_sql_queries(sql_query_array)
+      sql_query_array.flatten.join(") AND (")
     end
 
     def sql_query(keyword)
       sql_query = []
       SEARCHABLE_COLUMNS.each do |searchable_column|
-        sql_query.push("unaccent(REPLACE(#{searchable_column},'''','')) ILIKE unaccent('%#{keyword}%')")
+        sql_query.push("unaccent(#{searchable_column_ignoring_apostrophe(searchable_column)}) ILIKE unaccent('%#{keyword}%')")
       end
       sql_query.join(" OR ")
-    end
-
-    def combined_sql_query(sql_query_array)
-      sql_query_array.flatten.join(") AND (")
     end
   end
 
