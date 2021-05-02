@@ -60,3 +60,5 @@ group :test do
   gem "shoulda-matchers", "~> 4.0"
   gem "simplecov", "~> 0.21.2", require: false
 end
+
+gem "prettier", "~> 1.5"

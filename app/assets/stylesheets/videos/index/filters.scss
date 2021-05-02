@@ -21,24 +21,28 @@
 .filter-button {
   display: flex;
   text-decoration: none;
-  padding: .5rem;
+  padding: 6px;
   border: 1px solid $border-color;
   background: $primary-color;
   border-radius: 3px;
   letter-spacing: 0.05em;
   align-items: center;
-  font-size: .6rem;
+  font-size: 0.8rem;
   z-index: 1011;
+  cursor: pointer;
+  svg {
+    height: 15px;
+  }
 }
 
 #filter-button-text {
-  font-size: .85rem;
+  font-size: 0.85rem;
   margin: 0 0 0 8px;
 }
 
 #filter_results {
   display: flex;
-  font-size: .8rem;
+  font-size: 0.8rem;
   margin: 0 10px;
   color: $primary-font-color;
   align-items: center;
@@ -49,7 +53,7 @@
   display: flex;
   text-decoration: none;
   margin: 0 0 0 0.5em;
-  padding: .5rem;
+  padding: 7px;
   border: 1px solid $border-color;
   background: $primary-color;
   border-radius: 0.2em;
@@ -57,19 +61,27 @@
   letter-spacing: 0.05em;
   font-size: 0.7rem;
   z-index: 1011;
+  cursor: pointer;
+  &:hover {
+    color: $sortable-label-color-hover;
+  }
 }
 
 .filter-container {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   max-width: 1900px;
-  height: 300px;
+  height: 310px;
+  overflow-x: auto;
   padding: 0 32px;
-  margin-bottom: 20px;
+  margin-bottom: 0.5rem;
   background-color: $secondary-color;
   border-bottom: 1px solid $border-color;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   #form-frame {
     flex: 1;
@@ -85,44 +97,45 @@
     width: 100%;
     position: relative;
     top: -10px;
-    min-width:120px;
+    min-width: 200px;
     margin: 0 8px;
-    font-size: .8rem;
+    font-size: 0.8rem;
     label {
       display: block;
       text-align: center;
       font-weight: 500;
-      font-size: .8rem;
+      font-size: 0.8rem;
       padding: 0 0 8px 0;
     }
   }
 }
 
 .filter-container-upper {
-  flex: 1;
   display: flex;
-  flex: row;
+  height: 100%;
+  height: 272.5px;
 }
 
 .videos-sortable-container {
   display: flex;
-  flex-direction: row;
   height: 2rem;
-  font-size: .7rem;
+  font-size: 0.7rem;
   align-items: center;
   padding: 0 1em;
-
+  min-width: 1000px;
   label {
-    font-size: .9rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    margin: auto 0;
+    min-width: 50px;
     color: $sortable-label-color;
   }
 
   a {
     text-decoration: none;
     color: $primary-font-color;
-    font-size: .8rem;
+    font-size: 0.8rem;
+    text-align: center;
+    min-width: 100px;
     &:hover {
       color: $sortable-label-color-hover;
     }
@@ -133,26 +146,45 @@
   display: flex;
   color: $primary-color;
   justify-content: center;
-  font-size: .8rem;
-  margin: 0 16px;
-  min-width: 60px;
+  font-size: 0.8rem;
+  margin: 0 5px;
+  min-width: 100px;
   svg {
-    font-size: .7rem;
+    font-size: 0.7rem;
     color: $sortable-label-color;
   }
 }
 
 @media (max-width: 500px) {
-
-  .filter_item {
-    display: none;
+  .filter-header {
+    padding: 10px;
   }
 
-  .filter-header {
-    display: none;
+  #filter_results {
+    font-size: 12px;
   }
 
   .filter-container {
-    display: none;
+    height: 315px;
+    overflow-x: auto;
+    margin-bottom: 0;
+    padding: 0 5px;
+    .filter {
+      min-width: 220px;
+      margin: 0 6px;
+      font-size: 0.85rem;
+    }
+  }
+
+  .videos-sortable-container {
+    min-width: 700px;
+    a {
+      min-width: 80px;
+      font-size: 0.7rem;
+    }
+  }
+  .videos-sortable-button {
+    margin: 0 10px;
+    min-width: 80px;
   }
 }
