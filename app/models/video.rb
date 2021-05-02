@@ -108,8 +108,8 @@ class Video < ApplicationRecord
 
     private
 
-    def remove_stop_words(str)
-      str.gsub(/\b(and|or|'|the|a|an|of|to)\b/, "")
+    def remove_stop_words(search_string)
+      search_string.gsub(/\b(and|or|'|the|a|an|of|to)\b/, "")
     end
   end
 
