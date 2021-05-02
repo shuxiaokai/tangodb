@@ -93,23 +93,31 @@ class Video < ApplicationRecord
   scope :title_match_missing_follower, ->(follower_name) { missing_follower.with_dancer_name_in_title(follower_name) }
 
   class << self
-    def filter_by_query(search_string)
-      statements = []
-      examples = remove_stop_words(search_string).to_s.strip.split
-      examples.each do |term|
-        query = []
-        SEARCHABLE_COLUMNS.each do |column|
-          query.push("unaccent(REPLACE(#{column},'''','')) ILIKE unaccent('%#{term}%')")
-        end
-        statements.push(query.join(" OR "))
+    def filter_by_query(query_string)
+      sql_query_array = []
+      keywords_array_without_stop_words = keywords_array_without_stop_words(query_string)
+      keywords_array_without_stop_words.each do |keyword|
+        sql_query_array.push(sql_query(keyword))
       end
-      left_outer_joins(:song, :leader, :follower, :channel).where(statements.flatten.join(") AND ("))
+      left_outer_joins(:song, :leader, :follower, :channel).where(combined_sql_query(sql_query_array))
     end
 
     private
 
-    def remove_stop_words(search_string)
-      search_string.gsub(/\b(and|or|'|the|a|an|of|to)\b/, "")
+    def keywords_array_without_stop_words(query_string)
+      query_string.gsub(/\b(and|or|'|the|a|an|of|to)\b/, "").to_s.strip.split
+    end
+
+    def sql_query(keyword)
+      sql_query = []
+      SEARCHABLE_COLUMNS.each do |searchable_column|
+        sql_query.push("unaccent(REPLACE(#{searchable_column},'''','')) ILIKE unaccent('%#{keyword}%')")
+      end
+      sql_query.join(" OR ")
+    end
+
+    def combined_sql_query(sql_query_array)
+      sql_query_array.flatten.join(") AND (")
     end
   end
 
