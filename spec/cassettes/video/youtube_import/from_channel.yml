@@ -1,0 +1,1383 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/channels?id=UC9lGGipk4wth0rDyy4419aw&key=<YOUTUBE_API_KEY>&part=snippet
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:56 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#channelListResponse",
+          "etag": "-IeW6km-zOA9B7kvp6KcGkDTvpo",
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 5
+          },
+          "items": [
+            {
+              "kind": "youtube#channel",
+              "etag": "IYY-Y0CSBjS3UaC-GelSs99-0wg",
+              "id": "UC9lGGipk4wth0rDyy4419aw",
+              "snippet": {
+                "title": "Armin Mar",
+                "description": "",
+                "publishedAt": "2012-11-21T14:08:12Z",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://yt3.ggpht.com/ytc/AAUvwnjGYCOkZDPgEinTJCtfCH5iwBR4w3YPVYwNOg=s88-c-k-c0x00ffffff-no-rj",
+                    "width": 88,
+                    "height": 88
+                  },
+                  "medium": {
+                    "url": "https://yt3.ggpht.com/ytc/AAUvwnjGYCOkZDPgEinTJCtfCH5iwBR4w3YPVYwNOg=s240-c-k-c0x00ffffff-no-rj",
+                    "width": 240,
+                    "height": 240
+                  },
+                  "high": {
+                    "url": "https://yt3.ggpht.com/ytc/AAUvwnjGYCOkZDPgEinTJCtfCH5iwBR4w3YPVYwNOg=s800-c-k-c0x00ffffff-no-rj",
+                    "width": 800,
+                    "height": 800
+                  }
+                },
+                "localized": {
+                  "title": "Armin Mar",
+                  "description": ""
+                }
+              }
+            }
+          ]
+        }
+  recorded_at: Fri, 07 May 2021 00:42:55 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/channels?id=UC9lGGipk4wth0rDyy4419aw&key=<YOUTUBE_API_KEY>&maxResults=50&part=statistics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:56 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#channelListResponse",
+          "etag": "8iZnj7RCQrCvzgDn6W7xJk_HIs0",
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 50
+          },
+          "items": [
+            {
+              "kind": "youtube#channel",
+              "etag": "xwa4WQZivM5DjjMevwgXKsvhgKg",
+              "id": "UC9lGGipk4wth0rDyy4419aw",
+              "statistics": {
+                "viewCount": "663",
+                "subscriberCount": "3",
+                "hiddenSubscriberCount": false,
+                "videoCount": "5"
+              }
+            }
+          ]
+        }
+  recorded_at: Fri, 07 May 2021 00:42:55 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/channels?id=UC9lGGipk4wth0rDyy4419aw&key=<YOUTUBE_API_KEY>&maxResults=50&part=statistics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:56 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#channelListResponse",
+          "etag": "8iZnj7RCQrCvzgDn6W7xJk_HIs0",
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 50
+          },
+          "items": [
+            {
+              "kind": "youtube#channel",
+              "etag": "xwa4WQZivM5DjjMevwgXKsvhgKg",
+              "id": "UC9lGGipk4wth0rDyy4419aw",
+              "statistics": {
+                "viewCount": "663",
+                "subscriberCount": "3",
+                "hiddenSubscriberCount": false,
+                "videoCount": "5"
+              }
+            }
+          ]
+        }
+  recorded_at: Fri, 07 May 2021 00:42:56 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/search?channelId=UC9lGGipk4wth0rDyy4419aw&key=<YOUTUBE_API_KEY>&maxResults=50&order=date&part=snippet&type=video
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:57 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJraW5kIjogInlvdXR1YmUjc2VhcmNoTGlzdFJlc3BvbnNlIiwKICAiZXRhZyI6ICJGcFE2VUR4dm5XZlZNbmpWcFk0Qy1hd1ZTTUUiLAogICJyZWdpb25Db2RlIjogIlVTIiwKICAicGFnZUluZm8iOiB7CiAgICAidG90YWxSZXN1bHRzIjogNSwKICAgICJyZXN1bHRzUGVyUGFnZSI6IDUKICB9LAogICJpdGVtcyI6IFsKICAgIHsKICAgICAgImtpbmQiOiAieW91dHViZSNzZWFyY2hSZXN1bHQiLAogICAgICAiZXRhZyI6ICI4ZEh2RzU1WTlQTGVUYzlSMS10QzdvNEFwek0iLAogICAgICAiaWQiOiB7CiAgICAgICAgImtpbmQiOiAieW91dHViZSN2aWRlbyIsCiAgICAgICAgInZpZGVvSWQiOiAiTTUweC13a1haSEkiCiAgICAgIH0sCiAgICAgICJzbmlwcGV0IjogewogICAgICAgICJwdWJsaXNoZWRBdCI6ICIyMDIwLTAzLTAzVDIzOjAwOjAzWiIsCiAgICAgICAgImNoYW5uZWxJZCI6ICJVQzlsR0dpcGs0d3RoMHJEeXk0NDE5YXciLAogICAgICAgICJ0aXRsZSI6ICJBbnRpZ29uaSBQb3Vsb3UgYW5kIEFybWluIE1hcnNjaGFsbCAtICZxdW90O0NvcXVldGEmcXVvdDsgKE9ycXVlc3RhIFRpcGljYSBWaWN0b3IpIDEvMyIsCiAgICAgICAgImRlc2NyaXB0aW9uIjogIisgSW1wcm92aXNhdGlvbiBhdCBNaWxvbmdhIFBvcHVsYXIsIEJlcmxpbiwgaW4gRmVicnVhcnkgMjAyMC4iLAogICAgICAgICJ0aHVtYm5haWxzIjogewogICAgICAgICAgImRlZmF1bHQiOiB7CiAgICAgICAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pLnl0aW1nLmNvbS92aS9NNTB4LXdrWFpISS9kZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDEyMCwKICAgICAgICAgICAgImhlaWdodCI6IDkwCiAgICAgICAgICB9LAogICAgICAgICAgIm1lZGl1bSI6IHsKICAgICAgICAgICAgInVybCI6ICJodHRwczovL2kueXRpbWcuY29tL3ZpL001MHgtd2tYWkhJL21xZGVmYXVsdC5qcGciLAogICAgICAgICAgICAid2lkdGgiOiAzMjAsCiAgICAgICAgICAgICJoZWlnaHQiOiAxODAKICAgICAgICAgIH0sCiAgICAgICAgICAiaGlnaCI6IHsKICAgICAgICAgICAgInVybCI6ICJodHRwczovL2kueXRpbWcuY29tL3ZpL001MHgtd2tYWkhJL2hxZGVmYXVsdC5qcGciLAogICAgICAgICAgICAid2lkdGgiOiA0ODAsCiAgICAgICAgICAgICJoZWlnaHQiOiAzNjAKICAgICAgICAgIH0KICAgICAgICB9LAogICAgICAgICJjaGFubmVsVGl0bGUiOiAiQXJtaW4gTWFyIiwKICAgICAgICAibGl2ZUJyb2FkY2FzdENvbnRlbnQiOiAibm9uZSIsCiAgICAgICAgInB1Ymxpc2hUaW1lIjogIjIwMjAtMDMtMDNUMjM6MDA6MDNaIgogICAgICB9CiAgICB9LAogICAgewogICAgICAia2luZCI6ICJ5b3V0dWJlI3NlYXJjaFJlc3VsdCIsCiAgICAgICJldGFnIjogInA4Ti0ydFRfeG1qNWlCazZDU3dXNXhFRmZmZyIsCiAgICAgICJpZCI6IHsKICAgICAgICAia2luZCI6ICJ5b3V0dWJlI3ZpZGVvIiwKICAgICAgICAidmlkZW9JZCI6ICJzOG9sSC1rZHd6dyIKICAgICAgfSwKICAgICAgInNuaXBwZXQiOiB7CiAgICAgICAgInB1Ymxpc2hlZEF0IjogIjIwMjAtMDMtMDNUMjM6MDA6MTRaIiwKICAgICAgICAiY2hhbm5lbElkIjogIlVDOWxHR2lwazR3dGgwckR5eTQ0MTlhdyIsCiAgICAgICAgInRpdGxlIjogIkFudGlnb25pIFBvdWxvdSBhbmQgQXJtaW4gTWFyc2NoYWxsIC0gJnF1b3Q7RWxsYSBlcyBhc8OtJnF1b3Q7IChEb25hdG8pIiwKICAgICAgICAiZGVzY3JpcHRpb24iOiAiKyBJbXByb3Zpc2F0aW9uIGF0IE1pbG9uZ2EgUG9wdWxhciwgQmVybGluLCBpbiBGZWJydWFyeSAyMDIwLiIsCiAgICAgICAgInRodW1ibmFpbHMiOiB7CiAgICAgICAgICAiZGVmYXVsdCI6IHsKICAgICAgICAgICAgInVybCI6ICJodHRwczovL2kueXRpbWcuY29tL3ZpL3M4b2xILWtkd3p3L2RlZmF1bHQuanBnIiwKICAgICAgICAgICAgIndpZHRoIjogMTIwLAogICAgICAgICAgICAiaGVpZ2h0IjogOTAKICAgICAgICAgIH0sCiAgICAgICAgICAibWVkaXVtIjogewogICAgICAgICAgICAidXJsIjogImh0dHBzOi8vaS55dGltZy5jb20vdmkvczhvbEgta2R3encvbXFkZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgICAgICAgImhlaWdodCI6IDE4MAogICAgICAgICAgfSwKICAgICAgICAgICJoaWdoIjogewogICAgICAgICAgICAidXJsIjogImh0dHBzOi8vaS55dGltZy5jb20vdmkvczhvbEgta2R3encvaHFkZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDQ4MCwKICAgICAgICAgICAgImhlaWdodCI6IDM2MAogICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgImNoYW5uZWxUaXRsZSI6ICJBcm1pbiBNYXIiLAogICAgICAgICJsaXZlQnJvYWRjYXN0Q29udGVudCI6ICJub25lIiwKICAgICAgICAicHVibGlzaFRpbWUiOiAiMjAyMC0wMy0wM1QyMzowMDoxNFoiCiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJraW5kIjogInlvdXR1YmUjc2VhcmNoUmVzdWx0IiwKICAgICAgImV0YWciOiAiQTROTWs2SWk3WmE2OE52VFI3cENvSmFvdFJRIiwKICAgICAgImlkIjogewogICAgICAgICJraW5kIjogInlvdXR1YmUjdmlkZW8iLAogICAgICAgICJ2aWRlb0lkIjogInM5WHNVM3c3TXRRIgogICAgICB9LAogICAgICAic25pcHBldCI6IHsKICAgICAgICAicHVibGlzaGVkQXQiOiAiMjAyMC0wMy0wM1QxNDoyMzozMloiLAogICAgICAgICJjaGFubmVsSWQiOiAiVUM5bEdHaXBrNHd0aDByRHl5NDQxOWF3IiwKICAgICAgICAidGl0bGUiOiAiQW50aWdvbmkgUG91bG91IGFuZCBBcm1pbiBNYXJzY2hhbGwgLSAmcXVvdDtQYXNpb24mcXVvdDsgKEQmIzM5O0FyaWVuem8pIC0gMi8zIiwKICAgICAgICAiZGVzY3JpcHRpb24iOiAiKyBJbXByb3Zpc2F0aW9uIGF0IE1pbG9uZ2EgUG9wdWxhciwgQmVybGluLCBvbiBGZWJydWFyeSAyMDIwLiIsCiAgICAgICAgInRodW1ibmFpbHMiOiB7CiAgICAgICAgICAiZGVmYXVsdCI6IHsKICAgICAgICAgICAgInVybCI6ICJodHRwczovL2kueXRpbWcuY29tL3ZpL3M5WHNVM3c3TXRRL2RlZmF1bHQuanBnIiwKICAgICAgICAgICAgIndpZHRoIjogMTIwLAogICAgICAgICAgICAiaGVpZ2h0IjogOTAKICAgICAgICAgIH0sCiAgICAgICAgICAibWVkaXVtIjogewogICAgICAgICAgICAidXJsIjogImh0dHBzOi8vaS55dGltZy5jb20vdmkvczlYc1UzdzdNdFEvbXFkZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgICAgICAgImhlaWdodCI6IDE4MAogICAgICAgICAgfSwKICAgICAgICAgICJoaWdoIjogewogICAgICAgICAgICAidXJsIjogImh0dHBzOi8vaS55dGltZy5jb20vdmkvczlYc1UzdzdNdFEvaHFkZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDQ4MCwKICAgICAgICAgICAgImhlaWdodCI6IDM2MAogICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgImNoYW5uZWxUaXRsZSI6ICJBcm1pbiBNYXIiLAogICAgICAgICJsaXZlQnJvYWRjYXN0Q29udGVudCI6ICJub25lIiwKICAgICAgICAicHVibGlzaFRpbWUiOiAiMjAyMC0wMy0wM1QxNDoyMzozMloiCiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJraW5kIjogInlvdXR1YmUjc2VhcmNoUmVzdWx0IiwKICAgICAgImV0YWciOiAiZEhadXhDTjcwaUZLM2JrcVFIOEtqUkZ2aHVNIiwKICAgICAgImlkIjogewogICAgICAgICJraW5kIjogInlvdXR1YmUjdmlkZW8iLAogICAgICAgICJ2aWRlb0lkIjogInhNdU42bXliMmVRIgogICAgICB9LAogICAgICAic25pcHBldCI6IHsKICAgICAgICAicHVibGlzaGVkQXQiOiAiMjAxOS0wOS0yNVQxMTo1NTo0OVoiLAogICAgICAgICJjaGFubmVsSWQiOiAiVUM5bEdHaXBrNHd0aDByRHl5NDQxOWF3IiwKICAgICAgICAidGl0bGUiOiAiTG91aXNhIHZvbiBIYWxsZSBhbmQgQXJtaW4gTWFyc2NoYWxsIC0gJnF1b3Q7VmFscyBkZWwgUmVjdWVyZG8mcXVvdDsgYnkgUXVpbnRldG8gQW5nZWwgQ1RGIDIwMTkgMi8yIiwKICAgICAgICAiZGVzY3JpcHRpb24iOiAiVmFscyBcIlZhbHMgZGVsIFJlY3VlcmRvXCIgKFF1aW50ZXRvIEFuZ2VsKSBEYW5jZXJzOiBMb3Vpc2Egdm9uIEhhbGxlIGFuZCBBcm1pbiBNYXJzY2hhbGwgSW1wcm92aXNhdGlvbiB0byBhIHNvbmcgd2hpY2ggd2FzIHJhbmRvbWx5IGRyYXduIG91dCBvZiB0aGUgYmFuZHMgLi4uIiwKICAgICAgICAidGh1bWJuYWlscyI6IHsKICAgICAgICAgICJkZWZhdWx0IjogewogICAgICAgICAgICAidXJsIjogImh0dHBzOi8vaS55dGltZy5jb20vdmkveE11TjZteWIyZVEvZGVmYXVsdC5qcGciLAogICAgICAgICAgICAid2lkdGgiOiAxMjAsCiAgICAgICAgICAgICJoZWlnaHQiOiA5MAogICAgICAgICAgfSwKICAgICAgICAgICJtZWRpdW0iOiB7CiAgICAgICAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pLnl0aW1nLmNvbS92aS94TXVONm15YjJlUS9tcWRlZmF1bHQuanBnIiwKICAgICAgICAgICAgIndpZHRoIjogMzIwLAogICAgICAgICAgICAiaGVpZ2h0IjogMTgwCiAgICAgICAgICB9LAogICAgICAgICAgImhpZ2giOiB7CiAgICAgICAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pLnl0aW1nLmNvbS92aS94TXVONm15YjJlUS9ocWRlZmF1bHQuanBnIiwKICAgICAgICAgICAgIndpZHRoIjogNDgwLAogICAgICAgICAgICAiaGVpZ2h0IjogMzYwCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiY2hhbm5lbFRpdGxlIjogIkFybWluIE1hciIsCiAgICAgICAgImxpdmVCcm9hZGNhc3RDb250ZW50IjogIm5vbmUiLAogICAgICAgICJwdWJsaXNoVGltZSI6ICIyMDE5LTA5LTI1VDExOjU1OjQ5WiIKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgImtpbmQiOiAieW91dHViZSNzZWFyY2hSZXN1bHQiLAogICAgICAiZXRhZyI6ICJNZ1RtOFNhcjVoRTRIUDgyczJWNWdLVHVrakUiLAogICAgICAiaWQiOiB7CiAgICAgICAgImtpbmQiOiAieW91dHViZSN2aWRlbyIsCiAgICAgICAgInZpZGVvSWQiOiAiSXlsLVBQZEI0WFUiCiAgICAgIH0sCiAgICAgICJzbmlwcGV0IjogewogICAgICAgICJwdWJsaXNoZWRBdCI6ICIyMDE5LTA5LTI1VDA1OjA4OjM2WiIsCiAgICAgICAgImNoYW5uZWxJZCI6ICJVQzlsR0dpcGs0d3RoMHJEeXk0NDE5YXciLAogICAgICAgICJ0aXRsZSI6ICJMb3Vpc2Egdm9uIEhhbGxlIGFuZCBBcm1pbiBNYXJzY2hhbGwgLSAmcXVvdDtZbyB0ZSBiZW5kaWdvJnF1b3Q7IGJ5IFF1aW50ZXRvIEFuZ2VsIENURiAyMDE5IDEvMiIsCiAgICAgICAgImRlc2NyaXB0aW9uIjogIlRhbmdvIFwiWW8gdGUgYmVuZGlnb1wiIChRdWludGV0byBBbmdlbCkgRGFuY2VyczogTG91aXNhIHZvbiBIYWxsZSBhbmQgQXJtaW4gTWFyc2NoYWxsIEltcHJvdmlzYXRpb24gdG8gYSBzb25nIHdoaWNoIHdhcyByYW5kb21seSBkcmF3biBvdXQgb2YgdGhlIGJhbmRzIC4uLiIsCiAgICAgICAgInRodW1ibmFpbHMiOiB7CiAgICAgICAgICAiZGVmYXVsdCI6IHsKICAgICAgICAgICAgInVybCI6ICJodHRwczovL2kueXRpbWcuY29tL3ZpL0l5bC1QUGRCNFhVL2RlZmF1bHQuanBnIiwKICAgICAgICAgICAgIndpZHRoIjogMTIwLAogICAgICAgICAgICAiaGVpZ2h0IjogOTAKICAgICAgICAgIH0sCiAgICAgICAgICAibWVkaXVtIjogewogICAgICAgICAgICAidXJsIjogImh0dHBzOi8vaS55dGltZy5jb20vdmkvSXlsLVBQZEI0WFUvbXFkZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgICAgICAgImhlaWdodCI6IDE4MAogICAgICAgICAgfSwKICAgICAgICAgICJoaWdoIjogewogICAgICAgICAgICAidXJsIjogImh0dHBzOi8vaS55dGltZy5jb20vdmkvSXlsLVBQZEI0WFUvaHFkZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDQ4MCwKICAgICAgICAgICAgImhlaWdodCI6IDM2MAogICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgImNoYW5uZWxUaXRsZSI6ICJBcm1pbiBNYXIiLAogICAgICAgICJsaXZlQnJvYWRjYXN0Q29udGVudCI6ICJub25lIiwKICAgICAgICAicHVibGlzaFRpbWUiOiAiMjAxOS0wOS0yNVQwNTowODozNloiCiAgICAgIH0KICAgIH0KICBdCn0K
+  recorded_at: Fri, 07 May 2021 00:42:56 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=M50x-wkXZHI&key=<YOUTUBE_API_KEY>&part=snippet
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:57 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "AR7zLfWN3Tw6zd2ybYPlgbQ7c48",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "kDm-ezABq2oBBGgBFArAj0ezSwA",
+              "id": "M50x-wkXZHI",
+              "snippet": {
+                "publishedAt": "2020-03-03T23:00:03Z",
+                "channelId": "UC9lGGipk4wth0rDyy4419aw",
+                "title": "Antigoni Poulou and Armin Marschall - \"Coqueta\" (Orquesta Tipica Victor) 1/3",
+                "description": "+ Improvisation at Milonga Popular, Berlin, in February 2020",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/M50x-wkXZHI/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/M50x-wkXZHI/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/M50x-wkXZHI/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/M50x-wkXZHI/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/M50x-wkXZHI/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Armin Mar",
+                "categoryId": "22",
+                "liveBroadcastContent": "none",
+                "localized": {
+                  "title": "Antigoni Poulou and Armin Marschall - \"Coqueta\" (Orquesta Tipica Victor) 1/3",
+                  "description": "+ Improvisation at Milonga Popular, Berlin, in February 2020"
+                }
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:56 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=M50x-wkXZHI&key=<YOUTUBE_API_KEY>&maxResults=50&part=contentDetails
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:57 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "o3mwUkcOuOfUWcsTUfzMx6D3hNc",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "nVGLTfXSBRfTuHbGjxEzhpJlSlc",
+              "id": "M50x-wkXZHI",
+              "contentDetails": {
+                "duration": "PT2M50S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": false,
+                "contentRating": {},
+                "projection": "rectangular"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:57 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=M50x-wkXZHI&key=<YOUTUBE_API_KEY>&maxResults=50&part=statistics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:57 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "mhnOokM6iVogOuojh6rsSqjcJxo",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "6fUjtPojfsaME5H4UM5bHynLcg8",
+              "id": "M50x-wkXZHI",
+              "statistics": {
+                "viewCount": "213",
+                "likeCount": "4",
+                "dislikeCount": "0",
+                "favoriteCount": "0",
+                "commentCount": "0"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:57 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=s8olH-kdwzw&key=<YOUTUBE_API_KEY>&part=snippet
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:58 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJraW5kIjogInlvdXR1YmUjdmlkZW9MaXN0UmVzcG9uc2UiLAogICJldGFnIjogIkRuV3lXLUdkenpQV0JMVExHaC1qZTFValB4TSIsCiAgIml0ZW1zIjogWwogICAgewogICAgICAia2luZCI6ICJ5b3V0dWJlI3ZpZGVvIiwKICAgICAgImV0YWciOiAiTkdrbFRrLWdSUHNnLWNDZWkwZ1lQNmRRTFVVIiwKICAgICAgImlkIjogInM4b2xILWtkd3p3IiwKICAgICAgInNuaXBwZXQiOiB7CiAgICAgICAgInB1Ymxpc2hlZEF0IjogIjIwMjAtMDMtMDNUMjM6MDA6MTRaIiwKICAgICAgICAiY2hhbm5lbElkIjogIlVDOWxHR2lwazR3dGgwckR5eTQ0MTlhdyIsCiAgICAgICAgInRpdGxlIjogIkFudGlnb25pIFBvdWxvdSBhbmQgQXJtaW4gTWFyc2NoYWxsIC0gXCJFbGxhIGVzIGFzw61cIiAoRG9uYXRvKSIsCiAgICAgICAgImRlc2NyaXB0aW9uIjogIisgSW1wcm92aXNhdGlvbiBhdCBNaWxvbmdhIFBvcHVsYXIsIEJlcmxpbiwgaW4gRmVicnVhcnkgMjAyMCIsCiAgICAgICAgInRodW1ibmFpbHMiOiB7CiAgICAgICAgICAiZGVmYXVsdCI6IHsKICAgICAgICAgICAgInVybCI6ICJodHRwczovL2kueXRpbWcuY29tL3ZpL3M4b2xILWtkd3p3L2RlZmF1bHQuanBnIiwKICAgICAgICAgICAgIndpZHRoIjogMTIwLAogICAgICAgICAgICAiaGVpZ2h0IjogOTAKICAgICAgICAgIH0sCiAgICAgICAgICAibWVkaXVtIjogewogICAgICAgICAgICAidXJsIjogImh0dHBzOi8vaS55dGltZy5jb20vdmkvczhvbEgta2R3encvbXFkZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgICAgICAgImhlaWdodCI6IDE4MAogICAgICAgICAgfSwKICAgICAgICAgICJoaWdoIjogewogICAgICAgICAgICAidXJsIjogImh0dHBzOi8vaS55dGltZy5jb20vdmkvczhvbEgta2R3encvaHFkZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDQ4MCwKICAgICAgICAgICAgImhlaWdodCI6IDM2MAogICAgICAgICAgfSwKICAgICAgICAgICJzdGFuZGFyZCI6IHsKICAgICAgICAgICAgInVybCI6ICJodHRwczovL2kueXRpbWcuY29tL3ZpL3M4b2xILWtkd3p3L3NkZGVmYXVsdC5qcGciLAogICAgICAgICAgICAid2lkdGgiOiA2NDAsCiAgICAgICAgICAgICJoZWlnaHQiOiA0ODAKICAgICAgICAgIH0sCiAgICAgICAgICAibWF4cmVzIjogewogICAgICAgICAgICAidXJsIjogImh0dHBzOi8vaS55dGltZy5jb20vdmkvczhvbEgta2R3encvbWF4cmVzZGVmYXVsdC5qcGciLAogICAgICAgICAgICAid2lkdGgiOiAxMjgwLAogICAgICAgICAgICAiaGVpZ2h0IjogNzIwCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiY2hhbm5lbFRpdGxlIjogIkFybWluIE1hciIsCiAgICAgICAgImNhdGVnb3J5SWQiOiAiMjIiLAogICAgICAgICJsaXZlQnJvYWRjYXN0Q29udGVudCI6ICJub25lIiwKICAgICAgICAibG9jYWxpemVkIjogewogICAgICAgICAgInRpdGxlIjogIkFudGlnb25pIFBvdWxvdSBhbmQgQXJtaW4gTWFyc2NoYWxsIC0gXCJFbGxhIGVzIGFzw61cIiAoRG9uYXRvKSIsCiAgICAgICAgICAiZGVzY3JpcHRpb24iOiAiKyBJbXByb3Zpc2F0aW9uIGF0IE1pbG9uZ2EgUG9wdWxhciwgQmVybGluLCBpbiBGZWJydWFyeSAyMDIwIgogICAgICAgIH0KICAgICAgfQogICAgfQogIF0sCiAgInBhZ2VJbmZvIjogewogICAgInRvdGFsUmVzdWx0cyI6IDEsCiAgICAicmVzdWx0c1BlclBhZ2UiOiAxCiAgfQp9Cg==
+  recorded_at: Fri, 07 May 2021 00:42:57 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=s8olH-kdwzw&key=<YOUTUBE_API_KEY>&maxResults=50&part=contentDetails
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:58 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "nNUSwML4nEEWtOyvUV6-w11Wz5Y",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "_Oc5ZHaGnRDL750HqMpmzHEn_Es",
+              "id": "s8olH-kdwzw",
+              "contentDetails": {
+                "duration": "PT2M49S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": false,
+                "contentRating": {},
+                "projection": "rectangular"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:57 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=s8olH-kdwzw&key=<YOUTUBE_API_KEY>&maxResults=50&part=statistics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:58 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "QpY4vU0vU6baTJL6XsrX5HyWAUI",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "qORzFtCm5zOeQSXzCm5uaGHKDjo",
+              "id": "s8olH-kdwzw",
+              "statistics": {
+                "viewCount": "75",
+                "likeCount": "4",
+                "dislikeCount": "0",
+                "favoriteCount": "0",
+                "commentCount": "0"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:57 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=s9XsU3w7MtQ&key=<YOUTUBE_API_KEY>&part=snippet
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:58 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "_zKP742-AcH9hMVaJGfwa4cKis0",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "Ql_wrzKSV0mq0cLrgh-HRMRIHgg",
+              "id": "s9XsU3w7MtQ",
+              "snippet": {
+                "publishedAt": "2020-03-03T14:23:32Z",
+                "channelId": "UC9lGGipk4wth0rDyy4419aw",
+                "title": "Antigoni Poulou and Armin Marschall - \"Pasion\" (D'Arienzo) - 2/3",
+                "description": "+ Improvisation at Milonga Popular, Berlin, on February 2020",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/s9XsU3w7MtQ/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/s9XsU3w7MtQ/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/s9XsU3w7MtQ/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  }
+                },
+                "channelTitle": "Armin Mar",
+                "categoryId": "22",
+                "liveBroadcastContent": "none",
+                "localized": {
+                  "title": "Antigoni Poulou and Armin Marschall - \"Pasion\" (D'Arienzo) - 2/3",
+                  "description": "+ Improvisation at Milonga Popular, Berlin, on February 2020"
+                }
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:58 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=s9XsU3w7MtQ&key=<YOUTUBE_API_KEY>&maxResults=50&part=contentDetails
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:58 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "hJkvooSSbs20WuAUJGjH-R72jWo",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "xJltiUc36rb7X_A_Fjbbm46d87w",
+              "id": "s9XsU3w7MtQ",
+              "contentDetails": {
+                "duration": "PT2M49S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": false,
+                "contentRating": {},
+                "projection": "rectangular"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:58 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=s9XsU3w7MtQ&key=<YOUTUBE_API_KEY>&maxResults=50&part=statistics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:59 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "JVwhGLjcK9P9vOe_Yf8joS0TuG0",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "hLKEECmbvZztC-Fjcpv221z0gJg",
+              "id": "s9XsU3w7MtQ",
+              "statistics": {
+                "viewCount": "62",
+                "likeCount": "1",
+                "dislikeCount": "0",
+                "favoriteCount": "0",
+                "commentCount": "0"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:58 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=xMuN6myb2eQ&key=<YOUTUBE_API_KEY>&part=snippet
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:59 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "zfzy0X-FQ1Ww8ugrl25SzjprA_4",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "aZXTb-3o0Ty7cQFI9rFFicdvCyc",
+              "id": "xMuN6myb2eQ",
+              "snippet": {
+                "publishedAt": "2019-09-25T11:55:49Z",
+                "channelId": "UC9lGGipk4wth0rDyy4419aw",
+                "title": "Louisa von Halle and Armin Marschall - \"Vals del Recuerdo\" by Quinteto Angel CTF 2019 2/2",
+                "description": "Vals \"Vals del Recuerdo\" (Quinteto Angel)\nDancers: Louisa von Halle and Armin Marschall\nImprovisation to a song which was randomly drawn out of the bands repertoire\nVideo Artist: Fritz Tsai\nVideo from the Contemporary Tango Festival @ Hauptbahnhof Berlin 2019",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/xMuN6myb2eQ/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/xMuN6myb2eQ/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/xMuN6myb2eQ/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/xMuN6myb2eQ/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/xMuN6myb2eQ/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Armin Mar",
+                "categoryId": "22",
+                "liveBroadcastContent": "none",
+                "localized": {
+                  "title": "Louisa von Halle and Armin Marschall - \"Vals del Recuerdo\" by Quinteto Angel CTF 2019 2/2",
+                  "description": "Vals \"Vals del Recuerdo\" (Quinteto Angel)\nDancers: Louisa von Halle and Armin Marschall\nImprovisation to a song which was randomly drawn out of the bands repertoire\nVideo Artist: Fritz Tsai\nVideo from the Contemporary Tango Festival @ Hauptbahnhof Berlin 2019"
+                }
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:58 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=xMuN6myb2eQ&key=<YOUTUBE_API_KEY>&maxResults=50&part=contentDetails
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:59 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "FmDnMVPlADxywYpA48G1E0Z3DWI",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "7kYzO_ed2obrJAjVSpuOUUpDfYc",
+              "id": "xMuN6myb2eQ",
+              "contentDetails": {
+                "duration": "PT2M11S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": false,
+                "contentRating": {},
+                "projection": "rectangular"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:58 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=xMuN6myb2eQ&key=<YOUTUBE_API_KEY>&maxResults=50&part=statistics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:59 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "VJ3iqyGeCi_8c8RV3SYaiqQwDe8",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "GXbcdX_SshZdcVWUbGt-2o0vkG4",
+              "id": "xMuN6myb2eQ",
+              "statistics": {
+                "viewCount": "152",
+                "likeCount": "5",
+                "dislikeCount": "0",
+                "favoriteCount": "0",
+                "commentCount": "0"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:59 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=Iyl-PPdB4XU&key=<YOUTUBE_API_KEY>&part=snippet
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:42:59 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "2c4ogMnHdZrx-bifplNuU8yNHpI",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "EBL-H5iFtKlZqYs8C-4N_Ki-IUo",
+              "id": "Iyl-PPdB4XU",
+              "snippet": {
+                "publishedAt": "2019-09-25T05:08:36Z",
+                "channelId": "UC9lGGipk4wth0rDyy4419aw",
+                "title": "Louisa von Halle and Armin Marschall - \"Yo te bendigo\" by Quinteto Angel CTF 2019 1/2",
+                "description": "Tango \"Yo te bendigo\" (Quinteto Angel)\nDancers: Louisa von Halle and Armin Marschall\nImprovisation to a song which was randomly drawn out of the bands repertoire\nVideo Artist: Fritz Tsai\nVideo from the Contemporary Tango Festival @ Hauptbahnhof Berlin 2019",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/Iyl-PPdB4XU/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/Iyl-PPdB4XU/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/Iyl-PPdB4XU/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  },
+                  "standard": {
+                    "url": "https://i.ytimg.com/vi/Iyl-PPdB4XU/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                  },
+                  "maxres": {
+                    "url": "https://i.ytimg.com/vi/Iyl-PPdB4XU/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                  }
+                },
+                "channelTitle": "Armin Mar",
+                "categoryId": "22",
+                "liveBroadcastContent": "none",
+                "localized": {
+                  "title": "Louisa von Halle and Armin Marschall - \"Yo te bendigo\" by Quinteto Angel CTF 2019 1/2",
+                  "description": "Tango \"Yo te bendigo\" (Quinteto Angel)\nDancers: Louisa von Halle and Armin Marschall\nImprovisation to a song which was randomly drawn out of the bands repertoire\nVideo Artist: Fritz Tsai\nVideo from the Contemporary Tango Festival @ Hauptbahnhof Berlin 2019"
+                }
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:59 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=Iyl-PPdB4XU&key=<YOUTUBE_API_KEY>&maxResults=50&part=contentDetails
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:43:00 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "UCWcptY9xNSzCsfboKfPjU5XfdI",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "13ZqCRx8e6Ad1YohyDRIdT6wBQ0",
+              "id": "Iyl-PPdB4XU",
+              "contentDetails": {
+                "duration": "PT4M17S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": false,
+                "contentRating": {},
+                "projection": "rectangular"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:59 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=Iyl-PPdB4XU&key=<YOUTUBE_API_KEY>&maxResults=50&part=statistics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Yt::Request (gzip)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 07 May 2021 00:43:00 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Accept-Ranges:
+      - none
+      Transfer-Encoding:
+      - chunked
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "youtube#videoListResponse",
+          "etag": "fsXnlGmkqigyNpYH3ABCoNvqtGs",
+          "items": [
+            {
+              "kind": "youtube#video",
+              "etag": "gzdBdbLfOLm8w9HtqvsT8qjejuU",
+              "id": "Iyl-PPdB4XU",
+              "statistics": {
+                "viewCount": "161",
+                "likeCount": "5",
+                "dislikeCount": "0",
+                "favoriteCount": "0",
+                "commentCount": "1"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 1
+          }
+        }
+  recorded_at: Fri, 07 May 2021 00:42:59 GMT
+recorded_with: VCR 6.0.0
