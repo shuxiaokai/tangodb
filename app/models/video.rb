@@ -1,22 +1,22 @@
 class Video < ApplicationRecord
   include Filterable
 
-  SEARCHABLE_COLUMNS = %w[videos.title
-                          videos.description
-                          videos.youtube_id
-                          videos.youtube_artist
-                          videos.youtube_song
-                          videos.spotify_track_name
-                          videos.spotify_artist_name
-                          videos.acr_cloud_track_name
-                          videos.acr_cloud_artist_name
-                          videos.tags
-                          channels.title
-                          leaders.name
+  SEARCHABLE_COLUMNS = %w[channels.title
                           followers.name
+                          leaders.name
                           songs.genre
                           songs.title
-                          songs.artist].freeze
+                          songs.artist
+                          videos.acr_cloud_track_name
+                          videos.acr_cloud_artist_name
+                          videos.description
+                          videos.title
+                          videos.youtube_artist
+                          videos.youtube_id
+                          videos.youtube_song
+                          videos.spotify_artist_name
+                          videos.spotify_track_name
+                          videos.tags].freeze
 
   validates :youtube_id, presence: true, uniqueness: true
 
@@ -29,18 +29,15 @@ class Video < ApplicationRecord
   scope :filter_by_orchestra, ->(song_artist) { left_outer_joins(:song).where("songs.artist ILIKE ?", song_artist) }
   scope :filter_by_genre, ->(song_genre) { left_outer_joins(:song).where("songs.genre ILIKE ?", song_genre) }
   scope :filter_by_leader_id, ->(leader_id) { where(leader_id: leader_id) }
-  scope :filter_by_follower_id,
-        ->(follower_id) { where(follower_id: follower_id) }
+  scope :filter_by_follower_id, ->(follower_id) { where(follower_id: follower_id) }
   scope :filter_by_channel_id, ->(channel_id) { where(channel_id: channel_id) }
   scope :filter_by_event_id, ->(event_id) { where(event_id: event_id) }
   scope :filter_by_song_id, ->(song_id) { where(song_id: song_id) }
   scope :filter_by_hd, ->(boolean) { where(hd: boolean) }
-  scope :filter_by_year,
-        ->(year) { where("extract(year from upload_date) = ?", year) }
+  scope :filter_by_year, ->(year) { where("extract(year from upload_date) = ?", year) }
   scope :hidden, -> { where(hidden: true) }
   scope :not_hidden, -> { where(hidden: false) }
-  scope :paginate,
-        ->(page, per_page) { offset(per_page * (page - 1)).limit(per_page) }
+  scope :paginate, ->(page, per_page) { offset(per_page * (page - 1)).limit(per_page) }
 
   # Active Admin scopes
   scope :has_song, -> { where.not(song_id: nil) }
@@ -59,12 +56,7 @@ class Video < ApplicationRecord
   scope :successful_acrcloud, -> { where(acr_response_code: 0) }
   scope :not_successful_acrcloud, -> { where(acr_response_code: 1001) }
   scope :scanned_acrcloud, -> { where(acr_response_code: [0, 1001]) }
-  scope :not_scanned_acrcloud,
-        -> {
-          where
-            .not(acr_response_code: [0, 1001])
-            .or(Video.where(acr_response_code: nil))
-        }
+  scope :not_scanned_acrcloud, -> {where.not(acr_response_code: [0, 1001]).or(Video.where(acr_response_code: nil))}
 
   # Attribute Matching Scopes
   scope :with_song_title,
@@ -107,14 +99,8 @@ class Video < ApplicationRecord
 
   # Combined Scopes
 
-  scope :title_match_missing_leader,
-        ->(leader_name) {
-          missing_leader.with_dancer_name_in_title(leader_name)
-        }
-  scope :title_match_missing_follower,
-        ->(follower_name) {
-          missing_follower.with_dancer_name_in_title(follower_name)
-        }
+  scope :title_match_missing_leader,->(leader_name) { missing_leader.with_dancer_name_in_title(leader_name)}
+  scope :title_match_missing_follower, ->(follower_name) { missing_follower.with_dancer_name_in_title(follower_name) }
 
   class << self
     def filter_by_query(query_string)
