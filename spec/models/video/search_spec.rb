@@ -449,8 +449,8 @@ RSpec.describe Video::Search, type: :model do
       search = described_class.new
       expect(search.leaders).to eq(
         [
-          ["Sebastian Jimenez (2)", leader2.id],
-          ["Carlitos Espinoza (1)", leader.id]
+          ["Sebastian Jimenez (2)", "sebastian jimenez"],
+          ["Carlitos Espinoza (1)", "carlitos espinoza"]
         ]
       )
     end
@@ -467,8 +467,8 @@ RSpec.describe Video::Search, type: :model do
       search = described_class.new
       expect(search.followers).to eq(
         [
-          ["Moira Castellano (2)", follower2.id],
-          ["Noelia Hurtado (1)", follower.id]
+          ["Moira Castellano (2)", "moira castellano"],
+          ["Noelia Hurtado (1)", "noelia hurtado"]
         ]
       )
     end
