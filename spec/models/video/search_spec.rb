@@ -156,21 +156,21 @@ RSpec.describe Video::Search, type: :model do
     end
 
     describe "filter_videos" do
-      it "filters by leader_id" do
+      it "filters by leader" do
         leader = create(:leader)
         video_a = create(:video, leader: leader)
         video_b = create(:video)
-        search = described_class.new(filtering_params: { leader_id: leader.id })
+        search = described_class.new(filtering_params: { leader: leader.full_name})
         expect(search.videos).to eq [video_a]
       end
 
-      it "filters by follower_id" do
+      it "filters by follower" do
         follower = create(:follower)
         video_a = create(:video, follower: follower)
         video_b = create(:video)
 
         search =
-          described_class.new(filtering_params: { follower_id: follower.id })
+          described_class.new(filtering_params: { follower: follower.full_name })
 
         expect(search.videos).to eq [video_a]
       end

@@ -54,29 +54,29 @@ RSpec.describe Video, type: :model do
       end
     end
 
-    describe ".filter_by_leader_id" do
+    describe ".filter_by_leader" do
       it "returns video with corresponding orchestra event_id" do
         leader = create(:leader)
         video = create(:video, leader: leader)
-        expect(described_class.filter_by_leader_id(leader.id)).to eq [video]
+        expect(described_class.filter_by_leader(leader.full_name)).to eq [video]
       end
 
       it "does not return video without corresponding orchestra event_id" do
         video = create(:video)
-        expect(described_class.filter_by_leader_id("0")).not_to eq [video]
+        expect(described_class.filter_by_leader("0")).not_to eq [video]
       end
     end
 
-    describe ".filter_by_follower_id" do
+    describe ".filter_by_follower" do
       it "returns videos with matching follower" do
         follower = create(:follower)
         video = create(:video, follower: follower)
-        expect(described_class.filter_by_follower_id(follower.id)).to eq [video]
+        expect(described_class.filter_by_follower(follower.full_name)).to eq [video]
       end
 
       it "does not return videos with incorrect follower id" do
         video = create(:video)
-        expect(described_class.filter_by_follower_id("0")).not_to eq [video]
+        expect(described_class.filter_by_follower("0")).not_to eq [video]
       end
     end
 
