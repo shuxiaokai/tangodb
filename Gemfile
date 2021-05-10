@@ -50,7 +50,6 @@ end
 
 group :development do
   gem "listen", "~> 3.2"
-  gem "prettier", "~> 1.5"
   gem "rack-mini-profiler", "~> 2.3"
   gem "rubocop", "~> 1.8"
   gem "rubocop-rails", "~> 2.9"
