@@ -1,23 +1,6 @@
 class Video < ApplicationRecord
   include Filterable
 
-  SEARCHABLE_COLUMNS = %w[channels.title
-                          followers.name
-                          leaders.name
-                          songs.genre
-                          songs.title
-                          songs.artist
-                          videos.acr_cloud_track_name
-                          videos.acr_cloud_artist_name
-                          videos.description
-                          videos.title
-                          videos.youtube_artist
-                          videos.youtube_id
-                          videos.youtube_song
-                          videos.spotify_artist_name
-                          videos.spotify_track_name
-                          videos.tags].freeze
-
   validates :youtube_id, presence: true, uniqueness: true
 
   belongs_to :leader, optional: true, counter_cache: true
@@ -26,27 +9,15 @@ class Video < ApplicationRecord
   belongs_to :channel, optional: false, counter_cache: true
   belongs_to :event, optional: true, counter_cache: true
 
-<<<<<<< HEAD
-  scope :filter_by_orchestra, ->(song_artist) { left_outer_joins(:song).where("songs.artist ILIKE ?", song_artist) }
-  scope :filter_by_genre, ->(song_genre) { left_outer_joins(:song).where("songs.genre ILIKE ?", song_genre) }
-  scope :filter_by_leader_id, ->(leader_id) { where(leader_id: leader_id) }
-  scope :filter_by_follower_id, ->(follower_id) { where(follower_id: follower_id) }
-=======
   scope :filter_by_orchestra, ->(song_artist) { joins(:song).where("songs.artist ILIKE ?", song_artist)}
   scope :filter_by_genre, ->(song_genre) { joins(:song).where("songs.genre ILIKE ?", song_genre) }
   scope :filter_by_leader, ->(leader) { joins(:leader).where("leaders.name ILIKE ?", leader) }
   scope :filter_by_follower, ->(follower) { joins(:follower).where("followers.name ILIKE ?", follower) }
-
->>>>>>> 9b69a1038f72d8055e70ce65be6b6ff7fde46504
   scope :filter_by_channel_id, ->(channel_id) { where(channel_id: channel_id) }
   scope :filter_by_event_id, ->(event_id) { where(event_id: event_id) }
   scope :filter_by_song_id, ->(song_id) { where(song_id: song_id) }
   scope :filter_by_hd, ->(boolean) { where(hd: boolean) }
-<<<<<<< HEAD
-  scope :filter_by_year, ->(year) { where("extract(year from upload_date) = ?", year) }
-=======
   scope :filter_by_year,->(year) { where("extract(year from upload_date) = ?", year) }
->>>>>>> 9b69a1038f72d8055e70ce65be6b6ff7fde46504
   scope :hidden, -> { where(hidden: true) }
   scope :not_hidden, -> { where(hidden: false) }
   scope :paginate, ->(page, per_page) { offset(per_page * (page - 1)).limit(per_page) }
@@ -68,7 +39,12 @@ class Video < ApplicationRecord
   scope :successful_acrcloud, -> { where(acr_response_code: 0) }
   scope :not_successful_acrcloud, -> { where(acr_response_code: 1001) }
   scope :scanned_acrcloud, -> { where(acr_response_code: [0, 1001]) }
-  scope :not_scanned_acrcloud, -> {where.not(acr_response_code: [0, 1001]).or(Video.where(acr_response_code: nil))}
+  scope :not_scanned_acrcloud,
+        -> {
+          where
+            .not(acr_response_code: [0, 1001])
+            .or(Video.where(acr_response_code: nil))
+        }
 
   # Attribute Matching Scopes
   scope :with_song_title,
@@ -111,47 +87,20 @@ class Video < ApplicationRecord
 
   # Combined Scopes
 
-  scope :title_match_missing_leader,->(leader_name) { missing_leader.with_dancer_name_in_title(leader_name)}
-  scope :title_match_missing_follower, ->(follower_name) { missing_follower.with_dancer_name_in_title(follower_name) }
+  scope :title_match_missing_leader,
+        ->(leader_name) {
+          missing_leader.with_dancer_name_in_title(leader_name)
+        }
+  scope :title_match_missing_follower,
+        ->(follower_name) {
+          missing_follower.with_dancer_name_in_title(follower_name)
+        }
 
   class << self
-    def filter_by_query(query_string)
-      sql_query_array = []
-      keywords_array_without_stop_words = keywords_array_without_stop_words(query_string)
-      keywords_array_without_stop_words.each do |keyword|
-        sql_query_array.push(sql_query(keyword))
-      end
-      left_outer_joins(:song, :leader, :follower, :channel).where(combined_sql_queries(sql_query_array))
-    end
-
-    private
-
-    def stop_words
-      %w[and or the a an of to " ']
-    end
-
-    def stop_words_regex
-      "/\b(#{stop_words.join('|')})\b/"
-    end
-
-    def keywords_array_without_stop_words(query_string)
-      query_string.gsub(stop_words_regex, "").gsub("'", "").to_s.strip.split
-    end
-
-    def searchable_column_ignoring_apostrophe(searchable_column)
-      "REPLACE(#{searchable_column},'''','')"
-    end
-
-    def combined_sql_queries(sql_query_array)
-      sql_query_array.flatten.join(") AND (")
-    end
-
-    def sql_query(keyword)
-      sql_query = []
-      SEARCHABLE_COLUMNS.each do |searchable_column|
-        sql_query.push("unaccent(#{searchable_column_ignoring_apostrophe(searchable_column)}) ILIKE unaccent('%#{keyword}%')")
-      end
-      sql_query.join(" OR ")
+    # Filters videos by the results from the materialized
+    # full text search out of from VideosSearch
+    def filter_by_query(query)
+      where(id: VideosSearch.search(query).select(:video_id))
     end
   end
 
