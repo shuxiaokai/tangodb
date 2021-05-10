@@ -43,10 +43,14 @@ group :development, :test do
   gem "rspec-rails", "~> 4.0"
   gem "byebug", "~> 11.1", ">= 11.1.3"
   gem 'webdrivers'
+  gem 'rspec-sidekiq'
+  gem "vcr", "~> 6.0"
+  gem "webmock", "~> 3.12"
 end
 
 group :development do
   gem "listen", "~> 3.2"
+  gem "prettier", "~> 1.5"
   gem "rack-mini-profiler", "~> 2.3"
   gem "rubocop", "~> 1.8"
   gem "rubocop-rails", "~> 2.9"
