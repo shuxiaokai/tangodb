@@ -1,11 +1,15 @@
 module VideosHelper
   def formatted_view_count(view_count)
-    number_to_human(view_count,
-                    format:    "%n%u",
-                    precision: 2,
-                    units:     { thousand: "K",
-                                 million:  "M",
-                                 billion:  "B" })
+    number_to_human(
+      view_count,
+      format: "%n%u",
+      precision: 2,
+      units: {
+        thousand: "K",
+        million: "M",
+        billion: "B"
+      }
+    )
   end
 
   def formatted_upload_date(upload_date)
@@ -70,8 +74,14 @@ module VideosHelper
 
   def sortable(column, title = nil, search)
     title ||= column.titleize
-    css_class = column == search.sort_column ? "current #{search.sort_direction}" : nil
-    direction = column == search.sort_column && search.sort_direction == "desc" ? "asc" : "desc"
+    css_class =
+      column == search.sort_column ? "current #{search.sort_direction}" : nil
+    direction =
+      if column == search.sort_column && search.sort_direction == "desc"
+        "asc"
+      else
+        "desc"
+      end
 
     link_to video_query_params.merge({ sort: column, direction: direction }) do
       if css_class.present?
@@ -84,20 +94,22 @@ module VideosHelper
   end
 
   def video_query_params
-    request.params.slice("channel_id",
-                         "event_id",
-                         "follower_id",
-                         "genre",
-                         "hd",
-                         "leader_id",
-                         "orchestra",
-                         "popularity",
-                         "query",
-                         "song_id",
-                         "upload_date",
-                         "view_count",
-                         "year",
-                         "direction",
-                         "sort")
+    request.params.slice(
+      "channel_id",
+      "event_id",
+      "follower",
+      "genre",
+      "hd",
+      "leader",
+      "orchestra",
+      "popularity",
+      "query",
+      "song_id",
+      "upload_date",
+      "view_count",
+      "year",
+      "direction",
+      "sort"
+    )
   end
 end

@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe "Videos::Index", type: :system do
   describe "registered user flow" do
-    it "login existing account, shows header, edit user page, add resource...", js: true do
+    it "login existing account, shows header, edit user page, add resource...",
+       js: true do
       set_up_videos
       generate_existing_user
       visit root_path
@@ -24,7 +25,8 @@ RSpec.describe "Videos::Index", type: :system do
   end
 
   describe "unregistered user flow" do
-    it "creates account, shows header, edit user page, add resource...", js: true do
+    it "creates account, shows header, edit user page, add resource...",
+       js: true do
       set_up_videos
       visit root_path
       shows_page_navigation
@@ -51,6 +53,7 @@ RSpec.describe "Videos::Index", type: :system do
   def set_up_videos
     leader = create(:leader, name: "Leader Name")
     @video = create(:video, :display, title: "expected_result", popularity: "1", leader: leader)
+    create(:video, :display, title: "expected_result", popularity: "1", leader: leader)
     create(:video, :display, title: "video_b", popularity: "2")
     VideosSearch.refresh
   end
@@ -74,7 +77,10 @@ RSpec.describe "Videos::Index", type: :system do
     expect(page).to have_content("TangoTubeTV App | Powered by Youtube API")
     expect(page).to have_link("Privacy Policy", href: privacy_path)
     expect(page).to have_link("Terms of Service", href: terms_path)
-    expect(page).to have_link("G​oogle Privacy Policy", href: "http://www.google.com/policies/privacy")
+    expect(page).to have_link(
+      "G​oogle Privacy Policy",
+      href: "http://www.google.com/policies/privacy"
+    )
   end
 
   def generate_existing_user
@@ -99,8 +105,14 @@ RSpec.describe "Videos::Index", type: :system do
     fill_in(:user_email, with: "j.doe@example.com")
     fill_in(:user_password, with: "foobar1")
     expect(page).to have_content("Remember me")
-    expect(page).to have_link("Create an account", href: new_user_registration_path)
-    expect(page).to have_link("Forgot your password?", href: new_user_password_path)
+    expect(page).to have_link(
+      "Create an account",
+      href: new_user_registration_path
+    )
+    expect(page).to have_link(
+      "Forgot your password?",
+      href: new_user_password_path
+    )
 
     click_on("Log in")
 
@@ -137,7 +149,9 @@ RSpec.describe "Videos::Index", type: :system do
     fill_in("video_youtube_id", with: "new_youtube_id")
     click_on("Add New Video")
 
-    expect(page).to have_content("Video Sucessfully Added: The video must be approved before the videos are added")
+    expect(page).to have_content(
+      "Video Sucessfully Added: The video must be approved before the videos are added"
+    )
   end
 
   def add_new_channel
@@ -150,7 +164,9 @@ RSpec.describe "Videos::Index", type: :system do
     fill_in("channel_channel_id", with: "new_channel_id")
     click_on("Add New Channel")
 
-    expect(page).to have_content("Channel Sucessfully Added: The channel must be approved before the videos are added")
+    expect(page).to have_content(
+      "Channel Sucessfully Added: The channel must be approved before the videos are added"
+    )
   end
 
   def add_new_playlist
@@ -163,7 +179,9 @@ RSpec.describe "Videos::Index", type: :system do
     fill_in("playlist_slug", with: "new_playlist_id")
     click_on("Add New Playlist")
 
-    expect(page).to have_content("Playlist Sucessfully Added: The playlist must be approved before the videos are added")
+    expect(page).to have_content(
+      "Playlist Sucessfully Added: The playlist must be approved before the videos are added"
+    )
   end
 
   def edit_user_page
@@ -188,7 +206,10 @@ RSpec.describe "Videos::Index", type: :system do
     expect(page).to have_content("Forgot your password?")
 
     expect(page).to have_link("Log in", href: new_user_session_path)
-    expect(page).to have_link("Create an account", href: new_user_registration_path)
+    expect(page).to have_link(
+      "Create an account",
+      href: new_user_registration_path
+    )
   end
 
   def performs_a_search

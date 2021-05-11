@@ -60,7 +60,7 @@
     align-items: center;
 
     a {
-      font-size: 24px;
+      font-size: 20px;
       color: black;
       letter-spacing: -1px;
       font-weight: bold;
@@ -203,12 +203,16 @@
       display: none;
     }
 
+    .lowerHeadContainer {
+      padding: 0;
+    }
+
     .autocompleteContainer {
       flex: 4;
       margin: 0;
 
       .searchBarContainer {
-        margin: 0 0 0 20px;
+        margin: 0 10px 0 5px;
         min-width: 100px;
       }
     }
