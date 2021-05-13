@@ -52,6 +52,7 @@ RSpec.describe Video, type: :model do
         video = create(:video)
         expect(described_class.filter_by_genre("Tango")).not_to eq [video]
       end
+
     end
 
     describe ".filter_by_leader_id" do
@@ -702,6 +703,16 @@ RSpec.describe Video, type: :model do
         expect(described_class.filter_by_query("Agosti")).to eq [video]
       end
     end
+
+    describe ".filter_by_most_viewed_videos_monthly" do
+      it "returns video that has been viewed within month" do
+        allow(Ahoy::Event).to_receive(youtube_ids_of_most_viewed_videos_by_month)
+                          .and_return{ ["video3", "video2", "video1"] }
+        youtube_id_result = described_class.filter_by_most_viewed_videos_monthly
+        expect(youtube_id_result).to eq(["video3", "video2", "video1"])
+      end
+    end
+
 
     describe ".paginate" do
       it "limits pagination to 1" do
