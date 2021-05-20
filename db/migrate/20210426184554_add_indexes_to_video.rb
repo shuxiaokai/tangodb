@@ -1,6 +1,4 @@
 class AddIndexesToVideo < ActiveRecord::Migration[6.1]
-  disable_ddl_transaction!
-
   def change
     add_index :videos, :youtube_artist
     add_index :videos, :youtube_song
@@ -13,8 +11,6 @@ class AddIndexesToVideo < ActiveRecord::Migration[6.1]
     add_index :videos, :popularity
     add_index :videos, :view_count
     add_index :videos, :hd
-    add_index :videos, :hidden,
-      where: "hidden IS FALSE",
-  algorithm: :concurrently
+    add_index :videos, :hidden
   end
 end
