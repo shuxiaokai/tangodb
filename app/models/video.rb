@@ -102,6 +102,10 @@ class Video < ApplicationRecord
     def filter_by_query(query)
       where(id: VideosSearch.search(query).select(:video_id))
     end
+
+    def filter_by_most_viewed_videos_monthly
+      where( youtube_id: Ahoy::Event.youtube_ids_of_most_viewed_videos_by_month)
+    end
   end
 
   def display
