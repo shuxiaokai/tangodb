@@ -706,10 +706,13 @@ RSpec.describe Video, type: :model do
 
     describe ".filter_by_most_viewed_videos_monthly" do
       it "returns video that has been viewed within month" do
-        allow(Ahoy::Event).to_receive(youtube_ids_of_most_viewed_videos_by_month)
-                          .and_return{ ["video3", "video2", "video1"] }
-        youtube_id_result = described_class.filter_by_most_viewed_videos_monthly
-        expect(youtube_id_result).to eq(["video3", "video2", "video1"])
+        video1 = create(:video, youtube_id: "video_1")
+        video2 = create(:video, youtube_id: "video_2")
+        video3 = create(:video, youtube_id: "video_3")
+        allow(Ahoy::Event).to receive(:most_viewed_videos_by_month)
+          .and_return( ["video_3", "video_2", "video_1"] )
+        youtube_id_result = described_class.most_viewed_videos_by_month
+        expect(youtube_id_result).to eq([video1, video2, video3])
       end
     end
 
