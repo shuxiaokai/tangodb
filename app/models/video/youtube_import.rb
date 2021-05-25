@@ -11,7 +11,7 @@ class Video::YoutubeImport
     end
 
     def from_video(youtube_id)
-      ImportVideoWorker.perform_async(youtube_id)
+      Video::YoutubeImport::VideoWorker.perform_async(youtube_id)
     end
   end
 end

@@ -61,3 +61,5 @@ group :test do
   gem "vcr", "~> 6.0"
   gem "webmock", "~> 3.12"
 end
+
+gem "rexml", "~> 3.2"

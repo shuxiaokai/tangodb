@@ -98,6 +98,6 @@ class VideosController < ApplicationController
   end
 
   def fetch_new_video
-    ImportVideoWorker.perform_async(@video.youtube_id)
+    Video::YoutubeImport::VideoWorker.perform_async(@video.youtube_id)
   end
 end

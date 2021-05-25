@@ -542,8 +542,6 @@ CREATE TABLE public.videos (
     event_id bigint,
     scanned_youtube_music boolean DEFAULT false,
     click_count integer DEFAULT 0,
-    spotify_artist_id_1 character varying,
-    spotify_artist_name_1 character varying,
     acr_cloud_artist_name character varying,
     acr_cloud_artist_name_1 character varying,
     acr_cloud_album_name character varying,
@@ -568,21 +566,6 @@ CREATE SEQUENCE public.videos_id_seq
 --
 
 ALTER SEQUENCE public.videos_id_seq OWNED BY public.videos.id;
-
-
---
--- Name: videos_searches; Type: MATERIALIZED VIEW; Schema: public; Owner: -
---
-
-CREATE MATERIALIZED VIEW public.videos_searches AS
- SELECT videos.id AS video_id,
-    (((((((((((((((to_tsvector('english'::regconfig, COALESCE(videos.title, ''::text)) || to_tsvector('english'::regconfig, (COALESCE(videos.description, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(videos.youtube_id, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(videos.youtube_artist, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(videos.youtube_song, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(videos.spotify_track_name, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(videos.spotify_artist_name, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(channels.title, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(channels.channel_id, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(leaders.name, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(leaders.nickname, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(followers.name, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(followers.nickname, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(songs.genre, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(songs.title, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(songs.artist, ''::character varying))::text)) AS tsv_document
-   FROM ((((public.videos
-     LEFT JOIN public.channels ON ((channels.id = videos.channel_id)))
-     LEFT JOIN public.followers ON ((followers.id = videos.follower_id)))
-     LEFT JOIN public.leaders ON ((leaders.id = videos.leader_id)))
-     LEFT JOIN public.songs ON ((songs.id = videos.song_id)))
-  WITH NO DATA;
 
 
 --
@@ -670,62 +653,6 @@ ALTER TABLE ONLY public.videos ALTER COLUMN id SET DEFAULT nextval('public.video
 
 
 --
--- Name: channels channels_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.channels
-    ADD CONSTRAINT channels_pkey PRIMARY KEY (id);
-
-
---
--- Name: followers followers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.followers
-    ADD CONSTRAINT followers_pkey PRIMARY KEY (id);
-
-
---
--- Name: leaders leaders_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.leaders
-    ADD CONSTRAINT leaders_pkey PRIMARY KEY (id);
-
-
---
--- Name: songs songs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.songs
-    ADD CONSTRAINT songs_pkey PRIMARY KEY (id);
-
-
---
--- Name: videos videos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.videos
-    ADD CONSTRAINT videos_pkey PRIMARY KEY (id);
-
-
---
--- Name: mat_videos; Type: MATERIALIZED VIEW; Schema: public; Owner: -
---
-
-CREATE MATERIALIZED VIEW public.mat_videos AS
- SELECT videos.id AS video_id,
-    (((((((((((((((to_tsvector('english'::regconfig, COALESCE(videos.title, ''::text)) || to_tsvector('english'::regconfig, (COALESCE(videos.description, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(videos.youtube_id, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(videos.youtube_artist, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(videos.youtube_song, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(videos.spotify_track_name, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(videos.spotify_artist_name, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(channels.title, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(channels.channel_id, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(leaders.name, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(leaders.nickname, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(followers.name, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(followers.nickname, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(songs.genre, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(songs.title, ''::character varying))::text)) || to_tsvector('english'::regconfig, (COALESCE(songs.artist, ''::character varying))::text)) AS tsv_document
-   FROM ((((public.videos
-     JOIN public.channels ON ((channels.id = videos.channel_id)))
-     JOIN public.followers ON ((followers.id = videos.follower_id)))
-     JOIN public.leaders ON ((leaders.id = videos.leader_id)))
-     JOIN public.songs ON ((songs.id = videos.song_id)))
-  GROUP BY videos.id, channels.id, followers.id, leaders.id, songs.id
-  WITH NO DATA;
-
-
---
 -- Name: admin_users admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -742,11 +669,35 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
+-- Name: channels channels_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.channels
+    ADD CONSTRAINT channels_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.events
     ADD CONSTRAINT events_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: followers followers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.followers
+    ADD CONSTRAINT followers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: leaders leaders_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.leaders
+    ADD CONSTRAINT leaders_pkey PRIMARY KEY (id);
 
 
 --
@@ -774,11 +725,27 @@ ALTER TABLE ONLY public.search_suggestions
 
 
 --
+-- Name: songs songs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.songs
+    ADD CONSTRAINT songs_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: videos videos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.videos
+    ADD CONSTRAINT videos_pkey PRIMARY KEY (id);
 
 
 --
@@ -838,6 +805,13 @@ CREATE UNIQUE INDEX index_ahoy_visits_on_visit_token ON public.ahoy_visits USING
 
 
 --
+-- Name: index_channels_on_title; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_channels_on_title ON public.channels USING btree (title);
+
+
+--
 -- Name: index_events_on_title; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -856,20 +830,6 @@ CREATE INDEX index_followers_on_name ON public.followers USING btree (name);
 --
 
 CREATE INDEX index_leaders_on_name ON public.leaders USING btree (name);
-
-
---
--- Name: index_mat_videos_on_tsv_document; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_mat_videos_on_tsv_document ON public.mat_videos USING gin (tsv_document);
-
-
---
--- Name: index_mat_videos_on_video_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_mat_videos_on_video_id ON public.mat_videos USING btree (video_id);
 
 
 --
@@ -901,6 +861,13 @@ CREATE INDEX index_songs_on_genre ON public.songs USING btree (genre);
 
 
 --
+-- Name: index_songs_on_last_name_search; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_songs_on_last_name_search ON public.songs USING btree (last_name_search);
+
+
+--
 -- Name: index_songs_on_title; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -919,6 +886,20 @@ CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING btree (reset_password_token);
+
+
+--
+-- Name: index_videos_on_acr_cloud_artist_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_acr_cloud_artist_name ON public.videos USING btree (acr_cloud_artist_name);
+
+
+--
+-- Name: index_videos_on_acr_cloud_track_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_acr_cloud_track_name ON public.videos USING btree (acr_cloud_track_name);
 
 
 --
@@ -943,10 +924,31 @@ CREATE INDEX index_videos_on_follower_id ON public.videos USING btree (follower_
 
 
 --
+-- Name: index_videos_on_hd; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_hd ON public.videos USING btree (hd);
+
+
+--
+-- Name: index_videos_on_hidden; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_hidden ON public.videos USING btree (hidden);
+
+
+--
 -- Name: index_videos_on_leader_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_videos_on_leader_id ON public.videos USING btree (leader_id);
+
+
+--
+-- Name: index_videos_on_popularity; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_popularity ON public.videos USING btree (popularity);
 
 
 --
@@ -957,6 +959,48 @@ CREATE INDEX index_videos_on_song_id ON public.videos USING btree (song_id);
 
 
 --
+-- Name: index_videos_on_spotify_artist_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_spotify_artist_name ON public.videos USING btree (spotify_artist_name);
+
+
+--
+-- Name: index_videos_on_spotify_track_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_spotify_track_name ON public.videos USING btree (spotify_track_name);
+
+
+--
+-- Name: index_videos_on_tags; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_tags ON public.videos USING btree (tags);
+
+
+--
+-- Name: index_videos_on_upload_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_upload_date ON public.videos USING btree (upload_date);
+
+
+--
+-- Name: index_videos_on_view_count; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_view_count ON public.videos USING btree (view_count);
+
+
+--
+-- Name: index_videos_on_youtube_artist; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_videos_on_youtube_artist ON public.videos USING btree (youtube_artist);
+
+
+--
 -- Name: index_videos_on_youtube_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -964,10 +1008,10 @@ CREATE INDEX index_videos_on_youtube_id ON public.videos USING btree (youtube_id
 
 
 --
--- Name: index_videos_searches_on_tsv_document; Type: INDEX; Schema: public; Owner: -
+-- Name: index_videos_on_youtube_song; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_videos_searches_on_tsv_document ON public.videos_searches USING gin (tsv_document);
+CREATE INDEX index_videos_on_youtube_song ON public.videos USING btree (youtube_song);
 
 
 --
@@ -1001,19 +1045,9 @@ ALTER TABLE ONLY public.playlists
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('0'),
-('1'),
-('20210306201925'),
-('20210308100534'),
-('20210309200926'),
-('20210309222823'),
-('20210309222936'),
-('20210309222950'),
-('20210309223000'),
-('20210309223723'),
-('20210309233622'),
-('20210312174239'),
 ('20210315153437'),
-('20210428220252');
+('20210426184554'),
+('20210426185440'),
+('20210426205241');
 
 

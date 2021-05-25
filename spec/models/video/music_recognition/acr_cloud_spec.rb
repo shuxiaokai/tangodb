@@ -5,7 +5,7 @@ RSpec.describe Video::MusicRecognition::AcrCloud, type: :model do
     it "updates video with acr_cloud response attributes" do
       VCR.use_cassette("video/music_recognition/acr_cloud") do
         video = create(:video, youtube_id: "s6iptZdCcG0")
-        allow_any_instance_of(described_class).to receive(:audio_file_path).and_return("test/fixtures/s6iptZdCcG0_109_129.mp3")
+        allow_any_instance_of(described_class).to receive(:audio_file_path).and_return("spec/fixtures/s6iptZdCcG0_109_129.mp3")
 
         described_class.fetch("s6iptZdCcG0")
         video.reload

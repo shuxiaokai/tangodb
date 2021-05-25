@@ -15,6 +15,6 @@ class ChannelsController < ApplicationController
   private
 
   def fetch_new_channel
-    ImportChannelWorker.perform_async(@channel.channel_id)
+    Video::YoutubeImport::ChannelWorker.perform_async(@channel.channel_id)
   end
 end

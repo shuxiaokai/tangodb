@@ -23,7 +23,7 @@ class Video::YoutubeImport::Channel
   end
 
   def import_videos
-    new_videos.each { |youtube_id| ImportVideoWorker.perform_async(youtube_id) }
+    new_videos.each { |youtube_id| Video::YoutubeImport::VideoWorker.perform_async(youtube_id) }
   end
 
   private

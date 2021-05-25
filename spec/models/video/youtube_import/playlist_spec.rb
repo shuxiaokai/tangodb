@@ -43,7 +43,7 @@ RSpec.describe Video::YoutubeImport::Playlist, type: :model do
       VCR.use_cassette("video/youtubeimport/playlist/api_response_videos") do
         expect{described_class.import("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.to change(Playlist, :count).from(0).to(1)
 
-        expect{described_class.import_videos("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.to change(ImportVideoWorker.jobs, :size).by(2)
+        expect{described_class.import_videos("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.to change(Video::YoutubeImport::VideoWorker.jobs, :size).by(2)
       end
     end
 
@@ -53,7 +53,7 @@ RSpec.describe Video::YoutubeImport::Playlist, type: :model do
         expect{described_class.import("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.not_to change(Playlist, :count)
         create(:video, youtube_id: "s6iptZdCcG0")
 
-        expect{described_class.import_videos("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.to change(ImportVideoWorker.jobs, :size).by(1)
+        expect{described_class.import_videos("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.to change(Video::YoutubeImport::VideoWorker.jobs, :size).by(1)
       end
     end
 
@@ -65,7 +65,7 @@ RSpec.describe Video::YoutubeImport::Playlist, type: :model do
 
         expect{described_class.import("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.not_to change(Playlist, :count)
 
-        expect{described_class.import_videos("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.not_to change(ImportVideoWorker.jobs, :size)
+        expect{described_class.import_videos("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.not_to change(Video::YoutubeImport::VideoWorker.jobs, :size)
       end
     end
   end
@@ -73,14 +73,14 @@ RSpec.describe Video::YoutubeImport::Playlist, type: :model do
   describe "#import_channels" do
     it "imports all channels" do
       VCR.use_cassette("video/youtubeimport/playlist/api_response_channels") do
-        expect{described_class.import_channels("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.to change(ImportChannelWorker.jobs, :size).by(2)
+        expect{described_class.import_channels("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.to change(Video::YoutubeImport::ChannelWorker.jobs, :size).by(2)
       end
     end
 
     it "imports only new channels" do
       VCR.use_cassette("video/youtubeimport/playlist/api_response_channels") do
       create(:channel, channel_id: "UCtdgMR0bmogczrZNpPaO66Q")
-      expect{described_class.import_channels("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.to change(ImportChannelWorker.jobs, :size).by(1)
+      expect{described_class.import_channels("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.to change(Video::YoutubeImport::ChannelWorker.jobs, :size).by(1)
       end
     end
 
@@ -88,7 +88,7 @@ RSpec.describe Video::YoutubeImport::Playlist, type: :model do
       VCR.use_cassette("video/youtubeimport/playlist/api_response_channels") do
       create(:channel, channel_id: "UCtdgMR0bmogczrZNpPaO66Q")
       create(:channel, channel_id: "UCceZHjU9BkQM_Nz14N3wQKw")
-      expect{described_class.import_channels("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.not_to change(ImportChannelWorker.jobs, :size)
+      expect{described_class.import_channels("PL_HOpEXNpyAZrjlgI_I_R47yQdhLRtBrb")}.not_to change(Video::YoutubeImport::ChannelWorker.jobs, :size)
       end
     end
   end

@@ -23,12 +23,12 @@ class Video::YoutubeImport::Playlist
   end
 
   def import_videos
-    new_videos.each { |youtube_id| ImportVideoWorker.perform_async(youtube_id) }
+    new_videos.each { |youtube_id| Video::YoutubeImport::VideoWorker.perform_async(youtube_id) }
   end
 
   def import_channels
     new_channels.each do |channel_id|
-      ImportChannelWorker.perform_async(channel_id)
+      Video::YoutubeImport::ChannelWorker.perform_async(channel_id)
     end
   end
 

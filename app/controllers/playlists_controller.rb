@@ -15,6 +15,6 @@ class PlaylistsController < ApplicationController
   private
 
   def fetch_new_playlist
-    ImportPlaylistWorker.perform_async(@playlist.slug)
+    Video::YoutubeImport::PlaylistWorker.perform_async(@playlist.slug)
   end
 end
