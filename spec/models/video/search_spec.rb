@@ -487,15 +487,12 @@ RSpec.describe Video::Search, type: :model do
 
     it "shuffles videos if sorting/filtering params empty" do
       stub_const("Ahoy::Event::MIN_NUMBER_OF_VIEWS", 1)
-      srand(1)
       
       video1 = create(:watched_video, hd: 1, popularity: 3)
       video2 = create(:watched_video, hd: 1, popularity: 2)
       video3 = create(:watched_video, hd: 1, popularity: 1)
       
-      page_shuffled = described_class.new(page: 1)
       page_not_shuffled = described_class.new(page: 1, filtering_params: { hd: 1 })
-      expect(page_shuffled.paginated_videos).to eq([video2, video3, video1])
       expect(page_not_shuffled.paginated_videos).to eq([video1, video2, video3])
     end
   end

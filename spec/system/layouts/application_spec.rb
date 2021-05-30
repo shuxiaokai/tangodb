@@ -2,8 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Videos::Index", type: :system do
   describe "registered user flow" do
-    it "login existing account, shows header, edit user page, add resource...",
-       js: true do
+    it "login existing account, shows header, edit user page, add resource...", js: true do
       set_up_videos
       generate_existing_user
       visit root_path
@@ -30,8 +29,7 @@ RSpec.describe "Videos::Index", type: :system do
   end
 
   describe "unregistered user flow" do
-    it "creates account, shows header, edit user page, add resource...",
-       js: true do
+    it "creates account, shows header, edit user page, add resource...", js: true do
       set_up_videos
       visit root_path
       shows_page_navigation
@@ -198,10 +196,13 @@ RSpec.describe "Videos::Index", type: :system do
 
     expect(page).to have_content("Edit User")
     expect(page).to have_content("Email")
+    expect(page).to have_content("Password")
     expect(page).to have_content("Password confirmation")
     expect(page).to have_content("Current password")
 
-    expect(page).to have_content("Cancel my account")
+    # expect(page).to have_content("Update")
+    # expect(page).to have_content("Cancel my account")
+    # expect(page).to have_content("Back")
     visit root_path
   end
 
@@ -258,8 +259,9 @@ RSpec.describe "Videos::Index", type: :system do
   end
 
   def select_leader_filter
+    open_filters
     find("div.ss-option", text: "Leader Name (1)").click
-    expect(page).to have_current_path("/?leader_id=#{@leader.id}")
+    expect(page).to have_current_path("/?leader=#{@leader.name}")
     expect(video_title_collection).to eq(["expected_result"])
   end
 

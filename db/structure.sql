@@ -51,6 +51,71 @@ CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA public;
 COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
 
 
+--
+-- Name: unaccentdict; Type: TEXT SEARCH CONFIGURATION; Schema: public; Owner: -
+--
+
+CREATE TEXT SEARCH CONFIGURATION public.unaccentdict (
+    PARSER = pg_catalog."default" );
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR asciiword WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR word WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR numword WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR email WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR url WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR host WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR sfloat WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR version WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR hword_numpart WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR hword_part WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR hword_asciipart WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR numhword WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR asciihword WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR hword WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR url_path WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR file WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR "float" WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR "int" WITH simple;
+
+ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
+    ADD MAPPING FOR uint WITH simple;
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -1014,6 +1079,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210309233622'),
 ('20210312174239'),
 ('20210315153437'),
-('20210428220252');
+('20210428220252'),
+('20210530013558'),
+('20210530022506');
 
 
