@@ -9,7 +9,7 @@ class VideosSearch < ApplicationRecord
     ignoring: :accents,
     using: {
       tsearch: {
-        dictionary: "english",
+        dictionary: "unaccentdict",
         tsvector_column: "tsv_document",
         prefix: true,
       }

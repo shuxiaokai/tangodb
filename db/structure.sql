@@ -62,7 +62,7 @@ ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
     ADD MAPPING FOR asciiword WITH simple;
 
 ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
-    ADD MAPPING FOR word WITH simple;
+    ADD MAPPING FOR word WITH public.unaccent, simple;
 
 ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
     ADD MAPPING FOR numword WITH simple;
@@ -86,7 +86,7 @@ ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
     ADD MAPPING FOR hword_numpart WITH simple;
 
 ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
-    ADD MAPPING FOR hword_part WITH simple;
+    ADD MAPPING FOR hword_part WITH public.unaccent, simple;
 
 ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
     ADD MAPPING FOR hword_asciipart WITH simple;
@@ -98,7 +98,7 @@ ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
     ADD MAPPING FOR asciihword WITH simple;
 
 ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
-    ADD MAPPING FOR hword WITH simple;
+    ADD MAPPING FOR hword WITH public.unaccent, simple;
 
 ALTER TEXT SEARCH CONFIGURATION public.unaccentdict
     ADD MAPPING FOR url_path WITH simple;
@@ -1081,6 +1081,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210315153437'),
 ('20210428220252'),
 ('20210530013558'),
-('20210530022506');
+('20210530022506'),
+('20210530031108');
 
 
