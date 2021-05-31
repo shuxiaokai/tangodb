@@ -6,8 +6,7 @@ class Video::MusicRecognition::AcrCloud::Client
   ACR_CLOUD_TIMESTAMP = Time.now.utc.to_i.to_s.freeze
   ACR_CLOUD_ACCESS_KEY = ENV["ACRCLOUD_ACCESS_KEY"]
   ACR_CLOUD_ACCESS_SECRET = ENV["ACRCLOUD_SECRET_KEY"]
-  ACR_CLOUD_REQ_URL =
-    "http://identify-eu-west-1.acrcloud.com/v1/identify".freeze
+  ACR_CLOUD_REQ_URL = "http://identify-eu-west-1.acrcloud.com/v1/identify".freeze
 
   class << self
     def send_audio(file_path)
@@ -20,12 +19,11 @@ class Video::MusicRecognition::AcrCloud::Client
   end
 
   def get_audio_from_acr_cloud
-    faraday =
-      Faraday.new do |f|
-        f.request :multipart
-        f.request :url_encoded
-        f.adapter :net_http
-      end
+    faraday = Faraday.new do |f|
+      f.request :multipart
+      f.request :url_encoded
+      f.adapter :net_http
+    end
 
     response = faraday.post(url, body)
     response.body
