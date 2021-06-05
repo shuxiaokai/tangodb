@@ -10,3 +10,6 @@ require("@hotwired/turbo-rails")
 
 import "@fortawesome/fontawesome-free/js/all"
 import "controllers"
+
+require("trix")
+require("@rails/actiontext")

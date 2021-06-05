@@ -64,3 +64,5 @@ group :test do
 end
 
 
+
+gem "actiontext", "~> 6.1"
